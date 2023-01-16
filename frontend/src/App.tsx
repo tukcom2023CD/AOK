@@ -1,6 +1,7 @@
 import React from 'react';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'; //라우터 세팅
 import Main from './Pages/Main';
+import Login from './Pages/Member/Login';
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
           <Route path='/' element={<Main />} />
 
           {/* 이하 다른 페이지들 주석으로 구분 */}
-          <Route />
+          
+          <Route path='/login' element={<Login />} />
         </Routes>
       </Router>
     </div>
