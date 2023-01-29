@@ -14,6 +14,7 @@ function App() {
           {/* 이하 다른 페이지들 주석으로 구분 */}
           
           <Route path='/login' element={<Login />} />
+          <Route path='/upload' element={<Login />} />
         </Routes>
       </Router>
     </div>
