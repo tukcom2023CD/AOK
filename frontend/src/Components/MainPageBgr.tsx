@@ -6,14 +6,8 @@ import styled from "styled-components";
  */
 
 export const MainBackground = styled.div`
-    position: absolute;
-    width: 100%;
-    height: 100%;
+    display: flex;
+    background-color: 'rgba(255,241,158,0.05)';
     
 `;
 
-export default function PageBackgr(){
-    return(
-        <div></div>
-    );
-}

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 interface props{
-    btncolor?: string;
+    inputcolor?: string;
     borderRadius?: string;
     borderStyle?: string;
     backgroundcolor?: string;
@@ -18,12 +18,12 @@ interface props{
 
 }
 
-export const BtnStyle = styled.button<props>`
-    font-size: 1rem;
+export const Input = styled.input<props>`
+    font-size: 12pt;
     text-align: center;
     border-radius: ${(props) => props.borderRadius};
     border-style: ${(props) => props.borderStyle};
-    color: ${(props) => props.btncolor};
+    color: ${(props) => props.inputcolor};
     background-color: ${(props) => props.backgroundcolor};
     width: ${(props) => props.width};
     height: ${(props) => props.height};
