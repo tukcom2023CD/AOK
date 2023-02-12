@@ -6,6 +6,7 @@ import React, {
     useEffect
   } from "react";
   import "./DragDrop.scss";
+  import styles from './DragDrop.module.css';
   
   interface IFileTypes {
     id: number;
@@ -107,9 +108,12 @@ import React, {
   
       return () => resetDragEvents();
     }, [initDragEvents, resetDragEvents]);
+
   
     return (
+      
       <div className="DragDrop">
+        <div className={styles.left}>
         <input
           type="file"
           id="fileUpload"
@@ -125,8 +129,10 @@ import React, {
         >
           <div>파일 첨부</div>
         </label>
-  
-        <div className="DragDrop-Files">
+        </div>
+      
+        <section className="DragDrop-Files">
+
           {files.length > 0 &&
             files.map((file: IFileTypes) => {
               const {
@@ -135,18 +141,23 @@ import React, {
               } = file;
   
               return (
-                <div key={id}>
+                <ul className='lists'>
+                  <li className='list'>
+                    <div key={id} className="list-row">
                   <div>{name}</div>
-                  <div
+                  <button
                     className="DragDrop-Files-Filter"
                     onClick={() => handleFilterFile(id)}
                   >
                     X
-                  </div>
+                  </button>
                 </div>
+                </li>
+                </ul>
               );
             })}
-        </div>
+
+        </section>
       </div>
     );
   };

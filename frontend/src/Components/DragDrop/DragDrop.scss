@@ -1,20 +1,24 @@
+/**/
 @mixin filledStyle() {
     background-color: black;
     color: white;
+    
   }
   
   @mixin alignCenter() {
-    display: flex;
+    display: inline-block;
     display: -webkit-flex;
-    flex-direction: column;
+    margin-right: 1rem;
     -ms-flex-direction: column;
     justify-content: center;
     align-items: center;
+    
   }
   
   .DragDrop {
     width: 100%;
-    height: 100vh;
+    height: 50vh;
+    
     @include alignCenter();
     
     &-File {
@@ -33,17 +37,17 @@
     }
   
     &-Files {
-      margin-top: 1rem;
   
       & > div {
         width: 300px;
         padding: 8px;
         border: 1px solid black;
-        margin-bottom: 10px;
+        //margin-bottom: 10px;
         display: flex;
-        justify-content: space-between;
+        //justify-content: space-between;
       }
-  
+
+
       &-Filter {
         cursor: pointer;
         
@@ -53,3 +57,38 @@
       }
     }
   }
+
+  .DragDrop-Files{
+    overflow-y: auto;
+
+    width: 500px;
+    height: 200px;
+    background-color: lightcoral;
+
+    ::-webkit-scrollbar {
+      width: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+      background-color: #2f3542;
+      border-radius: 10px;
+  }
+  ::-webkit-scrollbar-track {
+      background-color: grey;
+      border-radius: 10px;
+      box-shadow: inset 0px 0px 5px white;
+  }
+  }
+
+  .list{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 400px;
+    background-color: white;
+    margin: auto;
+    padding: 0.5rem 0.2rem;
+  }
+
+.list-row{
+  display: flex;
+}
