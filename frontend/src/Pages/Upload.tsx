@@ -7,6 +7,11 @@ import { MainBackground } from '../Components/MainPageBgr';
 import UpsideBar from '../Components/UpsideBar';
 import DragDrop from '../Components/DragDrop/DragDrop';
 import PreImage from '../Components/PreImage/PreImage';
+import SaveTitle from '../Components/SaveTitle/SaveTitle';
+import SaveContent from '../Components/SaveContent/SaveContent';
+import ApplyBtn from '../Components/ApplyButton/ApplyBtn';
+
+import  '../Components/Button';
 
 function Upload() {
     return(
@@ -17,13 +22,10 @@ function Upload() {
           
           </DndProvider>
           <DragDrop/>
-          {/* 현재 작업 내용 */}
-          {
           <PreImage/>
-          }
-          {/* {저장할 제목} */}
-          {/* {저장할 내용} */}
-          {/* {Apply 버튼} */}
+          <SaveTitle/>
+          <SaveContent/>
+          <ApplyBtn/>
         </MainBackground>
       </div>
     );

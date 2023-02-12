@@ -24,8 +24,10 @@
     &-File {
       width: 400px;
       height: 200px;
-      border: 2px solid black;
+      border: 1px solid lightgray;
+      background-color: white;
       border-radius: 10px;
+      border: 2px solid lightgrey;
       
       @include alignCenter();
       cursor: pointer;
@@ -63,20 +65,15 @@
 
     width: 500px;
     height: 200px;
-    background-color: lightcoral;
+    border: 2px solid lightgray;
+    background-color: white;
+    border-radius: 10px;
+    padding: 1rem;
 
-    ::-webkit-scrollbar {
-      width: 10px;
+
   }
-  ::-webkit-scrollbar-thumb {
-      background-color: #2f3542;
-      border-radius: 10px;
-  }
-  ::-webkit-scrollbar-track {
-      background-color: grey;
-      border-radius: 10px;
-      box-shadow: inset 0px 0px 5px white;
-  }
+  .lists{
+    margin: 0.2rem ;
   }
 
   .list{
@@ -84,11 +81,18 @@
     justify-content: space-around;
     align-items: center;
     width: 400px;
-    background-color: white;
+    border-radius: 5px;
+    background-color: #FFF19E;
     margin: auto;
     padding: 0.5rem 0.2rem;
   }
 
 .list-row{
   display: flex;
+}
+
+.button{
+  background-color: transparent;
+  border: none;
+  outline: none;
 }

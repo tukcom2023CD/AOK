@@ -7,6 +7,10 @@ import React, {
   } from "react";
   import "./DragDrop.scss";
   import styles from './DragDrop.module.css';
+  import {DndProvider} from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import { BtnStyle } from '../Button';
+import {FaTrash} from 'react-icons/fa';
   
   interface IFileTypes {
     id: number;
@@ -145,12 +149,9 @@ import React, {
                   <li className='list'>
                     <div key={id} className="list-row">
                   <div>{name}</div>
-                  <button
-                    className="DragDrop-Files-Filter"
-                    onClick={() => handleFilterFile(id)}
-                  >
-                    X
-                  </button>
+                  <div className='DragDrop-Files-Filter' onClick={() => handleFilterFile(id)}>
+                    <button className={styles.button}><FaTrash/></button>
+                    </div>
                 </div>
                 </li>
                 </ul>

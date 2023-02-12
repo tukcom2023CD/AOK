@@ -15,6 +15,7 @@ interface props{
     marginLeft?: string;
     marginRight?: string;
     name?: string;
+    
 
 }
 
