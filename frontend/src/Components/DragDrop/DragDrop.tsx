@@ -146,7 +146,7 @@ import {FaTrash} from 'react-icons/fa';
     
                 return (
                   <ul className='lists'>
-                    <li className='list'>
+                    <li className='list-new'>
                       <div key={id} className="list-row">
                       <div>{name}</div>
                       <div className='DragDrop-Files-Filter' onClick={() => handleFilterFile(id)}>
@@ -161,7 +161,7 @@ import {FaTrash} from 'react-icons/fa';
           </section>
         </div>
         <div className="imagePreview">
-          
+          here i am
         </div>
       </div>
     );

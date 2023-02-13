@@ -89,6 +89,28 @@
     background-color: #FFF19E;
     margin: auto;
     padding: 0.5rem 0.2rem;
+
+    &-new {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 400px;
+      border-radius: 5px;
+      background-color: #9DE040;
+      margin: auto;
+      padding: 0.5rem 0.2rem;
+    }
+
+    &-edited {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 400px;
+      border-radius: 5px;
+      background-color: #EDAF9C;
+      margin: auto;
+      padding: 0.5rem 0.2rem;
+    }
   }
 
 .list-row{
