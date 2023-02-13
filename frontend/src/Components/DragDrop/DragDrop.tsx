@@ -5,9 +5,9 @@ import React, {
     useState,
     useEffect
   } from "react";
-  import "./DragDrop.scss";
-  import styles from './DragDrop.module.css';
-  import {DndProvider} from 'react-dnd';
+import "./DragDrop.scss";
+import styles from './DragDrop.module.css';
+import {DndProvider} from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { BtnStyle } from '../Button';
 import {FaTrash} from 'react-icons/fa';
@@ -115,50 +115,54 @@ import {FaTrash} from 'react-icons/fa';
 
   
     return (
-      
-      <div className="DragDrop">
-        <div className={styles.left}>
-        <input
-          type="file"
-          id="fileUpload"
-          style={{ display: "none" }}
-          multiple={true}
-          onChange={onChangeFiles}
-        />
-  
-        <label
-          className={isDragging ? "DragDrop-File-Dragging" : "DragDrop-File"}
-          htmlFor="fileUpload"
-          ref={dragRef}
-        >
-          <div>파일 첨부</div>
-        </label>
+      <div className="wholediv">
+        <div className="DragDrop">
+          <div className={styles.left}>
+          <input
+            type="file"
+            id="fileUpload"
+            style={{ display: "none" }}
+            multiple={true}
+            onChange={onChangeFiles}
+          />
+    
+          <label
+            className={isDragging ? "DragDrop-File-Dragging" : "DragDrop-File"}
+            htmlFor="fileUpload"
+            ref={dragRef}
+          >
+            <div>파일 첨부</div>
+          </label>
+          </div>
+        
+          <section className="DragDrop-Files">
+
+            {files.length > 0 &&
+              files.map((file: IFileTypes) => {
+                const {
+                  id,
+                  object: { name }
+                } = file;
+    
+                return (
+                  <ul className='lists'>
+                    <li className='list'>
+                      <div key={id} className="list-row">
+                      <div>{name}</div>
+                      <div className='DragDrop-Files-Filter' onClick={() => handleFilterFile(id)}>
+                        <button className={styles.button}><FaTrash/></button>
+                      </div>
+                      </div>
+                    </li>
+                  </ul>
+                );
+              })}
+
+          </section>
         </div>
-      
-        <section className="DragDrop-Files">
-
-          {files.length > 0 &&
-            files.map((file: IFileTypes) => {
-              const {
-                id,
-                object: { name }
-              } = file;
-  
-              return (
-                <ul className='lists'>
-                  <li className='list'>
-                    <div key={id} className="list-row">
-                  <div>{name}</div>
-                  <div className='DragDrop-Files-Filter' onClick={() => handleFilterFile(id)}>
-                    <button className={styles.button}><FaTrash/></button>
-                    </div>
-                </div>
-                </li>
-                </ul>
-              );
-            })}
-
-        </section>
+        <div className="imagePreview">
+          
+        </div>
       </div>
     );
   };
