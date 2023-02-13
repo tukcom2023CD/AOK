@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
+import { AiFillCaretDown } from "react-icons/ai";
 interface props{
     backgroundcolor?: string;
 }
@@ -16,7 +16,6 @@ const ProfilePic = styled.div<props>`
     border-radius: 100%;
     border-style: dotted;
     margin-right: 1.5rem;
-    //background-color: 'rgba(0,0,0,1)';
     background-color: ${(props) => props.backgroundcolor};
 `;
 const Name = styled.div`
@@ -27,16 +26,18 @@ const Name = styled.div`
 const DropBtn = styled.div`
     width: 1rem;
     height: 1rem;
-    border-style: dotted;
     margin-left: 1rem;
 
 `;
+
 function MainProfile(){
     return(
         <ProfileDiv>
             <ProfilePic backgroundcolor='black'/>
             <Name>김이름</Name>
-            <DropBtn/>
+            <DropBtn>
+                <AiFillCaretDown/>
+            </DropBtn>
         </ProfileDiv>
     );
 }

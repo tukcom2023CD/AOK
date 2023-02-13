@@ -160,7 +160,7 @@ import {FaTrash} from 'react-icons/fa';
 
           </section>
         </div>
-        <div className="imagePreview">
+        <div className="imagePreview">{}
           here i am
         </div>
       </div>
