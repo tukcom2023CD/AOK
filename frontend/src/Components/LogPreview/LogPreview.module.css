@@ -1,0 +1,27 @@
+section{
+    display: flex;
+    flex-direction: column;
+}
+
+.title{
+    left: 30px;
+    font-size: 25px;
+}
+
+img{
+    width: 300px;
+    height: 300px;
+}
+
+.preview{
+    font-size: 20px;
+    font-weight: 400;
+    color: black;
+    margin-bottom: 0px;
+}
+
+.clock{
+    text-align: center;
+    color: lightgray;
+}
+
