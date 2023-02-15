@@ -14,7 +14,6 @@ const ProfilePic = styled.div<props>`
     width: 2rem;
     height: 2rem;
     border-radius: 100%;
-    border-style: dotted;
     margin-right: 1.5rem;
     background-color: ${(props) => props.backgroundcolor};
 `;
@@ -33,8 +32,8 @@ const DropBtn = styled.div`
 function MainProfile(){
     return(
         <ProfileDiv>
-            <ProfilePic backgroundcolor='black'/>
-            <Name>김이름</Name>
+            <ProfilePic backgroundcolor='#FFF19E'/>
+            <Name>크레페</Name>
             <DropBtn>
                 <AiFillCaretDown/>
             </DropBtn>

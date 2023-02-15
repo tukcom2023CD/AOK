@@ -22,7 +22,6 @@ function Upload() {
           
           </DndProvider>
           <DragDrop/>
-          <PreImage/>
           <SaveTitle/>
           <SaveContent/>
           <ApplyBtn/>
