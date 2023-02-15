@@ -1,5 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'; //라우터 세팅
+import Log from './Pages/Log_/Log';
 import Main from './Pages/Main';
 import Login from './Pages/Member/Login';
 import Upload from './Pages/Upload';
@@ -16,6 +17,7 @@ function App() {
           
           <Route path='/login' element={<Login />} />
           <Route path='/upload' element={<Upload />} />
+          <Route path='/Log' element={<Log/>} />
         </Routes>
       </Router>
     </div>
