@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'; //라우터 세팅
-import Main from './Pages/Main';
+import Main from './Pages/Member/Main';
 import Login from './Pages/Member/Login';
 import Upload from './Pages/Upload';
 

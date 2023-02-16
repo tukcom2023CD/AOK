@@ -32,3 +32,9 @@ ul{
   list-style: none;
   padding-left: 0;
 }
+
+button{
+  outline: none;
+  border-style: none;
+  background-color: transparent;
+}
