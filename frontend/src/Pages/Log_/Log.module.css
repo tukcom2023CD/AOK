@@ -1,0 +1,23 @@
+.middle{
+    display: flex;
+    margin: 0px 100px;
+}
+
+.line{
+    width: 1px;
+    height: 70vh;
+    background-color: black;
+}
+
+.logPreview{
+    margin-right: 150px ;
+}
+
+
+.line{
+    margin:0px 80px;
+}
+
+
+
+
