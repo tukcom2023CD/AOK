@@ -15,7 +15,6 @@
 .rightBar{
     display: flex;
     width: 25%;
-    justify-content: space-around;
     margin-right: 3rem;
 
 
@@ -92,5 +91,6 @@
     transform: translateY(30px);
     background-color: black;
     align-items: end;
+    margin-right: 30px;
 }
 

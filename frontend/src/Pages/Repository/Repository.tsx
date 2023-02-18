@@ -21,19 +21,22 @@ export default function Repository() {
             <div className={styles.middleContent}>
             <div className={styles.leftBar}>
             <div className={styles.leftSidebar}>
-            <div className={styles.repoList}>
-            <p className={styles.repoName}>레포지토리 이름 </p>
-            <span><button><BsFillCaretDownFill className={styles.down} size={20}/></button></span>
-            <span><button><MdSettings className={styles.setting} size={25}/></button></span>
+                <div className={styles.repoList}>
+                    <p className={styles.repoName}>레포지토리 이름 </p>
+                    <span><button><BsFillCaretDownFill className={styles.down} size={20}/></button></span>
+                    <span><button><MdSettings className={styles.setting} size={25}/></button></span>
+                </div>
+
+                <div className={styles.line_w}></div> {/* 구분선 */}
+
+                <BasicList/>
+
+                <div className={styles.btns}>
+                <BtnStyle width='200px' height='40px' backgroundcolor='black' color='white' borderRadius='5px' marginBottom='10px'>commit</BtnStyle>
+                <BtnStyle width='200px' height='40px' backgroundcolor='black' color='white' borderRadius='5px' marginBottom='10px'>merge</BtnStyle>
+                <BtnStyle width='200px' height='40px' backgroundcolor='#FA735F' borderRadius='5px' marginBottom='10px'>설정</BtnStyle>
+                </div>
             </div>
-        <div className={styles.line_w}></div>
-        <BasicList/>
-        <div className={styles.btns}>
-        <BtnStyle width='200px' height='40px' backgroundcolor='black' color='white' borderRadius='5px' marginBottom='10px'>commit</BtnStyle>
-        <BtnStyle width='200px' height='40px' backgroundcolor='black' color='white' borderRadius='5px' marginBottom='10px'>merge</BtnStyle>
-        <BtnStyle width='200px' height='40px' backgroundcolor='#FA735F' borderRadius='5px' marginBottom='10px'>설정</BtnStyle>
-        </div>
-        </div>
             </div>
 
             <div className={styles.rightBar}>
