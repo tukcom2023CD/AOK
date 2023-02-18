@@ -7,12 +7,12 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import styles from './BasicList.module.css';
+import { margin, padding } from '@mui/system';
 
 
 export default function BasicList() {
   return (
-    
-    <Box sx={{ width: '100%', maxWidth: 200, bgcolor: 'background.paper' }}>
+    <Box className={styles.box} sx={{ width: '100%', maxWidth: 200, bgcolor: 'background.paper' }}>
       <nav aria-label="main mailbox folders">
         <List className={styles.list}>
           <ListItem disablePadding>

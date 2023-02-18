@@ -12,7 +12,7 @@ import BasicList from '../../Components/BasicList/BasicList';
 
 function Main() {
   return <div>
-            <MainBackground display='inline-block' backgroundcolor='rgba(255,241,158,0.05)'>
+          <MainBackground display='inline-block' backgroundcolor='rgba(255,241,158,0.05)'>
           <UpsideBar/>
           <DndProvider backend={HTML5Backend}>
           <div className={styles.middleContent}>

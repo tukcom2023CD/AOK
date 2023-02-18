@@ -1,0 +1,9 @@
+.repo_member_list_row{
+    display: flex;
+    align-items: center;
+}
+
+.star{
+    margin-left: 10px;
+    font-size: 25px;
+}
