@@ -3,15 +3,33 @@
     overflow-y: auto;
 }
 
-::-webkit-scrollbar {
+.scroll{
+    display: inline-block;
+    width: 150px;
+    height: 250px;  
+    padding: 20px;
+    overflow-y: scroll;
+    border: 1px solid black;
+    box-sizing: border-box;
+    color: white;
+    font-family: 'Nanum Gothic';
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* 스크롤바 설정*/
+.box::-webkit-scrollbar{
     width: 10px;
 }
-::-webkit-scrollbar-thumb {
-    background-color: #2f3542;
-    border-radius: 10px;
+
+/* 스크롤바 막대 설정*/
+.box::-webkit-scrollbar-thumb{
+    background-color: rgba(255,255,255,1);
+    /* 스크롤바 둥글게 설정    */
+    border-radius: 10px;    
 }
-::-webkit-scrollbar-track {
-    background-color: grey;
-    border-radius: 10px;
-    box-shadow: inset 0px 0px 5px white;
+
+/* 스크롤바 뒷 배경 설정*/
+.box::-webkit-scrollbar-track{
+    background-color: rgba(0,0,0,0);
 }
+

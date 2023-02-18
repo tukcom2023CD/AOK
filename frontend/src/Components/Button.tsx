@@ -8,6 +8,7 @@ interface props{
     backgroundcolor?: string;
     width?: string;
     height?: string;
+    color?: string;
     fontSize?: string;
     fontWeight?: string;
     marginTop?: string;
@@ -16,7 +17,6 @@ interface props{
     marginRight?: string;
     name?: string;
     
-
 }
 
 export const BtnStyle = styled.button<props>`
@@ -24,7 +24,7 @@ export const BtnStyle = styled.button<props>`
     text-align: center;
     border-radius: ${(props) => props.borderRadius};
     border-style: ${(props) => props.borderStyle};
-    color: ${(props) => props.btncolor};
+    color: ${(props) => props.color};
     background-color: ${(props) => props.backgroundcolor};
     width: ${(props) => props.width};
     height: ${(props) => props.height};

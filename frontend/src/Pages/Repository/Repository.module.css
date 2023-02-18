@@ -1,0 +1,104 @@
+.repoName{
+    display: inline-block;
+}
+
+.middleContent{
+    margin: 1rem 3rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.leftBar{
+    width: 20%;
+}
+
+.rightBar{
+    display: flex;
+    width: 25%;
+    justify-content: space-around;
+    margin-right: 3rem;
+
+
+}
+
+
+.repoList{
+    margin-bottom: 5rem;
+    align-items: center;
+}
+
+.down{
+    margin: 0px 3px;
+    transform: translateY(3px);
+}
+
+.setting{
+    margin: 0px 2px;
+    transform: translateY(2.5px);
+}
+
+.line_w{
+    width: 200px;
+    height: 1px;
+    background-color: black;
+}
+
+.btns{
+    margin-top: 30px;
+}
+
+.repo_member{
+    height: 50%;
+}
+
+.repo_member_title{
+    display: flex;
+
+}
+
+.repo_member_text{
+    font-size: 20px;
+}
+
+.repo_member_btn{
+    margin-left: 20px;
+    transform: translateY(15px);
+}
+
+.repo_member_list{
+    overflow-y: auto;
+    flex: 1 1 auto;
+
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #2f3542;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-track {
+    background-color: grey;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+}
+
+.repo_member_list_row{
+    display: flex;
+    align-items: center;
+}
+
+.star{
+    margin-left: 10px;
+    font-size: 25px;
+}
+
+
+.line_h{
+    width: 1px;
+    height: 500px;
+    transform: translateY(30px);
+    background-color: black;
+    align-items: end;
+}
+
