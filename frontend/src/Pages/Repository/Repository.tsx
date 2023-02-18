@@ -9,8 +9,8 @@ import styles from './Repository.module.css';
 import {BsFillCaretDownFill} from "react-icons/bs";
 import {MdSettings} from "react-icons/md"
 import BasicList from '../../Components/BasicList/BasicList';
-import Profile from '../../Components/Profile';
-import {AiFillStar} from 'react-icons/ai';
+import MemberList from '../../Components/MemberList/MemberList';
+
 
 export default function Repository() {
     return (
@@ -44,8 +44,7 @@ export default function Repository() {
                     <BtnStyle className={styles.repo_member_btn} width='50px' height='30px'color='black' backgroundcolor='#FA735F' borderRadius='5px'>초대</BtnStyle>   
                 </div>
                 <ul className={styles.repo_member_list}>
-                    <li className={styles.repo_member_list_row}><Profile/><AiFillStar className={styles.star}/></li>
-                    
+                    <MemberList/>
                 </ul>
             </div>
             </div>
