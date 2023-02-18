@@ -27,7 +27,7 @@ export default function Repository() {
                     <span><button><MdSettings className={styles.setting} size={25}/></button></span>
                 </div>
 
-                <div className={styles.line_w}></div> {/* 구분선 */}
+                <div className={styles.line_w}></div> {/* 가로(수평) 구분선 */}
 
                 <BasicList/>
 
@@ -40,16 +40,17 @@ export default function Repository() {
             </div>
 
             <div className={styles.rightBar}>
-            <div className={styles.line_h}></div> 
-            <div className={styles.repo_member}>
-                <div className={styles.repo_member_title}>
-                    <p className={styles.repo_member_text}>레포지토리 참여자</p>
-                    <BtnStyle className={styles.repo_member_btn} width='50px' height='30px'color='black' backgroundcolor='#FA735F' borderRadius='5px'>초대</BtnStyle>   
+                <div className={styles.line_h}></div>
+
+                <div className={styles.repo_member}>
+                    <div className={styles.repo_member_title}>
+                        <p className={styles.repo_member_text}>레포지토리 참여자</p>
+                        <BtnStyle className={styles.repo_member_btn} width='50px' height='30px'color='black' backgroundcolor='#FA735F' borderRadius='5px'>초대</BtnStyle>   
+                    </div>
+                    <ul className={styles.repo_member_list}>
+                        <MemberList/>
+                    </ul>
                 </div>
-                <ul className={styles.repo_member_list}>
-                    <MemberList/>
-                </ul>
-            </div>
             </div>
 
             </div>
