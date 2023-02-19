@@ -28,7 +28,7 @@ const DropBtn = styled.div`
     width: 1rem;
     height: 1rem;
     margin-left: 1rem;
-
+    border: dotted;
 `;
 
 function MainProfile(){
@@ -36,9 +36,7 @@ function MainProfile(){
         <ProfileDiv>
             <ProfilePic backgroundcolor='#FFF19E'/>
             <Name>크레페</Name>
-            <DropBtn>
-                <MenuListComposition/>
-            </DropBtn>
+            <MenuListComposition/>
         </ProfileDiv>
     );
 }
