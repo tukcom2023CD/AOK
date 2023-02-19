@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import MenuListComposition  from "./Dropmenu";
 import { AiFillCaretDown } from "react-icons/ai";
+
 interface props{
     backgroundcolor?: string;
 }
@@ -35,7 +37,7 @@ function MainProfile(){
             <ProfilePic backgroundcolor='#FFF19E'/>
             <Name>크레페</Name>
             <DropBtn>
-                <AiFillCaretDown/>
+                <MenuListComposition/>
             </DropBtn>
         </ProfileDiv>
     );
