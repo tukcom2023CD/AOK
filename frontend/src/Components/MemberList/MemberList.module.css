@@ -1,6 +1,7 @@
 .repo_member_list_row{
     display: flex;
     align-items: center;
+    margin-bottom: 1rem;
 }
 
 .star{
