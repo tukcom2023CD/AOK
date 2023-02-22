@@ -1,0 +1,47 @@
+.authority{
+    margin-bottom: 3rem;
+}
+
+.list_row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    margin: 0.1rem 0;
+    color: var(--color-text);
+    list-style: none;;
+    padding-left: 0%;
+}
+
+.checkbox{
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.text{
+    flex: 1 1 0%;
+    margin-left: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.icon{
+    width: 26px;
+    height: 26px;
+    background-color: var(--color-grey);
+    border-radius: 50%;
+    transition: all 150ms ease-out;
+    margin-left: 2rem;
+}
+
+.icon :hover{
+    background-color: var(--color-accent);
+    transform: rotate(15deg) scale(1.2);
+}
+
+.button {
+    color: var(--color-text);
+    background-color: transparent;
+    border-radius: 100%;
+}
+
+

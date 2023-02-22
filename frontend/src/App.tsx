@@ -5,6 +5,7 @@ import Log from './Pages/Log_/Log';
 import Login from './Pages/Member/Login';
 import Upload from './Pages/Upload';
 import Repository from './Pages/Repository/Repository';
+import RepositorySetting from './Pages/Repository/RepositorySetting';
 import Branch from './Pages/Branch/Branch';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path='/Log' element={<Log/>} />
           <Route path='/repository' element={<Repository/>} />
           <Route path='/branch' element={<Branch/>} />
+          <Route path='/repository_setting' element={<RepositorySetting/>} />
         </Routes>
       </Router>
     </div>
