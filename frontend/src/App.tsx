@@ -7,6 +7,7 @@ import Upload from './Pages/Upload';
 import Repository from './Pages/Repository/Repository';
 import Branch from './Pages/Branch/Branch';
 import RepositorySetting from './Pages/Repository/RepositorySetting';
+import Notice from './Pages/Notice/Notice';
 
 function App() {
   return (
@@ -22,8 +23,9 @@ function App() {
           <Route path='/upload' element={<Upload />} />
           <Route path='/Log' element={<Log/>} />
           <Route path='/repository' element={<Repository/>} />
-          <Route path='repository_setting' element={<RepositorySetting/>} />
+          <Route path='/repository_setting' element={<RepositorySetting/>} />
           <Route path='/branch' element={<Branch/>} />
+          <Route path='/notice' element={<Notice/>} />
         </Routes>
       </Router>
     </div>
