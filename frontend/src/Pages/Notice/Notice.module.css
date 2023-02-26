@@ -1,5 +1,6 @@
 .middleContent{
     margin: 1rem 200px;
+    transform: translateY(30px);
 }
 
 .notice_title{
