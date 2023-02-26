@@ -5,7 +5,7 @@ import styles from './Authority.module.css';
 export default function Authority() {
     return (
         <div>
-            <Divider width='500px' height='1px' backgroundcolor='black'/>
+            <Divider width='600px' height='1px' backgroundcolor='black'/>
             <ul className={styles.authority_list}> 
                 <li className={styles.authority_list_row}>
                     <div className={styles.member}>관리자 1</div>
@@ -21,7 +21,7 @@ export default function Authority() {
             </ul>
 
 
-            <Divider width='500px' height='1px' backgroundcolor='black'/>
+            <Divider width='600px' height='1px' backgroundcolor='black'/>
             <ul className={styles.authority_list}>
                 <li className={styles.authority_list_row}>
                     <div className={styles.member}>일반인 1</div>
