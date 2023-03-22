@@ -3,10 +3,8 @@ import Box from '@mui/material/Box';
 import { ThemeProvider,createTheme } from '@mui/material/styles';
 import styled from 'styled-components';
 import UpsideBar from '../Components/UpsideBar';
-import VirtualizedList from '../Components/VirtualList';
-import { AiOutlinePlus } from "react-icons/ai";
-import SvgIcon from '@mui/material/SvgIcon';
-// import AiOutlinePlus from "*.svg";
+import { Typography, Button } from '@mui/material';
+import ImgList from '../Components/ImgList';
 
 export const theme = createTheme({
     palette: {
@@ -27,13 +25,18 @@ export default function Main() {
 
     return (
         <ThemeProvider theme={theme}>
-            <Box sx={{ flexGrow: 1 }}>
+            <Box sx={{ flexGrow: 1, flexShrink:1 }}>
                 <UpsideBar/>
-                <Box width={600} height={400} alignItems={'center'}  margin={'auto'}  marginTop={15}  bgcolor={'#D3D3D3'} padding={2} borderRadius={2}>
-
-                            <Box display={'flex'} justifyContent={'center'} color={'black'} fontSize={20} fontWeight={'bold'} marginBottom={3} alignItems={'center'}>
-                            <Box>      Choose the Project</Box><button>< AiOutlinePlus color={'FF9198'} fontSize={20}/></button></Box>
-                    <VirtualizedList/>
+                <Box display={'flex'} justifyContent={'flex-end'} width={'100vw'} marginTop={'80px'} paddingX={'140px'}>
+                    <Typography variant='h5' fontWeight={'bolder'}>Projects</Typography> 
+                    <Button
+                    variant='contained'
+                    sx={{color:'white', backgroundColor:'#FF9198', borderRadius:'8px', ml:'490px'}}
+                    >create
+                    </Button>
+                </Box>
+                <Box display={'flex'} justifyContent={'center'}>
+                <ImgList/>
                 </Box>
             </Box>
         </ThemeProvider>
