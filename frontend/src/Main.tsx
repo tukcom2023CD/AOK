@@ -2,9 +2,9 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import { ThemeProvider,createTheme } from '@mui/material/styles';
 import styled from 'styled-components';
-import UpsideBar from '../Components/UpsideBar';
+import UpsideBar from './Components/UpsideBar';
 import { Typography, Button } from '@mui/material';
-import ImgList from '../Components/ImgList';
+import ImgList from './Components/ImgList';
 
 export const theme = createTheme({
     palette: {
