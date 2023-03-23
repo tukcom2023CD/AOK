@@ -8,6 +8,7 @@ import Repository from './Pages/Repository/Repository';
 import Branch from './Pages/Branch/Branch';
 import RepositorySetting from './Pages/Repository/RepositorySetting';
 import Notice from './Pages/Notice/Notice';
+import Modalcom from './Components/Modalcom';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path='/repository_setting' element={<RepositorySetting/>} />
           <Route path='/branch' element={<Branch/>} />
           <Route path='/notice' element={<Notice/>} />
+          <Route path='/modal' element={<Modalcom/>} />
         </Routes>
       </Router>
     </div>
