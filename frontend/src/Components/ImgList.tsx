@@ -1,7 +1,8 @@
 import * as React from 'react';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
-import { Box, shadows } from '@mui/system';
+import { Box, shadows, BoxProps } from '@mui/system';
+import { wrap } from 'module';
 
 const commonStyles = {
     border: 1,
@@ -12,7 +13,8 @@ const commonStyles = {
 
 export default function ImgList() {
     return (
-    <ImageList sx={{ width: 1300, height: 340, margin: 2 }} cols={4} rowHeight={300}>
+    <ImageList sx={{ width: 1300, height: 1300, margin: 2, flexWrap: 'wrap', maxWidth: '800'}} cols={4} rowHeight={300}>
+      {/* <ImageList sx={{ width: 1300, height: 670, margin: 2, flexWrap: 'wrap', maxWidth: '800'}} cols={4} rowHeight={300}> */}
         {itemData.map((item) => (
         <Box sx={{...commonStyles, borderRadius:3, border:'transparent', boxShadow: 4}}>
             <ImageListItem key={item.img}>
@@ -76,6 +78,10 @@ const itemData = [
   {
     img: 'https://images.unsplash.com/photo-1471357674240-e1a485acb3e1',
     title: 'Sea star',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1589118949245-7d38baf380d6',
+    title: 'Bike',
   },
   {
     img: 'https://images.unsplash.com/photo-1589118949245-7d38baf380d6',

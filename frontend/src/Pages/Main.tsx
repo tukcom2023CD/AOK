@@ -27,13 +27,19 @@ export default function Main() {
         <ThemeProvider theme={theme}>
             <Box sx={{ flexGrow: 1, flexShrink:1 }}>
                 <UpsideBar/>
-                <Box display={'flex'} justifyContent={'flex-end'} width={'100vw'} marginTop={'80px'} paddingX={'140px'}>
-                    <Typography variant='h5' fontWeight={'bolder'}>Projects</Typography> 
+                <Box display={'flex'} justifyContent={'center'} width={'100vw'} marginTop={'5rem'}>
+                    <Box display={'flex'} justifyContent={'center'}  width={'33%'}></Box>
+                    <Box display={'flex'} justifyContent={'center'}  width={'33%'}><Typography variant='h5' fontWeight={'bolder'} ml={'0rem'} alignContent={'center'}  >Projects</Typography></Box> 
+                    <Box width={'26%'} display={'flex'} justifyContent={'center'}>
                     <Button
                     variant='contained'
-                    sx={{color:'white', backgroundColor:'#FF9198', borderRadius:'8px', ml:'490px'}}
+                    sx={{color:'white', backgroundColor:'#FF9198', borderRadius:'8px', }}
                     >create
                     </Button>
+                    </Box>
+                    <Box width={'7%'}></Box>
+                    
+                    
                 </Box>
                 <Box display={'flex'} justifyContent={'center'}>
                 <ImgList/>
