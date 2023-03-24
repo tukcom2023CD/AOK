@@ -1,57 +1,63 @@
-import React from "react";
-import styled from "styled-components";
-import MainProfile from "./MainProfile";
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import { ThemeProvider,createTheme } from '@mui/material/styles';
+import styled from 'styled-components';
+import Profile from '../Components/Profile';
 
 
-interface props{
-    backgroundcolor?: string;
-}
+export const theme = createTheme({
+    palette: {
+    primary: {
+        main: "#FF9198",
+    },
+    secondary: {
+        main: "#000000",
+    },
+    },
+});
 
-const BarDiv = styled.div<props>`
-    width: 100vw;
-    height: 6rem;
-    //background-color: 'rgba(0,0,0,1)';
-    display: flex;
-    background-color: ${(props) => props.backgroundcolor};
-`;
+export default function UpsideBar() {
+    const [auth, setAuth] = React.useState(true);
+    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
-const BarSecondDiv = styled.div`
-    display: flex;
-    margin-top: 1.5rem; 
-    margin-left: 2rem;
-    margin-right: 2rem;
-    width: 100%;
-    align-items: center;
-`;
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setAuth(event.target.checked);
+    };
 
-const Logo = styled.button<props>`
-    width : 15rem;
-    height: 3rem;
-    border-style: none;
-    //background-color: 'rgba(255,241,158,1)';
-    background-color: ${(props) => props.backgroundcolor};
-`;
+    const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+    };
 
-const ProfileDiv = styled.div`
-    display: flex;
-    margin-left: auto;
-    margin-right: 2rem;
-`;
+    const handleClose = () => {
+    setAnchorEl(null);
+    };
 
+    return (
+        <ThemeProvider theme={theme}>
+        <Box sx={{ flexGrow: 1 }}>
+        
+        <AppBar position="static" color='primary'>
+        <Toolbar>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            {/* <img src="img/crepe.png" alt="crepe" /> */}
+            crepe
+            </Typography>
+            {auth && (
+            <Box>
+                <Profile />
+            </Box>
+            )}
+        </Toolbar>
+        </AppBar>
 
-function UpsideBar() {
-    return(
-        <BarDiv>
-            <BarSecondDiv>
-                <Logo backgroundcolor='rgba(255,241,158,1)'>로고(임시)</Logo>
-                <ProfileDiv>
-                    <MainProfile/>
-                </ProfileDiv>
-                
-            </BarSecondDiv>
-        </BarDiv>
+        <section>
+        </section>
+    </Box>
+    </ThemeProvider>
     );
 }
-
-export default UpsideBar;
-
