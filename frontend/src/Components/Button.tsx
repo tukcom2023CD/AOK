@@ -37,19 +37,19 @@ export const BtnStyle = styled.button<props>`
 `;
 
 export default function Btn(
-    btncolor?: string,
-    borderRadius?: string,
-    borderStyle?: string,
-    backgroundcolor?: string,
-    width?: string,
-    height?: string,
-    color?: string,
-    fontSize?: string,
-    fontWeight?: string,
-    marginTop?: string,
-    marginBottom?: string,
-    marginLeft?: string,
-    marginRight?: string,
+    btncolor: string,
+    borderRadius: string,
+    borderStyle: string,
+    backgroundcolor: string,
+    width: string,
+    height: string,
+    color: string,
+    fontSize: string,
+    fontWeight: string,
+    marginTop: string,
+    marginBottom: string,
+    marginLeft: string,
+    marginRight: string,
     name?: string
 
     ) {

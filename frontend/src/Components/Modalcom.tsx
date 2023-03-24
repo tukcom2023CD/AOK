@@ -6,6 +6,7 @@ import Modal from '@mui/material/Modal';
 import { borderRadius } from '@mui/system';
 import styled from 'styled-components';
 
+
 const style = {
   position: 'absolute' as 'absolute',
   top: '50%',
@@ -55,7 +56,7 @@ export default function BasicModal() {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" sx={{fontWeight: 'bold'}} variant="h3" component="h2" align="center">
-            Project
+            New Project
           </Typography>
           <InputBox>
             <Typography id="modal-modal-title" sx={{fontWeight: 'bold'}} variant="h6" component="h2" align="left" marginLeft={'125px'}>
@@ -64,7 +65,9 @@ export default function BasicModal() {
             <InputStyle/>
           </InputBox>
           <BtnBox>
-            
+            <Button variant='contained' sx={{color: 'white',backgroundColor: '#FF9198' ,fontWeight: 'bold', borderRadius: 10}}>
+              create
+            </Button>
           </BtnBox>
         </Box>
       </Modal>
