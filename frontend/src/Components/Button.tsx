@@ -16,7 +16,7 @@ interface props{
     marginLeft?: string;
     marginRight?: string;
     name?: string;
-    
+                                        
 }
 
 export const BtnStyle = styled.button<props>`

@@ -8,6 +8,12 @@ interface props{
 
 const ProfileDiv = styled.div`
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+`;
+
+const Div = styled.div`
+    display: flex;
     align-items: center;
 `;
 
@@ -15,13 +21,14 @@ const ProfilePic = styled.div<props>`
     width: 2rem;
     height: 2rem;
     border-radius: 100%;
-
+    margin-left: 20px;
+    margin-right: 10px;
     background-color: ${(props) => props.backgroundcolor};
 `;
 const Name = styled.div`
     text-align: center;
     font-size: 17pt;
-    color: white;
+    color: black;
 `;
 
 const DropBtn = styled.div`
@@ -32,14 +39,15 @@ const DropBtn = styled.div`
 `;
 
 
-function MainProfile(){
+export default function MainProfile(){
     return(
-        <ProfileDiv>
-            <ProfilePic backgroundcolor='#FFFFFF'/>
-            {/* <Name>ellie</Name> */}
+        <ProfileDiv >
+            <Div>
+                <ProfilePic backgroundcolor='#000000'/>
+                <Name>Ellie</Name>
+            </Div>
             <MenuListComposition />
         </ProfileDiv>
     );
 }
 
-export default MainProfile;

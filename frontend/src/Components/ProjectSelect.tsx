@@ -4,6 +4,8 @@ import { ThemeProvider,createTheme } from '@mui/material/styles';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import {Button, Input} from '@mui/material';
+import { BtnStyle } from './Button';
 import { fontWeight } from '@mui/joy/styles/styleFunctionSx';
 export const theme = createTheme({
     palette: {
@@ -25,19 +27,23 @@ export default function BasicSelect() {
 
     return (
     <ThemeProvider theme={theme}>
-        <Box sx={{ maxWidth:300, minWidth: 120, color:'secondary', }} >
+        <Box sx={{ maxWidth:300, minWidth: 120, color:'secondary'}}>
             <FormControl fullWidth>
-            
             <Select
+                autoWidth={true}
+                sx={{textAlign:'center'}}
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 value={text}
                 label="Text"
                 onChange={handleChange}
             >
-                <MenuItem value={10}>Tino Project</MenuItem>
+                <Input type="text" />
+                <MenuItem value={10} sx={{alignItems:'center'}}>Tino Project</MenuItem>
                 <MenuItem value={20}>ex1</MenuItem>
                 <MenuItem value={30}>ex2</MenuItem>
+                <Button> create</Button>
+                {/* <BtnStyle >create</BtnStyle> */}
             </Select>
             </FormControl>
         </Box>

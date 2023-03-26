@@ -9,8 +9,14 @@ import AddIcon from '@mui/icons-material/Add';
 import SettingsIcon from '@mui/icons-material/Settings';
 import Divider from '@mui/material/Divider';
 import Profile from '../Components/Profile';
+import UseFormControl from "../Components/TextField";
 import styled from 'styled-components';
 import { reverse } from 'dns';
+import SelectBar from '../Components/SelectBar';
+import EditIcon from '@mui/icons-material/Edit';
+import {Input} from "../Components/Input";
+
+import IosShareSharpIcon from '@mui/icons-material/IosShareSharp';
 
 interface props{
     backgroundcolor?: string;
@@ -27,6 +33,7 @@ export const theme = createTheme({
     primary: {
         light: "#838383",
         main: "#FF9198",
+        dark: "#FFEFEF"
     },
     secondary: {
         light: '#F3F3F3',
@@ -41,21 +48,21 @@ const ProfilePic = styled.div<props>`
     width: 2rem;
     height: 2rem;
     border-radius: 100%;
-    margin: 0.3rem;
+    margin-right: 0.8rem;
     background-color: ${(props) => props.backgroundcolor};
 `;
+
 
 
 export default function Project() {
     return (
         <ThemeProvider theme={theme}>
             <Box sx={{ flexGrow: 1, flexShrink:1 }}>
-                <UpsideBar />
+                
                 <Box display={'flex'}>
-
-
                     <Box sx={{bgcolor: 'secondary.light'}}width='300px' height={'100vh'} >
-                        <Box height={'80vh'}>
+                    <UpsideBar />
+                        <Box height={'85vh'}>
                             <BasicSelect />
                             <Box sx={{bgcolor: 'secondary.light'}} maxWidth='300px' marginTop={'1px'} marginBottom={'25px'}>
                                 <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'} maxWidth='300px' height='50px'>
@@ -70,53 +77,54 @@ export default function Project() {
                                     <BasicList />
                                 </Box>
                             </Box>
-                            <Box>
+                            {/* <Box>
                                 <Divider />
                             </Box>
                             <Box marginLeft={'20px'}>
                                 <Typography fontWeight={'bold'} paddingY={'17px'}>log history</Typography>
-                            </Box>
+                            </Box> 
                             <Box marginBottom={'10px'}>
                                 <Divider />
                             </Box>
+                            */}
                         </Box>
-                        <Box height={'20vh'}>
                         <Box>
-                            <Box display={'flex'} justifyContent={'space-between'} alignItems={'baseline'} marginX={'13px'}>
-                                <Box>
-                                    <Typography paddingY={'2px'}>contributer</Typography>
-                                </Box>
-                                <Box>
-                                    <Button sx={{color:'secondary.main', bgcolor:"#FA735F", width:'15px', height:'20px', fontSize: '12px', }}>invite</Button>
-                                </Box>
-                            </Box>
-                            <Box display={'flex'} sx={{ width:'230px', bgcolor:'#D7D7D7'}} marginX={'auto'} borderRadius={'5px'}>
-                                <ProfilePic backgroundcolor='#ffffff' />
-                                <ProfilePic backgroundcolor='#ffffff'/>
-                                <ProfilePic backgroundcolor='#ffffff'/>
-                            </Box>
-                        </Box>
+                            <Profile />
                         </Box>
                     </Box>
 
 
 
-                    <Box display={'flex'} flexDirection={'column'} width={'100vw'}>
-                        <Box display={'flex'} flexDirection={'row-reverse'}>
-                            <Button sx={{px:'20px', py:'20px'}}><SettingsIcon sx={{fontSize: '35px', color: 'secondary.dark'}}/></Button>
-                        </Box>
-                        <Box display={'flex'} marginX={'auto'} marginY={'20px'}>
-                            <img src="img/tino.png" alt="tino" />
+                    <Box display={'flex'} flexDirection={'column'} width={'100vw'}>  
+                        
+                        <SelectBar />
+                        <Box display={'flex'} marginX={'auto'} marginTop={'50px'}>
+                            <img src="img/tino.png" alt="tino" width={'400px'} height={'400px'}/>
                         </Box>
                         
-                        <Box display={'flex'} justifyContent={'center'}>
-                            <Typography fontSize={'23px'} fontWeight={'bold'} marginY={'10px'}>선 굵기 수정 24px</Typography>
+                        <Box display={'flex'} justifyContent={'center'} alignItems={"baseline"}>
+                            <Typography fontSize={'21px'} fontWeight={'bold'} marginTop={'20px'} marginBottom={"5px"} textAlign={"center"}>선 굵기 수정 24px</Typography>
+                            <Button><EditIcon/></Button>
                         </Box>
                         <Box display={'flex'} justifyContent={'center'}>
-                            <Typography sx={{color: 'primary.light'}}>@Ellie</Typography>
+                            <Typography sx={{color: 'primary.light', fontSize: '15px'}}>@Ellie</Typography>
                         </Box>
                         <Box display={'flex'} justifyContent={'center'}>
-                            <Typography sx={{color: 'primary.light'}}>23.08.01:22</Typography>
+                            <Typography sx={{color: 'primary.light', fontSize: '15px'}}>23.08.01:22</Typography>
+                        </Box>
+
+                        <Box display={'flex'} justifyContent={'center'} marginRight={'200px'} marginTop ={'20px'}>
+                            <ProfilePic backgroundcolor='#d9d9d9' />
+                            <Box width={'350px'} height={'70px'} bgcolor={'primary.dark'} padding={'10px'} borderRadius={'10px'}>
+                                <Typography fontWeight={'bold'}>색이 조금 연했으면 좋겠어요.</Typography>
+                                <Typography fontWeight={'bold'}>선 굵기는 아주 좋아요!</Typography>
+                            </Box>
+                        </Box>
+
+
+                        
+                        <Box display={'flex'} justifyContent={'center'} marginTop={'50px'}>
+                            <UseFormControl />
                         </Box>
                     </Box>
                 </Box>

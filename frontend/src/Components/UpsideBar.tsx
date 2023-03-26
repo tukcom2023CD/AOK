@@ -39,7 +39,7 @@ export default function UpsideBar() {
 
     return (
         <ThemeProvider theme={theme}>
-        <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{ flexGrow: 1 } } >
         
         <AppBar position="static" color='primary'>
         <Toolbar>
@@ -49,7 +49,7 @@ export default function UpsideBar() {
             </Typography>
             {auth && (
             <Box>
-                <Profile />
+                
             </Box>
             )}
         </Toolbar>
