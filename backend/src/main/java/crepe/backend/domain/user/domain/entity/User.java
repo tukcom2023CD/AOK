@@ -1,5 +1,6 @@
 package crepe.backend.domain.user.domain.entity;
 
+import crepe.backend.domain.feedback.domain.entity.Feedback;
 import crepe.backend.domain.log.domain.entity.Log;
 import crepe.backend.global.domain.BaseEntity;
 import lombok.*;
@@ -41,6 +42,9 @@ public class User extends BaseEntity {
 
     @OneToMany(mappedBy = "user")
     private List<Log> logs = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<Feedback> feedbacks = new ArrayList<>();
 
     @Builder
     public User(String email, String password, String nickname, String photo) {
