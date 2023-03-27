@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { AiFillCaretDown } from "react-icons/ai";
+import MenuListComposition from './Dropmenu';
 interface props{
     backgroundcolor?: string;
 }
@@ -14,12 +15,13 @@ const ProfilePic = styled.div<props>`
     width: 2rem;
     height: 2rem;
     border-radius: 100%;
-    margin-right: 1.5rem;
+
     background-color: ${(props) => props.backgroundcolor};
 `;
 const Name = styled.div`
     text-align: center;
     font-size: 17pt;
+    color: white;
 `;
 
 const DropBtn = styled.div`
@@ -29,11 +31,13 @@ const DropBtn = styled.div`
 
 `;
 
+
 function MainProfile(){
     return(
         <ProfileDiv>
-            <ProfilePic backgroundcolor='#FFF19E'/>
-            <Name>크레페</Name>
+            <ProfilePic backgroundcolor='#FFFFFF'/>
+            {/* <Name>ellie</Name> */}
+            <MenuListComposition />
         </ProfileDiv>
     );
 }
