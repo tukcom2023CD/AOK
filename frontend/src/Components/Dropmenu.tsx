@@ -9,7 +9,7 @@ import MenuList from '@mui/material/MenuList';
 import Stack from '@mui/material/Stack';
 import { ThemeProvider,createTheme } from '@mui/material/styles';
 import {BsThreeDotsVertical} from "react-icons/bs";
-import { AiFillCaretDown } from "react-icons/ai";
+import { AiFillCaretUp } from "react-icons/ai";
 import { Box } from '@mui/material';
 
 export default function MenuListComposition() {
@@ -69,7 +69,7 @@ export default function MenuListComposition() {
           aria-haspopup="true"
           onClick={handleToggle}  
         >
-          <BsThreeDotsVertical color='white' fontSize={18}/>
+          <AiFillCaretUp color='black' fontSize={18}/>
           
         </Button>
         <Popper
