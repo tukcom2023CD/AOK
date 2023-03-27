@@ -14,7 +14,7 @@ import styled from 'styled-components';
 import { reverse } from 'dns';
 import SelectBar from '../Components/SelectBar';
 import EditIcon from '@mui/icons-material/Edit';
-import {Input} from "../Components/Input";
+import TextField2 from '../Components/TextField2';
 
 import IosShareSharpIcon from '@mui/icons-material/IosShareSharp';
 
@@ -62,7 +62,7 @@ export default function Project() {
                 <Box display={'flex'}>
                     <Box sx={{bgcolor: 'secondary.light'}}width='300px' height={'100vh'} >
                     <UpsideBar />
-                        <Box height={'85vh'}>
+                        <Box height={'88vh'}>
                             <BasicSelect />
                             <Box sx={{bgcolor: 'secondary.light'}} maxWidth='300px' marginTop={'1px'} marginBottom={'25px'}>
                                 <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'} maxWidth='300px' height='50px'>
@@ -77,16 +77,6 @@ export default function Project() {
                                     <BasicList />
                                 </Box>
                             </Box>
-                            {/* <Box>
-                                <Divider />
-                            </Box>
-                            <Box marginLeft={'20px'}>
-                                <Typography fontWeight={'bold'} paddingY={'17px'}>log history</Typography>
-                            </Box> 
-                            <Box marginBottom={'10px'}>
-                                <Divider />
-                            </Box>
-                            */}
                         </Box>
                         <Box>
                             <Profile />
@@ -102,10 +92,15 @@ export default function Project() {
                             <img src="img/tino.png" alt="tino" width={'400px'} height={'400px'}/>
                         </Box>
                         
-                        <Box display={'flex'} justifyContent={'center'} alignItems={"baseline"}>
+
+                        
+                        <Box display={'flex'} justifyContent={'center'} alignItems={'center'} marginLeft={'65px'}>
                             <Typography fontSize={'21px'} fontWeight={'bold'} marginTop={'20px'} marginBottom={"5px"} textAlign={"center"}>선 굵기 수정 24px</Typography>
-                            <Button><EditIcon/></Button>
+                            <Button sx={{border:"ButtonShadow", mt:'15px'}}><EditIcon/></Button>
                         </Box>
+                        {/* <Box display={'flex'} justifyContent={'center'}>
+                            <Typography fontSize={'21px'} fontWeight={'bold'} marginTop={'20px'} marginBottom={"5px"} textAlign={"center"}>선 굵기 수정 24px</Typography> 
+                        </Box>  */}
                         <Box display={'flex'} justifyContent={'center'}>
                             <Typography sx={{color: 'primary.light', fontSize: '15px'}}>@Ellie</Typography>
                         </Box>
@@ -115,16 +110,16 @@ export default function Project() {
 
                         <Box display={'flex'} justifyContent={'center'} marginRight={'200px'} marginTop ={'20px'}>
                             <ProfilePic backgroundcolor='#d9d9d9' />
-                            <Box width={'350px'} height={'70px'} bgcolor={'primary.dark'} padding={'10px'} borderRadius={'10px'}>
-                                <Typography fontWeight={'bold'}>색이 조금 연했으면 좋겠어요.</Typography>
-                                <Typography fontWeight={'bold'}>선 굵기는 아주 좋아요!</Typography>
+                            <Box width={'350px'} bgcolor={'primary.dark'} padding={'10px'} borderRadius={'10px'}>
+                                <Typography fontWeight={'bold'}>색이 조금 연했으면 좋겠어요.<br></br>선 굵기는 아주 좋아요!</Typography>
                             </Box>
                         </Box>
 
 
                         
                         <Box display={'flex'} justifyContent={'center'} marginTop={'50px'}>
-                            <UseFormControl />
+                            {/* <UseFormControl /> */}
+                            <TextField2 />
                         </Box>
                     </Box>
                 </Box>

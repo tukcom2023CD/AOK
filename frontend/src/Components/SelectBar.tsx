@@ -29,12 +29,15 @@ export default function SelectBar() {
     return (
         <Box>
             <ThemeProvider theme={theme}>
-            <Box bgcolor={"secondary.light"} display={'flex'}>
-                <Box height={'65px'} padding={"15px"} width={'32.5vw'}>
+            <Box bgcolor={"secondary.light"} display={'flex'} justifyContent={'space-between'}>
+                <Box marginLeft={'20px'} marginY={"auto"} alignItems={'center'}>
                     <Typography fontSize={"30px"} fontWeight={"bold"} fontFamily={"unset"}>Line</Typography>
                 </Box>
-                <Box marginTop={'10px'}>
-                <ColorTabs />
+                <Box marginY={'10px'}>
+                <ColorTabs/>
+                </Box>
+                <Box marginLeft={'20px'} marginY={"auto"} alignItems={'center'}>
+                    <Typography fontSize={"30px"} fontWeight={"bold"} fontFamily={"unset"} color={"transparent"}>Line</Typography>
                 </Box>
             </Box>
             </ThemeProvider>

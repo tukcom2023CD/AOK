@@ -11,15 +11,16 @@ export default function CustomizedInputBase() {
     return (
     <Paper
         component="form"
-        sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '40vw' }}
+        // sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '40vw', bgcolor:"#f8f8f8" }}
+        sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '40vw', }}
     >
 
         <InputBase
         sx={{ ml: 1, flex: 1 }}
         placeholder="reply"
-        inputProps={{ 'aria-label': 'search google maps' }}
+        inputProps={{ 'aria-label': 'send feedback' }}
         />
-        <IconButton type="button" sx={{ p: '10px' , rotate:'320deg'}} aria-label="search" color='primary'>
+        <IconButton type="button" sx={{ p: '10px' , rotate:'320deg'}} aria-label="send" color='primary'>
         <SendSharpIcon />
         </IconButton>
     </Paper>

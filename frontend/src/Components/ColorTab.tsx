@@ -38,7 +38,7 @@ export default function ColorTabs() {
   };
 
   return (
-    <Box sx={{ width: '100%', height: '55px'}}>
+    <Box sx={{ width: '100%', marginY:'auto'}}>
       <Tabs
         value={value}
         onChange={handleChange}

@@ -31,19 +31,17 @@ export default function BasicSelect() {
             <FormControl fullWidth>
             <Select
                 autoWidth={true}
-                sx={{textAlign:'center'}}
+                sx={{paddingX:'8px'}}
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 value={text}
-                label="Text"
                 onChange={handleChange}
             >
                 <Input type="text" />
-                <MenuItem value={10} sx={{alignItems:'center'}}>Tino Project</MenuItem>
+                <MenuItem value={10}>Tino Project</MenuItem>
                 <MenuItem value={20}>ex1</MenuItem>
                 <MenuItem value={30}>ex2</MenuItem>
                 <Button> create</Button>
-                {/* <BtnStyle >create</BtnStyle> */}
             </Select>
             </FormControl>
         </Box>
