@@ -5,6 +5,8 @@ import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -32,6 +34,10 @@ public class User extends BaseEntity {
 
     @Column(name = "photo", length = 200)
     private String photo;
+
+    @OneToMany(mappedBy = "user")
+    private List<UserProject> userProjects = new ArrayList<>();
+
 
     @Builder
     public User(String email, String password, String nickname, String photo) {
