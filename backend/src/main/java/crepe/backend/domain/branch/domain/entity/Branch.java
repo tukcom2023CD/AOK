@@ -1,41 +1,41 @@
-package crepe.backend.domain.user.domain.entity;
+package crepe.backend.domain.branch.domain.entity;
 
 import crepe.backend.domain.project.domain.entity.Project;
 import crepe.backend.global.domain.BaseEntity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 import static javax.persistence.FetchType.LAZY;
 
-@Getter
 @Entity
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name="user-project")
-public class UserProject extends BaseEntity {
-
+@Table(name = "branch")
+public class Branch extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
-
-    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "project_id", nullable = false)
     private Project project;
 
-    @Column(name = "is_admin", columnDefinition = "boolean default false")
-    private boolean is_admin;
+    @Column(name = "uuid", columnDefinition = "BINARY(16)", nullable = false, unique = true)
+    private UUID uuid;
+
+    @Column(name = "name", length = 200, nullable = false)
+    private String name;
+
 
     @Builder
-    public UserProject(User user, Project project) {
-        this.user = user;
+    public Branch(Project project, String name) {
         this.project = project;
+        this.name = name;
         this.isActive = true;
     }
 
-    // admin으로 설정하는 코드
+
 }
