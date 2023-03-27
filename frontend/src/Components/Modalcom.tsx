@@ -21,6 +21,21 @@ const style = {
   p: 4,
 };
 
+const CreateBtn = styled.button`
+  width: 830px;
+  height: 75px;
+  background-color: #FF9198;
+  border: none;
+  border-radius: 10px;
+  font-size: 20pt;
+  font-weight: bold;
+  color: white;
+  &:hover{
+    background-color: #d7777e;
+    transition: 0.7s;
+  }
+`;
+
 const InputBox = styled.div`
   text-align: center;
   margin-top: 8rem;
@@ -38,6 +53,7 @@ const InputStyle = styled.input`
 
 const BtnBox = styled.div`
   text-align: center;
+  margin-top: 9.3rem;
 `;
 
 export default function BasicModal() {
@@ -65,9 +81,7 @@ export default function BasicModal() {
             <InputStyle/>
           </InputBox>
           <BtnBox>
-            <Button variant='contained' sx={{color: 'white',backgroundColor: '#FF9198' ,fontWeight: 'bold', borderRadius: 10}}>
-              create
-            </Button>
+            <CreateBtn> create </CreateBtn>
           </BtnBox>
         </Box>
       </Modal>
