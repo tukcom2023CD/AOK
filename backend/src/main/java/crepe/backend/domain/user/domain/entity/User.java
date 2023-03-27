@@ -1,5 +1,6 @@
 package crepe.backend.domain.user.domain.entity;
 
+import crepe.backend.domain.log.domain.entity.Log;
 import crepe.backend.global.domain.BaseEntity;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
@@ -38,6 +39,8 @@ public class User extends BaseEntity {
     @OneToMany(mappedBy = "user")
     private List<UserProject> userProjects = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user")
+    private List<Log> logs = new ArrayList<>();
 
     @Builder
     public User(String email, String password, String nickname, String photo) {

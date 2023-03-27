@@ -1,10 +1,13 @@
 package crepe.backend.domain.branch.domain.entity;
 
+import crepe.backend.domain.log.domain.entity.Log;
 import crepe.backend.domain.project.domain.entity.Project;
 import crepe.backend.global.domain.BaseEntity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import static javax.persistence.FetchType.LAZY;
@@ -29,6 +32,8 @@ public class Branch extends BaseEntity {
     @Column(name = "name", length = 200, nullable = false)
     private String name;
 
+    @OneToMany(mappedBy = "branch")
+    private List<Log> logs = new ArrayList<>();
 
     @Builder
     public Branch(Project project, String name) {
