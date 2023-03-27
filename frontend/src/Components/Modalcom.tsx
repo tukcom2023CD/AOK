@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { borderRadius } from '@mui/system';
+import ClearIcon from '@mui/icons-material/Clear';
 import styled from 'styled-components';
 
 
@@ -32,7 +33,7 @@ const CreateBtn = styled.button`
   color: white;
   &:hover{
     background-color: #d7777e;
-    transition: 0.7s;
+    transition: 0.5s;
   }
 `;
 
@@ -56,6 +57,26 @@ const BtnBox = styled.div`
   margin-top: 9.3rem;
 `;
 
+const TitleDiv = styled.div `
+  //border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+`;
+
+const TypoBox = styled.div `
+  text-align: center;
+`;
+
+const CancelBox = styled.div `
+  
+  position: absolute;
+  right: 0;
+  margin-right: 50px;
+  
+`
+
 export default function BasicModal() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -71,9 +92,15 @@ export default function BasicModal() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" sx={{fontWeight: 'bold'}} variant="h3" component="h2" align="center">
-            New Project
-          </Typography>
+          <TitleDiv>
+            <Typography id="modal-modal-title" sx={{fontWeight: 'bold'}} variant="h3" component="h3">
+              New Project
+            </Typography>
+            
+            <CancelBox>
+              <ClearIcon/>
+            </CancelBox>
+          </TitleDiv>
           <InputBox>
             <Typography id="modal-modal-title" sx={{fontWeight: 'bold'}} variant="h6" component="h2" align="left" marginLeft={'125px'}>
               name
