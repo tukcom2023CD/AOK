@@ -11,21 +11,22 @@ import DragDrop from '../Components/DragDrop/DragDrop';
 // import SaveContent from '../Components/SaveContent/SaveContent';
 // import ApplyBtn from '../Components/ApplyButton/ApplyBtn';
 
-
+const Backgrdiv = styled.div`
+  display: inline-block;
+  width: 100%;
+  background-color: white; 
+`; 
 
 function Upload() {
     return(
       <div>
-        <MainBackground display='inline-block' backgroundcolor='rgba(255,241,158,0.05)'>
+        <Backgrdiv>
           <UpsideBar/>
-          <DndProvider backend={HTML5Backend}>
-          
-          </DndProvider>
           <DragDrop/>
           {/* <SaveTitle/>
           <SaveContent/>
           <ApplyBtn/> */}
-        </MainBackground>
+        </Backgrdiv>
       </div>
     );
   }

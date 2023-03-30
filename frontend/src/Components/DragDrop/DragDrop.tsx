@@ -156,7 +156,7 @@ const DragDrop = () => {
           htmlFor="fileUpload"
           ref={dragRef}
         >
-          <div>파일 첨부</div>
+          <div>upload files</div>
         </label>
         </div>
       
