@@ -7,7 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { ThemeProvider,createTheme } from '@mui/material/styles';
 import ColorTabs from './ColorTab';
-
+import MainProfile from './Profile';
 
 export const theme = createTheme({
     palette: {
@@ -25,23 +25,34 @@ export const theme = createTheme({
     },
 });
 
+interface Props{
+    title?: "Line" | "Log History"
+}
+
+const Title: Props = {
+    title: "Line",
+}
+
 export default function SelectBar() {
     return (
         <Box>
-            <ThemeProvider theme={theme}>
-            <Box bgcolor={"secondary.light"} display={'flex'} justifyContent={'space-between'}>
-                <Box marginLeft={'20px'} marginY={"auto"} alignItems={'center'}>
-                    <Typography fontSize={"30px"} fontWeight={"bold"} fontFamily={"unset"}>Line</Typography>
-                </Box>
-                <Box marginY={'10px'}>
-                <ColorTabs/>
-                </Box>
-                <Box marginLeft={'20px'} marginY={"auto"} alignItems={'center'}>
-                    <Typography fontSize={"30px"} fontWeight={"bold"} fontFamily={"unset"} color={"transparent"}>Line</Typography>
+        <ThemeProvider theme={theme}>
+        <Box bgcolor={"secondary.light"} display={'flex'} justifyContent={'space-between'}>
+            <Box marginLeft={'20px'} marginY={"auto"} alignItems={'center'}>
+                <Typography fontSize={"27px"} fontWeight={"bold"} fontFamily={"unset"} width={"20vw"}>Crepe / Line</Typography>
+            </Box>
+            <Box marginY={'10px'}>
+            <ColorTabs/>
+            </Box>
+            <Box display={"flex"} justifyContent={"flex-end"} marginLeft={'20px'} marginY={"auto"} alignItems={'center'} width={"20vw"}>
+                {/* <Typography fontSize={"30px"} fontWeight={"bold"} fontFamily={"unset"} color={"transparent"} width={"20vw"}>Line</Typography> */}
+                <Box  width={"200px"}>
+                    <MainProfile />
                 </Box>
             </Box>
-            </ThemeProvider>
         </Box>
+        </ThemeProvider>
+    </Box>
     );
 }
 
