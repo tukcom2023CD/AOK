@@ -21,7 +21,6 @@
   .wholediv {
     display: flex;
     flex-direction: column;
-    margin: auto;
     justify-content: center;
     align-items: center;
   }
@@ -29,7 +28,7 @@
     width: 100%;
     height: 35vh;
     margin-top: 10vh;
-    
+    margin-bottom: 3rem;
     @include alignCenter();
     
     &-File {
@@ -46,9 +45,9 @@
       cursor: pointer;
       //transition: 0.12s ease-in;
   
-      &-Dragging {
-        @include filledStyle();
-      }
+      // &-Dragging {
+      //   @include filledStyle();
+      // }
     }
   
     &-Files {
@@ -74,19 +73,17 @@
   }
 
   .DragDrop-Files{
-    overflow-y: auto;
 
     width: 1110px;
-    height: 480px;
+    height: 500px;
     border: none;
     background-color: #FFF4F4;
     border-radius: 10px;
     padding: 1rem;
 
-
   }
   .lists{
-    margin: 0.2rem ;
+    margin: 1rem ;
   }
 
   .list{
@@ -94,6 +91,7 @@
     justify-content: space-around;
     align-items: center;
     width: 985px;
+    height: 75px;
     border-radius: 5px;
     font-size: 16pt;
     background-color: #FFD3D3;
@@ -105,6 +103,7 @@
       justify-content: space-around;
       align-items: center;
       width: 985px;
+      height: 75px;
       border-radius: 5px;
       font-size: 16pt;
       background-color: #FF9C9C;
@@ -117,6 +116,7 @@
       justify-content: space-around;
       align-items: center;
       width: 985px;
+      height: 75px;
       border-radius: 5px;
       font-size: 16pt; 
       background-color: #EDAF9C;
@@ -137,6 +137,7 @@
 
 .imagePreview{
   margin-bottom: 5vh;
-  @include alignCenter();
+  display: inline-block;
+  align-items: center; 
 }
 
