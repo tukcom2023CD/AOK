@@ -12,7 +12,7 @@ import static javax.persistence.FetchType.LAZY;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name="user-project")
+@Table(name="user_project")
 public class UserProject extends BaseEntity {
 
     @Id
