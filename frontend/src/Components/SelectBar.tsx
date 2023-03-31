@@ -35,24 +35,37 @@ const Title: Props = {
 
 export default function SelectBar() {
     return (
-        <Box>
+        <Box position={'fixed'}>
         <ThemeProvider theme={theme}>
-        <Box bgcolor={"secondary.light"} display={'flex'} justifyContent={'space-between'}>
+        <Box bgcolor={"secondary.light"} display={'flex'} width={"83vw"} height={'60px'}>
             <Box marginLeft={'20px'} marginY={"auto"} alignItems={'center'}>
-                <Typography fontSize={"27px"} fontWeight={"bold"} fontFamily={"unset"} width={"20vw"}>Crepe / Line</Typography>
+                <Typography fontSize={"27px"} fontWeight={"bold"} fontFamily={"unset"} width={"20vw"}>Line</Typography>
             </Box>
-            <Box marginY={'10px'}>
+        </Box>
+        <Box bgcolor={"secondary.light"} width={"83vw"} paddingX={"5px"}>
             <ColorTabs/>
-            </Box>
-            <Box display={"flex"} justifyContent={"flex-end"} marginLeft={'20px'} marginY={"auto"} alignItems={'center'} width={"20vw"}>
-                {/* <Typography fontSize={"30px"} fontWeight={"bold"} fontFamily={"unset"} color={"transparent"} width={"20vw"}>Line</Typography> */}
-                <Box  width={"200px"}>
-                    <MainProfile />
-                </Box>
-            </Box>
         </Box>
         </ThemeProvider>
     </Box>
     );
 }
+
+{/* <Box>
+        <ThemeProvider theme={theme}>
+        <Box bgcolor={"secondary.light"} display={'flex'} justifyContent={'space-between'}>
+            <Box marginLeft={'20px'} marginY={"auto"} alignItems={'center'}>
+                <Typography fontSize={"27px"} fontWeight={"bold"} fontFamily={"unset"} width={"20vw"}>Line</Typography>
+            </Box>
+            <Box marginY={'10px'}>
+            <ColorTabs/>
+            </Box>
+            {/*우측 프로필
+            <Box display={"flex"} justifyContent={"flex-end"} marginLeft={'20px'} marginY={"auto"} alignItems={'center'} width={"20vw"}>
+                <Box  width={"200px"}>
+                    <MainProfile />
+                </Box>
+            </Box> 
+        </Box>
+        </ThemeProvider></Box>
+*/}
 

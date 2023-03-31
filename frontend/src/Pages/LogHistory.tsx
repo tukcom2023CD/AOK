@@ -70,19 +70,19 @@ export default function LogHistory() {
                     <Box display={'flex'} flexDirection={'column'} width={'100vw'}>  
                         
                         <SelectBar/>
+                        <Box display={'flex'} marginX={"20px"} width={"100vw"} paddingY={"5px"} sx={{bgcolor:"#FFFFFF"}}>
+                            <Typography color={"#7B7B7B"}>Dino Project / Line</Typography>
+                        </Box>
+
                         <Box display={'flex'} marginX={'auto'} marginTop={'50px'}>
-                            <img src="img/tino.png" alt="tino" width={'400px'} height={'400px'}/>
+                            <img src="img/tino.png" alt="tino" width={'400px'} height={'400px'} />
                         </Box>
                         
-
                         
                         <Box display={'flex'} justifyContent={'center'} alignItems={'center'} marginLeft={'65px'}>
                             <Typography fontSize={'21px'} fontWeight={'bold'} marginTop={'20px'} marginBottom={"5px"} textAlign={"center"}>선 굵기 수정 24px</Typography>
                             <Button sx={{border:"ButtonShadow", mt:'15px'}}><EditIcon/></Button>
                         </Box>
-                        {/* <Box display={'flex'} justifyContent={'center'}>
-                            <Typography fontSize={'21px'} fontWeight={'bold'} marginTop={'20px'} marginBottom={"5px"} textAlign={"center"}>선 굵기 수정 24px</Typography> 
-                        </Box>  */}
                         <Box display={'flex'} justifyContent={'center'}>
                             <Typography sx={{color: 'primary.light', fontSize: '15px'}}>@Ellie</Typography>
                         </Box>
@@ -94,7 +94,7 @@ export default function LogHistory() {
                             <DiscreteSlider/>
                         </Box>
 
-                        <Box display={'flex'} justifyContent={'space-around'} marginX={"200px"}>
+                        <Box display={'flex'} justifyContent={'space-around'} marginX={"300px"}>
 
                             <Box display={'flex'} flexDirection={'column'}>
                                 <Typography sx={{fontWeight:"bolder", fontSize:"20px"}}>files</Typography>

@@ -14,30 +14,24 @@ export default function FileList() {
     <Box>
         <nav aria-label="folders">
         <List>
-        <ListItem disablePadding sx={{width:"400px", height:"60px" ,backgroundColor:"#FFD3D3", marginY:"20px",paddingX:"10px", borderRadius:"5px", display:"flex", justifyContent:"space-between"}}>
+        <ListItem disablePadding sx={{width:"400px", height:"60px" ,backgroundColor:"#FFD3D3", marginY:"20px",paddingX:"20px", borderRadius:"5px", display:"flex", justifyContent:"space-between"}}>
             <ListItemText primary="디노명암.png" sx={{fontSize:"20px"}}/>
                   <IconButton edge="end" aria-label="delete">
                     <SaveAltIcon sx={{color:'#000000'}}/>
                   </IconButton>
             </ListItem>
-            {/* <ListItem disablePadding sx={{width:"400px", height:"60px" ,backgroundColor:"#FFD3D3", marginY:"20px",paddingX:"10px", borderRadius:"5px", display:"flex", justifyContent:"space-between"}}>
-            <ListItemText primary="디노선화.png" sx={{fontSize:"20px"}}/>
+            <ListItem disablePadding sx={{width:"400px", height:"60px" ,backgroundColor:"#FFD3D3", marginY:"20px",paddingX:"20px", borderRadius:"5px", display:"flex", justifyContent:"space-between"}}>
+            <ListItemText primary="디노명암.png" sx={{fontSize:"20px"}}/>
                   <IconButton edge="end" aria-label="delete">
                     <SaveAltIcon sx={{color:'#000000'}}/>
                   </IconButton>
             </ListItem>
-            <ListItem disablePadding sx={{width:"400px", height:"60px" ,backgroundColor:"#FFD3D3", marginY:"20px",paddingX:"10px", borderRadius:"5px", display:"flex", justifyContent:"space-between"}}>
-            <ListItemText primary="디노리본.png" sx={{fontSize:"20px"}}/>
+            <ListItem disablePadding sx={{width:"400px", height:"60px" ,backgroundColor:"#FFD3D3", marginY:"20px",paddingX:"20px", borderRadius:"5px", display:"flex", justifyContent:"space-between"}}>
+            <ListItemText primary="디노명암.png" sx={{fontSize:"20px"}}/>
                   <IconButton edge="end" aria-label="delete">
                     <SaveAltIcon sx={{color:'#000000'}}/>
                   </IconButton>
             </ListItem>
-            <ListItem disablePadding sx={{width:"400px", height:"60px" ,backgroundColor:"#FF9C9C", marginY:"20px",paddingX:"10px", borderRadius:"5px", display:"flex", justifyContent:"space-between"}}>
-            <ListItemText primary="디노채색.png" sx={{fontSize:"20px"}}/>
-                  <IconButton edge="end" aria-label="delete">
-                    <SaveAltIcon sx={{color:'#000000'}}/>
-                  </IconButton>
-            </ListItem> */}
         </List>
         </nav>
     </Box>
