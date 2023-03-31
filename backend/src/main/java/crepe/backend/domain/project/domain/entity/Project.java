@@ -38,4 +38,9 @@ public class Project extends BaseEntity {
         this.name = name;
         super.isActive = true;
     }
+
+    public interface ProjectInfoMapping // 프로젝트 아이디만 가져오기 위한 인터페이스 셍성
+    {
+        Long getId();
+    }
 }
