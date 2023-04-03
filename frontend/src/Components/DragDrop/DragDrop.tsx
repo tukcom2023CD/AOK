@@ -188,6 +188,11 @@ const DragDrop = () => {
             })}
 
         </div>
+        
+        <div className="PreviewTextdiv">
+          Preview
+        </div>
+
         <div className="imagePreview"> 
         {files.length > 0 && files.map((file: IFileTypes)=> {
           const {
