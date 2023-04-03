@@ -18,7 +18,7 @@ import DiscreteSlider from '../Components/Slider';
 import FileList from '../Components/FileList';
 import { bgcolor, fontSize } from '@mui/system';
 import FeedBack from '../Components/FeedBack';
-
+import Seekbar from '../Components/Seekbar';
 interface props{
     backgroundcolor?: string;
 }
@@ -92,8 +92,9 @@ export default function LogHistory2() {
                     
                     <Box display={'flex'} position={"absolute"}>
                         <Box display={'flex'} flexDirection={'column'} width={'83vw'} marginLeft={'16vw'}>  
-                        
-                            <Box >
+                    
+
+                            <Box sx={{position:"fixed"}}>
                                 <SelectBar />
                             </Box>
 
@@ -105,7 +106,8 @@ export default function LogHistory2() {
                                 
                                 <Box display={'flex'} justifyContent={'center'} alignItems={'center'} marginLeft={'65px'}>
                                     <Typography fontSize={'21px'} fontWeight={'bold'} marginTop={'20px'} marginBottom={"5px"} textAlign={"center"}>선 굵기 수정 24px</Typography>
-                                    <IconButton sx={{border:"ButtonShadow", mt:'15px',bgcolor:"primary"}}><EditIcon sx={{bgcolor:"primary"}}/></IconButton>
+                                    {/* <IconButton sx={{border:"ButtonShadow", mt:'15px',bgcolor:"primary", position:"none"}}><EditIcon sx={{bgcolor:"primary"}}/></IconButton> */}
+                                    <Button sx={{border:"ButtonShadow", mt:'15px', position:'inherit'}}><EditIcon/></Button>
                                 </Box>
                                 <Box display={'flex'} justifyContent={'center'}>
                                     <Typography sx={{color: 'primary.light', fontSize: '15px'}}>@Ellie</Typography>
@@ -114,8 +116,12 @@ export default function LogHistory2() {
                                     <Typography sx={{color: 'primary.light', fontSize: '15px'}}>23.08.01:22</Typography>
                                 </Box>
 
-                                <Box display={'flex'} justifyContent={'center'} marginY={"40px"}>
-                                    <DiscreteSlider/>
+                                <Box display={'flex'} justifyContent={'center'} marginY={"40px"} >
+                                    <DiscreteSlider />
+                                </Box>
+
+                                <Box display={'flex'} justifyContent={'center'} marginY={"40px"} >
+                                    <Seekbar />
                                 </Box>
 
                                 <Box display={'flex'} justifyContent={'space-around'} marginX={"300px"}>

@@ -16,7 +16,7 @@ function valuetext(value: number) {
 
 export default function DiscreteSlider() {
   return (
-    <Box sx={{ width: 800 }}>
+    <Box sx={{ width: 800, position:'inherit' }}>
       <Slider
         aria-label="Always visible"
         defaultValue={80}
