@@ -14,6 +14,7 @@ const Backgrdiv = styled.div`
   text-align: center;
 `; 
 
+
 const Commentdiv = styled.input`
   width: 1050px;
   height: 85px;
@@ -47,8 +48,8 @@ const ApplyBtn = styled.button `
 function Upload() {
     return(
       <div>
+        <UpsideBar/>
         <Backgrdiv>
-          <UpsideBar/>
           <DragDrop/>
           <Commentdiv/>
           <Btndiv>
