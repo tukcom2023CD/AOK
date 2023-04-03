@@ -6,16 +6,43 @@ import { BtnStyle } from '../Components/Button';
 import { MainBackground } from '../Components/MainPageBgr';
 import UpsideBar from '../Components/UpsideBar';
 import DragDrop from '../Components/DragDrop/DragDrop';
-// import PreImage from '../Components/PreImage/PreImage';
-// import SaveTitle from '../Components/SaveTitle/SaveTitle';
-// import SaveContent from '../Components/SaveContent/SaveContent';
-// import ApplyBtn from '../Components/ApplyButton/ApplyBtn';
 
 const Backgrdiv = styled.div`
   display: inline-block;
   width: 100%;
-  background-color: white; 
+  background-color: white;
+  text-align: center;
 `; 
+
+const Commentdiv = styled.input`
+  width: 1110px;
+  height: 85px;
+  border-radius: 10px;
+  background-color: #FFF4F4;
+  border: 3px solid #FFDEDE;
+  font-size: 20pt;
+  font-weight: bold;
+  padding: 1.5rem;
+`;
+
+const Btndiv = styled.div`
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+`;
+
+const ApplyBtn = styled.button `
+  width: 295px;
+  height: 90px;
+  background-color: #FF9198;
+  color: white;
+  font-size: 18pt;
+  font-weight: bold;
+  border-radius: 30px;
+  &:hover{
+    background-color: #d7777e;
+    transition: 0.5s;
+  }
+`;
 
 function Upload() {
     return(
@@ -23,9 +50,10 @@ function Upload() {
         <Backgrdiv>
           <UpsideBar/>
           <DragDrop/>
-          {/* <SaveTitle/>
-          <SaveContent/>
-          <ApplyBtn/> */}
+          <Commentdiv/>
+          <Btndiv>
+            <ApplyBtn>apply</ApplyBtn>
+          </Btndiv>
         </Backgrdiv>
       </div>
     );
