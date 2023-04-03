@@ -160,7 +160,7 @@ const DragDrop = () => {
         </label>
         </div>
       
-        <section className="DragDrop-Files">
+        <div className="DragDrop-Files">
 
           {files.length > 0 &&
             files.map((file: IFileTypes) => {
@@ -187,9 +187,8 @@ const DragDrop = () => {
               );
             })}
 
-        </section>
-      </div>
-      <div className="imagePreview"> 
+        </div>
+        <div className="imagePreview"> 
         {files.length > 0 && files.map((file: IFileTypes)=> {
           const {
             id,
@@ -204,6 +203,8 @@ const DragDrop = () => {
           );
         })}
       </div>
+      </div>
+      
     </div>
   );
 };

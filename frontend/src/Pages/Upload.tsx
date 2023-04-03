@@ -32,7 +32,7 @@ const Btndiv = styled.div`
 
 const ApplyBtn = styled.button `
   width: 295px;
-  height: 90px;
+  height: 85px;
   background-color: #FF9198;
   color: white;
   font-size: 18pt;
