@@ -82,9 +82,9 @@
     overflow-y: auto;
 
   }
-  ::-webkit-scrollbar{
-    display: none;
-  }
+  // ::-webkit-scrollbar{
+  //   display: none;
+  // }
 
   .lists{
     margin: 1rem ;
@@ -145,6 +145,8 @@
   display: inline-block;
   align-items: center; 
 }
+
+
 
 .PreviewTextdiv{
   margin-top: 3rem;

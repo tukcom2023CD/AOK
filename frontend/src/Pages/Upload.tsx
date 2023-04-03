@@ -15,7 +15,7 @@ const Backgrdiv = styled.div`
 `; 
 
 const Commentdiv = styled.input`
-  width: 1110px;
+  width: 1050px;
   height: 85px;
   border-radius: 10px;
   background-color: #FFF4F4;
@@ -31,8 +31,8 @@ const Btndiv = styled.div`
 `;
 
 const ApplyBtn = styled.button `
-  width: 295px;
-  height: 85px;
+  width: 250px;
+  height: 75px;
   background-color: #FF9198;
   color: white;
   font-size: 18pt;
