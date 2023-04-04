@@ -174,12 +174,14 @@ const DragDrop = () => {
                 
                 <ul className='lists'>
                   <li className='list-new'>
-                    <div key={id} className="list-row">
-                    <div>{name}</div>
-                    <div className='DragDrop-Files-Filter' onClick={() => handleFilterFile(id)}>
-                      <button className={styles.button}><FaTrash/></button>
+                    
+                    <div className="nameDiv">{name}</div>
+                    <div className="btnDiv">
+                      <div className='DragDrop-Files-Filter' onClick={() => handleFilterFile(id)}>
+                        <button className={styles.button}><FaTrash size="20"/></button>
+                      </div>
                     </div>
-                    </div>
+                    
                   </li>
                 </ul>
                   

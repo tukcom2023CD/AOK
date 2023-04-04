@@ -38,7 +38,7 @@ const ApplyBtn = styled.button `
   color: white;
   font-size: 18pt;
   font-weight: bold;
-  border-radius: 30px;
+  border-radius: 20px;
   &:hover{
     background-color: #d7777e;
     transition: 0.5s;

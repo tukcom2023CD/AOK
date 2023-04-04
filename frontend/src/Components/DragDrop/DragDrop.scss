@@ -63,6 +63,7 @@
 
       &-Filter {
         cursor: pointer;
+        margin-right: 1.5rem;
         
         &:hover {
           opacity: 0.7;
@@ -76,7 +77,7 @@
     width: 1110px;
     height: 300px;
     border: none;
-    background-color: #FFF4F4;
+    background-color: #FFF2F2;
     border-radius: 10px;
     padding: 1rem;
     overflow-y: auto;
@@ -98,7 +99,7 @@
     height: 75px;
     border-radius: 5px;
     font-size: 16pt;
-    background-color: #FFD3D3;
+    background-color: #FFD2D2;
     margin: auto;
     padding: 0.5rem 0.2rem;
 
@@ -131,6 +132,7 @@
 
 .list-row{
   display: flex;
+  border: 1px solid black;
 }
 
 .button{
@@ -140,16 +142,24 @@
 }
 
 .imagePreview{
-  margin-top : 5rem;
+  margin-top : 4rem;
   margin-bottom: 5vh;
   display: inline-block;
   align-items: center; 
 }
 
+.nameDiv{
+  margin-right: auto;
+  margin-left: 1.5rem;
+}
 
+.btnDiv{
+  margin-right: 1.5rem;
+  border: 1px solid black;
+}
 
 .PreviewTextdiv{
-  margin-top: 3rem;
+  margin-top: 4rem;
   font-size: 20pt;
   font-weight: bold;
 }
