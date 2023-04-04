@@ -2,9 +2,9 @@ version: '3'
 
 services:
   database:
-    container_name: crepe_db
-    image: mysql/mysql-server:5.7
-    restart: unless-stopped
+    container_name: crepe-mysql
+    image: mysql
+    restart: on-failure
     environment:
       MYSQL_DATABASE: crepedb
       MYSQL_ROOT_HOST: '%'
@@ -13,30 +13,28 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - ./crepedb/data:/var/lib/crepedb # MySQL 설정 파일 위치
-    command:
-      - "mysqld"
-      - "--character-set-server=utf8mb4"
-      - "--collation-server=utf8mb4_unicode_ci"
+      - data_mysql:/var/lib/crepedb
     networks:
-      - test_network
+      - app-tier
+    tty: true
 
-  application:
-    container_name: crepe-project
-    restart: on-failure
+  backend:
+    container_name: crepe-backend
     build:
       context: ./
-      dockerfile: Dockerfile
+    command: gradle bootRun
     ports:
       - "8080:8080"
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://crepe_db:3306/crepedb?useSSL=false&allowPublicKeyRetrieval=true
-      SPRING_DATASOURCE_USERNAME: "root"
-      SPRING_DATASOURCE_PASSWORD: "1234"
+    networks:
+      - app-tier
     depends_on:
       - database
-    networks:
-      - test_network
+    restart: on-failure
+    tty: true
 
 networks:
-  test_network:
+  app-tier:
+    driver: bridge
+
+volumes:
+  data_mysql: null

@@ -19,6 +19,8 @@ import FileList from '../Components/FileList';
 import { bgcolor, fontSize } from '@mui/system';
 import FeedBack from '../Components/FeedBack';
 import Seekbar from '../Components/Seekbar';
+import Seekbars from '../Components/Seekbars';
+
 interface props{
     backgroundcolor?: string;
 }
@@ -90,15 +92,17 @@ export default function LogHistory2() {
                             </Box>
                     </Box>
                     
-                    <Box display={'flex'} position={"absolute"}>
+                    <Box display={'flex'} position={"absolute"} flexDirection={'column'}>
                         <Box display={'flex'} flexDirection={'column'} width={'83vw'} marginLeft={'16vw'}>  
-                    
-
-                            <Box sx={{position:"fixed"}}>
+                            <Box position={'fixed'}>
                                 <SelectBar />
                             </Box>
 
-                            <Box  display={'flex'} flexDirection={'column'} >
+                            {/* <Box  sx={{position:"fixed"}}>
+                                <SelectBar />
+                            </Box> */}
+
+                        <Box  display={'flex'} flexDirection={'column'} overflow={'auto'}>
                                 <Box display={'flex'} marginX={'auto'} marginTop={'20vh'}>
                                     <img src="img/tino.png" alt="tino" width={'400px'} height={'400px'} />
                                 </Box>
@@ -120,16 +124,11 @@ export default function LogHistory2() {
                                     <DiscreteSlider />
                                 </Box>
 
-                                <Box display={'flex'} justifyContent={'center'} marginY={"40px"} >
-                                    <Seekbar />
-                                </Box>
-
-                                <Box display={'flex'} justifyContent={'space-around'} marginX={"300px"}>
-
+                                <Box display={'flex'} justifyContent={'space-around'} marginX={"250px"}>
                                     <Box display={'flex'} flexDirection={'column'}>
                                         <Typography sx={{fontWeight:"bolder", fontSize:"20px"}}>files</Typography>
                                         <Box display={'flex'} justifyContent={'center'}>
-                                            <Box display={'flex'} justifyContent={'center'} width={'500px'} height={'600px'} bgcolor={"#FFF2F2"} sx={{overflowY:"auto"}}>
+                                            <Box display={'flex'} justifyContent={'center'} width={'500px'} height={'500px'} bgcolor={"#FFF2F2"} sx={{overflowY:"auto"}}>
                                                 <FileList />
                                             </Box>    
                                         </Box>
@@ -146,8 +145,8 @@ export default function LogHistory2() {
                                 </Box>
                             </Box>
                         </Box>
+                        </Box>
                     </Box>
-            </Box>
         </ThemeProvider>
     );
 }

@@ -1,45 +1,52 @@
 /**/
 @mixin filledStyle() {
-    background-color: black;
-    color: white;
-    
+  width: 400px;
+  height: 200px;
+  border: 5px dashed #FF8888;
+  background-color: white;
+  color: #FF8888;
+  border-radius: 10px;
+  font-size: 20pt;
+  font-weight: bold;
   }
   
   @mixin alignCenter() {
-    display: inline-block;
-    display: -webkit-flex;
-    margin-right: 1rem;
-    -ms-flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
     justify-content: center;
     align-items: center;
-    
   }
+
   .wholediv {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
   }
   .DragDrop {
     width: 100%;
-    height: 35vh;
-    margin-top: 10vh;
-    
+    margin-top: 5rem;
+    margin-bottom: 3rem;
     @include alignCenter();
     
     &-File {
-      width: 400px;
-      height: 200px;
-      border: 1px solid lightgray;
+      width: 1110px;
+      height: 155px;
+      border: 5px dashed #FF8888;
       background-color: white;
+      color: #FF8888;
       border-radius: 10px;
-      border: 2px solid lightgrey;
-      
+      font-size: 20pt;
+      font-weight: bold;
+
       @include alignCenter();
       cursor: pointer;
-      transition: 0.12s ease-in;
+      //transition: 0.12s ease-in;
   
-      &-Dragging {
-        @include filledStyle();
-      }
+      // &-Dragging {
+      //   @include filledStyle();
+      // }
     }
   
     &-Files {
@@ -65,28 +72,33 @@
   }
 
   .DragDrop-Files{
-    overflow-y: auto;
 
-    width: 500px;
-    height: 200px;
-    border: 2px solid lightgray;
-    background-color: white;
+    width: 1110px;
+    height: 300px;
+    border: none;
+    background-color: #FFF4F4;
     border-radius: 10px;
     padding: 1rem;
-
+    overflow-y: auto;
 
   }
+  // ::-webkit-scrollbar{
+  //   display: none;
+  // }
+
   .lists{
-    margin: 0.2rem ;
+    margin: 1rem ;
   }
 
   .list{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 400px;
+    width: 985px;
+    height: 75px;
     border-radius: 5px;
-    background-color: #FFF19E;
+    font-size: 16pt;
+    background-color: #FFD3D3;
     margin: auto;
     padding: 0.5rem 0.2rem;
 
@@ -94,9 +106,11 @@
       display: flex;
       justify-content: space-around;
       align-items: center;
-      width: 400px;
+      width: 985px;
+      height: 75px;
       border-radius: 5px;
-      background-color: #9DE040;
+      font-size: 16pt;
+      background-color: #FF9C9C;
       margin: auto;
       padding: 0.5rem 0.2rem;
     }
@@ -105,8 +119,10 @@
       display: flex;
       justify-content: space-around;
       align-items: center;
-      width: 400px;
+      width: 985px;
+      height: 75px;
       border-radius: 5px;
+      font-size: 16pt; 
       background-color: #EDAF9C;
       margin: auto;
       padding: 0.5rem 0.2rem;
@@ -124,7 +140,16 @@
 }
 
 .imagePreview{
+  margin-top : 5rem;
   margin-bottom: 5vh;
-  @include alignCenter();
+  display: inline-block;
+  align-items: center; 
 }
 
+
+
+.PreviewTextdiv{
+  margin-top: 3rem;
+  font-size: 20pt;
+  font-weight: bold;
+}

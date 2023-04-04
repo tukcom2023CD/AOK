@@ -13,8 +13,44 @@ export default function FileList() {
     return (
     <Box>
         <nav aria-label="folders">
-        <List>
+        <List sx={{overflowY:"hidden"}}>
         <ListItem disablePadding sx={{width:"400px", height:"60px" ,backgroundColor:"#FFD3D3", marginY:"20px",paddingX:"20px", borderRadius:"5px", display:"flex", justifyContent:"space-between"}}>
+            <ListItemText primary="디노명암.png" sx={{fontSize:"20px"}}/>
+                  <IconButton edge="end" aria-label="delete">
+                    <SaveAltIcon sx={{color:'#000000'}}/>
+                  </IconButton>
+            </ListItem>
+            <ListItem disablePadding sx={{width:"400px", height:"60px" ,backgroundColor:"#FFD3D3", marginY:"20px",paddingX:"20px", borderRadius:"5px", display:"flex", justifyContent:"space-between"}}>
+            <ListItemText primary="디노명암.png" sx={{fontSize:"20px"}}/>
+                  <IconButton edge="end" aria-label="delete">
+                    <SaveAltIcon sx={{color:'#000000'}}/>
+                  </IconButton>
+            </ListItem>
+            <ListItem disablePadding sx={{width:"400px", height:"60px" ,backgroundColor:"#FFD3D3", marginY:"20px",paddingX:"20px", borderRadius:"5px", display:"flex", justifyContent:"space-between"}}>
+            <ListItemText primary="디노명암.png" sx={{fontSize:"20px"}}/>
+                  <IconButton edge="end" aria-label="delete">
+                    <SaveAltIcon sx={{color:'#000000'}}/>
+                  </IconButton>
+            </ListItem>
+            <ListItem disablePadding sx={{width:"400px", height:"60px" ,backgroundColor:"#FFD3D3", marginY:"20px",paddingX:"20px", borderRadius:"5px", display:"flex", justifyContent:"space-between"}}>
+            <ListItemText primary="디노명암.png" sx={{fontSize:"20px"}}/>
+                  <IconButton edge="end" aria-label="delete">
+                    <SaveAltIcon sx={{color:'#000000'}}/>
+                  </IconButton>
+            </ListItem>
+            <ListItem disablePadding sx={{width:"400px", height:"60px" ,backgroundColor:"#FFD3D3", marginY:"20px",paddingX:"20px", borderRadius:"5px", display:"flex", justifyContent:"space-between"}}>
+            <ListItemText primary="디노명암.png" sx={{fontSize:"20px"}}/>
+                  <IconButton edge="end" aria-label="delete">
+                    <SaveAltIcon sx={{color:'#000000'}}/>
+                  </IconButton>
+            </ListItem>
+            <ListItem disablePadding sx={{width:"400px", height:"60px" ,backgroundColor:"#FFD3D3", marginY:"20px",paddingX:"20px", borderRadius:"5px", display:"flex", justifyContent:"space-between"}}>
+            <ListItemText primary="디노명암.png" sx={{fontSize:"20px"}}/>
+                  <IconButton edge="end" aria-label="delete">
+                    <SaveAltIcon sx={{color:'#000000'}}/>
+                  </IconButton>
+            </ListItem>
+            <ListItem disablePadding sx={{width:"400px", height:"60px" ,backgroundColor:"#FFD3D3", marginY:"20px",paddingX:"20px", borderRadius:"5px", display:"flex", justifyContent:"space-between"}}>
             <ListItemText primary="디노명암.png" sx={{fontSize:"20px"}}/>
                   <IconButton edge="end" aria-label="delete">
                     <SaveAltIcon sx={{color:'#000000'}}/>

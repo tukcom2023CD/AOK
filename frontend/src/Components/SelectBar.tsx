@@ -8,6 +8,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { ThemeProvider,createTheme } from '@mui/material/styles';
 import ColorTabs from './ColorTab';
 import MainProfile from './Profile';
+import { Container } from '@mui/material';
 
 export const theme = createTheme({
     palette: {
@@ -35,7 +36,7 @@ const Title: Props = {
 
 export default function SelectBar() {
     return (
-        <Box position={'fixed'}>
+        <Box sx={{position: 'fixed'}}>
         <ThemeProvider theme={theme}>
         <Box bgcolor={"secondary.light"} display={'flex'} width={"83vw"} height={'60px'}>
             <Box marginLeft={'20px'} marginY={"auto"} alignItems={'center'}>
@@ -50,22 +51,4 @@ export default function SelectBar() {
     );
 }
 
-{/* <Box>
-        <ThemeProvider theme={theme}>
-        <Box bgcolor={"secondary.light"} display={'flex'} justifyContent={'space-between'}>
-            <Box marginLeft={'20px'} marginY={"auto"} alignItems={'center'}>
-                <Typography fontSize={"27px"} fontWeight={"bold"} fontFamily={"unset"} width={"20vw"}>Line</Typography>
-            </Box>
-            <Box marginY={'10px'}>
-            <ColorTabs/>
-            </Box>
-            {/*우측 프로필
-            <Box display={"flex"} justifyContent={"flex-end"} marginLeft={'20px'} marginY={"auto"} alignItems={'center'} width={"20vw"}>
-                <Box  width={"200px"}>
-                    <MainProfile />
-                </Box>
-            </Box> 
-        </Box>
-        </ThemeProvider></Box>
-*/}
 

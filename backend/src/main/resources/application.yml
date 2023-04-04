@@ -1,12 +1,16 @@
-Spring:
+spring:
+
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://crepe-mysql:3306/crepedb?serverTimezone=Asia/Seoul
+    username: root
+    password: 1234
+
   jpa:
-    open-in-view: true
     hibernate:
       ddl-auto: create
-      naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-      use-new-id-generator-mappings: false
-    show-sql: true
     properties:
-      hibernate.format_sql: true
-      dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+      hibernate:
+        show_sql: true
+        format_sql: true
