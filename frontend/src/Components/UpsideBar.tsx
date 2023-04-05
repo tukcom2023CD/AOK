@@ -11,16 +11,16 @@ const BackgrDiv = styled.div`
 
 const LogoDiv = styled.div`
     display: flex;
-    margin-left: 20px;
+    margin-left: 25px;
     align-items: center; 
 `;
 
 const ImageDiv = styled.div`
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     background-image: url(${crepeimg});
     background-position: center;
-    background-size: 50px;
+    background-size: 45px;
     background-repeat: no-repeat;
 `; 
 
@@ -29,6 +29,7 @@ const TitleDiv = styled.div`
     font-weight: bold;
     color: white;
     margin-left: 15px;
+    margin-bottom: 5px;
 `;
 
 
