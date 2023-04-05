@@ -7,10 +7,8 @@ import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import Stack from '@mui/material/Stack';
-import { ThemeProvider,createTheme } from '@mui/material/styles';
-import {BsThreeDotsVertical} from "react-icons/bs";
-import { AiFillCaretUp } from "react-icons/ai";
-import { Box } from '@mui/material';
+
+import { AiFillCaretDown } from "react-icons/ai";
 
 export default function MenuListComposition() {
   const [open, setOpen] = React.useState(false);
@@ -60,17 +58,17 @@ export default function MenuListComposition() {
           <MenuItem>Logout</MenuItem>
         </MenuList>
       </Paper> */}
-      <Box>
+      <div>
         <Button
           ref={anchorRef}
           id="composition-button"
           aria-controls={open ? 'composition-menu' : undefined}
           aria-expanded={open ? 'true' : undefined}
           aria-haspopup="true"
-          onClick={handleToggle}  
+          sx={{"&:hover":{backgroundColor: "transparent"}}}
+          onClick={handleToggle}
         >
-          <AiFillCaretUp color='black' fontSize={18}/>
-          
+          <AiFillCaretDown/>
         </Button>
         <Popper
           open={open}
@@ -106,7 +104,7 @@ export default function MenuListComposition() {
             </Grow>
           )}
         </Popper>
-      </Box>
+      </div>
     </Stack>
   );
 }

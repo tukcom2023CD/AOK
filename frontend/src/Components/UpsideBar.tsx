@@ -11,7 +11,7 @@ const BackgrDiv = styled.div`
 
 const LogoDiv = styled.div`
     display: flex;
-    margin-left: 25px;
+    margin-left: 20px;
     align-items: center; 
 `;
 

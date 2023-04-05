@@ -25,6 +25,7 @@ const ProfilePic = styled.div<props>`
     margin-right: 10px;
     background-color: ${(props) => props.backgroundcolor};
 `;
+
 const Name = styled.div`
     text-align: center;
     font-size: 17pt;
