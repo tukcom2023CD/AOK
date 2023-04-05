@@ -8,7 +8,7 @@ import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import Stack from '@mui/material/Stack';
 
-import { AiFillCaretDown } from "react-icons/ai";
+import MenuIcon from '@mui/icons-material/Menu';
 
 export default function MenuListComposition() {
   const [open, setOpen] = React.useState(false);
@@ -65,10 +65,9 @@ export default function MenuListComposition() {
           aria-controls={open ? 'composition-menu' : undefined}
           aria-expanded={open ? 'true' : undefined}
           aria-haspopup="true"
-          sx={{"&:hover":{backgroundColor: "transparent"}}}
           onClick={handleToggle}
         >
-          <AiFillCaretDown/>
+          <MenuIcon/>
         </Button>
         <Popper
           open={open}
