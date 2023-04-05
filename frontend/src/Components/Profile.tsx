@@ -35,7 +35,6 @@ const DropBtn = styled.div`
     width: 1rem;
     height: 1rem;
     margin-left: 1rem;
-
 `;
 
 

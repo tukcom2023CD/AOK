@@ -1,10 +1,10 @@
 import React, {
-    ChangeEvent,
-    useCallback,
-    useRef,
-    useState,
-    useEffect
-  } from "react";
+  ChangeEvent,
+  useCallback,
+  useRef,
+  useState,
+  useEffect
+} from "react";
 import "./DragDrop.scss";
 import styles from './DragDrop.module.css';
 import {DndProvider} from 'react-dnd';
@@ -12,184 +12,206 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import { BtnStyle } from '../Button';
 import {FaTrash} from 'react-icons/fa';
 
-  
-  interface IFileTypes {
-    id: number; //파일들의 고유값 id
-    object: File;
-    URL: string;
-  }
-  
+
+type IFileTypes = {
+  id: number; //파일들의 고유값 id
+  object: File;
+  URL: string;
+}
 
 
-  const DragDrop = () => {
-    const [isDragging, setIsDragging] = useState<boolean>(false);
-    const [files, setFiles] = useState<IFileTypes[]>([]);
-    const dragRef = useRef<HTMLLabelElement | null>(null);
-    const fileId = useRef<number>(0);
-    
-    const onChangeFiles = useCallback(
-      (e: ChangeEvent<HTMLInputElement> | any): void => {
-        let selectFiles: File[] = [];
-        let tempFiles: IFileTypes[] = files;
-        //temp 변수를 통해 선택한 파일을 담음
-        if (e.type === "drop") {
-          //드래그 앤 드롭 했을 때
-          selectFiles = e.dataTransfer.files;
-        } else {
-          //파일 첨부 버튼을 눌러 이미지를 선택했을 때
-          selectFiles = e.target.files;
-        }
-  
-        for (const file of selectFiles) {
-          //스프레드 연산자를 통해 기존에 있던 파일들을 복사, 선택한 파일 append
-          let urlread = new FileReader();
-          if (!/\.(png)$/i.test(file.name)){
-            return alert('png 파일만 첨부할 수 있습니다.')
-          }
-          tempFiles = [
-            ...tempFiles,
-            {
-              id: fileId.current++, //fileId의 값을 1씩 늘려주며 각 파일의 고유값으로 사용
-              object: file, //object 안에 선택했던 파일들의 정보 담김
-              URL: ''
-            }
-          ];
 
-          
-        }
-  
-        setFiles(tempFiles);
-      },
-      [files]
-    );
+const DragDrop = () => {
+  const [isDragging, setIsDragging] = useState<boolean>(false);
+  const [files, setFiles] = useState<IFileTypes[]>([]);
+  const dragRef = useRef<HTMLLabelElement | null>(null);
+  const fileId = useRef<number>(0);
 
-    //files state 배열의 상태 업데이트, 배열 길이는 파일 선택한 만큼 증가
-    
-    /**
-     * 만약, 리스트에서 파일이 중복으로 들어올 때, (반복문을 돌려서 같을 때)
-     * 이전 파일의 id값을 삭제, 이때 새로운 파일은 다른 색상으로 적용(빨간색)  
-     */
-
-    //handleFilterFile => id 일치 여부를 확인해 필터링
-    
-
-    const handleFilterFile = useCallback(
-      (id: number): void => {
-        //매개 변수로 받은 id와 일치 여부를 확인해 필터링 함
-        setFiles(files.filter((file: IFileTypes) => file.id !== id));
-      },
-      [files]
-    );
-  
-    const handleDragIn = useCallback((e: DragEvent): void => {
-      e.preventDefault();
-      e.stopPropagation();
-    }, []);
-  
-    const handleDragOut = useCallback((e: DragEvent): void => {
-      e.preventDefault();
-      e.stopPropagation();
-  
-      setIsDragging(false);
-    }, []);
-  
-    const handleDragOver = useCallback((e: DragEvent): void => {
-      e.preventDefault();
-      e.stopPropagation();
-  
-      if (e.dataTransfer!.files) {
-        setIsDragging(true);
+  const onChangeFiles = useCallback(
+    (e: ChangeEvent<HTMLInputElement> | any): void => {
+      let selectFiles: File[] = [];
+      let tempFiles: IFileTypes[] = files;
+      //temp 변수를 통해 선택한 파일을 담음
+      if (e.type === "drop") {
+        //드래그 앤 드롭 했을 때
+        selectFiles = e.dataTransfer.files;
+      } else {
+        //파일 첨부 버튼을 눌러 이미지를 선택했을 때
+        selectFiles = e.target.files;
       }
-    }, []);
-  
-    const handleDrop = useCallback(
-      (e: DragEvent): void => {
-        e.preventDefault();
-        e.stopPropagation();
-  
-        onChangeFiles(e);
-        setIsDragging(false);
-      },
-      [onChangeFiles]
-    );
-  
-    const initDragEvents = useCallback((): void => {
-      if (dragRef.current !== null) {
-        dragRef.current.addEventListener("dragenter", handleDragIn);
-        dragRef.current.addEventListener("dragleave", handleDragOut);
-        dragRef.current.addEventListener("dragover", handleDragOver);
-        dragRef.current.addEventListener("drop", handleDrop);
-      }
-    }, [handleDragIn, handleDragOut, handleDragOver, handleDrop]);
-  
-    const resetDragEvents = useCallback((): void => {
-      if (dragRef.current !== null) {
-        dragRef.current.removeEventListener("dragenter", handleDragIn);
-        dragRef.current.removeEventListener("dragleave", handleDragOut);
-        dragRef.current.removeEventListener("dragover", handleDragOver);
-        dragRef.current.removeEventListener("drop", handleDrop);
-      }
-    }, [handleDragIn, handleDragOut, handleDragOver, handleDrop]);
-  
-    useEffect(() => {
-      initDragEvents();
-  
-      return () => resetDragEvents();
-    }, [initDragEvents, resetDragEvents]);
 
-  
-    return (
-      <div className="wholediv">
-        <div className="DragDrop">
-          <div className={styles.left}>
-          <input
-            type="file"
-            id="fileUpload"
-            style={{ display: "none" }}
-            multiple={true}
-            onChange={onChangeFiles}
-          />
-    
-          <label
-            className={isDragging ? "DragDrop-File-Dragging" : "DragDrop-File"}
-            htmlFor="fileUpload"
-            ref={dragRef}
-          >
-            <div>파일 첨부</div>
-          </label>
-          </div>
+      for (const file of selectFiles) {
+        //스프레드 연산자를 통해 기존에 있던 파일들을 복사, 선택한 파일 append
         
-          <section className="DragDrop-Files">
+        if (!/\.(png)$/i.test(file.name)){
+          return alert('png 파일만 첨부할 수 있습니다.')
+        }
+        
+        tempFiles = [
+          ...tempFiles,
+          {
+            id: fileId.current++, //fileId의 값을 1씩 늘려주며 각 파일의 고유값으로 사용
+            object: file, //object 안에 선택했던 파일들의 정보 담김
+            URL: URL.createObjectURL(file)
+          }
+        ];
 
-            {files.length > 0 &&
-              files.map((file: IFileTypes) => {
-                const {
-                  id,
-                  object: { name },
-                  
-                } = file;
-    
-                return (
-                  <ul className='lists'>
-                    <li className='list-new'>
-                      <div key={id} className="list-row">
-                      <div>{name}</div>
-                      <div className='DragDrop-Files-Filter' onClick={() => handleFilterFile(id)}>
-                        <button className={styles.button}><FaTrash/></button>
-                      </div>
-                      </div>
-                    </li>
-                  </ul>
-                );
-              })}
+        
+      }
 
-          </section>
-        </div>
-        <div className="imagePreview">{}
-          여기 div 안에 이미지 프리뷰가 들어갑니다 
-        </div>
-      </div>
-    );
-  };
+      setFiles(tempFiles);
+    },
+    [files]
+  );
+
+  //files state 배열의 상태 업데이트, 배열 길이는 파일 선택한 만큼 증가
   
-  export default DragDrop;
+  /**
+   * 만약, 리스트에서 파일이 중복으로 들어올 때, (반복문을 돌려서 같을 때)
+   * 이전 파일의 id값을 삭제, 이때 새로운 파일은 다른 색상으로 적용(빨간색)  
+   */
+
+  //handleFilterFile => id 일치 여부를 확인해 필터링
+  
+
+  const handleFilterFile = useCallback(
+    (id: number): void => {
+      //매개 변수로 받은 id와 일치 여부를 확인해 필터링 함
+      setFiles(files.filter((file: IFileTypes) => file.id !== id));
+    },
+    [files]
+  );
+
+  const handleDragIn = useCallback((e: DragEvent): void => {
+    e.preventDefault();
+    e.stopPropagation();
+  }, []);
+
+  const handleDragOut = useCallback((e: DragEvent): void => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    setIsDragging(false);
+  }, []);
+
+  const handleDragOver = useCallback((e: DragEvent): void => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (e.dataTransfer!.files) {
+      setIsDragging(true);
+    }
+  }, []);
+
+  const handleDrop = useCallback(
+    (e: DragEvent): void => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      onChangeFiles(e);
+      setIsDragging(false);
+    },
+    [onChangeFiles]
+  );
+
+  const initDragEvents = useCallback((): void => {
+    if (dragRef.current !== null) {
+      dragRef.current.addEventListener("dragenter", handleDragIn);
+      dragRef.current.addEventListener("dragleave", handleDragOut);
+      dragRef.current.addEventListener("dragover", handleDragOver);
+      dragRef.current.addEventListener("drop", handleDrop);
+    }
+  }, [handleDragIn, handleDragOut, handleDragOver, handleDrop]);
+
+  const resetDragEvents = useCallback((): void => {
+    if (dragRef.current !== null) {
+      dragRef.current.removeEventListener("dragenter", handleDragIn);
+      dragRef.current.removeEventListener("dragleave", handleDragOut);
+      dragRef.current.removeEventListener("dragover", handleDragOver);
+      dragRef.current.removeEventListener("drop", handleDrop);
+    }
+  }, [handleDragIn, handleDragOut, handleDragOver, handleDrop]);
+
+  useEffect(() => {
+    initDragEvents();
+
+    return () => resetDragEvents();
+  }, [initDragEvents, resetDragEvents]);
+
+
+  return (
+    <div className="wholediv">
+      <div className="DragDrop">
+        <div className={styles.left}>
+        <input
+          type="file"
+          id="fileUpload"
+          style={{ display: "none" }}
+          multiple={true}
+          onChange={onChangeFiles}
+        />
+  
+        <label
+          className={isDragging ? "DragDrop-File-Dragging" : "DragDrop-File"}
+          htmlFor="fileUpload"
+          ref={dragRef}
+        >
+          <div>upload files</div>
+        </label>
+        </div>
+      
+        <div className="DragDrop-Files">
+
+          {files.length > 0 &&
+            files.map((file: IFileTypes) => {
+              const {
+                id,
+                object: { name },
+                URL
+              } = file;
+  
+              return (
+                
+                <ul className='lists'>
+                  <li className='list-new'>
+                    
+                    <div className="nameDiv">{name}</div>
+                    <div className='DragDrop-Files-Filter' onClick={() => handleFilterFile(id)}>
+                        <button className={styles.button}><FaTrash size="20"/></button>
+                    </div>
+                    
+                  </li>
+                </ul>
+                  
+                
+              );
+            })}
+
+        </div>
+        
+        <div className="PreviewTextdiv">
+          Preview
+        </div>
+
+        <div className="imagePreview"> 
+        {files.length > 0 && files.map((file: IFileTypes)=> {
+          const {
+            id,
+            object: {name},
+            URL
+          } = file;
+
+          return (
+            <div key = {id}>
+              <img src = {URL}/>
+            </div>
+          );
+        })}
+      </div>
+      </div>
+      
+    </div>
+  );
+};
+
+export default DragDrop;
