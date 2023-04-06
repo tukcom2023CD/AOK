@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { AiFillCaretDown } from "react-icons/ai";
 import MenuListComposition from './Dropmenu';
 interface props{
     backgroundcolor?: string;
