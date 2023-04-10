@@ -103,7 +103,7 @@ export default function MenuListComposition() {
                       aria-labelledby="composition-button"
                       onKeyDown={handleListKeyDown}
                     >
-                      <MenuItem onClick={handleClose}>Repository</MenuItem>
+                      <MenuItem onClick={handleClose}>Project</MenuItem>
                       <MenuItem onClick={handleClose}>Notification</MenuItem>
                       <MenuItem onClick={handleClose}>Settings</MenuItem>
                       <MenuItem onClick={handleClose}>Logout</MenuItem>
