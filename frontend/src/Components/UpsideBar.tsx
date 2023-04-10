@@ -1,6 +1,8 @@
 import * as React from 'react';
 import crepeimg from '../Images/crepeimg.png';
 import styled from 'styled-components';
+import Profile from '../Components/Profile';
+
 
 const BackgrDiv = styled.div`
     display: flex;
@@ -32,6 +34,12 @@ const TitleDiv = styled.div`
     margin-bottom: 5px;
 `;
 
+const ProfileDiv = styled.div `
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+
+`;
 
 export default function UpsideBar() {
     return(
@@ -41,6 +49,9 @@ export default function UpsideBar() {
                 <TitleDiv>Crepe</TitleDiv>
             </LogoDiv>
             
+            <ProfileDiv>
+                <Profile/>
+            </ProfileDiv>
         </BackgrDiv>
     );
 }
