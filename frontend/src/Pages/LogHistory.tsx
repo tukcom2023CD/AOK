@@ -57,13 +57,6 @@ const ProfilePic = styled.div<props>`
     background-color: ${(props) => props.backgroundcolor};
 `;
 
-// interface Props{
-//     title?: "Line" | "Log History"
-// }
-
-// const Title: Props = {
-//     title: "Line",
-// }
 
 export default function LogHistory() {
     return (
@@ -98,7 +91,7 @@ export default function LogHistory() {
 
                         <Box  display={'flex'} flexDirection={'column'} overflow={'auto'} height={"100vh"}>
                                 <Box display={'flex'} marginX={'auto'} marginTop={'20vh'}>
-                                    <img src="img/tino.png" alt="dino" width={'400px'} height={'400px'} />
+                                    <img src="img/tino.png" alt="tino" width={'400px'} height={'400px'} />
                                 </Box>
                                 
                                 
