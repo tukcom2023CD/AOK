@@ -53,6 +53,7 @@ public class User extends BaseEntity {
         this.nickname = nickname;
         this.photo = photo;
         super.isActive = true;
+        this.uuid = UUID.randomUUID();
     }
 
 }
