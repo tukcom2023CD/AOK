@@ -77,14 +77,6 @@ export default function LogHistory() {
                             <Box height={'800px'}>
                                 <BasicSelect />
                                 <Box sx={{bgcolor: 'secondary.light'}} maxWidth='300px' marginTop={'1px'} marginBottom={'25px'}>
-                                    {/* <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'} maxWidth='300px' height='50px'>
-                                        <Box paddingLeft={'20px'}>
-                                            <Typography fontWeight={'bold'}>branch</Typography>
-                                        </Box>
-                                        <Box paddingRight={'3px'}>
-                                            <Button><AddIcon sx={{fontSize: '18px', color: '#000000'}}/></Button>
-                                        </Box>
-                                    </Box> */}
                                     <Box display={'flex'} justifyContent={'center'}>
                                         <BasicList />
                                     </Box>
@@ -105,9 +97,8 @@ export default function LogHistory() {
 
 
                         <Box  display={'flex'} flexDirection={'column'} overflow={'auto'} height={"100vh"}>
-                            {/* 일단 임시방편으로 높이를 지정함 */}
                                 <Box display={'flex'} marginX={'auto'} marginTop={'20vh'}>
-                                    <img src="img/tino.png" alt="tino" width={'400px'} height={'400px'} />
+                                    <img src="img/tino.png" alt="dino" width={'400px'} height={'400px'} />
                                 </Box>
                                 
                                 
@@ -141,7 +132,7 @@ export default function LogHistory() {
                                 </Box>
 
                                 <Box display={'flex'} justifyContent={'center'} marginY={"50px"}>
-                                    <Button sx={{width:"180px", height:"50px", color:"#FFFFFF" ,bgcolor:"#FF9198", borderRadius:"9px", fontSize:"15px" , fontWeight:"bold"}}>apply</Button>
+                                    <Button sx={{width:"180px", height:"50px", color:"#FFFFFF" ,bgcolor:"#FF9198", borderRadius:"10px", fontSize:"15px" , fontWeight:"bold"}}>apply</Button>
                                 </Box>
                             </Box>
 
