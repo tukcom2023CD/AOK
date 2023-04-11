@@ -142,12 +142,23 @@
 }
 
 .imagePreview{
-  margin-top : 4rem;
+  margin-top: 4rem;
   margin-bottom: 5vh;
   display: inline-block;
-  align-items: center; 
+  align-items: center;
+  position: relative;
 }
 
+.imagePreviewParent{
+  margin-top: 4rem;
+  margin-bottom: 5vh;
+  display: inline-block;
+  align-items: center;
+}
+
+.imagePreviewRelative{
+  position: relative;
+}
 .nameDiv{
   margin-right: auto;
   margin-left: 1.5rem;

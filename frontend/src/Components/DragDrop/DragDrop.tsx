@@ -26,6 +26,7 @@ const DragDrop = () => {
   const [files, setFiles] = useState<IFileTypes[]>([]);
   const dragRef = useRef<HTMLLabelElement | null>(null);
   const fileId = useRef<number>(0);
+  var reversed_index;
 
   const onChangeFiles = useCallback(
     (e: ChangeEvent<HTMLInputElement> | any): void => {
@@ -169,7 +170,8 @@ const DragDrop = () => {
                 object: { name },
                 URL
               } = file;
-  
+              
+
               return (
                 
                 <ul className='lists'>
@@ -194,20 +196,22 @@ const DragDrop = () => {
         </div>
 
         <div className="imagePreview"> 
-        {files.length > 0 && files.map((file: IFileTypes)=> {
-          const {
-            id,
-            object: {name},
-            URL
-          } = file;
+            {files.length > 0 && files.map((file: IFileTypes)=> {
+              const {
+                id,
+                object: {name},
+                URL
+              } = file;
+              
+              reversed_index = files.length - 1 - id;
 
-          return (
-            <div key = {id}>
-              <img src = {URL}/>
-            </div>
-          );
-        })}
-      </div>
+              return (
+                <div key = {id} style={(reversed_index===0) ? {} :  {position: 'absolute', zIndex: reversed_index}}>
+                  <img src = {URL}/>
+                </div>
+              );
+            })}
+        </div>
       </div>
       
     </div>
