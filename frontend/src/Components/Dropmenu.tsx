@@ -59,14 +59,6 @@ export default function MenuListComposition() {
   return (
     <MuiThemeProvider theme={theme}>
       <Stack direction="row" spacing={1}>
-        {/* <Paper>
-          <MenuList>
-            <MenuItem>Repository</MenuItem>
-            <MenuItem>Notification</MenuItem>
-            <MenuItem>Settings</MenuItem>
-            <MenuItem>Logout</MenuItem>
-          </MenuList>
-        </Paper> */}
         <div>
           <Button
             ref={anchorRef}

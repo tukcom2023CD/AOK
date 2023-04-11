@@ -9,10 +9,10 @@ import Divider from '@mui/material/Divider';
 
 export default function BasicList() {
     return (
-    <Box sx={{ width: '230px', bgcolor: 'background.paper'}} borderRadius='10px'>
+    <Box sx={{ width: '100vw', bgcolor: 'background.paper'}}>
         <Divider />
         <nav aria-label="folders">
-        <List sx={{color: "red"}}>
+        <List>
             <ListItem disablePadding>
             <ListItemButton >
                 <ListItemText primary="main" />
