@@ -18,16 +18,27 @@ import DiscreteSlider from '../Components/Slider';
 import FileList from '../Components/FileList';
 import { bgcolor, fontSize } from '@mui/system';
 import FeedBack from '../Components/FeedBack';
+import Seekbar from '../Components/Seekbar';
 import Seekbars from '../Components/Seekbars';
+import { BtnStyle } from '../Components/Button';
+
 interface props{
     backgroundcolor?: string;
 }
 
-const style = {
-    width: '100%',
-    maxWidth: 360,
-    bgcolor: 'background.paper',
-};
+const ApplyBtn = styled.button `
+  width: 180px;
+  height: 50px;
+  background-color: #FF9198;
+  color: white;
+  font-size: 15x;
+  font-weight: bold;
+  border-radius: 10px;
+  &:hover{
+    background-color: #d7777e;
+    transition: 0.5s;
+  }
+`;
 
 export const theme = createTheme({
     palette: {
@@ -61,7 +72,7 @@ const ProfilePic = styled.div<props>`
 //     title: "Line",
 // }
 
-export default function LogHistory2() {
+export default function LogHistory() {
     return (
         <ThemeProvider theme={theme}>
             <Box sx={{ flexGrow: 1, flexShrink:1 }} display={'flex'}>
@@ -90,15 +101,17 @@ export default function LogHistory2() {
                             </Box>
                     </Box>
                     
-                    <Box display={'flex'} position={"absolute"}>
+                    <Box display={'flex'} position={"absolute"} flexDirection={'column'}>
                         <Box display={'flex'} flexDirection={'column'} width={'83vw'} marginLeft={'16vw'}>  
-                    
-
-                            <Box sx={{position:"fixed"}}>
+                            <Box position={'fixed'}>
                                 <SelectBar />
                             </Box>
 
-                            <Box  display={'flex'} flexDirection={'column'} >
+                            {/* <Box  sx={{position:"fixed"}}>
+                                <SelectBar />
+                            </Box> */}
+
+                        <Box  display={'flex'} flexDirection={'column'} overflow={'auto'}>
                                 <Box display={'flex'} marginX={'auto'} marginTop={'20vh'}>
                                     <img src="img/tino.png" alt="tino" width={'400px'} height={'400px'} />
                                 </Box>
@@ -120,16 +133,11 @@ export default function LogHistory2() {
                                     <DiscreteSlider />
                                 </Box>
 
-                                <Box display={'flex'} justifyContent={'center'} marginY={"40px"} >
-                                    <Seekbars />
-                                </Box>
-
-                                <Box display={'flex'} justifyContent={'space-around'} marginX={"300px"}>
-
+                                <Box display={'flex'} justifyContent={'space-around'} marginX={"250px"}>
                                     <Box display={'flex'} flexDirection={'column'}>
                                         <Typography sx={{fontWeight:"bolder", fontSize:"20px"}}>files</Typography>
                                         <Box display={'flex'} justifyContent={'center'}>
-                                            <Box display={'flex'} justifyContent={'center'} width={'500px'} height={'600px'} bgcolor={"#FFF2F2"} sx={{overflowY:"auto"}}>
+                                            <Box display={'flex'} justifyContent={'center'} width={'500px'} height={'500px'} bgcolor={"#FFF2F2"} sx={{overflowY:"auto"}}>
                                                 <FileList />
                                             </Box>    
                                         </Box>
@@ -142,14 +150,14 @@ export default function LogHistory2() {
                                 </Box>
 
                                 <Box display={'flex'} justifyContent={'center'} marginY={"50px"}>
-                                    <Button sx={{width:"180px", height:"50px", color:"#FFFFFF" ,bgcolor:"#FF9198", borderRadius:"10px", fontSize:"15px" , fontWeight:"bold"}}>apply</Button>
+                                    
+                                    <ApplyBtn>apply</ApplyBtn>
                                 </Box>
                             </Box>
                         </Box>
+                        </Box>
                     </Box>
-            </Box>
         </ThemeProvider>
     );
 }
-
 
