@@ -38,12 +38,12 @@ export default function SelectBar() {
     return (
         <Box sx={{position: 'fixed'}}>
         <ThemeProvider theme={theme}>
-        <Box bgcolor={"secondary.light"} display={'flex'} width={"83vw"} height={'60px'}>
+        <Box bgcolor={"secondary.light"} display={'flex'} width={"100vw"} height={'60px'}>
             <Box marginLeft={'20px'} marginY={"auto"} alignItems={'center'}>
                 <Typography fontSize={"27px"} fontWeight={"bold"} fontFamily={"unset"} width={"20vw"}>Line</Typography>
             </Box>
         </Box>
-        <Box bgcolor={"secondary.light"} width={"83vw"} paddingX={"5px"}>
+        <Box bgcolor={"secondary.light"} width={"100vw"} paddingX={"5px"}>
             <ColorTabs/>
         </Box>
         </ThemeProvider>

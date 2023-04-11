@@ -88,7 +88,7 @@ export default function Project() {
                     <Box display={'flex'} flexDirection={'column'} width={'100vw'}>  
                         
                         <SelectBar />
-                        <Box display={'flex'} marginX={'auto'} marginTop={'50px'}>
+                        <Box display={'flex'} marginX={'auto'} marginTop={'200px'}>
                             <img src="img/tino.png" alt="tino" width={'400px'} height={'400px'}/>
                         </Box>
                         
