@@ -37,5 +37,7 @@ public class Project extends BaseEntity {
     public Project(String name){
         this.name = name;
         super.isActive = true;
+        this.uuid = UUID.randomUUID();
+
     }
 }
