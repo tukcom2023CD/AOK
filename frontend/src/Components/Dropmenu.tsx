@@ -76,6 +76,7 @@ export default function MenuListComposition() {
             aria-haspopup="true"
             onClick={handleToggle}
             disableRipple
+            sx={{color: 'black'}}
           >
             <MenuIcon/>
           </Button>
