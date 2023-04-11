@@ -141,7 +141,7 @@ export default function LogHistory() {
                                 </Box>
 
                                 <Box display={'flex'} justifyContent={'center'} marginY={"50px"}>
-                                    <Button sx={{width:"180px", height:"50px", color:"#FFFFFF" ,bgcolor:"#FF9198", borderRadius:"10px", fontSize:"15px" , fontWeight:"bold"}}>apply</Button>
+                                    <Button sx={{width:"180px", height:"50px", color:"#FFFFFF" ,bgcolor:"#FF9198", borderRadius:"9px", fontSize:"15px" , fontWeight:"bold"}}>apply</Button>
                                 </Box>
                             </Box>
 
