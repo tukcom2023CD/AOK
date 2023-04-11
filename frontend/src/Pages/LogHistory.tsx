@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import { ThemeProvider,createTheme } from '@mui/material/styles';
-import UpsideBar from '../Components/UpsideBar';
+import UpsideGray from '../Components/UpsideGray';
 import { Typography, Button,IconButton } from '@mui/material';
 import BasicSelect from '../Components/ProjectSelect';
 import BasicList from '../Components/List';
@@ -78,7 +78,7 @@ export default function LogHistory() {
             <Box sx={{ flexGrow: 1, flexShrink:1 }} display={'flex'}>
                 <Box sx={{bgcolor: 'secondary.light'}} width={'16vw'} height={'100vh'} position={'fixed'}>
                     <Box>
-                        <UpsideBar />
+                        <UpsideGray />
                     </Box>
                             <Box height={'88vh'}>
                                 <BasicSelect />

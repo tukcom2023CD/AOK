@@ -31,7 +31,7 @@ export default function BasicSelect() {
             <FormControl fullWidth>
             <Select
                 autoWidth={true}
-                sx={{paddingX:'8px'}}
+                sx={{paddingX:'8px', fontWeight:"bold"}}
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 value={text}
