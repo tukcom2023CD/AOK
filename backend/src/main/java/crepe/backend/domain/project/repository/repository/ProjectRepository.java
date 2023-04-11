@@ -1,8 +1,6 @@
-package crepe.backend.domain.project.repository.repository;
+/*package crepe.backend.domain.project.repository.repository;
 
 import crepe.backend.domain.project.domain.entity.Project;
-import crepe.backend.domain.user.domain.entity.UserProject;
-import crepe.backend.domain.user.repository.repository.UserProjectRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -28,4 +26,4 @@ public class ProjectRepository {
     }
 
 
-}
+}*/

@@ -53,6 +53,7 @@ public class User extends BaseEntity {
         this.nickname = nickname;
         this.photo = photo;
         super.isActive = true;
+        this.uuid = UUID.randomUUID();
     }
 
     public interface UserInfoMapping // 유저의 id만 가져오기 위한 인터페이스 생성

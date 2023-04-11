@@ -1,4 +1,4 @@
-package crepe.backend.domain.project.controller;
+/*package crepe.backend.domain.project.controller;
 
 
 import crepe.backend.domain.project.service.ProjectService;
@@ -14,4 +14,4 @@ public class ProjectController {
     private final ProjectService projectService;
 
 
-}
+}*/
