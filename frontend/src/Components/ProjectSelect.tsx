@@ -27,7 +27,7 @@ export default function BasicSelect() {
 
     return (
     <ThemeProvider theme={theme}>
-        <Box sx={{ maxWidth:310, minWidth: 120, color:'secondary'}}>
+        <Box sx={{ maxWidth:'100vw', minWidth: 120, color:'secondary'}}>
             <FormControl fullWidth>
             <Select
                 autoWidth={true}

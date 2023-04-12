@@ -1,7 +1,8 @@
+
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import { ThemeProvider,createTheme } from '@mui/material/styles';
-import UpsideGray from '../Components/UpsideGray';
+import UpsideBar from '../Components/UpsideBar';
 import { Typography, Button,IconButton } from '@mui/material';
 import BasicSelect from '../Components/ProjectSelect';
 import BasicList from '../Components/List';
@@ -20,25 +21,32 @@ import { bgcolor, fontSize } from '@mui/system';
 import FeedBack from '../Components/FeedBack';
 import Seekbar from '../Components/Seekbar';
 import Seekbars from '../Components/Seekbars';
+import UpsideGray from '../Components/UpsideGray';
 import { BtnStyle } from '../Components/Button';
 
 interface props{
     backgroundcolor?: string;
 }
 
-const ApplyBtn = styled.button `
-  width: 180px;
-  height: 50px;
+const ProjectBtn = styled.button `
+  width: 100vw;
+  height: 30px;
   background-color: #FF9198;
   color: white;
-  font-size: 15x;
+  font-size: 10x;
   font-weight: bold;
-  border-radius: 10px;
+  border-radius: 8px;
   &:hover{
     background-color: #d7777e;
     transition: 0.5s;
   }
 `;
+
+const style = {
+    width: '100%',
+    maxWidth: 360,
+    bgcolor: 'background.paper',
+};
 
 export const theme = createTheme({
     palette: {
@@ -64,54 +72,37 @@ const ProfilePic = styled.div<props>`
     background-color: ${(props) => props.backgroundcolor};
 `;
 
-// interface Props{
-//     title?: "Line" | "Log History"
-// }
-
-// const Title: Props = {
-//     title: "Line",
-// }
 
 export default function LogHistory() {
     return (
         <ThemeProvider theme={theme}>
-            <Box sx={{ flexGrow: 1, flexShrink:1 }} display={'flex'}>
-                <Box sx={{bgcolor: 'secondary.light'}} width={'16vw'} height={'100vh'} position={'fixed'}>
-                    <Box>
-                        <UpsideGray />
+            <Box sx={{ flexGrow: 1, flexShrink:1 }} display={'flex'} flexDirection={'column'} position={'fixed'}>
+                 <Box width={'100vw'}  display={'flex'} > {/*상단바 */}
+                    <Box width={'16vw'} display={'flex'} flexDirection={'column'} >
+                        <Box width={'16vw'} >
+                            <UpsideGray />
+                        </Box>
+                        <Box sx={{width:"100vw", height:"42px", alignText:'center', bgcolor:"#D9D9D9", alignContent:'center'}} >
+                            <Typography sx={{fontWeight:"bold", mt:'8px', ml:'15px'}}>
+                            Tino Project
+                            </Typography>
+                        </Box>
                     </Box>
-                            <Box height={'88vh'}>
-                                <BasicSelect />
-                                <Box sx={{bgcolor: 'secondary.light'}} maxWidth='300px' marginTop={'1px'} marginBottom={'25px'}>
-                                    <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'} maxWidth='300px' height='50px'>
-                                        <Box paddingLeft={'20px'}>
-                                            <Typography fontWeight={'bold'}>branch</Typography>
-                                        </Box>
-                                        <Box paddingRight={'3px'}>
-                                            <Button><AddIcon sx={{fontSize: '18px', color: '#000000'}}/></Button>
-                                        </Box>
-                                    </Box>
-                                    <Box display={'flex'} justifyContent={'center'}>
-                                        <BasicList />
-                                    </Box>
-                                </Box>
-                            </Box>
-                            <Box>
-                                <Profile />
-                            </Box>
+                    <Box width={'83vw'} >
+                        <SelectBar />
                     </Box>
-                    
-                    <Box display={'flex'} position={"absolute"} flexDirection={'column'}>
-                        <Box display={'flex'} flexDirection={'column'} width={'83vw'} marginLeft={'16vw'}>  
-                            <Box position={'fixed'}>
-                                <SelectBar />
-                            </Box>
+                </Box>
 
-                            {/* <Box  sx={{position:"fixed"}}>
-                                <SelectBar />
-                            </Box> */}
-
-                        <Box  display={'flex'} flexDirection={'column'} overflow={'auto'}>
+                <Box  width={'100vw'} display={'flex'} height={'100vh'}>
+                    {/* 좌측 */}
+                    <Box width={'16vw'} display={'flex'} flexDirection={'column'} sx={{bgcolor: '#F3F3F3'}}>
+                        <BasicList />
+                        <Box marginTop={'65vh'}>
+                            <Profile />
+                        </Box>
+                    </Box>
+                    {/* 우측 */}
+                    <Box  display={'flex'} flexDirection={'column'} overflow={'auto'} height={"80vh"} marginX={'auto'}>
                                 <Box display={'flex'} marginX={'auto'} marginTop={'20vh'}>
                                     <img src="img/tino.png" alt="tino" width={'400px'} height={'400px'} />
                                 </Box>
@@ -119,8 +110,7 @@ export default function LogHistory() {
                                 
                                 <Box display={'flex'} justifyContent={'center'} alignItems={'center'} marginLeft={'65px'}>
                                     <Typography fontSize={'21px'} fontWeight={'bold'} marginTop={'20px'} marginBottom={"5px"} textAlign={"center"}>선 굵기 수정 24px</Typography>
-                                    {/* <IconButton sx={{border:"ButtonShadow", mt:'15px',bgcolor:"primary", position:"none"}}><EditIcon sx={{bgcolor:"primary"}}/></IconButton> */}
-                                    <Button sx={{border:"ButtonShadow", mt:'15px', position:'inherit'}}><EditIcon/></Button>
+                                        <Button sx={{border:"ButtonShadow", mt:'15px', position:'inherit'}}><EditIcon/></Button>
                                 </Box>
                                 <Box display={'flex'} justifyContent={'center'}>
                                     <Typography sx={{color: 'primary.light', fontSize: '15px'}}>@Ellie</Typography>
@@ -133,31 +123,29 @@ export default function LogHistory() {
                                     <DiscreteSlider />
                                 </Box>
 
-                                <Box display={'flex'} justifyContent={'space-around'} marginX={"250px"}>
-                                    <Box display={'flex'} flexDirection={'column'}>
+                                <Box display={'flex'} justifyContent={'center'} marginX={"200px"}>
+                                    <Box display={'flex'} flexDirection={'column'} marginRight={'15px'}>
                                         <Typography sx={{fontWeight:"bolder", fontSize:"20px"}}>files</Typography>
-                                        <Box display={'flex'} justifyContent={'center'}>
                                             <Box display={'flex'} justifyContent={'center'} width={'500px'} height={'500px'} bgcolor={"#FFF2F2"} sx={{overflowY:"auto"}}>
                                                 <FileList />
-                                            </Box>    
                                         </Box>
                                     </Box>
 
-                                    <Box display={'flex'} flexDirection={'column'}>
+                                    <Box display={'flex'} flexDirection={'column'} marginLeft={'15px'}>
                                         <Typography sx={{fontWeight:"bolder", fontSize:"20px"}}>feedback</Typography>
                                         <FeedBack />
                                     </Box>
                                 </Box>
 
                                 <Box display={'flex'} justifyContent={'center'} marginY={"50px"}>
-                                    
-                                    <ApplyBtn>apply</ApplyBtn>
+                                    <Button sx={{width:"180px", height:"50px", color:"#FFFFFF" ,bgcolor:"#FF9198", borderRadius:"10px", fontSize:"15px" , fontWeight:"bold"}}>apply</Button>
                                 </Box>
                             </Box>
-                        </Box>
-                        </Box>
+                    <Box>
+
                     </Box>
+                </Box> 
+            </Box>
         </ThemeProvider>
     );
 }
-
