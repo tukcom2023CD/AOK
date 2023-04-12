@@ -88,7 +88,7 @@ function Upload() {
                         </Box>
                     </Box>
                     {/* 우측 */}
-                    <Box display={'flex'} flexDirection={'column'} overflow={'auto'} marginX={'auto'} marginY={'50px'}>
+                    <Box display={'flex'} flexDirection={'column'} overflow={'auto'} marginX={'auto'} marginY={'100px'}>
                       <div>
                         <Backgrdiv>
                           <DragDrop/>

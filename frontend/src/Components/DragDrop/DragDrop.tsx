@@ -149,7 +149,7 @@ const DragDrop = () => {
 
   /*------------- 리스트 드래그 앤 드랍 관련 함수 ------------*/
     const onDragEnd = (result: any) => {
-      if(!result){
+      if(!result.destination){
         return;
       }
 
@@ -195,9 +195,11 @@ const DragDrop = () => {
         <DragDropContext onDragEnd = {onDragEnd}>
           <Droppable droppableId="DragDrop-Files">
             {(provided) => (
-              <div className="DragDrop-Files"
+              <div 
+              ref={provided.innerRef}
               {...provided.droppableProps}
               >
+              <div className="DragDrop-Files">
               {files.length > 0 &&
                 files.map((file: IFileTypes) => {
                   const {
@@ -230,6 +232,7 @@ const DragDrop = () => {
                   );
                 })}
 
+              </div>
               </div>
             )}
           
