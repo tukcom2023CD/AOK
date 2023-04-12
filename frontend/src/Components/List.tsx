@@ -9,7 +9,7 @@ import Divider from '@mui/material/Divider';
 
 export default function BasicList() {
     return (
-    <Box sx={{ width: '100vw', bgcolor: 'background.paper'}}>
+    <Box sx={{ width: '16vw', bgcolor: 'background.paper'}}>
         <Divider />
         <nav aria-label="folders">
         <List>
