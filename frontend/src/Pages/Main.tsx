@@ -2,18 +2,20 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import { ThemeProvider,createTheme } from '@mui/material/styles';
 import styled from 'styled-components';
-import UpsideBar from '../Components/UpsideBar';
-import { Typography, Button } from '@mui/material';
+import { Typography} from '@mui/material';
 import ImgList from '../Components/ImgList';
-import { BtnStyle } from '../Components/Button';
+import BasicList from '../Components/List';
+import Profile from '../Components/Profile';
+import SelectBar from '../Components/SelectBar';
+import UpsideGray from '../Components/UpsideGray';
 
 
 const CreateBtn = styled.button `
-  width: 80px;
+  width: 100px;
   height: 30px;
   background-color: #FF9198;
   color: white;
-  font-size: 10x;
+  font-size: 15px;
   font-weight: bold;
   border-radius: 8px;
   &:hover{
@@ -38,27 +40,53 @@ export const button = styled.button`
 `
 
 export default function Main() {
-
     return (
         <ThemeProvider theme={theme}>
-            <Box sx={{ flexGrow: 1, flexShrink:1 }}>
-                <UpsideBar/>
-                <Box display={'flex'} justifyContent={'center'} width={'100vw'} marginTop={'5rem'}>
-                    <Box display={'flex'} justifyContent={'center'}  width={'33%'}></Box>
-                    <Box display={'flex'} justifyContent={'center'}  width={'33%'}><Typography variant='h5' fontWeight={'bolder'} ml={'0rem'} alignContent={'center'}  >Projects</Typography></Box> 
-                    <Box width={'26%'} display={'flex'} justifyContent={'center'}>
-                    <CreateBtn
-                    >create
-                    </CreateBtn>
+            <Box sx={{ flexGrow: 1, flexShrink:1 }} display={'flex'} flexDirection={'column'} position={'fixed'}>
+                 <Box width={'100vw'}  display={'flex'} > {/*상단바 */}
+                    <Box width={'16vw'} display={'flex'} flexDirection={'column'} >
+                        <Box width={'16vw'} >
+                            <UpsideGray />
+                        </Box>
+                        <Box sx={{width:"100vw", height:"42px", alignText:'center', bgcolor:"#D9D9D9", alignContent:'center'}} >
+                            <Typography sx={{fontWeight:"bold", mt:'8px', ml:'15px'}}>
+                            Tino Project
+                            </Typography>
+                        </Box>
                     </Box>
-                    <Box width={'7%'}></Box>
-                    
-                    
+                    <Box width={'83vw'} >
+                        <SelectBar />
+                    </Box>
                 </Box>
-                <Box display={'flex'} justifyContent={'center'}>
-                <ImgList/>
-                </Box>
+
+                <Box  width={'100vw'} display={'flex'} height={'100vh'}>
+                    {/* 좌측 */}
+                    <Box width={'16vw'} display={'flex'} flexDirection={'column'} sx={{bgcolor: '#F3F3F3'}}>
+                        <BasicList />
+                        <Box marginTop={'65vh'}>
+                            <Profile />
+                        </Box>
+                    </Box>
+                    {/* 우측 */}
+                    <Box display={'flex'} flexDirection={'column'} marginX={'auto'} marginY={'50px'}>
+                        
+                        <Box display={'flex'} justifyContent={'center'} alignItems={'center'}>
+                        <Box display={'flex'} justifyContent={'center'}  width={'20%'}></Box>
+                            <Box display={'flex'} justifyContent={'center'}  width={'60%'}><Typography variant='h4' fontWeight={'bold'} >Projects</Typography></Box> 
+                            <Box width={'20%'} display={'flex'} justifyContent={'center'}>
+                                <CreateBtn>create</CreateBtn>
+                            </Box>
+                            
+                        </Box>
+
+                        <Box display={'flex'} justifyContent={'center'}>
+                            <ImgList/>
+                        </Box>
+                    </Box>
+                </Box> 
             </Box>
         </ThemeProvider>
     );
 }
+
+
