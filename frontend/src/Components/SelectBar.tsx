@@ -37,17 +37,17 @@ const Title: Props = {
 export default function SelectBar() {
     return (
         <Box sx={{position: 'fixed'}}>
-        <ThemeProvider theme={theme}>
-        <Box bgcolor={"secondary.light"} display={'flex'} width={"100vw"} height={'60px'}>
-            <Box marginLeft={'20px'} marginY={"auto"} alignItems={'center'}>
-                <Typography fontSize={"27px"} fontWeight={"bold"} fontFamily={"unset"} width={"20vw"}>Line</Typography>
-            </Box>
+            <ThemeProvider theme={theme}>
+                <Box bgcolor={"secondary.light"} display={'flex'} width={"100vw"} height={'60px'}>
+                    <Box marginLeft={'20px'} marginY={"auto"} alignItems={'center'}>
+                        <Typography fontSize={"27px"} fontWeight={"bold"} fontFamily={"unset"} width={"20vw"}>Line</Typography>
+                    </Box>
+                </Box>
+                <Box bgcolor={"secondary.light"} width={"100vw"} paddingX={"5px"}>
+                    <ColorTabs/>
+                </Box>
+            </ThemeProvider>
         </Box>
-        <Box bgcolor={"secondary.light"} width={"100vw"} paddingX={"5px"}>
-            <ColorTabs/>
-        </Box>
-        </ThemeProvider>
-    </Box>
     );
 }
 

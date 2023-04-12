@@ -40,5 +40,6 @@ public class Feedback extends BaseEntity {
         this.log = log;
         this.content = content;
         super.isActive = true;
+        this.uuid = UUID.randomUUID();
     }
 }
