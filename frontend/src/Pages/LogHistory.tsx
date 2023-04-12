@@ -77,7 +77,7 @@ export default function LogHistory() {
     return (
         <ThemeProvider theme={theme}>
             <Box sx={{ flexGrow: 1, flexShrink:1 }} display={'flex'} flexDirection={'column'} position={'fixed'}>
-                 <Box width={'100vw'} height={'12vh'} display={'flex'} > {/*상단바 */}
+                 <Box width={'100vw'}  display={'flex'} > {/*상단바 */}
                     <Box width={'16vw'} display={'flex'} flexDirection={'column'} >
                         <Box width={'16vw'} >
                             <UpsideGray />
@@ -102,7 +102,7 @@ export default function LogHistory() {
                         </Box>
                     </Box>
                     {/* 우측 */}
-                    <Box  display={'flex'} flexDirection={'column'} overflow={'auto'} height={"80vh"}>
+                    <Box  display={'flex'} flexDirection={'column'} overflow={'auto'} height={"80vh"} marginX={'auto'}>
                                 <Box display={'flex'} marginX={'auto'} marginTop={'20vh'}>
                                     <img src="img/tino.png" alt="tino" width={'400px'} height={'400px'} />
                                 </Box>
