@@ -7,9 +7,7 @@ import React, {
 } from "react";
 import "./DragDrop.scss";
 import styles from './DragDrop.module.css';
-import {DndProvider} from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
-import { BtnStyle } from '../Button';
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import {FaTrash} from 'react-icons/fa';
 
 
@@ -83,6 +81,7 @@ const DragDrop = () => {
     [files]
   );
 
+  /*------------- 이미지 업로드 드래그 앤 드랍 관련 함수 ------------*/
   const handleDragIn = useCallback((e: DragEvent): void => {
     e.preventDefault();
     e.stopPropagation();
@@ -139,6 +138,9 @@ const DragDrop = () => {
     return () => resetDragEvents();
   }, [initDragEvents, resetDragEvents]);
 
+  /*------------- 이미지 업로드 드래그 앤 드랍 관련 함수 ------------*/
+
+  /*------------- 리스트 드래그 앤 드랍  ------------*/
 
   return (
     <div className="wholediv">
