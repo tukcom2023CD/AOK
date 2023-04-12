@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Builder
 @Getter
@@ -15,7 +16,7 @@ public class ProjectCreateRequest {
     @NotBlank(message = "프로젝트 이름을 입력해주세요.")
     private final String name;
 
-    @NotBlank(message = "유저 아이디를 입력해주세요.")
+    @NotNull(message = "유저 아이디를 입력해주세요.")
     private final Long userId;
 
 }

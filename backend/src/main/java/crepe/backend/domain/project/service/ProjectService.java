@@ -25,7 +25,7 @@ public class ProjectService {
     }
     private Project convertProjectFromRequest(ProjectCreateRequest projectCreateRequest) {
         User foundUser = getUserById(projectCreateRequest.getUserId());
-        //user-project에 정보 저장 필요
+        //user-project에 정보 저장 필요, foundUser 어드민 권한 주기
         return Project.builder()
                 .name(projectCreateRequest.getName())
                 .build();
@@ -37,8 +37,6 @@ public class ProjectService {
     private ProjectInfo mapProjectEntityToProjectInfoResponse(Project project) {
         return ProjectInfo.builder()
                 .name(project.getName())
-                .createdAt(project.getCreatedAt())
-                .updatedAt(project.getUpdatedAt())
                 .uuid(project.getUuid())
                 .build();
     }
