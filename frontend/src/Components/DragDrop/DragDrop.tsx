@@ -17,6 +17,9 @@ type IFileTypes = {
   URL: string;
 }
 
+type IFileList = {
+  imageFiles: IFileTypes[];
+}
 
 
 const DragDrop = () => {
@@ -25,6 +28,10 @@ const DragDrop = () => {
   const dragRef = useRef<HTMLLabelElement | null>(null);
   const fileId = useRef<number>(0);
   var reversed_index;
+
+  const [fileList, setfileList] = useState<IFileList>({
+    imageFiles: files,
+  });
 
   const onChangeFiles = useCallback(
     (e: ChangeEvent<HTMLInputElement> | any): void => {
@@ -140,7 +147,29 @@ const DragDrop = () => {
 
   /*------------- 이미지 업로드 드래그 앤 드랍 관련 함수 ------------*/
 
-  /*------------- 리스트 드래그 앤 드랍  ------------*/
+  /*------------- 리스트 드래그 앤 드랍 관련 함수 ------------*/
+    const onDragEnd = (result: any) => {
+      if(!result){
+        return;
+      }
+
+      const { source, destination } = result;
+      let lists = [...files];
+      let index;
+
+      if(source.index !== destination.index){
+        let selectItem = lists[result.source.index];
+        lists.splice(result.source.index, 1);
+        lists.splice(destination.index, 0, selectItem);
+        setFiles(lists);
+      }
+
+    };
+
+
+
+  /*------------- 리스트 드래그 앤 드랍 관련 함수 ------------*/
+
 
   return (
     <div className="wholediv">
@@ -162,37 +191,52 @@ const DragDrop = () => {
           <div>upload files</div>
         </label>
         </div>
-      
-        <div className="DragDrop-Files">
 
-          {files.length > 0 &&
-            files.map((file: IFileTypes) => {
-              const {
-                id,
-                object: { name },
-                URL
-              } = file;
-              
-
-              return (
-                
-                <ul className='lists'>
-                  <li className='list-new'>
-                    
-                    <div className="nameDiv">{name}</div>
-                    <div className='DragDrop-Files-Filter' onClick={() => handleFilterFile(id)}>
-                        <button className={styles.button}><FaTrash size="20"/></button>
-                    </div>
-                    
-                  </li>
-                </ul>
+        <DragDropContext onDragEnd = {onDragEnd}>
+          <Droppable droppableId="DragDrop-Files">
+            {(provided) => (
+              <div className="DragDrop-Files"
+              {...provided.droppableProps}
+              >
+              {files.length > 0 &&
+                files.map((file: IFileTypes) => {
+                  const {
+                    id,
+                    object: { name },
+                    URL
+                  } = file;
                   
-                
-              );
-            })}
+                  
+                  return (
+                    <Draggable draggableId={name} index={id} key = {id}>
+                      {(provided) => (
+                      <ul className='lists'
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                      >
+                        <li className='list-new'>
+                          
+                          <div className="nameDiv">{name}</div>
+                          <div className='DragDrop-Files-Filter' onClick={() => handleFilterFile(id)}>
+                              <button className={styles.button}><FaTrash size="20"/></button>
+                          </div>
+                          
+                        </li>
+                      </ul>)}
+                      
+                    </Draggable> 
+                    
+                  );
+                })}
 
-        </div>
-        
+              </div>
+            )}
+          
+          </Droppable>
+        </DragDropContext>
+
+
         <div className="PreviewTextdiv">
           Preview
         </div>
