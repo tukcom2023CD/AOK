@@ -22,10 +22,25 @@ import FeedBack from '../Components/FeedBack';
 import Seekbar from '../Components/Seekbar';
 import Seekbars from '../Components/Seekbars';
 import UpsideGray from '../Components/UpsideGray';
+import { BtnStyle } from '../Components/Button';
 
 interface props{
     backgroundcolor?: string;
 }
+
+const ProjectBtn = styled.button `
+  width: 100vw;
+  height: 30px;
+  background-color: #FF9198;
+  color: white;
+  font-size: 10x;
+  font-weight: bold;
+  border-radius: 8px;
+  &:hover{
+    background-color: #d7777e;
+    transition: 0.5s;
+  }
+`;
 
 const style = {
     width: '100%',
@@ -62,78 +77,18 @@ export default function LogHistory() {
     return (
         <ThemeProvider theme={theme}>
             <Box sx={{ flexGrow: 1, flexShrink:1 }} display={'flex'}>
-                <Box sx={{bgcolor: 'secondary.light'}} width={'307px'} height={'100vh'} position={'fixed'}>
-                    {/*  width={'16vw'} */}
-                    <Box>
+                <Box width={'100vw'} display={'flex'}>
+                    <Box width={'16vw'} display={'flex'} flexDirection={'column'}>
                         <UpsideGray />
+                        <Box sx={{width:"100vw", height:"40px", alignText:'center', bgcolor:"#D9D9D9", alignContent:'center'}}><Typography sx={{fontWeight:"bold", mt:'8px', ml:'15px'}}>
+                            Tino Project</Typography>
+                        </Box>
                     </Box>
-                            <Box height={'800px'}>
-                                <BasicSelect />
-                                <Box sx={{bgcolor: 'secondary.light'}} maxWidth='300px' marginTop={'1px'} marginBottom={'25px'}>
-                                    <Box display={'flex'} justifyContent={'center'}>
-                                        <BasicList />
-                                    </Box>
-                                </Box>
-                            </Box>
-                            <Box>
-                                <Profile />
-                            </Box>
+                    <Box width={'83vw'}>
+                        <SelectBar />
                     </Box>
-                    
-                        <Box display={'flex'} position={"absolute"} flexDirection={'column'} width={'83vw'} marginLeft={'16vw'}>
-                            <Box position={'fixed'}>
-                                <SelectBar />
-                            </Box>
-
-
-
-
-
-                        <Box  display={'flex'} flexDirection={'column'} overflow={'auto'} height={"100vh"}>
-                                <Box display={'flex'} marginX={'auto'} marginTop={'20vh'}>
-                                    <img src="img/tino.png" alt="tino" width={'400px'} height={'400px'} />
-                                </Box>
-                                
-                                
-                                <Box display={'flex'} justifyContent={'center'} alignItems={'center'} marginLeft={'65px'}>
-                                    <Typography fontSize={'21px'} fontWeight={'bold'} marginTop={'20px'} marginBottom={"5px"} textAlign={"center"}>선 굵기 수정 24px</Typography>
-                                        <Button sx={{border:"ButtonShadow", mt:'15px', position:'inherit'}}><EditIcon/></Button>
-                                </Box>
-                                <Box display={'flex'} justifyContent={'center'}>
-                                    <Typography sx={{color: 'primary.light', fontSize: '15px'}}>@Ellie</Typography>
-                                </Box>
-                                <Box display={'flex'} justifyContent={'center'}>
-                                    <Typography sx={{color: 'primary.light', fontSize: '15px'}}>23.08.01:22</Typography>
-                                </Box>
-
-                                <Box display={'flex'} justifyContent={'center'} marginY={"40px"} >
-                                    <DiscreteSlider />
-                                </Box>
-
-                                <Box display={'flex'} justifyContent={'center'} marginX={"200px"}>
-                                    <Box display={'flex'} flexDirection={'column'} marginRight={'15px'}>
-                                        <Typography sx={{fontWeight:"bolder", fontSize:"20px"}}>files</Typography>
-                                            <Box display={'flex'} justifyContent={'center'} width={'500px'} height={'500px'} bgcolor={"#FFF2F2"} sx={{overflowY:"auto"}}>
-                                                <FileList />
-                                        </Box>
-                                    </Box>
-
-                                    <Box display={'flex'} flexDirection={'column'} marginLeft={'15px'}>
-                                        <Typography sx={{fontWeight:"bolder", fontSize:"20px"}}>feedback</Typography>
-                                        <FeedBack />
-                                    </Box>
-                                </Box>
-
-                                <Box display={'flex'} justifyContent={'center'} marginY={"50px"}>
-                                    <Button sx={{width:"180px", height:"50px", color:"#FFFFFF" ,bgcolor:"#FF9198", borderRadius:"10px", fontSize:"15px" , fontWeight:"bold"}}>apply</Button>
-                                </Box>
-                            </Box>
-
-
-
-
-                        </Box> 
-                    </Box>
+                </Box>
+            </Box>
         </ThemeProvider>
     );
 }
