@@ -192,6 +192,28 @@ const DragDrop = () => {
         </label>
         </div>
 
+        <div className="PreviewTextdiv">
+          Preview
+        </div>
+
+        <div className="imagePreview"> 
+            {files.length > 0 && files.map((file: IFileTypes, index: number)=> {
+              const {
+                id,
+                object: {name},
+                URL
+              } = file;
+              
+              reversed_index = files.length - 1 - index;
+
+              return (
+                <div key = {index} style={(reversed_index===0) ? {} :  {position: 'absolute', zIndex: reversed_index}}>
+                  <img src = {URL}/>
+                </div>
+              );
+            })}
+        </div>
+
         <DragDropContext onDragEnd = {onDragEnd}>
           <Droppable droppableId="DragDrop-Files">
             {(provided) => (
@@ -240,27 +262,7 @@ const DragDrop = () => {
         </DragDropContext>
 
 
-        <div className="PreviewTextdiv">
-          Preview
-        </div>
-
-        <div className="imagePreview"> 
-            {files.length > 0 && files.map((file: IFileTypes, index: number)=> {
-              const {
-                id,
-                object: {name},
-                URL
-              } = file;
-              
-              reversed_index = files.length - 1 - index;
-
-              return (
-                <div key = {index} style={(reversed_index===0) ? {} :  {position: 'absolute', zIndex: reversed_index}}>
-                  <img src = {URL}/>
-                </div>
-              );
-            })}
-        </div>
+        
       </div>
       
     </div>
