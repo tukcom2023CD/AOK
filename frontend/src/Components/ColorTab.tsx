@@ -13,6 +13,7 @@ import UploadIcon from '@mui/icons-material/Upload';
 import MergeIcon from '@mui/icons-material/Merge';
 import HistoryIcon from '@mui/icons-material/History';
 import SettingsIcon from '@mui/icons-material/Settings';
+import {Link} from 'react-router-dom';
 
 export const theme = createTheme({
     palette: {
@@ -42,6 +43,7 @@ export default function ColorTabs() {
   };
 
   return (
+    <nav>
     <Box sx={{ width: '100%', marginY:'auto'}}>
       <Tabs
         value={value}
@@ -56,5 +58,8 @@ export default function ColorTabs() {
         <Tab value="setting" label= {<Box display={"flex"} justifyContent={"center"} alignItems={"center"}><SettingsIcon sx={{mr:"5px", fontSize:"20px"}}/><Typography>setting</Typography></Box>} />
       </Tabs>
     </Box>
+
+      {/* <Link to='../Pages/Upload'>upload</Link> */}
+    </nav>
   );
 }

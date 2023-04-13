@@ -1,4 +1,6 @@
 import * as React from 'react';
+import {useState, useCallback} from "react";
+import BasicModal from '../Components/Modalcom';
 import Box from '@mui/material/Box';
 import { ThemeProvider,createTheme } from '@mui/material/styles';
 import styled from 'styled-components';
@@ -8,38 +10,24 @@ import BasicList from '../Components/List';
 import Profile from '../Components/Profile';
 import SelectBar from '../Components/SelectBar';
 import UpsideGray from '../Components/UpsideGray';
-
-
-const CreateBtn = styled.button `
-  width: 100px;
-  height: 30px;
-  background-color: #FF9198;
-  color: white;
-  font-size: 15px;
-  font-weight: bold;
-  border-radius: 8px;
-  &:hover{
-    background-color: #d7777e;
-    transition: 0.5s;
-  }
-`;
-
-export const theme = createTheme({
-    palette: {
-    primary: {
-        main: "#FF9198",
-    },
-    secondary: {
-        main: "#FFFFFF",
-    },
-    },
-});
+import MainModal from '../Components/MainModal';
 
 export const button = styled.button`
     transform: 'translate(Y)(2)'
 `
 
 export default function Main() {
+    // const [OpenModal, setOpenModal] = useState<boolean>(false);
+    const [open, setOpen] = React.useState(false);
+
+    const onClickToggleModal = useCallback(() => {
+        setOpen(!open);
+    }, [setOpen]);
+    
+    // const onClickToggleModal = useCallback(() => {
+    //     setOpenModal(!OpenModal);
+    // }, [OpenModal]);
+
     return (
         <ThemeProvider theme={theme}>
             <Box sx={{ flexGrow: 1, flexShrink:1 }} display={'flex'} flexDirection={'column'} position={'fixed'}>
@@ -74,7 +62,10 @@ export default function Main() {
                         <Box display={'flex'} justifyContent={'center'}  width={'20%'}></Box>
                             <Box display={'flex'} justifyContent={'center'}  width={'60%'}><Typography variant='h4' fontWeight={'bold'} >Projects</Typography></Box> 
                             <Box width={'20%'} display={'flex'} justifyContent={'center'}>
-                                <CreateBtn>create</CreateBtn>
+                                <CreateBtn onClick={onClickToggleModal}>create</CreateBtn>
+                                {open && (
+                                    <MainModal onClickToggleModal = {onClickToggleModal}></MainModal>
+                                )}{/*OpenModal*/}
                             </Box>
                             
                         </Box>
@@ -88,5 +79,30 @@ export default function Main() {
         </ThemeProvider>
     );
 }
+
+export const theme = createTheme({
+    palette: {
+    primary: {
+        main: "#FF9198",
+    },
+    secondary: {
+        main: "#FFFFFF",
+    },
+    },
+});
+
+const CreateBtn = styled.button `
+    width: 100px;
+    height: 30px;
+    background-color: #FF9198;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 8px;
+    &:hover{
+        background-color: #d7777e;
+        transition: 0.5s;
+    }
+`;
 
 

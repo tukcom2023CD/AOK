@@ -9,6 +9,7 @@ import "./DragDrop.scss";
 import styles from './DragDrop.module.css';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import {FaTrash} from 'react-icons/fa';
+import { BtnStyle } from '../Button';
 
 
 type IFileTypes = {
@@ -221,7 +222,14 @@ const DragDrop = () => {
                           
                           <div className="nameDiv">{name}</div>
                           <div className='DragDrop-Files-Filter' onClick={() => handleFilterFile(id)}>
-                              <button className={styles.button}><FaTrash size="20"/></button>
+                            <BtnStyle
+                            backgroundcolor='transparent'
+                            marginLeft='0.5rem'
+                            borderStyle='none'
+                            outlineStyle='none'>
+                              <FaTrash size="20"/>
+                            </BtnStyle>
+                              {/* <button className={styles.button}></button> */}
                           </div>
                           
                         </li>
@@ -256,9 +264,10 @@ const DragDrop = () => {
 
               return (
                 <div key = {index} style={(reversed_index===0) ? {} :  {position: 'absolute', zIndex: reversed_index}}>
-                  <img src = {URL}/>
+                  <img  src={URL} alt="Alternative text" width="200" height="100" aria-label="For screen readers"/>
                 </div>
               );
+              // <img src = {URL}/> 안되면 바로 이걸로 변경
             })}
         </div>
       </div>
