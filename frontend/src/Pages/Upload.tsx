@@ -19,7 +19,7 @@ const Backgrdiv = styled.div`
 
 
 const Commentdiv = styled.input`
-  width: 1050px;
+  width: 1000px;
   height: 85px;
   border-radius: 10px;
   background-color: #FFF4F4;
