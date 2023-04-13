@@ -4,13 +4,22 @@ import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Grow from '@mui/material/Grow';
 import Paper from '@mui/material/Paper';
 import Popper from '@mui/material/Popper';
+ import Link from '@material-ui/core/Link';
+// import { Link } from "react-router-dom";
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import Stack from '@mui/material/Stack';
 import { createTheme, MuiThemeProvider } from "@material-ui/core";
 import MenuIcon from '@mui/icons-material/Menu';
+import Project from '../Pages/Project';
+import { useNavigate } from 'react-router-dom';
 
 export default function MenuListComposition() {
+  const movePage = useNavigate();
+  function goProject(){
+    movePage('/Project');
+  }
+
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
 
@@ -80,7 +89,7 @@ export default function MenuListComposition() {
             transition
             disablePortal
           >
-            {({ TransitionProps, placement }) => (
+            {({ TransitionProps, placement}) => (
               <Grow
                 {...TransitionProps}
                 style={{
@@ -96,7 +105,9 @@ export default function MenuListComposition() {
                       aria-labelledby="composition-button"
                       onKeyDown={handleListKeyDown}
                     >
-                      <MenuItem onClick={handleClose}>Project</MenuItem>
+                      <MenuItem onClick={goProject}>
+                        Project
+                        </MenuItem>
                       <MenuItem onClick={handleClose}>Notification</MenuItem>
                       <MenuItem onClick={handleClose}>Settings</MenuItem>
                       <MenuItem onClick={handleClose}>Logout</MenuItem>

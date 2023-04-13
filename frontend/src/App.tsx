@@ -12,7 +12,7 @@ function App() {
       <Router>
         <Routes>
           {/* 메인 페이지 */}
-          <Route path='/main' element={<Main />} />
+          <Route path='/main' element={<Main  />} />
 
           {/* 이하 다른 페이지들 주석으로 구분 */}
           <Route path='/project' element={<Project />} />
