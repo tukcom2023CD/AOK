@@ -2,14 +2,6 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 
-// const marks = [
-//   {
-//     value:"2023/08/03"
-    
-    
-//   },
-// ];
-
 function valuetext(value: number) {
   return `${value}`;
 }

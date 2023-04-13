@@ -16,6 +16,7 @@ import SelectBar from '../Components/SelectBar';
 import EditIcon from '@mui/icons-material/Edit';
 import TextField2 from '../Components/TextField2';
 import DiscreteSlider from '../Components/Slider';
+import DateSlide from '../Components/DateSlider';
 import FileList from '../Components/FileList';
 import { bgcolor, fontSize } from '@mui/system';
 import FeedBack from '../Components/FeedBack';
@@ -121,6 +122,10 @@ export default function LogHistory() {
 
                                 <Box display={'flex'} justifyContent={'center'} marginY={"40px"} >
                                     <DiscreteSlider />
+                                </Box>
+
+                                <Box display={'flex'} justifyContent={'center'} marginY={"40px"} >
+                                    <DateSlide />
                                 </Box>
 
                                 <Box display={'flex'} justifyContent={'center'} marginX={"200px"}>
