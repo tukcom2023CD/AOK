@@ -33,16 +33,6 @@ export default function MainModal({
             <Typography id="modal-modal-title" sx={{fontWeight: 'bold'}} variant="h3" component="h3">
                 New Project
             </Typography>
-            
-            <CancelBox onClick={(e: React.MouseEvent) => {
-                e.preventDefault();
-
-                if(onClickToggleModal){
-                    onClickToggleModal();
-                }
-            }}>
-                <ClearIcon/>
-            </CancelBox>
             </TitleDiv>
             <InputBox>
             <Typography id="modal-modal-title" sx={{fontWeight: 'bold'}} variant="h6" component="h2" align="left" marginLeft={'125px'}>
