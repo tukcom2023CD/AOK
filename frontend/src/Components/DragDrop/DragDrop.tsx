@@ -172,9 +172,9 @@ const DragDrop = () => {
 
 
   return (
-    <div className="wholediv">
+    <div className="inlineblockDiv">
       <div className="DragDrop">
-        <div className={styles.left}>
+        {/* <div className={styles.left}>
         <input
           type="file"
           id="fileUpload"
@@ -190,77 +190,97 @@ const DragDrop = () => {
         >
           <div>upload files</div>
         </label>
-        </div>
-
-        {/* <div className="PreviewTextdiv">
-          Preview
         </div> */}
+
+        
         <div className="flexDiv">
-          <div className="imagePreview"> 
-              {files.length > 0 && files.map((file: IFileTypes, index: number)=> {
-                const {
-                  id,
-                  object: {name},
-                  URL
-                } = file;
-                
-                reversed_index = files.length - 1 - index;
+          <div className="inlineblockDiv">
+            <div className="PreviewTextdiv">
+            preview
+            </div>
+            <div className="imagePreview"> 
+                {files.length > 0 && files.map((file: IFileTypes, index: number)=> {
+                  const {
+                    id,
+                    object: {name},
+                    URL
+                  } = file;
+                  
+                  reversed_index = files.length - 1 - index;
 
-                return (
-                  <div className="imagePreviewDiv" key = {index} style={(reversed_index===0) ? {} :  {position: 'absolute', zIndex: reversed_index}}>
-                    <img src = {URL} className="imageDiv"/>
-                  </div>
-                );
-              })}
+                  return (
+                    <div className="imagePreviewDiv" key = {index} style={(reversed_index===0) ? {} :  {position: 'absolute', zIndex: reversed_index}}>
+                      <img src = {URL} className="imageDiv"/>
+                    </div>
+                  );
+                })}
+            </div>
           </div>
-          
 
-          <DragDropContext onDragEnd = {onDragEnd}>
-            <Droppable droppableId="DragDrop-Files">
-              {(provided) => (
-                <div 
-                ref={provided.innerRef}
-                {...provided.droppableProps}
-                >
-                <div className="DragDrop-Files">
-                {files.length > 0 &&
-                  files.map((file: IFileTypes, index: number) => {
-                    const {
-                      id,
-                      object: { name },
-                      URL
-                    } = file;
-                    
-                    
-                    return (
-                      <Draggable draggableId={name} index={index} key = {id}>
-                        {(provided) => (
-                        <ul className='lists'
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                        >
-                          <li className='list-new'>
-                            
-                            <div className="nameDiv">{name}</div>
-                            <div className='DragDrop-Files-Filter' onClick={() => handleFilterFile(id)}>
-                                <button className={styles.button}><FaTrash size="20"/></button>
-                            </div>
-                            
-                          </li>
-                        </ul>)}
-                        
-                      </Draggable> 
+          <div className="inlineblockDiv">
+            <div className="PreviewTextdiv">
+            drag and drop the files
+            </div>
+            {/* <input
+              type="file"
+              id="fileUpload"
+              style={{display: "none"}}
+              multiple={true}
+              onChange={onChangeFiles}
+            /> */}
+            <label 
+              className={isDragging? "DragDrop-File-Dragging" : "DragDrop-Files"}
+              htmlFor="fileUpload"
+              ref={dragRef}
+            >
+            <DragDropContext onDragEnd = {onDragEnd}>
+              <Droppable droppableId="DragDrop-Files">
+                {(provided) => (
+                  <div 
+                  ref={provided.innerRef}
+                  {...provided.droppableProps}
+                  >
+                  <div className="DragDrop-Files">
+                  {files.length > 0 &&
+                    files.map((file: IFileTypes, index: number) => {
+                      const {
+                        id,
+                        object: { name },
+                        URL
+                      } = file;
                       
-                    );
-                  })}
+                      
+                      return (
+                        <Draggable draggableId={name} index={index} key = {id}>
+                          {(provided) => (
+                          <ul className='lists'
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                          >
+                            <li className='list-new'>
+                              
+                              <div className="nameDiv">{name}</div>
+                              <div className='DragDrop-Files-Filter' onClick={() => handleFilterFile(id)}>
+                                  <button className={styles.button}><FaTrash size="20"/></button>
+                              </div>
+                              
+                            </li>
+                          </ul>)}
+                          
+                        </Draggable> 
+                        
+                      );
+                    })}
 
-                </div>
-                </div>
-              )}
-            
-            </Droppable>
-          </DragDropContext>
+                  </div>
+                  </div>
+                )}
+              
+              </Droppable>
+            </DragDropContext>
+            </label>
+          </div>
         </div>          
 
         

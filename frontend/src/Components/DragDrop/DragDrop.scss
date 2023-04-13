@@ -18,7 +18,7 @@
     align-items: center;
   }
 
-  .wholediv {
+  .inlineblockDiv {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -27,13 +27,14 @@
 
   .flexDiv {
     display: flex;
+    margin-bottom: 4rem;
     justify-content: center;
     align-items: center;
   }
 
   .DragDrop {
     width: 100%;
-    margin-top: 5rem;
+    margin-top: 3rem;
     margin-bottom: 3rem;
     @include alignCenter();
     
@@ -59,9 +60,10 @@
     &-Files {
   
       & > div {
-        width: 300px;
-        padding: 8px;
-        border: 1px solid black;
+        width: 450px;
+        height: 450px;
+        margin-right: 10px;
+        //border: 1px solid red;
         //margin-bottom: 10px;
         display: flex;
         //justify-content: space-between;
@@ -149,12 +151,11 @@
 }
 
 .imagePreview{
-  margin-top: 4rem;
-  margin-bottom: 4rem;
   margin-right: 1rem; //가로로 했을 때 간격
   width: 500px;
   height: 500px;
   border: none;
+  border-radius: 10px;
   background-color: #FFF2F2;
   display: table;
   align-items: center;
@@ -185,7 +186,9 @@
 
 .PreviewTextdiv{
   margin-top: 4rem;
-  font-size: 20pt;
-  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 1rem;
 }
+
+
 
