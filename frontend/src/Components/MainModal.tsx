@@ -21,7 +21,7 @@ export default function MainModal({
         const handleClose = () => setOpen(false);
     return (
     <div>
-        <Button onClick={handleOpen}>create</Button>
+        <Btn onClick={handleOpen}>create</Btn> 
         <Modal
         open={open}
         onClose={handleClose}
@@ -72,6 +72,22 @@ const style = {
     boxShadow: 24,
     p: 4,
   };
+
+  const Btn = styled.button`
+  width: 100px;
+  height: 30px;
+  background-color: #FF9198;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  &:hover{
+    background-color: #d7777e;
+    transition: 0.5s;
+  }
+`;
+
   
   const CreateBtn = styled.button`
     width: 830px;

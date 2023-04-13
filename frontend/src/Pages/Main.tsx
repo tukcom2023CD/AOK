@@ -17,16 +17,12 @@ export const button = styled.button`
 `
 
 export default function Main() {
-    // const [OpenModal, setOpenModal] = useState<boolean>(false);
+
     const [open, setOpen] = React.useState(false);
 
     const onClickToggleModal = useCallback(() => {
         setOpen(!open);
     }, [setOpen]);
-    
-    // const onClickToggleModal = useCallback(() => {
-    //     setOpenModal(!OpenModal);
-    // }, [OpenModal]);
 
     return (
         <ThemeProvider theme={theme}>
@@ -56,16 +52,17 @@ export default function Main() {
                         </Box>
                     </Box>
                     {/* 우측 */}
-                    <Box display={'flex'} flexDirection={'column'} marginX={'auto'} marginY={'50px'}>
+                    <Box display={'flex'} flexDirection={'column'} marginX={'auto'} marginY={'50px'} overflow={'auto'} height={"100vh"}>
                         
                         <Box display={'flex'} justifyContent={'center'} alignItems={'center'}>
                         <Box display={'flex'} justifyContent={'center'}  width={'20%'}></Box>
                             <Box display={'flex'} justifyContent={'center'}  width={'60%'}><Typography variant='h4' fontWeight={'bold'} >Projects</Typography></Box> 
                             <Box width={'20%'} display={'flex'} justifyContent={'center'}>
-                                <CreateBtn onClick={onClickToggleModal}>create</CreateBtn>
-                                {open && (
-                                    <MainModal onClickToggleModal = {onClickToggleModal}></MainModal>
-                                )}{/*OpenModal*/}
+                        
+                                    <MainModal  onClickToggleModal = {onClickToggleModal}></MainModal>
+                            
+                                {/* <CreateBtn onClick={ onClickToggleModal}>create</CreateBtn> */}
+
                             </Box>
                             
                         </Box>
