@@ -13,7 +13,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - data_mysql:/var/lib/crepedb
+      - data_mysql:/var/lib/mysql
     networks:
       - app-tier
     tty: true
