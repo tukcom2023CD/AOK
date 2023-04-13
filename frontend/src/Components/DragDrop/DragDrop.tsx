@@ -58,7 +58,7 @@ const DragDrop = () => {
           {
             id: fileId.current++, //fileId의 값을 1씩 늘려주며 각 파일의 고유값으로 사용
             object: file, //object 안에 선택했던 파일들의 정보 담김
-            URL: URL.createObjectURL(file)
+            URL: URL.createObjectURL(file),
           }
         ];
 
@@ -201,7 +201,7 @@ const DragDrop = () => {
               >
               <div className="DragDrop-Files">
               {files.length > 0 &&
-                files.map((file: IFileTypes) => {
+                files.map((file: IFileTypes, index: number) => {
                   const {
                     id,
                     object: { name },
@@ -210,7 +210,7 @@ const DragDrop = () => {
                   
                   
                   return (
-                    <Draggable draggableId={name} index={id} key = {id}>
+                    <Draggable draggableId={name} index={index} key = {id}>
                       {(provided) => (
                       <ul className='lists'
                         ref={provided.innerRef}
@@ -245,17 +245,17 @@ const DragDrop = () => {
         </div>
 
         <div className="imagePreview"> 
-            {files.length > 0 && files.map((file: IFileTypes)=> {
+            {files.length > 0 && files.map((file: IFileTypes, index: number)=> {
               const {
                 id,
                 object: {name},
                 URL
               } = file;
               
-              reversed_index = files.length - 1 - id;
+              reversed_index = files.length - 1 - index;
 
               return (
-                <div key = {id} style={(reversed_index===0) ? {} :  {position: 'absolute', zIndex: reversed_index}}>
+                <div key = {index} style={(reversed_index===0) ? {} :  {position: 'absolute', zIndex: reversed_index}}>
                   <img src = {URL}/>
                 </div>
               );
