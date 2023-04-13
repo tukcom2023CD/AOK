@@ -31,7 +31,7 @@ const Commentdiv = styled.input`
 
 const Btndiv = styled.div`
   margin-top: 5rem;
-  margin-bottom: 5rem;
+  margin-bottom: 10rem;
 `;
 
 const ApplyBtn = styled.button `
@@ -88,7 +88,7 @@ function Upload() {
                         </Box>
                     </Box>
                     {/* 우측 */}
-                    <Box display={'flex'} flexDirection={'column'} overflow={'auto'} marginX={'auto'} marginY={'100px'}>
+                    <Box display={'flex'} flexDirection={'column'} overflow={'auto'} marginX={'auto'} marginY={'10px'}>
                       <div>
                         <Backgrdiv>
                           <DragDrop/>
