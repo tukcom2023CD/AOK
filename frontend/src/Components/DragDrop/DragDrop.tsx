@@ -174,23 +174,6 @@ const DragDrop = () => {
   return (
     <div className="inlineblockDiv">
       <div className="DragDrop">
-        {/* <div className={styles.left}>
-        <input
-          type="file"
-          id="fileUpload"
-          style={{ display: "none" }}
-          multiple={true}
-          onChange={onChangeFiles}
-        />
-  
-        <label
-          className={isDragging ? "DragDrop-File-Dragging" : "DragDrop-File"}
-          htmlFor="fileUpload"
-          ref={dragRef}
-        >
-          <div>upload files</div>
-        </label>
-        </div> */}
 
         
         <div className="flexDiv">
@@ -262,7 +245,7 @@ const DragDrop = () => {
                               
                               <div className="nameDiv">{name}</div>
                               <div className='DragDrop-Files-Filter' onClick={() => handleFilterFile(id)}>
-                                  <button className={styles.button}><FaTrash size="20"/></button>
+                                  <button className={styles.button}><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /><span className="material-icons">highlight_off</span></button>
                               </div>
                               
                             </li>
