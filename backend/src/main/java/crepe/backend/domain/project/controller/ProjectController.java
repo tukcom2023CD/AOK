@@ -1,5 +1,7 @@
 package crepe.backend.domain.project.controller;
 
+import crepe.backend.domain.branch.dto.BranchInfo;
+import crepe.backend.domain.branch.dto.BranchInfoList;
 import crepe.backend.domain.project.dto.ProjectCreateRequest;
 import crepe.backend.domain.project.dto.ProjectInfo;
 import crepe.backend.domain.project.service.ProjectService;
@@ -26,9 +28,15 @@ public class ProjectController {
     }
 
     @GetMapping("/{uuid}")
-    public ResponseEntity<ResultResponse> findProjectByUUID(@PathVariable UUID uuid) {
-        ProjectInfo projectInfo = projectService.findProjectInfoById(uuid);
+    public ResponseEntity<ResultResponse> findProjectByUuid(@PathVariable UUID uuid) {
+        ProjectInfo projectInfo = projectService.findProjectInfoByUuid(uuid);
         return ResponseEntity.ok(ResultResponse.of(ResultCode.READ_ONE_PROJECT_SUCCESS, projectInfo));
+    }
+
+    @GetMapping("/{uuid}/branches")
+    public ResponseEntity<ResultResponse> findAllBranchByProjectUuid(@PathVariable UUID uuid) {
+        BranchInfoList branchInfoList = projectService.findAllBranchInfoByUuid(uuid);
+        return ResponseEntity.ok(ResultResponse.of(ResultCode.READ_PROJECT_BRANCH_SUCCESS, branchInfoList));
     }
 
 }
