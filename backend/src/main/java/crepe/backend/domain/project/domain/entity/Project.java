@@ -37,6 +37,8 @@ public class Project extends BaseEntity {
     public Project(String name){
         this.name = name;
         super.isActive = true;
+        this.uuid = UUID.randomUUID();
+
     }
 
     public interface ProjectInfoMapping // 프로젝트 아이디만 가져오기 위한 인터페이스 셍성

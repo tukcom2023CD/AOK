@@ -6,12 +6,15 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
 public class UserInfo {
 
     private Long id;
+
+    private UUID uuid;
 
     private String email;
 
@@ -26,8 +29,9 @@ public class UserInfo {
     private LocalDateTime updatedAt;
 
     @Builder
-    public UserInfo(Long id, String email, String nickname, String photo, LocalDateTime createdAt, LocalDateTime updatedAt)
+    public UserInfo(UUID uuid, Long id, String email, String nickname, String photo, LocalDateTime createdAt, LocalDateTime updatedAt)
     {
+        this.uuid = uuid;
         this.id = id;
         this.email = email;
         this.nickname = nickname;

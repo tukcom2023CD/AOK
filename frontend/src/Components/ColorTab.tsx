@@ -9,6 +9,10 @@ import { ThemeProvider,createTheme } from '@mui/material/styles';
 import styled from 'styled-components';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import UploadIcon from '@mui/icons-material/Upload';
+import MergeIcon from '@mui/icons-material/Merge';
+import HistoryIcon from '@mui/icons-material/History';
+import SettingsIcon from '@mui/icons-material/Settings';
 
 export const theme = createTheme({
     palette: {
@@ -46,10 +50,10 @@ export default function ColorTabs() {
         indicatorColor="primary"
         aria-label="secondary tabs example"
       >
-        <Tab value="upload" label="upload" />
-        <Tab value="merge" label="merge" />
-        <Tab value="log history" label="log history" />
-        <Tab value="setting" label="setting" />
+        <Tab value="upload" label= {<Box display={"flex"} justifyContent={"center"} alignItems={"center"}><UploadIcon sx={{mr:"5px", fontSize:"20px"}}/><Typography>upload</Typography></Box>} />
+        <Tab value="merge" label= {<Box display={"flex"} justifyContent={"center"} alignItems={"center"}><MergeIcon sx={{mr:"5px", fontSize:"20px"}}/><Typography>merge</Typography></Box>} />
+        <Tab value="log history" label= {<Box display={"flex"} justifyContent={"center"} alignItems={"center"}><HistoryIcon sx={{mr:"5px", fontSize:"20px"}}/><Typography>log history</Typography></Box>} />
+        <Tab value="setting" label= {<Box display={"flex"} justifyContent={"center"} alignItems={"center"}><SettingsIcon sx={{mr:"5px", fontSize:"20px"}}/><Typography>setting</Typography></Box>} />
       </Tabs>
     </Box>
   );

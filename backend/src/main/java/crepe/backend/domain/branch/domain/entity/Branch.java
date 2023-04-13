@@ -39,7 +39,9 @@ public class Branch extends BaseEntity {
     public Branch(Project project, String name) {
         this.project = project;
         this.name = name;
-        this.isActive = true;
+        super.isActive = true;
+        this.uuid = UUID.randomUUID();
+
     }
 
 

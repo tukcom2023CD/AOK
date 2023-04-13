@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import { ThemeProvider,createTheme } from '@mui/material/styles';
-import UpsideBar from '../Components/UpsideBar';
+import UpsideGray from '../Components/UpsideGray';
 import { Typography, Button } from '@mui/material';
 import BasicSelect from '../Components/ProjectSelect';
 import BasicList from '../Components/List';
@@ -61,7 +61,7 @@ export default function Project() {
                 
                 <Box display={'flex'}>
                     <Box sx={{bgcolor: 'secondary.light'}}width='300px' height={'100vh'} >
-                    <UpsideBar />
+                    <UpsideGray />
                         <Box height={'88vh'}>
                             <BasicSelect />
                             <Box sx={{bgcolor: 'secondary.light'}} maxWidth='300px' marginTop={'1px'} marginBottom={'25px'}>
@@ -88,7 +88,7 @@ export default function Project() {
                     <Box display={'flex'} flexDirection={'column'} width={'100vw'}>  
                         
                         <SelectBar />
-                        <Box display={'flex'} marginX={'auto'} marginTop={'50px'}>
+                        <Box display={'flex'} marginX={'auto'} marginTop={'200px'}>
                             <img src="img/tino.png" alt="tino" width={'400px'} height={'400px'}/>
                         </Box>
                         

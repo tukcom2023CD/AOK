@@ -27,11 +27,11 @@ export default function BasicSelect() {
 
     return (
     <ThemeProvider theme={theme}>
-        <Box sx={{ maxWidth:300, minWidth: 120, color:'secondary'}}>
+        <Box sx={{ maxWidth:310, minWidth: 120, color:'secondary'}}>
             <FormControl fullWidth>
             <Select
                 autoWidth={true}
-                sx={{paddingX:'8px'}}
+                sx={{paddingX:'8px', fontWeight:"bold"}}
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 value={text}

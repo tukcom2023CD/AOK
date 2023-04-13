@@ -2,6 +2,7 @@ package crepe.backend.domain.user.controller;
 
 import crepe.backend.domain.user.dto.UserCreate;
 import crepe.backend.domain.user.dto.UserInfo;
+import crepe.backend.domain.user.dto.UserProjectList;
 import crepe.backend.domain.user.service.UserService;
 import crepe.backend.global.response.ResultResponse;
 import lombok.RequiredArgsConstructor;
@@ -39,8 +40,9 @@ public class UserController {
 
     // UUID를 이용해서 해당 유저가 가지고 있는 프로젝트 가져오기
     @GetMapping("/{user_uuid}/projects")
-    public ResponseEntity<ResultResponse> findByUserProjectById(PathVariable UUID user_uuid)
+    public ResponseEntity<ResultResponse> findByUserProjectById(@PathVariable UUID user_uuid)
     {
-
+        UserProjectList userProjectList = userService.findUserProjectById(user_uuid);
+        return ResponseEntity.ok(ResultResponse.of(READ_ALL_USER_PROJECT_SUCCESS, userProjectList));
     }
 }

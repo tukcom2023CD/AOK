@@ -12,6 +12,7 @@ public enum ResultCode {
     // user
     READ_ONE_USER_SUCCESS("U001", "특정 유저 조회 성공"),
     CREATE_USER_SUCCESS("U002", "유저추가 성공"),
+    READ_ALL_USER_PROJECT_SUCCESS("U03", "해당 유저에 대한 프로젝트 조회 성공"),
 
     // project
     CREATE_PROJECT_SUCCESS("P001", "프로젝트 생성 성공"),
