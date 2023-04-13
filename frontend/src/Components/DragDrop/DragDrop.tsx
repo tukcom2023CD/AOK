@@ -202,8 +202,17 @@ const DragDrop = () => {
 
           <div className="inlineblockDiv">
             <div className="PreviewTextdiv">
-            drag and drop the files
+            <div className="textDiv">drag and drop the files</div>
+            <div className="buttonsDiv">
+              <button className={styles.button}><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+                <span className="material-icons">upload_file</span>
+              </button>
+              <button className={styles.button}><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+                <span className="material-icons">refresh</span>
+              </button>
             </div>
+            </div>
+            
             {/* <input
               type="file"
               id="fileUpload"
