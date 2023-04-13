@@ -43,7 +43,7 @@ public class ProjectService {
 
     public BranchInfoList findAllBranchInfoByUuid(UUID uuid) {
 
-        List<Branch> branches = branchRepository.findAllByProjectAndIsActiveTrue(findProjectByUuid(uuid)); //.orElseThrow(NotFoundBranchEntityException::new);
+        List<Branch> branches = branchRepository.findAllByProjectAndIsActiveTrue(findProjectByUuid(uuid));
         return getBranchInfoList(branches);
     }
 
