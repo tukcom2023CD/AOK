@@ -32,7 +32,6 @@ public class Project extends BaseEntity {
     @OneToMany(mappedBy = "project")
     private List<Branch> branches = new ArrayList<>();
 
-
     @Builder
     public Project(String name){
         this.name = name;

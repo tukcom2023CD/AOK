@@ -4,11 +4,14 @@ import crepe.backend.domain.project.domain.entity.Project;
 import crepe.backend.domain.project.domain.repository.ProjectRepository;
 import crepe.backend.domain.project.dto.ProjectCreateRequest;
 import crepe.backend.domain.project.dto.ProjectInfo;
+import crepe.backend.domain.project.exception.NotFoundProjectEntityException;
 import crepe.backend.domain.user.domain.entity.User;
 import crepe.backend.domain.user.domain.repository.UserRepository;
 import crepe.backend.domain.user.exception.NotFoundUserEntityException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -23,6 +26,12 @@ public class ProjectService {
 
         return mapProjectEntityToProjectInfoResponse(savedProject);
     }
+
+    public ProjectInfo findProjectInfoById(UUID uuid) {
+        Project foundProject = findProjectByUuid(uuid);
+        return mapProjectEntityToProjectInfoResponse(foundProject);
+    }
+
     private Project convertProjectFromRequest(ProjectCreateRequest projectCreateRequest) {
         User foundUser = getUserById(projectCreateRequest.getUserId());
         //user-project에 정보 저장 필요, foundUser 어드민 권한 주기
@@ -41,5 +50,8 @@ public class ProjectService {
                 .build();
     }
 
+    private Project findProjectByUuid(UUID uuid) {
+        return projectRepository.findProjectByUuidAndIsActiveTrue(uuid).orElseThrow(NotFoundProjectEntityException::new);
+    }
 }
 

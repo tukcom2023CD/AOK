@@ -7,12 +7,10 @@ import crepe.backend.global.response.ResultCode;
 import crepe.backend.global.response.ResultResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.UUID;
 
 @RequestMapping("/api/v1/projects")
 @RestController
@@ -25,6 +23,12 @@ public class ProjectController {
             @Valid @RequestBody ProjectCreateRequest request) {
         ProjectInfo projectInfo = projectService.createProject(request);
         return ResponseEntity.ok(ResultResponse.of(ResultCode.CREATE_PROJECT_SUCCESS, projectInfo));
+    }
+
+    @GetMapping("/{uuid}")
+    public ResponseEntity<ResultResponse> findProjectByUUID(@PathVariable UUID uuid) {
+        ProjectInfo projectInfo = projectService.findProjectInfoById(uuid);
+        return ResponseEntity.ok(ResultResponse.of(ResultCode.READ_ONE_PROJECT_SUCCESS, projectInfo));
     }
 
 }

@@ -9,6 +9,7 @@ public enum ErrorCode {
 
     // USER
     USER_NOT_FOUND(400, "U001", "유저를 찾기 실패"),
+    PROJECT_NOT_FOUND(400, "P001", "프로젝트 찾기 실패"),
     ;
 
     private final int status;
