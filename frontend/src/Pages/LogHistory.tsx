@@ -2,27 +2,17 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import { ThemeProvider,createTheme } from '@mui/material/styles';
-import UpsideBar from '../Components/UpsideBar';
 import { Typography, Button,IconButton } from '@mui/material';
-import BasicSelect from '../Components/ProjectSelect';
 import BasicList from '../Components/List';
-import AddIcon from '@mui/icons-material/Add';
-import SettingsIcon from '@mui/icons-material/Settings';
-import Divider from '@mui/material/Divider';
 import Profile from '../Components/Profile';
-import UseFormControl from "../Components/TextField";
 import styled from 'styled-components';
 import SelectBar from '../Components/SelectBar';
 import EditIcon from '@mui/icons-material/Edit';
-import TextField2 from '../Components/TextField2';
 import DiscreteSlider from '../Components/Slider';
+import DateSlide from '../Components/DateSlider';
 import FileList from '../Components/FileList';
-import { bgcolor, fontSize } from '@mui/system';
 import FeedBack from '../Components/FeedBack';
-import Seekbar from '../Components/Seekbar';
-import Seekbars from '../Components/Seekbars';
 import UpsideGray from '../Components/UpsideGray';
-import { BtnStyle } from '../Components/Button';
 
 interface props{
     backgroundcolor?: string;
@@ -110,7 +100,8 @@ export default function LogHistory() {
                                 
                                 <Box display={'flex'} justifyContent={'center'} alignItems={'center'} marginLeft={'65px'}>
                                     <Typography fontSize={'21px'} fontWeight={'bold'} marginTop={'20px'} marginBottom={"5px"} textAlign={"center"}>선 굵기 수정 24px</Typography>
-                                        <Button sx={{border:"ButtonShadow", mt:'15px', position:'inherit'}}><EditIcon/></Button>
+                                        <Button sx={{border:"ButtonShadow",  mt:'15px', }}><EditIcon/></Button>
+                                        {/* position:'inherit' 속성은 버튼을 클릭했을 때 효과로 화면 전체 배경을 "#FF9198"로 변경하기에 제외 */}
                                 </Box>
                                 <Box display={'flex'} justifyContent={'center'}>
                                     <Typography sx={{color: 'primary.light', fontSize: '15px'}}>@Ellie</Typography>
@@ -119,8 +110,12 @@ export default function LogHistory() {
                                     <Typography sx={{color: 'primary.light', fontSize: '15px'}}>23.08.01:22</Typography>
                                 </Box>
 
-                                <Box display={'flex'} justifyContent={'center'} marginY={"40px"} >
+                                {/* <Box display={'flex'} justifyContent={'center'} marginY={"40px"} >
                                     <DiscreteSlider />
+                                </Box> */}
+
+                                <Box display={'flex'} justifyContent={'center'} marginY={"40px"}>
+                                    <DateSlide />
                                 </Box>
 
                                 <Box display={'flex'} justifyContent={'center'} marginX={"200px"}>
