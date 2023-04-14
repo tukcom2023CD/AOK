@@ -5,8 +5,7 @@ import React, {
   useState,
   useEffect
 } from "react";
-import Lottie from "react-lottie";
-import uploadAnime from "../Lottie/uploding.json";
+import LottieUpload from "../LottieUpload";
 import "./DragDrop.scss";
 import styled from 'styled-components';
 import styles from './DragDrop.module.css';
@@ -114,6 +113,7 @@ const DragDrop = () => {
     e.preventDefault();
     e.stopPropagation();
 
+    LottieUpload(); 
     setIsDragging(false);
   }, []);
 
