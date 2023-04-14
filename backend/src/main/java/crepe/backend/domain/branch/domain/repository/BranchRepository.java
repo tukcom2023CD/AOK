@@ -12,5 +12,5 @@ import java.util.Optional;
 
 @Repository
 public interface BranchRepository extends JpaRepository<Branch, Long> {
-    List<Branch> findAllByProjectAndIsActiveTrue(Project project);
+    List<Branch> findAllByProjectAndIsActiveTrue(Project projectByUuid);
 }

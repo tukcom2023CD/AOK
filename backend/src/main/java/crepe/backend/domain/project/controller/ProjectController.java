@@ -5,6 +5,7 @@ import crepe.backend.domain.branch.dto.BranchInfoList;
 import crepe.backend.domain.project.dto.ProjectCreateRequest;
 import crepe.backend.domain.project.dto.ProjectInfo;
 import crepe.backend.domain.project.service.ProjectService;
+import crepe.backend.domain.user.dto.UserInfoList;
 import crepe.backend.global.response.ResultCode;
 import crepe.backend.global.response.ResultResponse;
 import lombok.RequiredArgsConstructor;
@@ -37,6 +38,12 @@ public class ProjectController {
     public ResponseEntity<ResultResponse> findAllBranchByProjectUuid(@PathVariable UUID uuid) {
         BranchInfoList branchInfoList = projectService.findAllBranchInfoByUuid(uuid);
         return ResponseEntity.ok(ResultResponse.of(ResultCode.READ_PROJECT_BRANCH_SUCCESS, branchInfoList));
+    }
+
+    @GetMapping("/{uuid}/users")
+    public ResponseEntity<ResultResponse> findAllUserByProjectUuid(@PathVariable UUID uuid) {
+        UserInfoList userInfoList = projectService.findAllUserInfoByUuid(uuid);
+        return ResponseEntity.ok(ResultResponse.of(ResultCode.READ_PROJECT_USER_SUCCESS, userInfoList));
     }
 
 }
