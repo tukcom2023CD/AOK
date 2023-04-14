@@ -5,10 +5,24 @@ import React, {
   useState,
   useEffect
 } from "react";
+import Lottie from "react-lottie";
+import uploadAnime from "../Lottie/uploding.json";
 import "./DragDrop.scss";
+import styled from 'styled-components';
 import styles from './DragDrop.module.css';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 
+
+const dragtest = styled.div`
+  width: 500px;
+  height: 1000px;
+  border: none;
+  background-color: red;
+  border-radius: 10px;
+  padding: 1rem;
+  overflow-y: auto;
+  //margin-bottom: 50px;
+`;
 
 type IFileTypes = {
   id: number; //파일들의 고유값 id
