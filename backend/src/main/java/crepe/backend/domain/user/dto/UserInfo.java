@@ -3,18 +3,12 @@ package crepe.backend.domain.user.dto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
 public class UserInfo {
-
-    private Long id;
-
-    private UUID uuid;
 
     private String email;
 
@@ -22,21 +16,11 @@ public class UserInfo {
 
     private String photo;
 
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private LocalDateTime createdAt;
-
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private LocalDateTime updatedAt;
-
     @Builder
-    public UserInfo(UUID uuid, Long id, String email, String nickname, String photo, LocalDateTime createdAt, LocalDateTime updatedAt)
+    public UserInfo(String email, String nickname, String photo)
     {
-        this.uuid = uuid;
-        this.id = id;
         this.email = email;
         this.nickname = nickname;
         this.photo = photo;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
     }
 }

@@ -4,8 +4,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-import java.util.UUID;
-
 @Builder
 @Getter
 @RequiredArgsConstructor

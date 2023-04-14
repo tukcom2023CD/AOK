@@ -1,4 +1,4 @@
-/*package crepe.backend.domain.user.repository;
+package crepe.backend.domain.user.domain.repository;
 
 import crepe.backend.domain.user.domain.entity.User;
 import crepe.backend.domain.user.domain.entity.UserProject;
@@ -12,5 +12,5 @@ import java.util.List;
 @Repository
 public interface UserProjectRepository extends JpaRepository<UserProject, Long> {
 
-    List<UserProject> findUserProjectByUser_Id(Long id);
-}*/
+    List<UserProject> findAllByUserAndIsActiveTrue(User user);
+}

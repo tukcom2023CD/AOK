@@ -1,8 +1,9 @@
 package crepe.backend.domain.user.controller;
 
+import crepe.backend.domain.project.dto.ProjectInfoList;
 import crepe.backend.domain.user.dto.UserCreate;
+import crepe.backend.domain.user.dto.UserCreateInfo;
 import crepe.backend.domain.user.dto.UserInfo;
-import crepe.backend.domain.user.dto.UserProjectList;
 import crepe.backend.domain.user.service.UserService;
 import crepe.backend.global.response.ResultResponse;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +27,7 @@ public class UserController {
     @PostMapping
     public ResponseEntity<ResultResponse> createUser(@Valid @RequestBody UserCreate createrequest)
     {
-        UserInfo userInfo = userService.userCreate(createrequest);
+        UserCreateInfo userInfo = userService.userCreate(createrequest);
         return ResponseEntity.ok(ResultResponse.of(CREATE_USER_SUCCESS, userInfo));
     }
 
@@ -42,7 +43,13 @@ public class UserController {
     @GetMapping("/{user_uuid}/projects")
     public ResponseEntity<ResultResponse> findByUserProjectById(@PathVariable UUID user_uuid)
     {
-        UserProjectList userProjectList = userService.findUserProjectById(user_uuid);
-        return ResponseEntity.ok(ResultResponse.of(READ_ALL_USER_PROJECT_SUCCESS, userProjectList));
+        ProjectInfoList projectList = userService.findUserProjectById(user_uuid);
+        return ResponseEntity.ok(ResultResponse.of(READ_ALL_USER_PROJECT_SUCCESS, projectList));
+    }
+
+    @DeleteMapping("/{user_uuid}")
+    public ResponseEntity<ResultResponse> deleteUser(@PathVariable UUID user_uuid) {
+        userService.deleteUser(user_uuid);
+        return ResponseEntity.ok(ResultResponse.of(DELETE_USER_SUCCESS, ""));
     }
 }
