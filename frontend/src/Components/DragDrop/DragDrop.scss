@@ -186,20 +186,22 @@
 
 .PreviewTextdiv{
   display: flex;
+  width: 500px;
   margin-top: 4rem;
   font-size: 20px;
   margin-bottom: 1rem;
+  justify-content: center;
 }
 
 .buttonsDiv{
   display: flex;
-  
   align-items: center;
+  margin-left: auto;
 }
 
 .textDiv{
   text-align: center;
-  margin: 0 auto;
+  margin-left: 150px;
 }
 
 .uploadDiv{
