@@ -60,8 +60,8 @@
     &-Files1 {
   
       & > div {
-        width: 450px;
-        height: 450px;
+        width: 500px;
+        height: 500px;
         margin-right: 10px;
         //border: 1px solid red;
         //margin-bottom: 10px;
@@ -180,7 +180,7 @@
 }
 .nameDiv{
   margin-right: auto;
-  margin-left: 1.5rem;
+  margin-left: 1rem;
 }
 
 
@@ -192,13 +192,21 @@
 }
 
 .buttonsDiv{
-  position: absolute;
-  right: 1;
-  margin-left: 240px;
+  display: flex;
+  
+  align-items: center;
 }
 
 .textDiv{
   text-align: center;
   margin: 0 auto;
+}
+
+.uploadDiv{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  //margin-bottom: 50px;
 }
 

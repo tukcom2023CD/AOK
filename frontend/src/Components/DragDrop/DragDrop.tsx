@@ -202,7 +202,7 @@ const DragDrop = () => {
             </div>
           </div>
 
-          <div className="inlineblockDiv">
+          <div className="uploadDiv">
             <div className="PreviewTextdiv">
             <div className="textDiv">drag and drop the files</div>
             <div className="buttonsDiv">
