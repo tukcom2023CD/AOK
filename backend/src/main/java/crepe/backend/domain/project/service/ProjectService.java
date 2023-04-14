@@ -4,7 +4,6 @@ import crepe.backend.domain.branch.domain.entity.Branch;
 import crepe.backend.domain.branch.domain.repository.BranchRepository;
 import crepe.backend.domain.branch.dto.BranchInfo;
 import crepe.backend.domain.branch.dto.BranchInfoList;
-import crepe.backend.domain.branch.exception.NotFoundBranchEntityException;
 import crepe.backend.domain.project.domain.entity.Project;
 import crepe.backend.domain.project.domain.repository.ProjectRepository;
 import crepe.backend.domain.project.dto.ProjectCreateRequest;
@@ -35,9 +34,28 @@ public class ProjectService {
 
     public ProjectInfo createProject(ProjectCreateRequest projectCreateRequest) {
         Project newProject = convertProjectFromRequest(projectCreateRequest);
+        User foundUser = getUserById(projectCreateRequest.getUserId());
         Project savedProject = projectRepository.save(newProject);
 
+        createUserProject(foundUser, savedProject, true);
+        createBranch(savedProject, "main");
+
         return mapProjectEntityToProjectInfoResponse(savedProject);
+    }
+
+    private void createUserProject(User user, Project project, boolean isAdmin) {
+        userProjectRepository.save(UserProject.builder()
+                .user(user)
+                .project(project)
+                .isAdmin(isAdmin)
+                .build());
+    }
+
+    private void createBranch(Project project,String name) {
+        branchRepository.save(Branch.builder()
+                .project(project)
+                .name(name)
+                .build());
     }
 
     public ProjectInfo findProjectInfoByUuid(UUID uuid) {
@@ -87,9 +105,6 @@ public class ProjectService {
         return new BranchInfoList(branchInfos);
     }
     private Project convertProjectFromRequest(ProjectCreateRequest projectCreateRequest) {
-        User foundUser = getUserById(projectCreateRequest.getUserId());
-        //user-project에 정보 저장 필요, foundUser 어드민 권한 주기
-        //main branch 생성되게 하기
         return Project.builder()
                 .name(projectCreateRequest.getName())
                 .build();
@@ -108,5 +123,6 @@ public class ProjectService {
     private Project findProjectByUuid(UUID uuid) {
         return projectRepository.findProjectByUuidAndIsActiveTrue(uuid).orElseThrow(NotFoundProjectEntityException::new);
     }
+
 }
 
