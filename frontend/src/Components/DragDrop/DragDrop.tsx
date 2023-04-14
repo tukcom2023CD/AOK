@@ -8,7 +8,6 @@ import React, {
 import "./DragDrop.scss";
 import styles from './DragDrop.module.css';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
-import {FaTrash} from 'react-icons/fa';
 
 
 type IFileTypes = {
@@ -26,8 +25,11 @@ const DragDrop = () => {
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [files, setFiles] = useState<IFileTypes[]>([]);
   const dragRef = useRef<HTMLLabelElement | null>(null);
+  const selectFile = useRef(null);
   const fileId = useRef<number>(0);
+  
   var reversed_index;
+
 
   const [fileList, setfileList] = useState<IFileList>({
     imageFiles: files,
@@ -204,9 +206,19 @@ const DragDrop = () => {
             <div className="PreviewTextdiv">
             <div className="textDiv">drag and drop the files</div>
             <div className="buttonsDiv">
-              <button className={styles.button}><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-                <span className="material-icons">upload_file</span>
-              </button>
+              <label className={styles.button} htmlFor="fileUploadbtn" ref={selectFile}>
+              <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+              <span className="material-icons">upload_file</span>
+              <input
+                type="file"
+                id="fileUploadbtn"
+                style={{display: "none"}}
+                multiple={true}
+                onChange={onChangeFiles}
+                ref={selectFile}
+                /> 
+              </label>
+
               <button className={styles.button}><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
                 <span className="material-icons">refresh</span>
               </button>
@@ -221,7 +233,7 @@ const DragDrop = () => {
               onChange={onChangeFiles}
             /> */}
             <label 
-              className={isDragging? "DragDrop-File-Dragging" : "DragDrop-Files"}
+              className={isDragging? "DragDrop-File-Dragging" : "DragDrop-Files1"}
               htmlFor="fileUpload"
               ref={dragRef}
             >
