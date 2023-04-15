@@ -4,7 +4,7 @@ import Main from './Pages/Main';
 import Project from './Pages/Project';
 import LogHistory from './Pages/LogHistory';
 import Upload from './Pages/Upload';
-import TodoList from './Components/Title/TodoList';
+import TodoList from './Components/Title/TitleList';
 
 function App() {
   return (
