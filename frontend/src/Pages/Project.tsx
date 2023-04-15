@@ -3,7 +3,7 @@ import { useState } from "react";
 import Box from '@mui/material/Box';
 import { ThemeProvider,createTheme } from '@mui/material/styles';
 import UpsideGray from '../Components/UpsideGray';
-import { Typography, Button } from '@mui/material';
+import { Typography, Button, TextField } from '@mui/material';
 import BasicSelect from '../Components/ProjectSelect';
 import BasicList from '../Components/List';
 import AddIcon from '@mui/icons-material/Add';
@@ -13,7 +13,7 @@ import { reverse } from 'dns';
 import SelectBar from '../Components/SelectBar';
 import EditIcon from '@mui/icons-material/Edit';
 import TextField2 from '../Components/TextField2';
-
+import TodoList from '../Components/Title/TodoList';
 import IosShareSharpIcon from '@mui/icons-material/IosShareSharp';
 
 interface props{
@@ -80,8 +80,10 @@ export default function Project() {
 
                         
                         <Box display={'flex'} justifyContent={'center'} alignItems={'center'} marginLeft={'65px'}>
-                            <Typography fontSize={'21px'} fontWeight={'bold'} marginTop={'20px'} marginBottom={"5px"} textAlign={"center"}>텍스트 변경</Typography>
-                            <Button sx={{border:"ButtonShadow", mt:'15px'}}><EditIcon/></Button>
+                            {/* <TextField id="standard-basic" label="Standard" variant="standard" /> */}
+                            {/* <Typography fontSize={'21px'} fontWeight={'bold'} marginTop={'20px'} marginBottom={"5px"} textAlign={"center"}>텍스트 변경</Typography> */}
+                            <TodoList></TodoList>
+                            {/* <Button sx={{border:"ButtonShadow", mt:'15px'}}><EditIcon/></Button> */}
                         </Box>
                         
                         <Box display={'flex'} justifyContent={'center'}>
