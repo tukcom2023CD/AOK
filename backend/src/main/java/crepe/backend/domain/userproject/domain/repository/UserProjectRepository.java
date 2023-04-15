@@ -1,9 +1,8 @@
-package crepe.backend.domain.user.domain.repository;
+package crepe.backend.domain.userproject.domain.repository;
 
 import crepe.backend.domain.user.domain.entity.User;
-import crepe.backend.domain.user.domain.entity.UserProject;
+import crepe.backend.domain.userproject.domain.entity.UserProject;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

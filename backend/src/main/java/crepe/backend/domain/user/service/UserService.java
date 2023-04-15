@@ -4,20 +4,18 @@ import crepe.backend.domain.project.domain.entity.Project;
 import crepe.backend.domain.project.dto.ProjectInfo;
 import crepe.backend.domain.project.dto.ProjectInfoList;
 import crepe.backend.domain.user.domain.entity.User;
-import crepe.backend.domain.user.domain.entity.UserProject;
+import crepe.backend.domain.userproject.domain.entity.UserProject;
 import crepe.backend.domain.user.dto.UserCreate;
 import crepe.backend.domain.user.dto.UserCreateInfo;
 import crepe.backend.domain.user.dto.UserInfo;
-import crepe.backend.domain.user.domain.repository.UserProjectRepository;
+import crepe.backend.domain.userproject.domain.repository.UserProjectRepository;
 import crepe.backend.domain.user.domain.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import crepe.backend.domain.user.exception.NotFoundUserEntityException;
 
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -62,13 +60,28 @@ public class UserService {
         return getProjectInfoList(projects);
     }
 
+    public UserInfo updateUserInfo(UUID user_uuid, Map<String, String> user)
+    {
+        User oUser = findUserById(user_uuid);
+
+        oUser.setPassword(user.get("password"));
+        oUser.setEmail(user.get("email"));
+        oUser.setNickname(user.get("nickname"));
+        oUser.setPhoto(user.get("photo"));
+
+        User savedata = userRepository.save(oUser);
+
+        return mapUserEntityToUserInfo(savedata);
+    }
+
     public void deleteUser(UUID uuid) {
-        User findUser = findUserById(uuid);
-        userRepository.delete(findUser);
+        User user = findUserById(uuid);
+        userRepository.deleteById(user.getId());
     }
 
     private UserInfo mapUserEntityToUserInfo(User savedUser) {
         return UserInfo.builder()
+                .uuid(savedUser.getUuid())
                 .email(savedUser.getEmail())
                 .nickname(savedUser.getNickname())
                 .photo(savedUser.getPhoto())

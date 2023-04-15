@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+import java.util.Map;
 import java.util.UUID;
 
 import static crepe.backend.global.response.ResultCode.*;
@@ -45,6 +46,13 @@ public class UserController {
     {
         ProjectInfoList projectList = userService.findUserProjectById(user_uuid);
         return ResponseEntity.ok(ResultResponse.of(READ_ALL_USER_PROJECT_SUCCESS, projectList));
+    }
+
+    @PatchMapping("/{user_uuid}")
+    public ResponseEntity<ResultResponse> updateUser(@PathVariable UUID user_uuid, @RequestBody Map<String,String> request)
+    {
+        UserInfo updateUser = userService.updateUserInfo(user_uuid, request);
+        return ResponseEntity.ok(ResultResponse.of(UPDATE_USER_SUCCESS, updateUser));
     }
 
     @DeleteMapping("/{user_uuid}")
