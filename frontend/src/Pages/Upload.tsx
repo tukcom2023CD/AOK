@@ -27,6 +27,7 @@ const Commentdiv = styled.input`
   font-size: 20pt;
   font-weight: bold;
   padding: 1.5rem;
+  //box-shadow: 2px 4px 8px;
 `;
 
 const Btndiv = styled.div`

@@ -17,7 +17,7 @@ const LottieDiv = styled.div`
   max-height: 100px;
 `;
 
-function LottieUpload () {
+const LottieUpload = () => {
   const LottieContainer = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if(LottieContainer.current){

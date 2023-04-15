@@ -42,7 +42,7 @@ const DragDrop = () => {
   const fileId = useRef<number>(0);
   
   var reversed_index;
-
+  
 
   const [fileList, setfileList] = useState<IFileList>({
     imageFiles: files,
@@ -102,6 +102,14 @@ const DragDrop = () => {
     },
     [files]
   );
+  
+  const handleDeleteFile = useCallback(
+    (id: number): void => {
+      setFiles(files.filter((file: IFileTypes) => file.id === id));
+    },
+    [files]
+  );
+  
 
   /*------------- 이미지 업로드 드래그 앤 드랍 관련 함수 ------------*/
   const handleDragIn = useCallback((e: DragEvent): void => {
@@ -112,15 +120,12 @@ const DragDrop = () => {
   const handleDragOut = useCallback((e: DragEvent): void => {
     e.preventDefault();
     e.stopPropagation();
-
-    LottieUpload(); 
     setIsDragging(false);
   }, []);
 
   const handleDragOver = useCallback((e: DragEvent): void => {
     e.preventDefault();
     e.stopPropagation();
-
     if (e.dataTransfer!.files) {
       setIsDragging(true);
     }
@@ -232,10 +237,11 @@ const DragDrop = () => {
                 ref={selectFile}
                 /> 
               </label>
-
+              
               <button className={styles.button}><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
                 <span className="material-icons">refresh</span>
               </button>
+              
             </div>
             </div>
             
@@ -251,6 +257,7 @@ const DragDrop = () => {
               htmlFor="fileUpload"
               ref={dragRef}
             >
+              
             <DragDropContext onDragEnd = {onDragEnd}>
               <Droppable droppableId="DragDrop-Files">
                 {(provided) => (
@@ -266,7 +273,6 @@ const DragDrop = () => {
                         object: { name },
                         URL
                       } = file;
-                      
                       
                       return (
                         <Draggable draggableId={name} index={index} key = {id}>
