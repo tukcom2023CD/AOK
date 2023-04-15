@@ -1,6 +1,5 @@
 package crepe.backend.domain.project.dto;
 
-import crepe.backend.domain.user.domain.entity.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

@@ -37,13 +37,18 @@ public class ProjectService {
         User foundUser = getUserById(projectCreateRequest.getUserId());
         Project savedProject = projectRepository.save(newProject);
 
-        createUserProject(foundUser, savedProject, true);
-        createBranch(savedProject, "main");
+        saveUserProject(foundUser, savedProject, true);
+        saveBranch(savedProject, "main");
 
         return mapProjectEntityToProjectInfoResponse(savedProject);
     }
 
-    private void createUserProject(User user, Project project, boolean isAdmin) {
+    public void createUserProject(Long userId, Long projectId) {
+        saveUserProject(getUserById(userId), getProjectById(projectId), false);
+    }
+
+
+    private void saveUserProject(User user, Project project, boolean isAdmin) {
         userProjectRepository.save(UserProject.builder()
                 .user(user)
                 .project(project)
@@ -51,7 +56,7 @@ public class ProjectService {
                 .build());
     }
 
-    private void createBranch(Project project,String name) {
+    private void saveBranch(Project project,String name) {
         branchRepository.save(Branch.builder()
                 .project(project)
                 .name(name)
@@ -111,6 +116,10 @@ public class ProjectService {
     }
     private User getUserById(Long userId) {
         return userRepository.findUserByIdAndIsActiveTrue(userId).orElseThrow(NotFoundUserEntityException::new);
+    }
+
+    private Project getProjectById(Long projectId) {
+        return projectRepository.findProjectByIdAndIsActiveTrue(projectId).orElseThrow(NotFoundProjectEntityException::new);
     }
 
     private ProjectInfo mapProjectEntityToProjectInfoResponse(Project project) {

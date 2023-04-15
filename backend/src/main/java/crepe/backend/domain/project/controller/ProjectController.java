@@ -4,6 +4,7 @@ import crepe.backend.domain.branch.dto.BranchInfo;
 import crepe.backend.domain.branch.dto.BranchInfoList;
 import crepe.backend.domain.project.dto.ProjectCreateRequest;
 import crepe.backend.domain.project.dto.ProjectInfo;
+import crepe.backend.domain.project.dto.UserProjectCreateRequest;
 import crepe.backend.domain.project.service.ProjectService;
 import crepe.backend.domain.user.dto.UserInfoList;
 import crepe.backend.global.response.ResultCode;
@@ -44,6 +45,14 @@ public class ProjectController {
     public ResponseEntity<ResultResponse> findAllUserByProjectUuid(@PathVariable UUID uuid) {
         UserInfoList userInfoList = projectService.findAllUserInfoByUuid(uuid);
         return ResponseEntity.ok(ResultResponse.of(ResultCode.READ_PROJECT_USER_SUCCESS, userInfoList));
+    }
+
+    @PostMapping("/users")
+    public ResponseEntity<ResultResponse> createUserProject(
+            //@PathVariable UUID uuid,
+            @Valid @RequestBody UserProjectCreateRequest userProjectCreateRequest) {
+        projectService.createUserProject(userProjectCreateRequest.getUserId(), userProjectCreateRequest.getProjectId());
+        return  ResponseEntity.ok(ResultResponse.of(ResultCode.CREATE_USERPROJECT_SUCCESS,""));
     }
 
 }
