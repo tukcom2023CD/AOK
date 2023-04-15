@@ -5,6 +5,7 @@ interface props{
     btncolor?: string;
     borderRadius?: string;
     borderStyle?: string;
+    outlineStyle?: string;
     backgroundcolor?: string;
     width?: string;
     height?: string;
@@ -24,6 +25,7 @@ export const BtnStyle = styled.button<props>`
     text-align: center;
     border-radius: ${(props) => props.borderRadius};
     border-style: ${(props) => props.borderStyle};
+    outline-style: ${(props) => props.outlineStyle};
     color: ${(props) => props.color};
     background-color: ${(props) => props.backgroundcolor};
     width: ${(props) => props.width};

@@ -97,14 +97,14 @@ export default function BasicModal() {
               New Project
             </Typography>
             
-            <CancelBox>
-              <ClearIcon/>
-            </CancelBox>
           </TitleDiv>
           <InputBox>
             <Typography id="modal-modal-title" sx={{fontWeight: 'bold'}} variant="h6" component="h2" align="left" marginLeft={'125px'}>
               name
             </Typography>
+            <CancelBox>
+                <ClearIcon/>
+            </CancelBox>
             <InputStyle/>
           </InputBox>
           <BtnBox>
