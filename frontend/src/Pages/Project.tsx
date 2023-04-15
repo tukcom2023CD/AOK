@@ -67,7 +67,7 @@ export default function Project() {
                     {/* 좌측 */}
                     <Box width={'16vw'} display={'flex'} flexDirection={'column'} sx={{bgcolor: '#F3F3F3'}}>
                         <BasicList />
-                        <Box marginTop={'65vh'}>
+                        <Box width={'16vw'}position={'fixed'} sx={{left:0, bottom:0, marginBottom: "10px"}}>
                             <Profile />
                         </Box>
                     </Box>
