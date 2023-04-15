@@ -238,7 +238,7 @@ const DragDrop = () => {
                 /> 
               </label>
               
-              <button className={styles.button}><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+              <button className={styles.button} onClick={() => window.location.reload()}><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
                 <span className="material-icons">refresh</span>
               </button>
               
