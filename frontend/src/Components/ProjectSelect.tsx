@@ -154,16 +154,16 @@ export default function BasicSelect() {
             <SearchInput/>
             <Ul>
               <Li>
-                <LinkWrapper href="sunggong">성공일까?</LinkWrapper>
+                <LinkWrapper href="sunggong">Tino Project</LinkWrapper>
               </Li>
               <Li>
-                <LinkWrapper href="sunggong">성공기원기</LinkWrapper>
+                <LinkWrapper href="sunggong">TUK Project</LinkWrapper>
               </Li>
               <Li>
-                <LinkWrapper href="sunggong">성공기원기</LinkWrapper>
+                <LinkWrapper href="sunggong">Test Project 1</LinkWrapper>
               </Li>
               <Li>
-                <LinkWrapper href="sunggong">성공기원기</LinkWrapper>
+                <LinkWrapper href="sunggong">Test Project 2</LinkWrapper>
               </Li>
             
 
