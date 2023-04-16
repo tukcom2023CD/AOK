@@ -70,10 +70,7 @@ function Upload() {
                             <UpsideGray />
                         </Box>
                         <Box sx={{width:"100vw", height:"42px", alignText:'center', bgcolor:"#D9D9D9", alignContent:'center'}} >
-                            {/* <Typography sx={{fontWeight:"bold", mt:'8px', ml:'15px'}}>
-                            Tino Project
-                            </Typography> */}
-                            <ProjectSelect/>
+                          <ProjectSelect/>
                         </Box>
                     </Box>
                     <Box width={'83vw'} >

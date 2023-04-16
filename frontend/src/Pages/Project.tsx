@@ -13,6 +13,7 @@ import { reverse } from 'dns';
 import SelectBar from '../Components/SelectBar';
 import EditIcon from '@mui/icons-material/Edit';
 import TextField2 from '../Components/TextField2';
+import ProjectSelect from '../Components/ProjectSelect';
 
 import IosShareSharpIcon from '@mui/icons-material/IosShareSharp';
 
@@ -53,9 +54,7 @@ export default function Project() {
                             <UpsideGray />
                         </Box>
                         <Box sx={{width:"100vw", height:"42px", alignText:'center', bgcolor:"#D9D9D9", alignContent:'center'}} >
-                            <Typography sx={{fontWeight:"bold", mt:'8px', ml:'15px'}}>
-                            Tino Project
-                            </Typography>
+                            <ProjectSelect/>
                         </Box>
                     </Box>
                     <Box width={'83vw'} >

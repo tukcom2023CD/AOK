@@ -11,6 +11,7 @@ import Profile from '../Components/Profile';
 import SelectBar from '../Components/SelectBar';
 import UpsideGray from '../Components/UpsideGray';
 import MainModal from '../Components/MainModal';
+import ProjectSelect from '../Components/ProjectSelect';
 
 export const button = styled.button`
     transform: 'translate(Y)(2)'
@@ -33,9 +34,7 @@ export default function Main() {
                             <UpsideGray />
                         </Box>
                         <Box sx={{width:"100vw", height:"42px", alignText:'center', bgcolor:"#D9D9D9", alignContent:'center'}} >
-                            <Typography sx={{fontWeight:"bold", mt:'8px', ml:'15px'}}>
-                            Tino Project
-                            </Typography>
+                            <ProjectSelect/>
                         </Box>
                     </Box>
                     <Box width={'83vw'} >

@@ -165,27 +165,7 @@ export default function BasicSelect() {
               <Li>
                 <LinkWrapper href="sunggong">성공기원기</LinkWrapper>
               </Li>
-              <Li>
-                <LinkWrapper href="sunggong">성공기원기</LinkWrapper>
-              </Li>
-              <Li>
-                <LinkWrapper href="sunggong">성공기원기</LinkWrapper>
-              </Li>
-              <Li>
-                <LinkWrapper href="sunggong">성공기원기</LinkWrapper>
-              </Li>
-              <Li>
-                <LinkWrapper href="sunggong">성공기원기</LinkWrapper>
-              </Li>
-              <Li>
-                <LinkWrapper href="sunggong">성공기원기</LinkWrapper>
-              </Li>
-              <Li>
-                <LinkWrapper href="sunggong">성공기원기</LinkWrapper>
-              </Li>
-              <Li>
-                <LinkWrapper href="sunggong">성공기원기</LinkWrapper>
-              </Li>
+            
 
             </Ul>
             <ProjectCreateBtn>create</ProjectCreateBtn>
