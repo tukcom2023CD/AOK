@@ -53,6 +53,7 @@ const Menu = styled.div`
 `;
 
 const Ul = styled.ul`
+  
   & > li {
     margin-bottom: 10px;
   }
@@ -63,20 +64,23 @@ const Ul = styled.ul`
 
 
   list-style-type: none;
+  height: 250px;
   padding: 0;
   margin: 0;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
 `;
 
 const Li = styled.li`
   display: flex;
-  border: 1px solid red;
+  //border: 1px solid red;
   height: 40px;
   width: 250px;
   align-items: center;
+
+  
 
   &:hover{
     background-color: #eeeeee;
@@ -88,7 +92,27 @@ const LinkWrapper = styled.a`
   font-size: 16px;
   text-decoration: none;
   color: black;
+  display: flex;
+  height: 40px;
+  width: 300px;
+  align-items: center;
 
+`;
+
+const SearchInput = styled.input `
+  width: 300px;
+  height: 50px;
+  background-color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #d9d9d9;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 1.5rem;
+  outline: none;
 `;
 
 const ProjectCreateBtn = styled.button `
@@ -98,7 +122,7 @@ const ProjectCreateBtn = styled.button `
   color: #FF9198;
   font-size: 20px;
   font-weight: bold;
-  border: 1px solid red;
+  border-top: 1px solid #d9d9d9;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   position: fixed;
@@ -127,6 +151,7 @@ export default function BasicSelect() {
       <div>
         {isOpen &&
           <Menu>
+            <SearchInput/>
             <Ul>
               <Li>
                 <LinkWrapper href="sunggong">성공일까?</LinkWrapper>
@@ -134,6 +159,34 @@ export default function BasicSelect() {
               <Li>
                 <LinkWrapper href="sunggong">성공기원기</LinkWrapper>
               </Li>
+              <Li>
+                <LinkWrapper href="sunggong">성공기원기</LinkWrapper>
+              </Li>
+              <Li>
+                <LinkWrapper href="sunggong">성공기원기</LinkWrapper>
+              </Li>
+              <Li>
+                <LinkWrapper href="sunggong">성공기원기</LinkWrapper>
+              </Li>
+              <Li>
+                <LinkWrapper href="sunggong">성공기원기</LinkWrapper>
+              </Li>
+              <Li>
+                <LinkWrapper href="sunggong">성공기원기</LinkWrapper>
+              </Li>
+              <Li>
+                <LinkWrapper href="sunggong">성공기원기</LinkWrapper>
+              </Li>
+              <Li>
+                <LinkWrapper href="sunggong">성공기원기</LinkWrapper>
+              </Li>
+              <Li>
+                <LinkWrapper href="sunggong">성공기원기</LinkWrapper>
+              </Li>
+              <Li>
+                <LinkWrapper href="sunggong">성공기원기</LinkWrapper>
+              </Li>
+
             </Ul>
             <ProjectCreateBtn>create</ProjectCreateBtn>
           </Menu>
