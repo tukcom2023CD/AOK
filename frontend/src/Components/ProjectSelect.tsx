@@ -1,50 +1,103 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import { ThemeProvider,createTheme } from '@mui/material/styles';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import {Button, Input} from '@mui/material';
-import { BtnStyle } from './Button';
-//import { fontWeight } from '@mui/joy/styles/styleFunctionSx';
-export const theme = createTheme({
-    palette: {
-    primary: {
-        main: "#FF9198",
-    },
-    secondary: {
-        main: "#FFFFFF",
-    },
-    },
-});
+import { useEffect, useState, useRef } from "react";
+import styled, {css} from "styled-components";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
+const ContainerDiv = styled.div`
+    width: 16vw;
+    display: flex;
+    background-color: #D9D9D9;
+
+`;
+
+const DropdownContainer = styled.div`
+    position: relative;
+    text-align: center;
+    z-index: 10;
+`;
+
+
+//안에 현재 플젝 이름과 버튼 표시해줄 그거
+const LabelDiv = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+
+    &:hover{
+      cursor: pointer;
+    }
+`;
+
+
+
+
+//메뉴 width: 300px, height: 350px
+const Menu = styled.div`
+    position: absolute;
+    width: 300px;
+    height: 350px;
+    background-color: white;
+    margin-left: 150px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    transform: translate(-50%, 20px);
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+    z-index: 9;
+`;
+
+const Ul = styled.ul`
+  & > li {
+    margin-bottom: 10px;
+  }
+
+  & > li:first-of-type {
+    margin-top: 10px;
+  }
+
+
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const Li = styled.li`
+`;
+
+const LinkWrapper = styled.a`
+  font-size: 16px;
+  text-decoration: none;
+  color: black;
+`;
+
+
 
 export default function BasicSelect() {
-    const [text, setText] = React.useState('');
-
-    const handleChange = (event: SelectChangeEvent) => {
-    setText(event.target.value as string);
-    };
+    const [isOpen, setisOpen] = useState<boolean>(false);
+    const onToggle = () => {
+      setisOpen(!isOpen);
+    }
 
     return (
-    <ThemeProvider theme={theme}>
-        <Box sx={{ maxWidth:'100vw', minWidth: 120, color:'secondary'}}>
-            <FormControl fullWidth>
-            <Select
-                autoWidth={true}
-                sx={{paddingX:'8px', fontWeight:"bold"}}
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={text}
-                onChange={handleChange}
-            >
-                <Input type="text" />
-                <MenuItem value={10}>Tino Project</MenuItem>
-                <MenuItem value={20}>ex1</MenuItem>
-                <MenuItem value={30}>ex2</MenuItem>
-                <Button> create</Button>
-            </Select>
-            </FormControl>
-        </Box>
-    </ThemeProvider>
+    <DropdownContainer>
+      <ContainerDiv onClick={onToggle}>
+        테스트용
+      </ContainerDiv>
+      <div>
+        {isOpen &&
+          <Menu>
+            <Ul>
+              <Li>
+                <LinkWrapper href="sunggong">성공일까?</LinkWrapper>
+              </Li>
+            </Ul>
+          </Menu>
+        }
+      </div>
+    </DropdownContainer>
     );
 }

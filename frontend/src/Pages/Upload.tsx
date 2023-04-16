@@ -9,6 +9,7 @@ import Profile from '../Components/Profile';
 import SelectBar from '../Components/SelectBar';
 import UpsideGray from '../Components/UpsideGray';
 import DragDrop from '../Components/DragDrop/DragDrop';
+import ProjectSelect from '../Components/ProjectSelect';
 
 const Backgrdiv = styled.div`
   display: inline-block;
@@ -69,9 +70,10 @@ function Upload() {
                             <UpsideGray />
                         </Box>
                         <Box sx={{width:"100vw", height:"42px", alignText:'center', bgcolor:"#D9D9D9", alignContent:'center'}} >
-                            <Typography sx={{fontWeight:"bold", mt:'8px', ml:'15px'}}>
+                            {/* <Typography sx={{fontWeight:"bold", mt:'8px', ml:'15px'}}>
                             Tino Project
-                            </Typography>
+                            </Typography> */}
+                            <ProjectSelect/>
                         </Box>
                     </Box>
                     <Box width={'83vw'} >
