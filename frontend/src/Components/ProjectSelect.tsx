@@ -29,6 +29,12 @@ const LabelDiv = styled.div`
     }
 `;
 
+const TextDiv = styled.div`
+  font-size: 16px;
+  font-weight: bold;
+
+  margin-left: 10px;
+`;
 
 
 
@@ -66,15 +72,44 @@ const Ul = styled.ul`
 `;
 
 const Li = styled.li`
+  display: flex;
+  border: 1px solid red;
+  height: 40px;
+  width: 250px;
+  align-items: center;
+
+  &:hover{
+    background-color: #eeeeee;
+    transition: 0.3s;
+  }
 `;
 
 const LinkWrapper = styled.a`
   font-size: 16px;
   text-decoration: none;
   color: black;
+
 `;
 
-
+const ProjectCreateBtn = styled.button `
+  width: 300px;
+  height: 50px;
+  background-color: white;
+  color: #FF9198;
+  font-size: 20px;
+  font-weight: bold;
+  border: 1px solid red;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  
+  &:hover{
+    background-color: #e1e1e1;
+    transition: 0.3s;
+  }
+`;
 
 export default function BasicSelect() {
     const [isOpen, setisOpen] = useState<boolean>(false);
@@ -85,7 +120,9 @@ export default function BasicSelect() {
     return (
     <DropdownContainer>
       <ContainerDiv onClick={onToggle}>
-        테스트용
+        <LabelDiv>
+          <TextDiv>Test!</TextDiv>
+        </LabelDiv>
       </ContainerDiv>
       <div>
         {isOpen &&
@@ -94,7 +131,11 @@ export default function BasicSelect() {
               <Li>
                 <LinkWrapper href="sunggong">성공일까?</LinkWrapper>
               </Li>
+              <Li>
+                <LinkWrapper href="sunggong">성공기원기</LinkWrapper>
+              </Li>
             </Ul>
+            <ProjectCreateBtn>create</ProjectCreateBtn>
           </Menu>
         }
       </div>
