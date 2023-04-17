@@ -17,6 +17,6 @@ const BtnDiv = styled.button`
 
 export default function CreateBtn() {
   return(
-    <BtnDiv>Create</BtnDiv>
+    <BtnDiv>create</BtnDiv>
   );
 }
