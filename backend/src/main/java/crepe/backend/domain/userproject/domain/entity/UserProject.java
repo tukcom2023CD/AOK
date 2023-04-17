@@ -39,5 +39,5 @@ public class UserProject extends BaseEntity {
         this.isAdmin = isAdmin;
     }
 
-    // admin으로 설정하는 코드
+    // admin으로 설정하는 코드 해야함.
 }
