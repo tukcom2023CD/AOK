@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ResultResponse {
+
+    private int status;
     private String code;
     private String message;
     private Object data;
@@ -17,8 +19,10 @@ public class ResultResponse {
     }
 
     public ResultResponse(ResultCode resultCode, Object data) {
+        this.status = resultCode.getStatus();
         this.code = resultCode.getCode();
         this.message = resultCode.getMessage();
         this.data = data;
     }
+
 }

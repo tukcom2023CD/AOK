@@ -9,7 +9,9 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User,Long> {
+
+    Optional<User> findUserByIdAndIsActiveTrue(Long userId);
 
     Optional<User> findUserByUuidAndIsActiveTrue(UUID uuid);
 }
