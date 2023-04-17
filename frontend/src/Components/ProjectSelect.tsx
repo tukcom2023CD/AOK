@@ -145,7 +145,7 @@ export default function BasicSelect() {
     <DropdownContainer>
       <ContainerDiv onClick={onToggle}>
         <LabelDiv>
-          <TextDiv>Test!</TextDiv>
+          <TextDiv>Tino Project</TextDiv>
         </LabelDiv>
       </ContainerDiv>
       <div>
