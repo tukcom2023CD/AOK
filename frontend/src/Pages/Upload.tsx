@@ -9,6 +9,7 @@ import Profile from '../Components/Profile';
 import SelectBar from '../Components/SelectBar';
 import UpsideGray from '../Components/UpsideGray';
 import DragDrop from '../Components/DragDrop/DragDrop';
+import ProjectSelect from '../Components/ProjectSelect';
 
 const Backgrdiv = styled.div`
   display: inline-block;
@@ -19,7 +20,7 @@ const Backgrdiv = styled.div`
 
 
 const Commentdiv = styled.input`
-  width: 1050px;
+  width: 1000px;
   height: 85px;
   border-radius: 10px;
   background-color: #FFF4F4;
@@ -27,11 +28,12 @@ const Commentdiv = styled.input`
   font-size: 20pt;
   font-weight: bold;
   padding: 1.5rem;
+  //box-shadow: 2px 4px 8px;
 `;
 
 const Btndiv = styled.div`
   margin-top: 5rem;
-  margin-bottom: 5rem;
+  margin-bottom: 10rem;
 `;
 
 const ApplyBtn = styled.button `
@@ -69,9 +71,7 @@ function Upload() {
                             <UpsideGray />
                         </Box>
                         <Box sx={{width:"100vw", height:"42px", alignText:'center', bgcolor:"#D9D9D9", alignContent:'center'}} >
-                            <Typography sx={{fontWeight:"bold", mt:'8px', ml:'15px'}}>
-                            Tino Project
-                            </Typography>
+                          <ProjectSelect/>
                         </Box>
                     </Box>
                     <Box width={'83vw'} >
@@ -83,12 +83,12 @@ function Upload() {
                     {/* 좌측 */}
                     <Box width={'16vw'} display={'flex'} flexDirection={'column'} sx={{bgcolor: '#F3F3F3'}}>
                         <BasicList />
-                        <Box marginTop={'65vh'}>
+                        <Box width={'16vw'}position={'fixed'} sx={{left:0, bottom:0, marginBottom: "10px"}}>
                             <Profile />
                         </Box>
                     </Box>
                     {/* 우측 */}
-                    <Box display={'flex'} flexDirection={'column'} overflow={'auto'} marginX={'auto'} marginY={'100px'}>
+                    <Box display={'flex'} flexDirection={'column'} overflow={'auto'} marginX={'auto'} marginY={'10px'}>
                       <div>
                         <Backgrdiv>
                           <DragDrop/>

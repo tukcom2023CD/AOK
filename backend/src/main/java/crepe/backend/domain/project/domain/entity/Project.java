@@ -1,7 +1,7 @@
 package crepe.backend.domain.project.domain.entity;
 
 import crepe.backend.domain.branch.domain.entity.Branch;
-import crepe.backend.domain.user.domain.entity.UserProject;
+import crepe.backend.domain.userProject.domain.entity.UserProject;
 import crepe.backend.global.domain.BaseEntity;
 import lombok.*;
 
@@ -32,12 +32,16 @@ public class Project extends BaseEntity {
     @OneToMany(mappedBy = "project")
     private List<Branch> branches = new ArrayList<>();
 
-
     @Builder
     public Project(String name){
         this.name = name;
         super.isActive = true;
         this.uuid = UUID.randomUUID();
 
+    }
+
+    public interface ProjectInfoMapping // 프로젝트 아이디만 가져오기 위한 인터페이스 셍성
+    {
+        Long getId();
     }
 }
