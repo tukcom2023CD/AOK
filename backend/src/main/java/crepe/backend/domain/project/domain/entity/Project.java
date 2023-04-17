@@ -4,7 +4,6 @@ import crepe.backend.domain.branch.domain.entity.Branch;
 import crepe.backend.domain.userProject.domain.entity.UserProject;
 import crepe.backend.global.domain.BaseEntity;
 import lombok.*;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.ArrayList;

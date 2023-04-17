@@ -1,4 +1,4 @@
-package crepe.backend.domain.userproject.domain.entity;
+package crepe.backend.domain.userProject.domain.entity;
 
 import crepe.backend.domain.project.domain.entity.Project;
 import crepe.backend.domain.user.domain.entity.User;
@@ -29,13 +29,14 @@ public class UserProject extends BaseEntity {
     private Project project;
 
     @Column(name = "is_admin", columnDefinition = "boolean default false")
-    private boolean is_admin;
+    private boolean isAdmin;
 
     @Builder
-    public UserProject(User user, Project project) {
+    public UserProject(User user, Project project, boolean isAdmin) {
         this.user = user;
         this.project = project;
         this.isActive = true;
+        this.isAdmin = isAdmin;
     }
 
     // admin으로 설정하는 코드
