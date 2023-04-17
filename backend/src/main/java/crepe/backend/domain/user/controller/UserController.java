@@ -17,7 +17,7 @@ import java.util.UUID;
 
 import static crepe.backend.global.response.ResultCode.*;
 
-@RequestMapping("/api/vi/users")
+@RequestMapping("/api/v1/users")
 @RestController
 @RequiredArgsConstructor
 public class UserController {
@@ -33,31 +33,31 @@ public class UserController {
     }
 
     // UUID를 이용해 유저 찾기
-    @GetMapping("/{user_uuid}")
-    public ResponseEntity<ResultResponse> findById(@PathVariable UUID user_uuid)
+    @GetMapping("/{uuid}")
+    public ResponseEntity<ResultResponse> findById(@PathVariable UUID uuid)
     {
-        UserInfo userInfo = userService.findUserInfoById(user_uuid);
+        UserInfo userInfo = userService.findUserInfoById(uuid);
         return ResponseEntity.ok(ResultResponse.of(READ_ONE_USER_SUCCESS, userInfo));
     }
 
     // UUID를 이용해서 해당 유저가 가지고 있는 프로젝트 가져오기
-    @GetMapping("/{user_uuid}/projects")
-    public ResponseEntity<ResultResponse> findByUserProjectById(@PathVariable UUID user_uuid)
+    @GetMapping("/{uuid}/projects")
+    public ResponseEntity<ResultResponse> findByUserProjectById(@PathVariable UUID uuid)
     {
-        ProjectInfoList projectList = userService.findUserProjectById(user_uuid);
+        ProjectInfoList projectList = userService.findUserProjectById(uuid);
         return ResponseEntity.ok(ResultResponse.of(READ_ALL_USER_PROJECT_SUCCESS, projectList));
     }
 
-    @PatchMapping("/{user_uuid}")
-    public ResponseEntity<ResultResponse> updateUser(@PathVariable UUID user_uuid, @RequestBody Map<String,String> request)
+    @PatchMapping("/{uuid}")
+    public ResponseEntity<ResultResponse> updateUser(@PathVariable UUID uuid, @RequestBody Map<String,String> request)
     {
-        UserInfo updateUser = userService.updateUserInfo(user_uuid, request);
+        UserInfo updateUser = userService.updateUserInfo(uuid, request);
         return ResponseEntity.ok(ResultResponse.of(UPDATE_USER_SUCCESS, updateUser));
     }
 
-    @DeleteMapping("/{user_uuid}")
-    public ResponseEntity<ResultResponse> deleteUser(@PathVariable UUID user_uuid) {
-        userService.deleteUser(user_uuid);
+    @DeleteMapping("/{uuid}")
+    public ResponseEntity<ResultResponse> deleteUser(@PathVariable UUID uuid) {
+        userService.deleteUser(uuid);
         return ResponseEntity.ok(ResultResponse.of(DELETE_USER_SUCCESS, ""));
     }
 }
