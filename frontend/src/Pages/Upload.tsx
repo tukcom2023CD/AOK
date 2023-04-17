@@ -20,7 +20,7 @@ const Backgrdiv = styled.div`
 
 
 const Commentdiv = styled.input`
-  width: 1050px;
+  width: 1000px;
   height: 85px;
   border-radius: 10px;
   background-color: #FFF4F4;
@@ -28,11 +28,12 @@ const Commentdiv = styled.input`
   font-size: 20pt;
   font-weight: bold;
   padding: 1.5rem;
+  //box-shadow: 2px 4px 8px;
 `;
 
 const Btndiv = styled.div`
   margin-top: 5rem;
-  margin-bottom: 5rem;
+  margin-bottom: 10rem;
 `;
 
 const ApplyBtn = styled.button `
@@ -87,7 +88,7 @@ function Upload() {
                         </Box>
                     </Box>
                     {/* 우측 */}
-                    <Box display={'flex'} flexDirection={'column'} overflow={'auto'} marginX={'auto'} marginY={'100px'}>
+                    <Box display={'flex'} flexDirection={'column'} overflow={'auto'} marginX={'auto'} marginY={'10px'}>
                       <div>
                         <Backgrdiv>
                           <DragDrop/>
