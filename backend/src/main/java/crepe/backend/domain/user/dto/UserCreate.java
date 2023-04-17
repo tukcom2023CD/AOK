@@ -11,7 +11,7 @@ public class UserCreate {
 
     private final String email;
 
-    private final String passwd;
+    private final String password;
 
     private final String photo;
 

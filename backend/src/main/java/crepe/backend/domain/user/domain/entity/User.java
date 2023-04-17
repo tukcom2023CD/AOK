@@ -2,7 +2,7 @@ package crepe.backend.domain.user.domain.entity;
 
 import crepe.backend.domain.feedback.domain.entity.Feedback;
 import crepe.backend.domain.log.domain.entity.Log;
-import crepe.backend.domain.userproject.domain.entity.UserProject;
+import crepe.backend.domain.userProject.domain.entity.UserProject;
 import crepe.backend.global.domain.BaseEntity;
 import lombok.*;
 import org.hibernate.annotations.SQLDelete;
