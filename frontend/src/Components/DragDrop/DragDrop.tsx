@@ -12,6 +12,7 @@ import styles from './DragDrop.module.css';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 
 
+
 const dragtest = styled.div`
   width: 500px;
   height: 1000px;
