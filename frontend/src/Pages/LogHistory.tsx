@@ -1,5 +1,5 @@
-
 import * as React from 'react';
+import {useCallback} from 'react'; 
 import Box from '@mui/material/Box';
 import { ThemeProvider,createTheme } from '@mui/material/styles';
 import { Typography, Button,IconButton } from '@mui/material';
@@ -14,6 +14,7 @@ import FileList from '../Components/FileList';
 import FeedBack from '../Components/FeedBack';
 import UpsideGray from '../Components/UpsideGray';
 import ProjectSelect from '../Components/ProjectSelect';
+import ApplyModal from '../Components/ApplyModal'; 
 
 interface props{
     backgroundcolor?: string;
@@ -65,6 +66,12 @@ const ProfilePic = styled.div<props>`
 
 
 export default function LogHistory() {
+    const [open, setOpen] = React.useState(false);
+
+    const onClickToggleModal = useCallback(() => {
+        setOpen(!open);
+    }, [setOpen]);
+    
     return (
         <ThemeProvider theme={theme}>
             <Box sx={{ flexGrow: 1, flexShrink:1 }} display={'flex'} flexDirection={'column'} position={'fixed'}>
@@ -132,7 +139,7 @@ export default function LogHistory() {
                                 </Box>
 
                                 <Box display={'flex'} justifyContent={'center'} marginY={"50px"}>
-                                    <Button sx={{width:"180px", height:"50px", color:"#FFFFFF" ,bgcolor:"#FF9198", borderRadius:"10px", fontSize:"15px" , fontWeight:"bold"}}>apply</Button>
+                                    <ApplyModal onClickToggleModal = {onClickToggleModal}> apply </ApplyModal>
                                 </Box>
                             </Box>
                     <Box>
