@@ -2,9 +2,10 @@ package crepe.backend.domain.user.domain.entity;
 
 import crepe.backend.domain.feedback.domain.entity.Feedback;
 import crepe.backend.domain.log.domain.entity.Log;
-import crepe.backend.domain.userProject.domain.entity.UserProject;
+import crepe.backend.domain.userproject.domain.entity.UserProject;
 import crepe.backend.global.domain.BaseEntity;
 import lombok.*;
+import org.hibernate.annotations.SQLDelete;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -12,9 +13,11 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
+@Setter
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@SQLDelete(sql = "UPDATE user SET is_active = false WHERE id=?")
 @Table(name = "user")
 public class User extends BaseEntity {
 
@@ -55,5 +58,4 @@ public class User extends BaseEntity {
         super.isActive = true;
         this.uuid = UUID.randomUUID();
     }
-
 }

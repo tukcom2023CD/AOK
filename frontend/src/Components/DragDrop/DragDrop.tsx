@@ -7,10 +7,9 @@ import React, {
 } from "react";
 import "./DragDrop.scss";
 import styles from './DragDrop.module.css';
-import {DndProvider} from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
-import { BtnStyle } from '../Button';
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import {FaTrash} from 'react-icons/fa';
+import { BtnStyle } from '../Button';
 
 
 type IFileTypes = {
@@ -19,6 +18,9 @@ type IFileTypes = {
   URL: string;
 }
 
+type IFileList = {
+  imageFiles: IFileTypes[];
+}
 
 
 const DragDrop = () => {
@@ -26,6 +28,11 @@ const DragDrop = () => {
   const [files, setFiles] = useState<IFileTypes[]>([]);
   const dragRef = useRef<HTMLLabelElement | null>(null);
   const fileId = useRef<number>(0);
+  var reversed_index;
+
+  const [fileList, setfileList] = useState<IFileList>({
+    imageFiles: files,
+  });
 
   const onChangeFiles = useCallback(
     (e: ChangeEvent<HTMLInputElement> | any): void => {
@@ -52,7 +59,7 @@ const DragDrop = () => {
           {
             id: fileId.current++, //fileId의 값을 1씩 늘려주며 각 파일의 고유값으로 사용
             object: file, //object 안에 선택했던 파일들의 정보 담김
-            URL: URL.createObjectURL(file)
+            URL: URL.createObjectURL(file),
           }
         ];
 
@@ -82,6 +89,7 @@ const DragDrop = () => {
     [files]
   );
 
+  /*------------- 이미지 업로드 드래그 앤 드랍 관련 함수 ------------*/
   const handleDragIn = useCallback((e: DragEvent): void => {
     e.preventDefault();
     e.stopPropagation();
@@ -138,6 +146,31 @@ const DragDrop = () => {
     return () => resetDragEvents();
   }, [initDragEvents, resetDragEvents]);
 
+  /*------------- 이미지 업로드 드래그 앤 드랍 관련 함수 ------------*/
+
+  /*------------- 리스트 드래그 앤 드랍 관련 함수 ------------*/
+    const onDragEnd = (result: any) => {
+      if(!result.destination){
+        return;
+      }
+
+      const { source, destination } = result;
+      let lists = [...files];
+      let index;
+
+      if(source.index !== destination.index){
+        let selectItem = lists[result.source.index];
+        lists.splice(result.source.index, 1);
+        lists.splice(destination.index, 0, selectItem);
+        setFiles(lists);
+      }
+
+    };
+
+
+
+  /*------------- 리스트 드래그 앤 드랍 관련 함수 ------------*/
+
 
   return (
     <div className="wholediv">
@@ -159,55 +192,84 @@ const DragDrop = () => {
           <div>upload files</div>
         </label>
         </div>
-      
-        <div className="DragDrop-Files">
 
-          {files.length > 0 &&
-            files.map((file: IFileTypes) => {
-              const {
-                id,
-                object: { name },
-                URL
-              } = file;
-  
-              return (
-                
-                <ul className='lists'>
-                  <li className='list-new'>
-                    
-                    <div className="nameDiv">{name}</div>
-                    <div className='DragDrop-Files-Filter' onClick={() => handleFilterFile(id)}>
-                        <button className={styles.button}><FaTrash size="20"/></button>
-                    </div>
-                    
-                  </li>
-                </ul>
+        <DragDropContext onDragEnd = {onDragEnd}>
+          <Droppable droppableId="DragDrop-Files">
+            {(provided) => (
+              <div 
+              ref={provided.innerRef}
+              {...provided.droppableProps}
+              >
+              <div className="DragDrop-Files">
+              {files.length > 0 &&
+                files.map((file: IFileTypes, index: number) => {
+                  const {
+                    id,
+                    object: { name },
+                    URL
+                  } = file;
                   
-                
-              );
-            })}
+                  
+                  return (
+                    <Draggable draggableId={name} index={index} key = {id}>
+                      {(provided) => (
+                      <ul className='lists'
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                      >
+                        <li className='list-new'>
+                          
+                          <div className="nameDiv">{name}</div>
+                          <div className='DragDrop-Files-Filter' onClick={() => handleFilterFile(id)}>
+                            <BtnStyle
+                            backgroundcolor='transparent'
+                            marginLeft='0.5rem'
+                            borderStyle='none'
+                            outlineStyle='none'>
+                              <FaTrash size="20"/>
+                            </BtnStyle>
+                              {/* <button className={styles.button}></button> */}
+                          </div>
+                          
+                        </li>
+                      </ul>)}
+                      
+                    </Draggable> 
+                    
+                  );
+                })}
 
-        </div>
-        
+              </div>
+              </div>
+            )}
+          
+          </Droppable>
+        </DragDropContext>
+
+
         <div className="PreviewTextdiv">
           Preview
         </div>
 
         <div className="imagePreview"> 
-        {files.length > 0 && files.map((file: IFileTypes)=> {
-          const {
-            id,
-            object: {name},
-            URL
-          } = file;
+            {files.length > 0 && files.map((file: IFileTypes, index: number)=> {
+              const {
+                id,
+                object: {name},
+                URL
+              } = file;
+              
+              reversed_index = files.length - 1 - index;
 
-          return (
-            <div key = {id}>
-              <img src = {URL}/>
-            </div>
-          );
-        })}
-      </div>
+              return (
+                <div key = {index} style={(reversed_index===0) ? {} :  {position: 'absolute', zIndex: reversed_index}}>
+                  <img  src={URL} alt="Alternative text" width="200" height="100" aria-label="For screen readers"/>
+                </div>
+              );
+              // <img src = {URL}/> 안되면 바로 이걸로 변경
+            })}
+        </div>
       </div>
       
     </div>
