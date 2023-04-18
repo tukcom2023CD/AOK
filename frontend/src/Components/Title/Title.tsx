@@ -1,14 +1,14 @@
 import EditIcon from '@mui/icons-material/Edit';
 import Button from '@mui/material/Button';
 import { useContext } from "react";
-import { TitleContext, ITitle } from "../../contexts/TitleContext";
+import { TodoContext, ITitle } from "../../contexts/TitleContext";
 import { Box, Typography } from '@mui/material';
 
 const Title = (props: ITitle) => {
-  const { dispatch } = useContext(TitleContext);
+  const { dispatch } = useContext(TodoContext);
 
   const handleClickDeleteBtn = () => {
-    dispatch({ type: "DELETE_TODO", payload: { idx: props.idx } });
+    dispatch({ type: "DELETE_TITLE", payload: { idx: props.idx } });
   };
 
   const handleClickUpdateBtn = () => {

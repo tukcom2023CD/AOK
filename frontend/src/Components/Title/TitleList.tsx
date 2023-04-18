@@ -2,19 +2,18 @@ import * as React from 'react';
 import { useReducer, useState } from "react";
 import EditTitle from "./EditTitle";
 import Title from "./Title";
-import { TitleContext, TitleReducer, TitleState } from "../../contexts/TitleContext";
+import { TodoContext, titleReducer, TitleState } from "../../contexts/TitleContext";
 
 const initState: TitleState = {
   titles: [
-    { idx: 100, title: "commit을 남기세요"},
-    //{ idx: 100, title: "commit을 남기세요", project: "project-100" },
+    { idx: 100,  title: "commit를 남기세요"},
   ],
   newIdx: 1,
   editIdx: 0,
 };
 
 const TitleList = () => {
-  const [state, dispatch] = useReducer(TitleReducer, initState);
+  const [state, dispatch] = useReducer(titleReducer, initState);
   const { titles, editIdx } = state;
 
   const Items = () => {
@@ -29,11 +28,14 @@ const TitleList = () => {
 
   return (
     <div className="title-list-container">
-      <TitleContext.Provider value={{ state, dispatch }}>
+      <TodoContext.Provider value={{ state, dispatch }}>
         {Items()}
-      </TitleContext.Provider>
+      </TodoContext.Provider>
     </div>
   );
 };
 
 export default TitleList;
+
+
+

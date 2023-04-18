@@ -44,7 +44,9 @@ export default function Project() {
         setText("Button Clicked");
     };
 
-    
+    const handleCommentSubmit = (name: string, comment: string) => {
+        console.log(`Submitted comment: ${name} - ${comment}`);
+        };
     return (
             <Box sx={{ flexGrow: 1, flexShrink:1 }} display={'flex'} flexDirection={'column'} position={'fixed'}>
                  <Box width={'100vw'}  display={'flex'} > {/*상단바 */}
@@ -73,6 +75,9 @@ export default function Project() {
                     </Box>
                     {/* 우측 */}
                     <Box display={'flex'} flexDirection={'column'} width={'100vw'} overflow={'auto'} height={"80vh"}>  
+                    <Box>
+    
+                    </Box>
                         <Box display={'flex'} marginX={'auto'} marginTop={'50px'}>
                             <img src="img/tino.png" alt="tino" width={'400px'} height={'400px'}/>
                         </Box>
@@ -101,12 +106,12 @@ export default function Project() {
                         
                         <Box display={'flex'} justifyContent={'center'} marginTop={'50px'}>
                             {/* <UseFormControl /> */}
+                            
                             <TextField2 />
                         </Box>
                     </Box>
 
                     <Box>
-
                     </Box>
                 </Box> 
             </Box>
