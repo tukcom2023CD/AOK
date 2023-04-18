@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useCallback} from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -14,6 +15,7 @@ import MergeIcon from '@mui/icons-material/Merge';
 import HistoryIcon from '@mui/icons-material/History';
 import SettingsIcon from '@mui/icons-material/Settings';
 import {Link} from 'react-router-dom';
+import MergeModal from './MergeModal';
 
 export const theme = createTheme({
     palette: {
@@ -42,6 +44,13 @@ export default function ColorTabs() {
     setValue(newValue);
   };
 
+  //modal 열고 닫기 관련 함수
+  const [open, setOpen] = React.useState(false);
+
+  const onClickToggleModal = useCallback(() => {
+      setOpen(!open);
+  }, [setOpen]);
+
   return (
     <nav>
     <Box sx={{width: '100%', marginY:'auto'}}>
@@ -53,7 +62,7 @@ export default function ColorTabs() {
         aria-label="secondary tabs example"
       >
         <Tab value="upload" label= {<Box display={"flex"} justifyContent={"center"} alignItems={"center"}><UploadIcon sx={{mr:"5px", fontSize:"20px"}}/><Typography>upload</Typography></Box>} />
-        <Tab value="merge" label= {<Box display={"flex"} justifyContent={"center"} alignItems={"center"}><MergeIcon sx={{mr:"5px", fontSize:"20px"}}/><Typography>merge</Typography></Box>} />
+        <Tab value="merge" label= {<MergeModal onClickToggleModal={onClickToggleModal}></MergeModal>} />
         <Tab value="log history" label= {<Box display={"flex"} justifyContent={"center"} alignItems={"center"}><HistoryIcon sx={{mr:"5px", fontSize:"20px"}}/><Typography>log history</Typography></Box>} />
         <Tab value="setting" label= {<Box display={"flex"} justifyContent={"center"} alignItems={"center"}><SettingsIcon sx={{mr:"5px", fontSize:"20px"}}/><Typography>setting</Typography></Box>} />
       </Tabs>

@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import {PropsWithChildren} from "react";
 import styled from "styled-components";
+import MergeIcon from '@mui/icons-material/Merge';
 
 interface ModalDefaultType{
     onClickToggleModal: () => void;
@@ -17,7 +18,11 @@ export default function MergeModal({
         const handleClose = () => setOpen(false);
     return (
     <div>
-        <Btn onClick={handleOpen}>apply</Btn> 
+        <Box display={"flex"} justifyContent={"center"} alignItems={"center"}
+        onClick={handleOpen}>
+          <MergeIcon sx={{mr:"5px", fontSize:"20px"}}/>
+          <Typography>merge</Typography>
+        </Box>
         <Modal
         open={open}
         onClose={handleClose}
