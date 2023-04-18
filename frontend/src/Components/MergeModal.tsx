@@ -30,18 +30,28 @@ export default function MergeModal({
         aria-describedby="modal-modal-description"
         >
         <Box sx={style}>
-            <TitleDiv>
-            <Typography id="modal-modal-title"  variant="h5" component="h5">
-              현재 선택한 내용을 메인에 merge합니다. 
-            </Typography>
-            </TitleDiv>
+          <ImagePrevDiv>
+            <ImagePrev>
+                <MergeImgPrevDiv>
+                  <MergeImgPrev>
+                  <img src="img/tino.png" width={'350px'} height={'350px'}/>
+                  </MergeImgPrev>
+                </MergeImgPrevDiv>
+            </ImagePrev>
+          </ImagePrevDiv>
+          
+          <TitleDiv>
+          <Typography id="modal-modal-title"  variant="h5" component="h5">
+            현재 선택한 내용을 메인에 merge합니다. 
+          </Typography>
+          </TitleDiv>
           
           <BtnBox>
             <CancelBtn onClick={handleClose}> cancel </CancelBtn>
             <CreateBtn> apply </CreateBtn>
           </BtnBox>
         </Box>
-      </Modal>
+        </Modal>
     </div>
     );
 }
@@ -51,7 +61,7 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 940,
+    width: 900,
     height: 600,
     borderRadius: 6,
     bgcolor: 'background.paper',
@@ -126,13 +136,13 @@ const style = {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 5rem;
+    margin-top: 3rem;
   `;
   
   const TitleDiv = styled.div `
     //border: 1px solid black;
     display: flex;
-    margin-top: 40px;
+    margin-top: 50px;
     justify-content: center;
     align-items: center;
     //margin: auto;
@@ -149,4 +159,32 @@ const style = {
     margin-right: 50px;
     
   `
+  const ImagePrevDiv = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  `;
 
+  const ImagePrev = styled.div`
+    width: 600px;
+    height: 350px;
+    background-color: #D9D9D9;
+    display: table;
+    align-items: center;
+    position: relative;
+  `;
+
+  //후에 이미지 불러와서 띄울때 사용할 div 
+  const MergeImgPrevDiv = styled.div`
+    display: table-cell;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  `;
+
+  //후에 이미지 불러와서 띄울때 사용할 div 
+  const MergeImgPrev = styled.div`
+    max-width: 600px;
+    max-height: 350px;
+  `;
