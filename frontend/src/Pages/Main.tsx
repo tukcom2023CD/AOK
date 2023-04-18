@@ -66,7 +66,7 @@ export default function Main() {
                             
                         </Box>
 
-                        <Box display={'flex'} justifyContent={'center'}>
+                        <Box display={'flex'} justifyContent={'center'} marginBottom={'10rem'}>
                             <ImgList/>
                         </Box>
                     </Box>
