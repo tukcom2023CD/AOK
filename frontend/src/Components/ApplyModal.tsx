@@ -32,7 +32,7 @@ export default function ApplyModal({
             </TitleDiv>
           
           <BtnBox>
-            <CancelBtn> cancel </CancelBtn>
+            <CancelBtn onClick={handleClose}> cancel </CancelBtn>
             <CreateBtn> accept </CreateBtn>
           </BtnBox>
         </Box>
