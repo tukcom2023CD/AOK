@@ -34,7 +34,7 @@ public class UserService {
     private User changeUserInfoToUser(UserCreate usercreate) {
         return User.builder()
                 .email(usercreate.getEmail())
-                .password(usercreate.getPasswd())
+                .password(usercreate.getPassword())
                 .photo(usercreate.getPhoto())
                 .nickname(usercreate.getNickname())
                 .build();
