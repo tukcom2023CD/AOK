@@ -33,7 +33,7 @@ export default function Main() {
                         <Box width={'16vw'} >
                             <UpsideGray />
                         </Box>
-                        <Box sx={{width:"100vw", height:"42px", alignText:'center', bgcolor:"#D9D9D9", alignContent:'center'}} >
+                        <Box sx={{width:"16vw", height:"42px", alignText:'center', bgcolor:"#D9D9D9", alignContent:'center'}} >
                             <ProjectSelect/>
                         </Box>
                     </Box>

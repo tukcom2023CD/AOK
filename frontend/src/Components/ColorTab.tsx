@@ -44,7 +44,7 @@ export default function ColorTabs() {
 
   return (
     <nav>
-    <Box sx={{ width: '100%', marginY:'auto'}}>
+    <Box sx={{width: '100%', marginY:'auto'}}>
       <Tabs
         value={value}
         onChange={handleChange}
