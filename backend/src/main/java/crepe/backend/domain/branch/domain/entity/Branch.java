@@ -41,7 +41,6 @@ public class Branch extends BaseEntity {
         this.name = name;
         super.isActive = true;
         this.uuid = UUID.randomUUID();
-
     }
 
 

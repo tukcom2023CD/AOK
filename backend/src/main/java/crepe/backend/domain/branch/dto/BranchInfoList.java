@@ -1,6 +1,5 @@
 package crepe.backend.domain.branch.dto;
 
-import crepe.backend.domain.branch.domain.entity.Branch;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

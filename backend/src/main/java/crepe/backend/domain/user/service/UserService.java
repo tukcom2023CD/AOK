@@ -60,7 +60,7 @@ public class UserService {
         return getProjectInfoList(projects);
     }
 
-    public UserInfo updateUserInfo(UUID user_uuid, Map<String, String> user)
+    public void updateUserInfo(UUID user_uuid, Map<String, String> user)
     {
         User oUser = findUserById(user_uuid);
 
@@ -69,9 +69,7 @@ public class UserService {
         oUser.setNickname(user.get("nickname"));
         oUser.setPhoto(user.get("photo"));
 
-        User savedata = userRepository.save(oUser);
-
-        return mapUserEntityToUserInfo(savedata);
+        userRepository.save(oUser);
     }
 
     public void deleteUser(UUID uuid) {
