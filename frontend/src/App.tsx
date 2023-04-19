@@ -4,7 +4,7 @@ import Main from './Pages/Main';
 import Project from './Pages/Project';
 import LogHistory from './Pages/LogHistory';
 import Upload from './Pages/Upload';
-import Side from './Pages/Side';
+import TodoList from './Components/Title/TitleList';
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
           <Route path='/log_history' element={<LogHistory />} />
           <Route path='/upload' element={<Upload />} />
 
-          <Route path='/side' element={<Side />} />
+          <Route path='/todo' element={<TodoList />} />
         </Routes>
       </Router>
     </div>
