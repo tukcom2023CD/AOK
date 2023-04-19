@@ -1,0 +1,44 @@
+import * as React from 'react';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import SignIn from '../Components/Logincom';
+import styled from 'styled-components';
+import background_dark from '../Images/background_dark.png';
+import together from '../Images/together.jpg';
+
+const Background = styled.div`
+    width: 960px;
+    height: 1080px;
+    background-image: url(${background_dark});
+    background-position: center;
+    background-repeat: no-repeat;
+    `
+
+    const Background2 = styled.div`
+    width: 70vw;
+    height: 100vh;
+    background-image: url(${together});
+    background-position: center;
+    background-repeat: no-repeat;
+    `
+
+export default function Login() {
+  return (
+    <Box display={'flex'} >
+      <Box width={'70vw'} height={'100vh'}>
+        <Background2 />
+      </Box>
+      <Box  width={'30vw'} height={'100vh'}><SignIn /></Box>
+    </Box>
+  );
+}
+

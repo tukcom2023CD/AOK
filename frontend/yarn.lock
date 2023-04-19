@@ -7119,6 +7119,7 @@ __metadata:
     "@types/react-dom": ^18.0.0
     "@types/react-window": ^1.8.5
     "@types/styled-components": ^5.1.26
+    lottie-web: ^5.11.0
     node-sass: ^8.0.0
     react: ^18.2.0
     react-beautiful-dnd: ^13.1.1
@@ -7127,6 +7128,7 @@ __metadata:
     react-dnd-html5-backend: ^16.0.1
     react-dom: ^18.2.0
     react-icons: ^4.8.0
+    react-kakao-login: ^2.1.1
     react-native-progress: ^5.0.0
     react-native-seekbar-android: ^1.0.1
     react-router-dom: 6
@@ -9438,6 +9440,13 @@ __metadata:
   bin:
     loose-envify: cli.js
   checksum: 6517e24e0cad87ec9888f500c5b5947032cdfe6ef65e1c1936a0c48a524b81e65542c9c3edc91c97d5bddc806ee2a985dbc79be89215d613b1de5db6d1cfe6f4
+  languageName: node
+  linkType: hard
+
+"lottie-web@npm:^5.11.0":
+  version: 5.11.0
+  resolution: "lottie-web@npm:5.11.0"
+  checksum: 4f9c86c7cf0280ccb4380b826213719122a227f50e27e5d6943dff2f05dfe4e569bd8a358a0cb9c96cbdf62f9d70b883b5cb5ec50ecb7a1eed794c5ce5a1e38a
   languageName: node
   linkType: hard
 
@@ -11825,6 +11834,15 @@ __metadata:
   version: 18.2.0
   resolution: "react-is@npm:18.2.0"
   checksum: e72d0ba81b5922759e4aff17e0252bd29988f9642ed817f56b25a3e217e13eea8a7f2322af99a06edb779da12d5d636e9fda473d620df9a3da0df2a74141d53e
+  languageName: node
+  linkType: hard
+
+"react-kakao-login@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "react-kakao-login@npm:2.1.1"
+  peerDependencies:
+    react: ">= 15.3.0"
+  checksum: 45eb33bb22cc4fa19d04ec5eab94cceefa2c5b76c7d5c185283e0206f1d26c9e451b7ff9162b9402735c09e6ee817a3d9c148deec2be75981d734c836c51bf7a
   languageName: node
   linkType: hard
 
@@ -14747,4 +14765,3 @@ __metadata:
   checksum: f77b3d8d00310def622123df93d4ee654fc6a0096182af8bd60679ddcdfb3474c56c6c7190817c84a2785648cdee9d721c0154eb45698c62176c322fb46fc700
   languageName: node
   linkType: hard
-
