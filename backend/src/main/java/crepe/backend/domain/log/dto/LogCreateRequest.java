@@ -1,24 +1,20 @@
 package crepe.backend.domain.log.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import java.util.List;
+
 
 @Builder
 @Getter
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class LogCreateRequest {
 
-    @NotNull(message = "유저 아이디를 입력해주세요.")
-    private final Long userId;
-
-    @NotNull(message = "브랜치 아이디를 입력해주세요.")
-    private final Long branchId;
-
-    @NotBlank(message = "메세지를 입력해주세요.")
-    private final String message;
+    //private List<MultipartFile> files;
+    private MultipartFile file;
+    private LogCreateInfo data;
 
 }

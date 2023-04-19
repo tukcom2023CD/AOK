@@ -2,7 +2,6 @@ package crepe.backend.domain.log.domain.entity;
 
 import crepe.backend.domain.branch.domain.entity.Branch;
 import crepe.backend.domain.feedback.domain.entity.Feedback;
-import crepe.backend.domain.layer.domain.entity.Layer;
 import crepe.backend.domain.user.domain.entity.User;
 import crepe.backend.global.domain.BaseEntity;
 import lombok.*;
@@ -33,7 +32,7 @@ public class Log extends BaseEntity {
     private User user;
 
     @OneToMany(mappedBy = "log")
-    private List<Layer> layers = new ArrayList<>();
+    private List<LogLayer> logLayers = new ArrayList<>();
 
     @Column(name = "uuid", columnDefinition = "BINARY(16)", nullable = false, unique = true)
     private UUID uuid;

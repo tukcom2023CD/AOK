@@ -1,7 +1,6 @@
 package crepe.backend.domain.project.domain.entity;
 
 import crepe.backend.domain.branch.domain.entity.Branch;
-import crepe.backend.domain.userProject.domain.entity.UserProject;
 import crepe.backend.global.domain.BaseEntity;
 import lombok.*;
 
