@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -35,10 +34,9 @@ const useStyles = makeStyles({
 });
 
 export default function Login3() {
-    const classes = useStyles();
-  return (
+return (
         <Background2>
             <Box><SignIn/></Box>
         </Background2>
-  );
+    );
 }
