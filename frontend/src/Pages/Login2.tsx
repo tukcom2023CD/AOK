@@ -24,16 +24,8 @@ import { makeStyles } from "@mui/styles";
     background-repeat: no-repeat;
     position: fixed;
 `
-const useStyles = makeStyles({
-    root: {
-        backgroundImage: `url("TeamWork.png)`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-    }
-});
 
 export default function Login2() {
-    const classes = useStyles();
   return (
         <Background2>
             <Box><SignIn/></Box>
