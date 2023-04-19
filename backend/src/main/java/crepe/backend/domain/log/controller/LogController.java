@@ -21,13 +21,14 @@ public class LogController {
             @Valid @ModelAttribute LogCreateRequest request) {
         // ---
         // 파일 .getOriginalFileName()으로 이름 받아오기
-        // layer에 파일 저장 (레이어 만들기)
-        // 로그 만들기
+        // 2. 리소스 파일 저장 (S3, 리소스)
+        // 3. 로그 만들기
+        // 4. 레이어 생성
         System.out.println(request.getFiles().get(0).getOriginalFilename());
-
-        System.out.println(request.getLog().getMessage());
-        System.out.println(request.getLog().getUserId());
-        System.out.println(request.getLog().getBranchId());
+        System.out.println(request.getFiles().get(1).getOriginalFilename());
+        System.out.println(request.getMessage());
+        System.out.println(request.getUserId());
+        System.out.println(request.getBranchId());
 
         return ResponseEntity.ok(ResultResponse.of(ResultCode.CREATE_LOG_SUCCESS, ""));
 
