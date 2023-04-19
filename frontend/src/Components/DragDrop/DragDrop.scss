@@ -1,14 +1,14 @@
 /**/
 @mixin filledStyle() {
-  width: 400px;
-  height: 200px;
-  border: 5px dashed #FF8888;
-  background-color: white;
-  color: #FF8888;
+  width: 500px;
+  height: 500px;
+  border: none;
+  background-color: black;
   border-radius: 10px;
-  font-size: 20pt;
-  font-weight: bold;
-  }
+  //padding: 1.5rem;
+  z-index: 10;
+  overflow-y: auto;
+}
   
   @mixin alignCenter() {
     display: flex;
@@ -18,21 +18,29 @@
     align-items: center;
   }
 
-  .wholediv {
+  .inlineblockDiv {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
+
+  .flexDiv {
+    display: flex;
+    margin-bottom: 4rem;
+    justify-content: center;
+    align-items: center;
+  }
+
   .DragDrop {
     width: 100%;
-    margin-top: 5rem;
+    margin-top: 1rem;
     margin-bottom: 3rem;
     @include alignCenter();
     
     &-File {
-      width: 1110px;
-      height: 155px;
+      width: 500px;
+      height: 140px;
       border: 5px dashed #FF8888;
       background-color: white;
       color: #FF8888;
@@ -42,28 +50,36 @@
 
       @include alignCenter();
       cursor: pointer;
-      //transition: 0.12s ease-in;
+      transition: 0.12s ease-in;
   
-      // &-Dragging {
-      //   @include filledStyle();
-      // }
+      &-Dragging {
+        width: 500px;
+        height: 500px;
+        border: 1px solid black;
+        background-color: black;
+        opacity: 0.7;
+        border-radius: 10px;
+        padding: 1.5rem;
+        //box-shadow: 2px 4px 8px;
+        overflow-y: auto;
+      }
     }
   
-    &-Files {
+    &-Files1 {
   
       & > div {
-        width: 300px;
-        padding: 8px;
-        border: 1px solid black;
-        //margin-bottom: 10px;
+        width: 500px;
+        height: 500px;
+        border-radius: 10px;
+        background-color: #FFF2F2;
+        //border: 1px solid red;
         display: flex;
-        //justify-content: space-between;
       }
 
 
       &-Filter {
         cursor: pointer;
-        margin-right: 1.5rem;
+        margin-right: 0.5rem;
 
         &:hover {
           opacity: 0.7;
@@ -74,14 +90,15 @@
 
   .DragDrop-Files{
 
-    width: 1110px;
-    height: 300px;
+    width: 500px;
+    height: 500px;
     border: none;
-    background-color: #FFF2F2;
     border-radius: 10px;
     padding: 1rem;
     overflow-y: auto;
-
+    //box-shadow: 2px 4px 8px;
+    //border: 1px solid red;
+    //margin-bottom: 50px;
   }
   // ::-webkit-scrollbar{
   //   display: none;
@@ -95,10 +112,10 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 985px;
-    height: 75px;
+    width: 400px;
+    height: 50px;
     border-radius: 5px;
-    font-size: 16pt;
+    font-size: 18px;
     background-color: #FFD2D2;
     margin: auto;
     padding: 0.5rem 0.2rem;
@@ -107,10 +124,10 @@
       display: flex;
       justify-content: space-around;
       align-items: center;
-      width: 985px;
-      height: 75px;
+      width: 400px;
+      height: 50px;
       border-radius: 5px;
-      font-size: 16pt;
+      font-size: 18px;
       background-color: #FF9C9C;
       margin: auto;
       padding: 0.5rem 0.2rem;
@@ -120,10 +137,10 @@
       display: flex;
       justify-content: space-around;
       align-items: center;
-      width: 985px;
-      height: 75px;
+      width: 400px;
+      height: 50px;
       border-radius: 5px;
-      font-size: 16pt; 
+      font-size: 18px; 
       background-color: #EDAF9C;
       margin: auto;
       padding: 0.5rem 0.2rem;
@@ -142,18 +159,29 @@
 }
 
 .imagePreview{
-  margin-top: 4rem;
-  margin-bottom: 5vh;
-  display: inline-block;
+  margin-right: 1rem; //가로로 했을 때 간격
+  width: 500px;
+  height: 500px;
+  border: none;
+  border-radius: 10px;
+  //box-shadow: 2px 4px 8px;
+  background-color: #FFF2F2;
+  display: table;
   align-items: center;
   position: relative;
 }
 
-.imagePreviewParent{
-  margin-top: 4rem;
-  margin-bottom: 5vh;
-  display: inline-block;
-  align-items: center;
+.imagePreviewDiv{
+  display: table-cell;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.imageDiv{
+  max-width: 400px;
+  max-height: 500px;
 }
 
 .imagePreviewRelative{
@@ -161,12 +189,35 @@
 }
 .nameDiv{
   margin-right: auto;
-  margin-left: 1.5rem;
+  margin-left: 1rem;
 }
 
 
 .PreviewTextdiv{
+  display: flex;
+  width: 500px;
   margin-top: 4rem;
-  font-size: 20pt;
-  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 1rem;
+  justify-content: center;
 }
+
+.buttonsDiv{
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.textDiv{
+  text-align: center;
+  margin-left: 150px;
+}
+
+.uploadDiv{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  //margin-bottom: 50px;
+}
+

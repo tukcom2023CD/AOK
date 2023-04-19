@@ -14,6 +14,7 @@ import SelectBar from '../Components/SelectBar';
 import EditIcon from '@mui/icons-material/Edit';
 import TextField2 from '../Components/TextField2';
 import TitleList from '../Components/Title/TitleList';
+import ProjectSelect from '../Components/ProjectSelect';
 import IosShareSharpIcon from '@mui/icons-material/IosShareSharp';
 
 interface props{
@@ -55,9 +56,7 @@ export default function Project() {
                             <UpsideGray />
                         </Box>
                         <Box sx={{width:"100vw", height:"42px", alignText:'center', bgcolor:"#D9D9D9", alignContent:'center'}} >
-                            <Typography sx={{fontWeight:"bold", mt:'8px', ml:'15px'}}>
-                            Tino Project
-                            </Typography>
+                            <ProjectSelect/>
                         </Box>
                     </Box>
                     <Box width={'83vw'} >
@@ -69,7 +68,7 @@ export default function Project() {
                     {/* 좌측 */}
                     <Box width={'16vw'} display={'flex'} flexDirection={'column'} sx={{bgcolor: '#F3F3F3'}}>
                         <BasicList />
-                        <Box marginTop={'65vh'}>
+                        <Box width={'16vw'}position={'fixed'} sx={{left:0, bottom:0, marginBottom: "10px"}}>
                             <Profile />
                         </Box>
                     </Box>
