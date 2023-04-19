@@ -67,7 +67,7 @@ export default function SignIn() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs" sx={{bgcolor: '#FFFFFF', p:'20px', mx:'auto', mt:'30vh'}}>
+      <Container component="main" maxWidth="xs" sx={{width:'100vw', bgcolor: '#FFFFFF', p:'20px', mx:'auto', mt:'30vh'}}>
         <CssBaseline />
         <Box
           sx={{
@@ -77,21 +77,26 @@ export default function SignIn() {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'primary' }}>
+          <Avatar sx={{ m: 1, bgcolor: 'primary.main' , fontSize:'30px'}}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            <Box marginY={"20px"}>
+            <Box marginTop={"60px"}>
               <ImageButton />
             </Box>
             <Grid container display={'flex'} justifyContent={'center'}>
               <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
+              <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: '1rem', mb: 2, width: '300px' }}
+            >
+              Sign Up
+            </Button>
               </Grid>
             </Grid>
           </Box>

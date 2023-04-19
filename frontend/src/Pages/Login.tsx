@@ -10,10 +10,10 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import SignIn from '../Components/Logincom';
+import SignIn from '../Components/Logincom2';
 import styled from 'styled-components';
 import background_dark from '../Images/background_dark.png';
-import together from '../Images/together.jpg';
+import Together from '../Images/TeamWork.png';
 
 const Background = styled.div`
     width: 960px;
@@ -26,7 +26,7 @@ const Background = styled.div`
     const Background2 = styled.div`
     width: 70vw;
     height: 100vh;
-    background-image: url(${together});
+    background-image: url(${Together});
     background-position: center;
     background-repeat: no-repeat;
     `
@@ -37,7 +37,7 @@ export default function Login() {
       <Box width={'70vw'} height={'100vh'}>
         <Background2 />
       </Box>
-      <Box  width={'30vw'} height={'100vh'}><SignIn /></Box>
+      <Box  width={'30vw'} height={'100vh'} bgcolor={'#1A2634'}><SignIn /></Box>
     </Box>
   );
 }
