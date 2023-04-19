@@ -2,6 +2,7 @@ package crepe.backend.domain.user.domain.entity;
 
 import crepe.backend.domain.feedback.domain.entity.Feedback;
 import crepe.backend.domain.log.domain.entity.Log;
+import crepe.backend.domain.log.domain.entity.Resource;
 import crepe.backend.domain.project.domain.entity.UserProject;
 import crepe.backend.global.domain.BaseEntity;
 import lombok.*;
@@ -48,6 +49,9 @@ public class User extends BaseEntity {
 
     @OneToMany(mappedBy = "user")
     private List<Feedback> feedbacks = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<Resource> resources = new ArrayList<>();
 
     @Builder
     public User(String email, String password, String nickname, String photo) {

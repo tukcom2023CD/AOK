@@ -32,22 +32,22 @@ public class Log extends BaseEntity {
     private User user;
 
     @OneToMany(mappedBy = "log")
-    private List<LogLayer> logLayers = new ArrayList<>();
+    private List<Layer> layers = new ArrayList<>();
 
     @Column(name = "uuid", columnDefinition = "BINARY(16)", nullable = false, unique = true)
     private UUID uuid;
 
-    @Column(name = "content", length = 200, nullable = false)
-    private String content;
+    @Column(name = "message", nullable = false)
+    private String message;
 
     @OneToMany(mappedBy = "log")
     private List<Feedback> feedbacks = new ArrayList<>();
 
     @Builder
-    public Log(Branch branch, User user, String content) {
+    public Log(Branch branch, User user, String message) {
         this.branch = branch;
         this.user = user;
-        this.content = content;
+        this.message = message;
         super.isActive = true;
         this.uuid = UUID.randomUUID();
     }

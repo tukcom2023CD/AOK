@@ -1,44 +1,38 @@
 package crepe.backend.domain.log.domain.entity;
 
-import crepe.backend.domain.log.domain.entity.Log;
-import crepe.backend.domain.project.domain.entity.UserProject;
 import crepe.backend.global.domain.BaseEntity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
 
 import static javax.persistence.FetchType.LAZY;
 
-@Getter
 @Entity
+@Table(name = "layer")
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "layer")
 public class Layer extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "uuid", columnDefinition = "BINARY(16)", nullable = false, unique = true)
-    private UUID uuid;
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "log_id", nullable = false)
+    private Log log;
 
-    @Column(name = "name", length = 200, nullable = false)
-    private String name;
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "resource_id", nullable = false)
+    private Resource resource;
 
-    @Column(name = "link", length = 200, nullable = false)
-    private String link;
-
-    @OneToMany(mappedBy = "layer")
-    private List<LogLayer> logLayers = new ArrayList<>();
-
+    @Column(name = "sequence", nullable = false)
+    private Long sequence;
     @Builder
-    public Layer(String name, String link) {
-        this.name = name;
-        this.link = link;
+    public Layer (Log log, Resource resource, Long sequence) {
+        this.log = log;
+        this.resource = resource;
+        this.sequence = sequence;
         super.isActive = true;
-        this.uuid = UUID.randomUUID();
     }
+
 }

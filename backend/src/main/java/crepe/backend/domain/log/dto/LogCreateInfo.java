@@ -5,12 +5,13 @@ import lombok.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-@Getter
+
+@Builder
+@Getter @Setter
 @AllArgsConstructor
 public class LogCreateInfo {
 
-    private Long userId;
-    private Long branchId;
+    private String userId;
+    private String branchId;
     private String message;
-
 }

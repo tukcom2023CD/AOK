@@ -31,14 +31,14 @@ public class Feedback extends BaseEntity {
     @Column(name = "uuid", columnDefinition = "BINARY(16)", nullable = false, unique = true)
     private UUID uuid;
 
-    @Column(name = "content", length = 200, nullable = false)
-    private String content;
+    @Column(name = "message", length = 200, nullable = false)
+    private String message;
 
     @Builder
-    public Feedback(User user, Log log, String content) {
+    public Feedback(User user, Log log, String message) {
         this.user = user;
         this.log = log;
-        this.content = content;
+        this.message = message;
         super.isActive = true;
         this.uuid = UUID.randomUUID();
     }
