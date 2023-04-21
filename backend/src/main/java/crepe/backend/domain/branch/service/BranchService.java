@@ -13,10 +13,13 @@ import crepe.backend.domain.project.domain.entity.Project;
 import crepe.backend.domain.project.service.ProjectService;
 import crepe.backend.domain.branch.exception.NotFoundBranchEntityException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @Service
@@ -31,6 +34,7 @@ public class BranchService {
         Project findProject = projectService.getProjectById(createRequest.getProjectId());
         Branch branchdata = changeBranchCreateToBranch(createRequest, findProject);
         Branch savedata = branchRepository.save(branchdata);
+
         return mapBranchEntityToBranchCreateInfo(savedata);
     }
 
@@ -86,10 +90,21 @@ public class BranchService {
         return branchRepository.findBranchByUuidAndIsActiveTrue(uuid).orElseThrow(NotFoundBranchEntityException::new);
     }
 
-    private List<Log> getLogList(Branch branch) { // 쿼리를 이용해서 BranchId로 해당 브랜치에 있는 로그들을 가져오는 모듈
-        List<Log> logs = logRepository.findAllLogByBranchAndIsActiveTrue(branch);
+    public Branch findBranchById(Long id)
+    {
+        return branchRepository.findBranchByIdAndIsActiveTrue(id).orElseThrow(NotFoundBranchEntityException::new);
+    }
 
-        return logs;
+    private List<Log> getLogList(Branch branch) { // 쿼리를 이용해서 BranchId로 해당 브랜치에 있는 로그들을 가져오는 모듈
+        Page<Log> logs = logRepository.findAllLogByBranchAndIsActiveTrue(branch, PageRequest.of(0, 10));
+
+        List<Log> logList = new ArrayList<>();
+        for(int i = 0; i < logs.getSize(); i ++)
+        {
+            logList.add(logs.getContent().get(i));
+        }
+
+        return logList;
     }
 
     private Log findRecentLog(List<Log> logs) // 최신 로그 ID를 가져올 때 사용하는 모듈
@@ -105,5 +120,18 @@ public class BranchService {
         }
 
         return recentLog;
+    }
+
+    public void updateBranchInfo(UUID uuid, Map<String, String> branch)
+    {
+        Branch oBranch = findBranchByUuid(uuid);
+
+        oBranch.updateBranch(branch.get("name"));
+        branchRepository.save(oBranch);
+    }
+
+    public void deleteBranch(UUID uuid) {
+        Branch branch = findBranchByUuid(uuid);
+        branchRepository.deleteById(branch.getId());
     }
 }

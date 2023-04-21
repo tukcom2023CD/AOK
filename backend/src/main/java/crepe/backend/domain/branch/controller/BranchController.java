@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+import java.util.Map;
 import java.util.UUID;
 
 import static crepe.backend.global.response.ResultCode.*;
@@ -42,5 +43,18 @@ public class BranchController {
     {
         LogInfoList logInfos = branchService.findLogInfoByUuid(uuid);
         return ResponseEntity.ok(ResultResponse.of(READ_BRANCH_LOG_SUCCESS, logInfos));
+    }
+
+    @PatchMapping("/{uuid}")
+    public ResponseEntity<ResultResponse> updateBranch(@PathVariable UUID uuid, @RequestBody Map<String,String> request)
+    {
+        branchService.updateBranchInfo(uuid, request);
+        return ResponseEntity.ok(ResultResponse.of(UPDATE_BRANCH_SUCCESS, ""));
+    }
+
+    @DeleteMapping("/{uuid}")
+    public ResponseEntity<ResultResponse> deleteBranch(@PathVariable UUID uuid) {
+        branchService.deleteBranch(uuid);
+        return ResponseEntity.ok(ResultResponse.of(DELETE_BRANCH_SUCCESS, ""));
     }
 }

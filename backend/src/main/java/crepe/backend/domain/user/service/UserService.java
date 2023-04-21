@@ -11,6 +11,8 @@ import crepe.backend.domain.user.dto.UserInfo;
 import crepe.backend.domain.userProject.domain.repository.UserProjectRepository;
 import crepe.backend.domain.user.domain.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import crepe.backend.domain.user.exception.NotFoundUserEntityException;
 
@@ -48,32 +50,29 @@ public class UserService {
 
     // uuid로 유저 찾기
     public UserInfo findUserInfoById(UUID user_uuid) {
-        User findUser = findUserById(user_uuid);
+        User findUser = findUserByUuId(user_uuid);
         return mapUserEntityToUserInfo(findUser);
     }
 
     // uuid를 이용해서 유저가 포함되어있는 프로젝트 찾는 함수
     public ProjectInfoList findUserProjectById(UUID user_uuid)
     {
-        User findUser = findUserById(user_uuid);
+        User findUser = findUserByUuId(user_uuid);
         List<Project> projects = getProjectList(findUser);
         return getProjectInfoList(projects);
     }
 
     public void updateUserInfo(UUID user_uuid, Map<String, String> user)
     {
-        User oUser = findUserById(user_uuid);
+        User oUser = findUserByUuId(user_uuid);
 
-        oUser.setPassword(user.get("password"));
-        oUser.setEmail(user.get("email"));
-        oUser.setNickname(user.get("nickname"));
-        oUser.setPhoto(user.get("photo"));
+        oUser.updateUser(user.get("email"), user.get("password"), user.get("nickname"), user.get("photo"));
 
         userRepository.save(oUser);
     }
 
     public void deleteUser(UUID uuid) {
-        User user = findUserById(uuid);
+        User user = findUserByUuId(uuid);
         userRepository.deleteById(user.getId());
     }
 
@@ -102,7 +101,7 @@ public class UserService {
     }
 
     // 해당 uuid의 유저를 얻기 위한 함수
-    private User findUserById(UUID user_uuid)
+    public User findUserByUuId(UUID user_uuid)
     {
         return userRepository.findUserByUuidAndIsActiveTrue(user_uuid).orElseThrow(NotFoundUserEntityException::new);
     }
@@ -110,15 +109,22 @@ public class UserService {
     // 유저가 속해있는 프로젝트 ID를 얻기 위한 함수
     private List<Project> getProjectList(User user)
     {
-        List<UserProject> userProjects = userProjectRepository.findAllByUserAndIsActiveTrue(user);
+        /*List<UserProject> userProjects = userProjectRepository.findAllByUserAndIsActiveTrue(user);*/
+
+        Page<UserProject> userProjects =  userProjectRepository.findAllByUserAndIsActiveTrue(user, PageRequest.of(0, 10));
 
         List<Project> projects = new ArrayList<>(); // 프로젝트 ID를 얻기 위한 리스트 객체 생성
 
-        for(int i = 0; i < userProjects.size(); i ++)
+        for(int i = 0; i < userProjects.getSize(); i ++)
         {
-            projects.add(userProjects.get(i).getProject());
+            projects.add(userProjects.getContent().get(i).getProject());
         }
 
         return projects;
+    }
+
+    public User findUserById(Long id)
+    {
+        return userRepository.findUserByIdAndIsActiveTrue(id).orElseThrow(NotFoundUserEntityException::new);
     }
 }
