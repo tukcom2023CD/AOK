@@ -1,9 +1,26 @@
 import React from "react";
+import {useState, useEffect} from 'react';
 import styled from "styled-components";
+import axios from 'axios';
 import MenuListComposition from './Dropmenu';
 interface props{
     backgroundcolor?: string;
 }
+
+interface userResponse{
+    status: number;
+    code: string;
+    message: string;
+    data: userInfo;
+}
+
+interface userInfo{
+    email: string;
+    uuid: string;
+    photo: string;
+    nickname: string;
+}
+
 
 const ProfileDiv = styled.div`
     display: flex;
@@ -38,12 +55,25 @@ const DropBtn = styled.div`
 `;
 
 
+
+
 export default function MainProfile(){
+    const [nickname, setNickname] = useState('');
+    useEffect(() => {
+        axios.get<userResponse>('http://localhost:8080/api/v1/users/d40051c9-8ae7-4d34-9b3c-b3307d9a9fb7')
+        .then(response => {
+            setNickname(response.data.data.nickname)
+        })
+        .catch(error =>{
+            console.log(error);
+        })
+    }, []);
+
     return(
         <ProfileDiv >
             <Div>
                 <ProfilePic backgroundcolor='#000000'/>
-                <Name>Ellie</Name>
+                <Name>{nickname}</Name>
             </Div>
             <MenuListComposition />
         </ProfileDiv>
