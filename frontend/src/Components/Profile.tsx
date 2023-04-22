@@ -60,7 +60,7 @@ const DropBtn = styled.div`
 export default function MainProfile(){
     const [nickname, setNickname] = useState('');
     useEffect(() => {
-        axios.get<userResponse>('http://localhost:8080/api/v1/users/d40051c9-8ae7-4d34-9b3c-b3307d9a9fb7')
+        axios.get<userResponse>('/users/d40051c9-8ae7-4d34-9b3c-b3307d9a9fb7')
         .then(response => {
             setNickname(response.data.data.nickname)
         })
