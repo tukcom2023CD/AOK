@@ -1,5 +1,6 @@
 import React from "react";
 import {useState, useEffect} from 'react';
+import { useSelector } from 'react-redux'; 
 import styled from "styled-components";
 import axios from 'axios';
 import MenuListComposition from './Dropmenu';
@@ -60,7 +61,7 @@ const DropBtn = styled.div`
 export default function MainProfile(){
     const [nickname, setNickname] = useState('');
     useEffect(() => {
-        //테스트 값으로 데이터를 만들어서 잘 가져와지나 테스트
+        //테스트 값으로 postman 상에서 데이터를 만들어서 잘 가져와지나 테스트
         //users 값 뒤의 uuid를 통해 가져와지나 확인
         axios.get<userResponse>('/users/d40051c9-8ae7-4d34-9b3c-b3307d9a9fb7')
         .then(response => {
