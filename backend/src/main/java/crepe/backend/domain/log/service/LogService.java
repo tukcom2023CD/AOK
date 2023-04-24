@@ -32,7 +32,11 @@ public class LogService {
     }
 
     private Log createLogEntity(Branch branch, User user, String message) {
-        return Log.builder().build();
+        return Log.builder()
+                .branch(branch)
+                .user(user)
+                .message(message)
+                .build();
     }
 
     private User getUserById(Long userId) {
