@@ -4,6 +4,7 @@ import crepe.backend.domain.log.domain.entity.Log;
 import crepe.backend.domain.log.domain.entity.Resource;
 import crepe.backend.domain.log.domain.repository.ResourceRepository;
 import crepe.backend.domain.log.dto.LogCreateRequest;
+import crepe.backend.domain.log.service.LayerService;
 import crepe.backend.domain.log.service.LogService;
 import crepe.backend.domain.log.service.ResourceService;
 import crepe.backend.global.exception.BusinessException;
@@ -27,6 +28,8 @@ public class LogController {
 
     private final LogService logService;
     private final ResourceService resourceService;
+    private final LayerService layerService;
+
     private final S3Service s3Service;
     @PostMapping
     public ResponseEntity<ResultResponse> createLog(
@@ -42,14 +45,9 @@ public class LogController {
         List<String> fileLinks = s3Service.uploadFile(request.getFiles());
         List<Resource> resources = resourceService.createResourceList(request, fileLinks);
         Log log = logService.createLog(request);
+        layerService.createLayer(log, resources);
 
-
-        System.out.println("Files: " + fileLinks);
-
-
-
-
-        return ResponseEntity.ok(ResultResponse.of(ResultCode.CREATE_LOG_SUCCESS, ""));
+        return ResponseEntity.ok(ResultResponse.of(ResultCode.CREATE_LOG_SUCCESS, log.getUuid()));
 
     }
 
