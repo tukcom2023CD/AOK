@@ -35,7 +35,11 @@ public class LogController {
             throw new BusinessException(ErrorCode.EMPTY_FILES);
         }
         List<String> files = s3Service.uploadFile(request.getFiles());
+
         System.out.println("Files: " + files);
+
+
+
 
         return ResponseEntity.ok(ResultResponse.of(ResultCode.CREATE_LOG_SUCCESS, ""));
 

@@ -49,7 +49,7 @@ public class S3Service {
                 throw new BusinessException(ErrorCode.FILE_UPLOAD_ERROR);
             }
 
-            fileNameList.add("https://"+"s3.ap-northeast-2"+".amazonaws.com/"+bucket+"/"+fileName);
+            fileNameList.add(s3Client.getUrl(bucket, fileName).toString());
         });
 
         return fileNameList;
