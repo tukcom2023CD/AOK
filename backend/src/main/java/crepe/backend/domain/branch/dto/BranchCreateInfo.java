@@ -2,20 +2,20 @@ package crepe.backend.domain.branch.dto;
 
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import java.util.UUID;
 
 @Getter
-@NoArgsConstructor
-public class BranchInfo {
-    private String name;
+@RequiredArgsConstructor
+public class BranchCreateInfo {
 
     private UUID uuid;
 
     @Builder
-    public BranchInfo(String name, UUID uuid) {
-        this.name = name;
+    public BranchCreateInfo(UUID uuid)
+    {
         this.uuid = uuid;
     }
+
 }

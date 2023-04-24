@@ -51,8 +51,8 @@ public class UserController {
     @PatchMapping("/{uuid}")
     public ResponseEntity<ResultResponse> updateUser(@PathVariable UUID uuid, @RequestBody Map<String,String> request)
     {
-        UserInfo updateUser = userService.updateUserInfo(uuid, request);
-        return ResponseEntity.ok(ResultResponse.of(UPDATE_USER_SUCCESS, updateUser));
+        userService.updateUserInfo(uuid, request);
+        return ResponseEntity.ok(ResultResponse.of(UPDATE_USER_SUCCESS, ""));
     }
 
     @DeleteMapping("/{uuid}")
