@@ -1,7 +1,10 @@
 package crepe.backend.domain.log.controller;
 
+import crepe.backend.domain.log.domain.entity.Resource;
+import crepe.backend.domain.log.domain.repository.ResourceRepository;
 import crepe.backend.domain.log.dto.LogCreateRequest;
 import crepe.backend.domain.log.service.LogService;
+import crepe.backend.domain.log.service.ResourceService;
 import crepe.backend.global.exception.BusinessException;
 import crepe.backend.global.response.ErrorCode;
 import crepe.backend.global.response.ResultCode;
@@ -22,6 +25,7 @@ import java.util.List;
 public class LogController {
 
     private final LogService logService;
+    private final ResourceService resourceService;
     private final S3Service s3Service;
     @PostMapping
     public ResponseEntity<ResultResponse> createLog(
@@ -34,9 +38,10 @@ public class LogController {
         if (request.getFiles() == null) {
             throw new BusinessException(ErrorCode.EMPTY_FILES);
         }
-        List<String> files = s3Service.uploadFile(request.getFiles());
+        List<String> fileLinks = s3Service.uploadFile(request.getFiles());
+        List<Resource> resources = resourceService.createResourceList(request, fileLinks);
 
-        System.out.println("Files: " + files);
+        System.out.println("Files: " + fileLinks);
 
 
 

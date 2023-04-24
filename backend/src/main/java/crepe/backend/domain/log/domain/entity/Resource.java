@@ -38,7 +38,8 @@ public class Resource extends BaseEntity {
     private User user;
 
     @Builder
-    public Resource(String name, String link) {
+    public Resource(User user, String name, String link) {
+        this.user = user;
         this.name = name;
         this.link = link;
         super.isActive = true;
