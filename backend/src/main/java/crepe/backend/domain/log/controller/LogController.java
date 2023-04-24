@@ -1,14 +1,19 @@
 package crepe.backend.domain.log.controller;
 
 import crepe.backend.domain.log.dto.LogCreateRequest;
+import crepe.backend.domain.log.service.LogService;
+import crepe.backend.global.exception.BusinessException;
+import crepe.backend.global.response.ErrorCode;
 import crepe.backend.global.response.ResultCode;
 import crepe.backend.global.response.ResultResponse;
+import crepe.backend.global.service.S3Service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Slf4j
 @RequestMapping("/api/v1/logs")
@@ -16,6 +21,8 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 public class LogController {
 
+    private final LogService logService;
+    private final S3Service s3Service;
     @PostMapping
     public ResponseEntity<ResultResponse> createLog(
             @Valid @ModelAttribute LogCreateRequest request) {
@@ -24,11 +31,11 @@ public class LogController {
         // 2. 리소스 파일 저장 (S3, 리소스)
         // 3. 로그 만들기
         // 4. 레이어 생성
-        System.out.println(request.getFiles().get(0).getOriginalFilename());
-        System.out.println(request.getFiles().get(1).getOriginalFilename());
-        System.out.println(request.getMessage());
-        System.out.println(request.getUserId());
-        System.out.println(request.getBranchId());
+        if (request.getFiles() == null) {
+            throw new BusinessException(ErrorCode.EMPTY_FILES);
+        }
+        List<String> files = s3Service.uploadFile(request.getFiles());
+        System.out.println("Files: " + files);
 
         return ResponseEntity.ok(ResultResponse.of(ResultCode.CREATE_LOG_SUCCESS, ""));
 
