@@ -33,8 +33,7 @@ public enum ResultCode {
 
     // feedback
     CREATE_FEEDBACK_SUCCESS(200, "F001", "피드백 생성 성공"),
-    /*UPDATE_FEEDBACK_SUCCESS(200, "F003", "피드백 수정 성공"),*/
-    DELETE_FEEDBACK_SUCCESS(200, "F004", "피드백 삭제 성공")
+    DELETE_FEEDBACK_SUCCESS(200, "F002", "피드백 삭제 성공")
 
 
     ;
