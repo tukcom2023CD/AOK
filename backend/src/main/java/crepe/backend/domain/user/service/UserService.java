@@ -109,9 +109,7 @@ public class UserService {
     // 유저가 속해있는 프로젝트 ID를 얻기 위한 함수
     private List<Project> getProjectList(User user)
     {
-        /*List<UserProject> userProjects = userProjectRepository.findAllByUserAndIsActiveTrue(user);*/
-
-        Page<UserProject> userProjects =  userProjectRepository.findAllByUserAndIsActiveTrue(user, PageRequest.of(0, 10));
+        Page<UserProject> userProjects =  userProjectRepository.findAllByUserAndIsActiveTrue(user, PageRequest.of(0, 8));
 
         List<Project> projects = new ArrayList<>(); // 프로젝트 ID를 얻기 위한 리스트 객체 생성
 
