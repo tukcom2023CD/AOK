@@ -1,5 +1,6 @@
 package crepe.backend.domain.log.controller;
 
+import crepe.backend.domain.log.domain.entity.Log;
 import crepe.backend.domain.log.domain.entity.Resource;
 import crepe.backend.domain.log.domain.repository.ResourceRepository;
 import crepe.backend.domain.log.dto.LogCreateRequest;
@@ -40,6 +41,8 @@ public class LogController {
         }
         List<String> fileLinks = s3Service.uploadFile(request.getFiles());
         List<Resource> resources = resourceService.createResourceList(request, fileLinks);
+        Log log = logService.createLog(request);
+
 
         System.out.println("Files: " + fileLinks);
 

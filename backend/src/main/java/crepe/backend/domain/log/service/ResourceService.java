@@ -31,7 +31,7 @@ public class ResourceService {
         }
         return resources;
     }
-    public Resource createResource(User user, String fileName, String fileLink) {
+    private Resource createResource(User user, String fileName, String fileLink) {
         Resource resource = Resource.builder()
                 .user(user)
                 .name(fileName)
