@@ -1,7 +1,8 @@
 import React from "react";
 import {useState, useEffect} from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setUuid } from "./Redux/UserSlice";
+import {RootState} from './Redux/Store'; 
 import styled from "styled-components";
 import axios from 'axios';
 import MenuListComposition from './Dropmenu';
@@ -13,7 +14,14 @@ interface userResponse{
     status: string;
     code: string;
     message: string;
-    data: userUuid;
+    data: userInfo;
+}
+
+interface userInfo{
+    email: string;
+    nickname: string;
+    photo: string;
+    uuid: string; 
 }
 
 interface userUuid{
@@ -60,7 +68,7 @@ const DropBtn = styled.div`
 
 export default function MainProfile(){
     const [nickname, setNickname] = useState('');
-    const [uuid, setUuidState] = useState('');
+    const [Uuid, setUuidState] = useState('');
     /*1.Postman에서 만든 User 데이터의 uuid로 데이터 조회 테스트*/
 
     // useEffect(() => {
@@ -81,19 +89,23 @@ export default function MainProfile(){
     const dispatch = useDispatch();
     const createTestData = () => {
         axios.post('/api/v1/users',{
-            email: 'test7@naver.com',
+            email: 'test13@naver.com',
             password: '1111',
             photo: '1111',
-            nickname: 'test4'
+            nickname: 'test10'
         })
         .then((response) => {
             console.log("성공적으로 생성완료")
             console.log(response)
 
+            //uuid useState에 uuid값 저장
+            const uuidData = response.data.data.uuid
+            console.log("발급된 uuid : ", uuidData)
+            const disp = dispatch(setUuid(uuidData))
+            console.log("안녕",disp)
+            setUuidState(response.data.data.uuid)
+            
 
-            const resUuid = setUuidState(response.data.data.uuid)
-            console.log("발급된 uuid : ", uuid)
-            dispatch(setUuid(resUuid))
         })
         .catch((error)=> {
             console.log("createTestData 실패")
@@ -102,20 +114,21 @@ export default function MainProfile(){
     }
     
 
+    
 
-    // useEffect(()=>{
-    //     (async () => {
-    //         await axios.get<userResponse>('/api/v1/users/${uuid}')
-    //         .then((response)=>
-    //             {setNickname(response.data.data.nickname)
-    //             console.log("닉네임 불러오기 성공")
-    //             })
-    //         .catch((error)=>{
-    //             console.log("닉네임 불러오기 실패")
-    //             console.log(error)
-    //         })
-    //     })();
-    // },[]);
+    useEffect(()=>{
+        (async () => {
+            await axios.get<userResponse>('/api/v1/users/'+ Uuid)
+            .then((response)=>
+                {setNickname(response.data.data.nickname)
+                console.log("닉네임 불러오기 성공")
+                })
+            .catch((error)=>{
+                console.log("닉네임 불러오기 실패")
+                console.log(error)
+            })
+        })();
+    },[]);
 
     return(
         <ProfileDiv >
