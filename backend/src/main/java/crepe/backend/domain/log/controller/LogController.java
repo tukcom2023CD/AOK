@@ -33,6 +33,7 @@ public class LogController {
     private final LayerService layerService;
 
     private final S3Service s3Service;
+
     @PostMapping
     public ResponseEntity<ResultResponse> createLog(
             @Valid @ModelAttribute LogCreateRequest request) {
@@ -55,7 +56,9 @@ public class LogController {
         return ResponseEntity.ok(ResultResponse.of(ResultCode.READ_ONE_LOG_SUCCESS, logService.findLogInfoByUuid(uuid)));
     }
 
-
-
-
+    @DeleteMapping("/{uuid}")
+    public ResponseEntity<ResultResponse> deleteUser(@PathVariable UUID uuid) {
+        logService.deleteLog(uuid);
+        return ResponseEntity.ok(ResultResponse.of(ResultCode.DELETE_LOG_SUCCESS, ""));
+    }
 }

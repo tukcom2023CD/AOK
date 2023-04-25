@@ -5,6 +5,7 @@ import crepe.backend.domain.feedback.domain.entity.Feedback;
 import crepe.backend.domain.user.domain.entity.User;
 import crepe.backend.global.domain.BaseEntity;
 import lombok.*;
+import org.hibernate.annotations.SQLDelete;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import static javax.persistence.FetchType.LAZY;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "log")
+@SQLDelete(sql = "UPDATE log SET is_active = false WHERE id=?")
 public class Log extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

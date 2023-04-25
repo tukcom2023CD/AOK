@@ -25,7 +25,9 @@ public enum ResultCode {
 
     // log
     CREATE_LOG_SUCCESS(200,"L001", "로그 생성 성공"),
-    READ_ONE_LOG_SUCCESS(200,"L002", "단일 로그 조회 성공")
+    READ_ONE_LOG_SUCCESS(200,"L002", "단일 로그 조회 성공"),
+    DELETE_LOG_SUCCESS(200,"L003", "로그 삭제 성공"),
+
     ;
 
     private int status;

@@ -80,6 +80,10 @@ public class LogService {
                 .build();
     }
 
+    public void deleteLog(UUID uuid) {
+        logRepository.deleteById(getLogByUuid(uuid).getId());
+    }
+
     private Log createLogEntity(Branch branch, User user, String message) {
         return Log.builder()
                 .branch(branch)
