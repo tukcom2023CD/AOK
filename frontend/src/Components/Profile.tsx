@@ -89,10 +89,10 @@ export default function MainProfile(){
     const dispatch = useDispatch();
     const createTestData = () => {
         axios.post('/api/v1/users',{
-            email: 'test13@naver.com',
+            email: 'test1@naver.com',
             password: '1111',
             photo: '1111',
-            nickname: 'test10'
+            nickname: 'test1'
         })
         .then((response) => {
             console.log("성공적으로 생성완료")
@@ -103,7 +103,7 @@ export default function MainProfile(){
             console.log("발급된 uuid : ", uuidData)
             const disp = dispatch(setUuid(uuidData))
             console.log("안녕",disp)
-            setUuidState(response.data.data.uuid)
+            setUuidState(uuidData)
             
 
         })
