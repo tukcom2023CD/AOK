@@ -89,10 +89,10 @@ export default function MainProfile(){
     const dispatch = useDispatch();
     const createTestData = () => {
         axios.post('/api/v1/users',{
-            email: 'test3@naver.com',
+            email: 'test1@naver.com',
             password: '1111',
             photo: '1111',
-            nickname: 'test3'
+            nickname: 'test1'
         })
         .then((response) => {
             console.log("성공적으로 생성완료")
