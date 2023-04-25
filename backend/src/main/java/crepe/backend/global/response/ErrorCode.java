@@ -16,6 +16,12 @@ public enum ErrorCode {
 
     //BRANCH
     BRANCH_NOT_FOUND(400, "B001", "브랜치 찾기 실패"),
+
+    // LOG
+    LOG_NOT_FOUND(400, "L001", "로그 찾기 실패"),
+
+    // FEEDBACK
+    FEEDBACK_NOT_FOUND(400, "F001", "피드백 찾기 실패"),
     ;
 
     private final int status;
