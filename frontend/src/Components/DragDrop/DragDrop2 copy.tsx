@@ -188,16 +188,15 @@ const DragDrop_Modal = () => {
 
         
         <div className="flexDiv">
-      <FormControl>
       <RadioGroup
         row
         aria-labelledby="demo-radio-buttons-group-label"
         defaultValue="female"
         name="radio-buttons-group"
-        sx={{display: 'flex', flexDirection:'row'}}
+        sx={{display: 'felx', flexDirection:'row'}}
       >
           <div className="inlineblockDiv">
-            <div className="PreviewTextModaldiv">
+            <div className="PreviewTextdiv">
             main
             </div>
             <div className="imagePreview2"> 
@@ -217,12 +216,13 @@ const DragDrop_Modal = () => {
                   );
                 })}
             </div>
-            
-            <FormControlLabel value="main" control={<Radio />} label="" />
+            <Radio
+            />
+            {/* <FormControlLabel value="main" control={<Radio />} label="" /> */}
           </div>
 
           <div className="inlineblockDiv">
-            <div className="PreviewTextModaldiv">
+            <div className="PreviewTextdiv">
             branch
             </div>
             <div className="imagePreview2"> 
@@ -242,10 +242,11 @@ const DragDrop_Modal = () => {
                   );
                 })}
             </div>
-            <FormControlLabel value="branch" control={<Radio />} label="" />
+            <Radio 
+            />
+            {/* <FormControlLabel value="branch" control={<Radio />} label="" /> */}
           </div>
           </RadioGroup>
-          </FormControl>
         </div>          
       </div>
       
