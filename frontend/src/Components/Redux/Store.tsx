@@ -7,18 +7,17 @@ import storage from 'redux-persist/lib/storage';
 const persistConfig = {
   key: 'root',
   storage,
+  whitelist: ['user']
 };
 
-const rootReducer = combineReducers(
-  userReducer
-);
+const rootReducer = combineReducers({
+  user: userReducer
+});
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 const store = configureStore({
-  reducer: {
-    user: userReducer, 
-  },
+  reducer: persistedReducer
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

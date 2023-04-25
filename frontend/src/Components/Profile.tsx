@@ -85,14 +85,14 @@ export default function MainProfile(){
 
     /*2.임의로 데이터 하나를 post해서(post로 회원가입 과정을 거쳤다고 가정) 받는 uuid 값으로 테스트*/
     //ProfilePic onclick 했을 때 데이터 저장되도록 설정하였음
-
+    
     const dispatch = useDispatch();
     const createTestData = () => {
         axios.post('/api/v1/users',{
-            email: 'test1@naver.com',
+            email: 'test3@naver.com',
             password: '1111',
             photo: '1111',
-            nickname: 'test1'
+            nickname: 'test3'
         })
         .then((response) => {
             console.log("성공적으로 생성완료")
@@ -118,7 +118,7 @@ export default function MainProfile(){
 
     useEffect(()=>{
         (async () => {
-            await axios.get<userResponse>('/api/v1/users/'+ Uuid)
+            await axios.get<userResponse>('/api/v1/users/'+Uuid)
             .then((response)=>
                 {setNickname(response.data.data.nickname)
                 console.log("닉네임 불러오기 성공")
