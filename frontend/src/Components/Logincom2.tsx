@@ -13,6 +13,7 @@ import kakao_login_large_wide from '../Images/kakao_login_large_wide.png';
 import kakao_login_large_narrow from '../Images/kakao_login_large_narrow.png';
 import kakao_login_medium_wide from '../Images/kakao_login_medium_wide.png';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   imgSrc: string;
@@ -20,12 +21,12 @@ interface Props {
 }
 
 const ImageButton = styled.div`
-    width: 330px;
-    height: 40px;
-    background-image: url(${kakao_login_medium_wide});
-    background-position: center;
-    background-repeat: no-repeat;
-    `
+  width: 330px;
+  height: 40px;
+  background-image: url(${kakao_login_medium_wide});
+  background-position: center;
+  background-repeat: no-repeat;
+`;
 
 function Copyright(props: any) {
   const handleClick = () => {
@@ -65,6 +66,11 @@ export default function SignIn() {
     });
   };
 
+  //임시로 카카오 버튼에 Main 페이지로 가는 라우팅을 걸었습니다.
+  //후에 로그인 구현이 완료되면 라우팅은 교체해 주세요.
+  const navigate = useNavigate();
+  const MainNavigate = navigate('/main'); 
+
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs" sx={{width:'100vw', bgcolor: '#FFFFFF', p:'20px', mx:'auto', mt:'30vh', backgroundColor:'#1A2634'}}>
@@ -86,7 +92,7 @@ export default function SignIn() {
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <Box marginTop={"60px"}>
-              <ImageButton />
+              <ImageButton onClick={()=>navigate("/main")}/>
             </Box>
             <Grid container display={'flex'} justifyContent={'center'}>
               <Grid item>
