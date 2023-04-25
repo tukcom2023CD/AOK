@@ -8,10 +8,10 @@ import javax.persistence.*;
 import static javax.persistence.FetchType.LAZY;
 
 @Entity
-@Table(name = "layer")
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "layer")
 public class Layer extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,9 +26,10 @@ public class Layer extends BaseEntity {
     private Resource resource;
 
     @Column(name = "sequence", nullable = false)
-    private Long sequence;
+    private int sequence;
     @Builder
-    public Layer (Log log, Resource resource, Long sequence) {
+    public Layer(Log log, Resource resource, int sequence) {
+
         this.log = log;
         this.resource = resource;
         this.sequence = sequence;

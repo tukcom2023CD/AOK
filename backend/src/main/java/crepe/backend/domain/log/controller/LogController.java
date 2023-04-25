@@ -4,6 +4,7 @@ import crepe.backend.domain.log.domain.entity.Log;
 import crepe.backend.domain.log.domain.entity.Resource;
 import crepe.backend.domain.log.domain.repository.ResourceRepository;
 import crepe.backend.domain.log.dto.LogCreateRequest;
+import crepe.backend.domain.log.dto.LogUuidInfo;
 import crepe.backend.domain.log.service.LayerService;
 import crepe.backend.domain.log.service.LogService;
 import crepe.backend.domain.log.service.ResourceService;
@@ -34,21 +35,20 @@ public class LogController {
     @PostMapping
     public ResponseEntity<ResultResponse> createLog(
             @Valid @ModelAttribute LogCreateRequest request) {
-        // ---
-        // 파일 .getOriginalFileName()으로 이름 받아오기
-        // 2. 리소스 파일 저장 (S3, 리소스)
-        // 3. 로그 만들기
-        // 4. 레이어 생성
+
         if (request.getFiles() == null) {
             throw new BusinessException(ErrorCode.EMPTY_FILES);
         }
         List<String> fileLinks = s3Service.uploadFile(request.getFiles());
         List<Resource> resources = resourceService.createResourceList(request, fileLinks);
         Log log = logService.createLog(request);
-        layerService.createLayer(log, resources);
+        LogUuidInfo logUuidInfo = logService.createLogUuidInfo(log);
+        logService.createLayer(log, resources);
+        // layerService.createLayer(log, resources);
 
-        return ResponseEntity.ok(ResultResponse.of(ResultCode.CREATE_LOG_SUCCESS, log.getUuid()));
-
+        return ResponseEntity.ok(ResultResponse.of(ResultCode.CREATE_LOG_SUCCESS, logUuidInfo));
     }
+
+
 
 }
