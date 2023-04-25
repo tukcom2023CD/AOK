@@ -24,7 +24,8 @@ public enum ResultCode {
     CREATE_USERPROJECT_SUCCESS(200, "P007", "프로젝트에 유저 추가 성공"),
 
     // log
-    CREATE_LOG_SUCCESS(200,"L001", "로그 생성 성공")
+    CREATE_LOG_SUCCESS(200,"L001", "로그 생성 성공"),
+    READ_ONE_LOG_SUCCESS(200,"L002", "단일 로그 조회 성공")
     ;
 
     private int status;

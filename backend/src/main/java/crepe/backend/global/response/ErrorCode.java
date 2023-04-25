@@ -24,9 +24,11 @@ public enum ErrorCode {
 
     //리소스
     RESOURCE_CREATE_ERROR(400, "R001", "리소스 생성 실패"),
+    RESOURCE_NOT_FOUND(400, "R002", "리소스 조회 실패"),
 
     //로그
     LOG_CREATE_ERROR(400, "L001", "로그 생성 실패"),
+    LoG_NOT_FOUND(400, "L002", "단일 로그 조회 실패"),
 
     //레이어
     LAYER_CREATE_ERROR(400, "LY001", "레이어 생성 실패"),

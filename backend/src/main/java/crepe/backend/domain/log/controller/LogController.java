@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.UUID;
 
 @Slf4j
 @RequestMapping("/api/v1/logs")
@@ -48,6 +49,12 @@ public class LogController {
 
         return ResponseEntity.ok(ResultResponse.of(ResultCode.CREATE_LOG_SUCCESS, logUuidInfo));
     }
+
+    @GetMapping("/{uuid}")
+    public ResponseEntity<ResultResponse> findLogByUuid(@PathVariable UUID uuid) {
+        return ResponseEntity.ok(ResultResponse.of(ResultCode.READ_ONE_LOG_SUCCESS, logService.findLogInfoByUuid(uuid)));
+    }
+
 
 
 
