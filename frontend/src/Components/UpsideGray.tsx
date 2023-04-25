@@ -1,6 +1,7 @@
 import * as React from 'react';
 import crepeimg from '../Images/crepeimg.png';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 const BackgrDiv = styled.div`
     display: flex;
@@ -34,9 +35,14 @@ const TitleDiv = styled.div`
 
 
 export default function UpsideGray() {
+    const navigate = useNavigate();
+    const Logonavigate = () => {
+        navigate("/main")
+    };
+
     return(
         <BackgrDiv>
-            <LogoDiv>
+            <LogoDiv onClick = {Logonavigate}>
                 <ImageDiv/>
                 <TitleDiv>Crepe</TitleDiv>
             </LogoDiv>

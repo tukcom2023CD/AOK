@@ -17,7 +17,7 @@ import { useNavigate } from 'react-router-dom';
 export default function MenuListComposition() {
   const movePage = useNavigate();
   function goProject(){
-    movePage('/Project');
+    movePage('/main');
   }
 
   const [open, setOpen] = React.useState(false);

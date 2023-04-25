@@ -3,7 +3,7 @@ import { useState } from "react";
 import Box from '@mui/material/Box';
 import { ThemeProvider,createTheme } from '@mui/material/styles';
 import UpsideGray from '../Components/UpsideGray';
-import { Typography, Button } from '@mui/material';
+import { Typography, Button, TextField } from '@mui/material';
 import BasicSelect from '../Components/ProjectSelect';
 import BasicList from '../Components/List';
 import AddIcon from '@mui/icons-material/Add';
@@ -13,8 +13,8 @@ import { reverse } from 'dns';
 import SelectBar from '../Components/SelectBar';
 import EditIcon from '@mui/icons-material/Edit';
 import TextField2 from '../Components/TextField2';
+import TitleList from '../Components/Title/TitleList';
 import ProjectSelect from '../Components/ProjectSelect';
-
 import IosShareSharpIcon from '@mui/icons-material/IosShareSharp';
 
 interface props{
@@ -45,7 +45,9 @@ export default function Project() {
         setText("Button Clicked");
     };
 
-    
+    const handleCommentSubmit = (name: string, comment: string) => {
+        console.log(`Submitted comment: ${name} - ${comment}`);
+        };
     return (
             <Box sx={{ flexGrow: 1, flexShrink:1 }} display={'flex'} flexDirection={'column'} position={'fixed'}>
                  <Box width={'100vw'}  display={'flex'} > {/*상단바 */}
@@ -53,7 +55,7 @@ export default function Project() {
                         <Box width={'16vw'} >
                             <UpsideGray />
                         </Box>
-                        <Box sx={{width:"100vw", height:"42px", alignText:'center', bgcolor:"#D9D9D9", alignContent:'center'}} >
+                        <Box sx={{width:"16vw", height:"42px", alignText:'center', bgcolor:"#D9D9D9", alignContent:'center'}} >
                             <ProjectSelect/>
                         </Box>
                     </Box>
@@ -72,15 +74,17 @@ export default function Project() {
                     </Box>
                     {/* 우측 */}
                     <Box display={'flex'} flexDirection={'column'} width={'100vw'} overflow={'auto'} height={"80vh"}>  
+                    <Box>
+    
+                    </Box>
                         <Box display={'flex'} marginX={'auto'} marginTop={'50px'}>
                             <img src="img/tino.png" alt="tino" width={'400px'} height={'400px'}/>
                         </Box>
                         
 
                         
-                        <Box display={'flex'} justifyContent={'center'} alignItems={'center'} marginLeft={'65px'}>
-                            <Typography fontSize={'21px'} fontWeight={'bold'} marginTop={'20px'} marginBottom={"5px"} textAlign={"center"}>텍스트 변경</Typography>
-                            <Button sx={{border:"ButtonShadow", mt:'15px'}}><EditIcon/></Button>
+                        <Box display={'flex'} justifyContent={'center'} alignItems={'center'} marginLeft={'65px'} marginY={'20px'}>
+                            <TitleList></TitleList>
                         </Box>
                         
                         <Box display={'flex'} justifyContent={'center'}>
@@ -101,12 +105,12 @@ export default function Project() {
                         
                         <Box display={'flex'} justifyContent={'center'} marginTop={'50px'}>
                             {/* <UseFormControl /> */}
+                            
                             <TextField2 />
                         </Box>
                     </Box>
 
                     <Box>
-
                     </Box>
                 </Box> 
             </Box>

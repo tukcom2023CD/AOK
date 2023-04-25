@@ -8,7 +8,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import CreateBtn from './CreateBtn';
-import BranchModal from './BranchModal';
+import BranchModal from './ProjectModal';
 
 export default function BasicList() {
     const [open, setOpen] = React.useState(false);
