@@ -14,22 +14,22 @@ public class LogInfo {
     private UUID UserUuid;
     private String Message;
     private LocalDateTime createdAt;
-    private ResourceInfoList resourceInfoList;
-    private LogFeedbackInfoList logFeedbackInfoList;
+    private List<ResourceInfo> resourceInfos;
+    private List<LogFeedbackInfo> feedbackInfos;
 
 
     @Builder
     public LogInfo(UUID logUserUuid,
                    String logMessage,
                    LocalDateTime createdAt,
-                   ResourceInfoList resourceInfoList,
-                   LogFeedbackInfoList logFeedbackInfoList) {
+                   List<ResourceInfo> resourceInfos,
+                   List<LogFeedbackInfo> feedbackInfos) {
 
         this.UserUuid = logUserUuid;
         this.Message = logMessage;
         this.createdAt = createdAt;
-        this.resourceInfoList = resourceInfoList;
-        this.logFeedbackInfoList = logFeedbackInfoList;
+        this.resourceInfos = resourceInfos;
+        this.feedbackInfos = feedbackInfos;
 
     }
 

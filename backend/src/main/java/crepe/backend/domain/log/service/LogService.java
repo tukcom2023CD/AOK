@@ -68,17 +68,15 @@ public class LogService {
         for(Layer layer: layers) { //리소스 리스트 만들기
             resources.add(getResourceById(layer.getResource().getId()));
         }
-        ResourceInfoList resourceInfoList = getResourceInfoList(resources);
 
         List<Feedback> feedbacks = feedbackRepository.findAllByLogAndIsActiveTrueOrderByCreatedAtDesc(log);
-        LogFeedbackInfoList logFeedbackInfoList = getLogFeedbackInfoList(feedbacks);
 
         return LogInfo.builder()
                 .logUserUuid(log.getUuid())
                 .logMessage(log.getMessage())
                 .createdAt(log.getCreatedAt())
-                .resourceInfoList(resourceInfoList)
-                .logFeedbackInfoList(logFeedbackInfoList)
+                .resourceInfos(getResourceInfoList(resources))
+                .feedbackInfos(getLogFeedbackInfoList(feedbacks))
                 .build();
     }
 
@@ -127,7 +125,7 @@ public class LogService {
         layerRepository.save(layer);
     }
 
-    private ResourceInfoList getResourceInfoList(List<Resource> resources) {
+    private List<ResourceInfo> getResourceInfoList(List<Resource> resources) {
         List<ResourceInfo> resourceInfos = new ArrayList<>();
         for(Resource resource: resources) {
             resourceInfos.add(ResourceInfo.builder()
@@ -136,11 +134,11 @@ public class LogService {
                             .fileUuid(resource.getUuid())
                             .build());
         }
-        return new ResourceInfoList(resourceInfos);
+        return resourceInfos;
     }
 
 
-    private LogFeedbackInfoList getLogFeedbackInfoList(List<Feedback> feedbacks) {
+    private List<LogFeedbackInfo> getLogFeedbackInfoList(List<Feedback> feedbacks) {
         List<LogFeedbackInfo> logFeedbackInfos = new ArrayList<>();
         for(Feedback feedback: feedbacks) {
             logFeedbackInfos.add(LogFeedbackInfo.builder()
@@ -149,6 +147,6 @@ public class LogService {
                     .feedbackUuid(feedback.getUuid())
                     .build());
         }
-        return new LogFeedbackInfoList(logFeedbackInfos);
+        return logFeedbackInfos;
     }
 }
