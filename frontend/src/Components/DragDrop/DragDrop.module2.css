@@ -1,0 +1,25 @@
+.DragDrop{
+    display: inline-block;
+}
+
+.left{
+    margin-right: 1rem;
+}
+
+.list{
+    flex: 1 1 auto;
+    overflow-y: auto;
+}
+
+.button{
+    background-color: transparent;
+    transition: all 200ms ease-in-out;
+    transform: translateY(3.5px);
+    margin-left: 0.5rem;
+    border: none;
+    outline: none;
+}
+
+.button :hover{
+    transform: scale(1.2);
+}

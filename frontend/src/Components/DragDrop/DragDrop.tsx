@@ -1,5 +1,6 @@
 import React, {
   ChangeEvent,
+  ReactElement,
   useCallback,
   useRef,
   useState,
@@ -10,30 +11,10 @@ import "./DragDrop.scss";
 import styled from 'styled-components';
 import styles from './DragDrop.module.css';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
-
-
-
-const dragtest = styled.div`
-  width: 500px;
-  height: 1000px;
-  border: none;
-  background-color: red;
-  border-radius: 10px;
-  padding: 1rem;
-  overflow-y: auto;
-  //margin-bottom: 50px;
-`;
-
-type IFileTypes = {
-  id: number; //파일들의 고유값 id
-  object: File;
-  URL: string;
-}
-
-type IFileList = {
-  imageFiles: IFileTypes[];
-}
-
+import { Button } from '@mui/material';
+import ErrorIcon from '@mui/icons-material/Error';
+import MergeModal from '../MergeIconModal';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 const DragDrop = () => {
   const [isDragging, setIsDragging] = useState<boolean>(false);
@@ -41,13 +22,17 @@ const DragDrop = () => {
   const dragRef = useRef<HTMLLabelElement | null>(null);
   const selectFile = useRef(null);
   const fileId = useRef<number>(0);
-  
   var reversed_index;
-  
-
   const [fileList, setfileList] = useState<IFileList>({
     imageFiles: files,
   });
+
+  const [isOpenModal, setOpenModal] = useState<boolean>(false);
+
+  const onClickToggleModal = useCallback(() => {
+    setOpenModal(!isOpenModal);
+  }, [isOpenModal]);
+
 
   const onChangeFiles = useCallback(
     (e: ChangeEvent<HTMLInputElement> | any): void => {
@@ -95,7 +80,7 @@ const DragDrop = () => {
 
   //handleFilterFile => id 일치 여부를 확인해 필터링
   
-
+  
   const handleFilterFile = useCallback(
     (id: number): void => {
       //매개 변수로 받은 id와 일치 여부를 확인해 필터링 함
@@ -163,7 +148,7 @@ const DragDrop = () => {
 
   useEffect(() => {
     initDragEvents();
-
+  
     return () => resetDragEvents();
   }, [initDragEvents, resetDragEvents]);
 
@@ -187,11 +172,6 @@ const DragDrop = () => {
       }
 
     };
-
-
-
-  /*------------- 리스트 드래그 앤 드랍 관련 함수 ------------*/
-
 
   return (
     <div className="inlineblockDiv">
@@ -284,20 +264,50 @@ const DragDrop = () => {
                             {...provided.dragHandleProps}
                           >
                             <li className='list-new'>
-                              
+                            <MergeModal onClickToggleModal = {onClickToggleModal}></MergeModal>
+                            <div className="nameDiv"><span>dino.file</span></div>
+                            <button className={styles.button} ><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /><span className="material-icons">highlight_off</span></button>
+                            </li>
+                            <li className='list-edit'>
+                            <Button ></Button>
+                            <div className="nameDiv"><span>dino.file</span></div>
+                            <button className={styles.button}><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /><span className="material-icons">highlight_off</span></button>
+                            </li>
+                            <li className='list-same_order'>
+                            <Button ></Button>
+                            <div className="nameDiv"><span>dino.file</span></div>
+                            <button className={styles.button}><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /><span className="material-icons">highlight_off</span></button>
+                            </li>
+                            <li className='list-same_order'>
+                            <Button ></Button>
+                            <div className="nameDiv"><span>dino.file</span></div>
+                            <button className={styles.button}><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /><span className="material-icons">highlight_off</span></button>
+                            </li>
+                            <li className='list-edit'>
+                            <Button ></Button>
+                            <div className="nameDiv"><span>dino.file</span></div>
+                            <button className={styles.button}><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /><span className="material-icons">highlight_off</span></button>
+                            </li>
+                            <li className='list-edit'>
+                            <Button ><CheckCircleIcon sx={{color: "green"}}/></Button>
+                            <div className="nameDiv"><span>dino.file</span></div>
+                            <button className={styles.button}><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /><span className="material-icons">highlight_off</span></button>
+                            </li>
+
+                            <li className='list-new'>
+                              <MergeModal onClickToggleModal = {onClickToggleModal}></MergeModal>
                               <div className="nameDiv">{name}</div>
                               <div className='DragDrop-Files-Filter' onClick={() => handleFilterFile(id)}>
                                   <button className={styles.button}><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /><span className="material-icons">highlight_off</span></button>
                               </div>
-                              
                             </li>
                           </ul>)}
                           
                         </Draggable> 
-                        
+                    
                       );
                     })}
-
+                
                   </div>
                   </div>
                 )}
@@ -307,12 +317,31 @@ const DragDrop = () => {
             </label>
           </div>
         </div>          
-
-        
       </div>
       
     </div>
-  );
-};
-
+)};
+                                    
 export default DragDrop;
+
+
+const dragtest = styled.div`
+  width: 500px;
+  height: 1000px;
+  border: none;
+  background-color: red;
+  border-radius: 10px;
+  padding: 1rem;
+  overflow-y: auto;
+  //margin-bottom: 50px;
+`;
+
+type IFileTypes = {
+  id: number; //파일들의 고유값 id
+  object: File;
+  URL: string;
+}
+
+type IFileList = {
+  imageFiles: IFileTypes[];
+}
