@@ -6,9 +6,9 @@ import React, {
   useEffect
 } from "react";
 import LottieUpload from "../LottieUpload";
-import "./DragDrop2.scss";
+import "./Merge.scss";
 import styled from 'styled-components';
-import styles from './DragDrop.module.css';
+import styles from './Merge.module.css';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';

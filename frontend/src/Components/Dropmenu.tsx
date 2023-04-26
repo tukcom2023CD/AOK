@@ -18,6 +18,7 @@ export default function MenuListComposition() {
   const movePage = useNavigate();
   function goProject(){
     movePage('/main');
+    window.location.reload();
   }
 
   const [open, setOpen] = React.useState(false);

@@ -22,7 +22,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
   }
 
   .flexDiv {
@@ -30,6 +29,8 @@
     margin-bottom: 4rem;
     justify-content: center;
     align-items: center;
+    padding-left: 50px;
+    padding-right: 50px;
   }
 
   .DragDrop {
@@ -39,7 +40,7 @@
     @include alignCenter();
     
     &-File {
-      width: 500px;
+      width: 100px;
       height: 140px;
       border: 5px dashed #FF8888;
       background-color: white;
@@ -89,6 +90,7 @@
   }
 
   .DragDrop-Files{
+
     width: 500px;
     height: 500px;
     border: none;
@@ -143,37 +145,6 @@
       background-color: #EDAF9C;
       margin: auto;
       padding: 0.5rem 0.2rem;
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
-
-    &-edit {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      width: 400px;
-      height: 50px;
-      border-radius: 5px;
-      font-size: 18px;
-      background-color: #FFFFD2;
-      margin: auto;
-      padding: 0.5rem 0.2rem;
-      margin-top: 10px;
-      margin-bottom: 5px;
-    }
-    &-same_order {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      width: 400px;
-      height: 50px;
-      border-radius: 5px;
-      font-size: 18px;
-      background-color: #BEFBFF;
-      margin: auto;
-      padding: 0.5rem 0.2rem;
-      margin-top: 10px;
-      margin-bottom: 5px;
     }
   }
 
@@ -192,6 +163,19 @@
   margin-right: 1rem; //가로로 했을 때 간격
   width: 500px;
   height: 500px;
+  border: none;
+  border-radius: 10px;
+  //box-shadow: 2px 4px 8px;
+  background-color: #FFF2F2;
+  display: table;
+  align-items: center;
+  position: relative;
+}
+
+.imagePreview2{
+  margin-right: 1rem; //가로로 했을 때 간격
+  width: 300px;
+  height: 300px;
   border: none;
   border-radius: 10px;
   //box-shadow: 2px 4px 8px;
@@ -232,6 +216,15 @@
   justify-content: center;
 }
 
+.PreviewTextModaldiv{
+  display: flex;
+  width: 300px;
+  margin-top: 4rem;
+  font-size: 20px;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+
 .buttonsDiv{
   display: flex;
   align-items: center;
@@ -243,11 +236,4 @@
   margin-left: 150px;
 }
 
-.uploadDiv{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  //margin-bottom: 50px;
-}
 

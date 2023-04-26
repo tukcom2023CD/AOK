@@ -38,6 +38,7 @@ export default function UpsideGray() {
     const navigate = useNavigate();
     const Logonavigate = () => {
         navigate("/main")
+        window.location.reload()
     };
 
     return(

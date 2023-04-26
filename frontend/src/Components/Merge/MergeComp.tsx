@@ -1,24 +1,22 @@
 import React, {
   ChangeEvent,
+  ReactElement,
   useCallback,
   useRef,
   useState,
   useEffect
 } from "react";
 import LottieUpload from "../LottieUpload";
-import "./DragDrop2.scss";
+import "./Merge.scss";
 import styled from 'styled-components';
-import styles from './DragDrop.module.css';
+import styles from './Merge.module.css';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
+import { Button } from '@mui/material';
+import ErrorIcon from '@mui/icons-material/Error';
+import MergeModal from '../MergeIconModal';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
-const DragDrop_Modal = () => {
-  const [selectedValue, setSelectedValue] = React.useState('a');
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedValue(event.target.value);
-  };
+const Merge = () => {
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [files, setFiles] = useState<IFileTypes[]>([]);
   const dragRef = useRef<HTMLLabelElement | null>(null);
@@ -29,10 +27,12 @@ const DragDrop_Modal = () => {
     imageFiles: files,
   });
 
-  const [inputStatus, setInputStatus] = useState(false);
-  const handleClickRadioButton = () => {
-    setInputStatus(!inputStatus)
-  }
+  const [isOpenModal, setOpenModal] = useState<boolean>(false);
+
+  const onClickToggleModal = useCallback(() => {
+    setOpenModal(!isOpenModal);
+  }, [isOpenModal]);
+
 
   const onChangeFiles = useCallback(
     (e: ChangeEvent<HTMLInputElement> | any): void => {
@@ -80,7 +80,7 @@ const DragDrop_Modal = () => {
 
   //handleFilterFile => id 일치 여부를 확인해 필터링
   
-
+  
   const handleFilterFile = useCallback(
     (id: number): void => {
       //매개 변수로 받은 id와 일치 여부를 확인해 필터링 함
@@ -148,7 +148,7 @@ const DragDrop_Modal = () => {
 
   useEffect(() => {
     initDragEvents();
-
+  
     return () => resetDragEvents();
   }, [initDragEvents, resetDragEvents]);
 
@@ -173,30 +173,17 @@ const DragDrop_Modal = () => {
 
     };
 
-/*-------------------------------------------------------*/
-
-
-  /*------------- 리스트 드래그 앤 드랍 관련 함수 ------------*/
-
-
   return (
     <div className="inlineblockDiv">
       <div className="DragDrop">
 
         
         <div className="flexDiv">
-      <RadioGroup
-        row
-        aria-labelledby="demo-radio-buttons-group-label"
-        defaultValue="female"
-        name="radio-buttons-group"
-        sx={{display: 'felx', flexDirection:'row'}}
-      >
           <div className="inlineblockDiv">
             <div className="PreviewTextdiv">
-            main
+            preview
             </div>
-            <div className="imagePreview2"> 
+            <div className="imagePreview"> 
                 {files.length > 0 && files.map((file: IFileTypes, index: number)=> {
                   const {
                     id,
@@ -213,45 +200,120 @@ const DragDrop_Modal = () => {
                   );
                 })}
             </div>
-            <Radio
-            />
-            {/* <FormControlLabel value="main" control={<Radio />} label="" /> */}
           </div>
 
-          <div className="inlineblockDiv">
+          <div className="uploadDiv">
             <div className="PreviewTextdiv">
-            branch
+            <div className="textDiv">drag and drop the files</div>
+            <div className="buttonsDiv">
+              <label className={styles.button} htmlFor="fileUploadbtn" ref={selectFile}>
+              <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+              <span className="material-icons">upload_file</span>
+              <input
+                type="file"
+                id="fileUploadbtn"
+                style={{display: "none"}}
+                multiple={true}
+                onChange={onChangeFiles}
+                ref={selectFile}
+                /> 
+              </label>
+              
+              <button className={styles.button} onClick={() => window.location.reload()}><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+                <span className="material-icons">refresh</span>
+              </button>
+              
             </div>
-            <div className="imagePreview2"> 
-                {files.length > 0 && files.map((file: IFileTypes, index: number)=> {
-                  const {
-                    id,
-                    object: {name},
-                    URL
-                  } = file;
-                  
-                  reversed_index = files.length - 1 - index;
+            </div>
+            
+            {/* <input
+              type="file"
+              id="fileUpload"
+              style={{display: "none"}}
+              multiple={true}
+              onChange={onChangeFiles}
+            /> */}
+            <label 
+              className={isDragging? "DragDrop-File-Dragging" : "DragDrop-Files1"}
+              htmlFor="fileUpload"
+              ref={dragRef}
+            >
+              
+            <DragDropContext onDragEnd = {onDragEnd}>
+              <Droppable droppableId="DragDrop-Files">
+                {(provided) => (
+                  <div 
+                  ref={provided.innerRef}
+                  {...provided.droppableProps}
+                  >
+                  <div className="DragDrop-Files">
+                  {files.length > 0 &&
+                    files.map((file: IFileTypes, index: number) => {
+                      const {
+                        id,
+                        object: { name },
+                        URL
+                      } = file;
+                      
+                      return (
+                        <Draggable draggableId={name} index={index} key = {id}>
+                          {(provided) => (
+                          <ul className='lists'
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                          >
+                            <li className='list-new'>
+                            <MergeModal onClickToggleModal = {onClickToggleModal}></MergeModal>
+                            <div className="nameDiv"><span>003.png</span></div>
+                            <button className={styles.button} ><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /><span className="material-icons">highlight_off</span></button>
+                            </li>
+                            <li className='list-same_order'>
+                            <Button ></Button>
+                            <div className="nameDiv"><span>dino.file</span></div>
+                            <button className={styles.button}><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /><span className="material-icons">highlight_off</span></button>
+                            </li>
+                            <li className='list-edit'>
+                            <Button ></Button>
+                            <div className="nameDiv"><span>dino.file</span></div>
+                            <button className={styles.button}><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /><span className="material-icons">highlight_off</span></button>
+                            </li>
+                            <li className='list-edit'>
+                            <Button ><CheckCircleIcon sx={{color: "green"}}/></Button>
+                            <div className="nameDiv"><span>dino.file</span></div>
+                            <button className={styles.button}><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /><span className="material-icons">highlight_off</span></button>
+                            </li>
 
-                  return (
-                    <div className="imagePreviewDiv" key = {index} style={(reversed_index===0) ? {} :  {position: 'absolute', zIndex: reversed_index}}>
-                      <img src = {URL} className="imageDiv"/>
-                    </div>
-                  );
-                })}
-            </div>
-            <Radio 
-            />
-            {/* <FormControlLabel value="branch" control={<Radio />} label="" /> */}
+                            <li className='list-new'>
+                              <MergeModal onClickToggleModal = {onClickToggleModal}></MergeModal>
+                              <div className="nameDiv">{name}</div>
+                              <div className='DragDrop-Files-Filter' onClick={() => handleFilterFile(id)}>
+                                  <button className={styles.button}><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /><span className="material-icons">highlight_off</span></button>
+                              </div>
+                            </li>
+                          </ul>)}
+                          
+                        </Draggable> 
+                    
+                      );
+                    })}
+                
+                  </div>
+                  </div>
+                )}
+              
+              </Droppable>
+            </DragDropContext>
+            </label>
           </div>
-          </RadioGroup>
         </div>          
       </div>
       
     </div>
-  );
-};
+)};
+                                    
+export default Merge;
 
-export default DragDrop_Modal;
 
 const dragtest = styled.div`
   width: 500px;
