@@ -6,6 +6,7 @@ import DDProjectModal from '../Components/DDProjectModal';
 import { useSelector } from 'react-redux';
 import { RootState } from './Redux/Store';
 import axios from 'axios';
+import { constants } from 'buffer';
 
 
 const ContainerDiv = styled.div`
@@ -148,6 +149,14 @@ interface ProjectResponse{
   data: ProjectsData;
 }
 
+interface findProjectResponse{
+  status: number;
+  code: string;
+  message: string;
+  data: Project;
+}
+
+
 interface Project{
   name: string;
   uuid: string;
@@ -156,7 +165,6 @@ interface Project{
 interface ProjectsData{
   projects: Project[] 
 }
-
 
 
 
@@ -174,12 +182,34 @@ export default function BasicSelect() {
       setOpen(!open);
   }, [setOpen]);
 
-  //프로젝트 데이터 불러오는 함수
+  //리스트 구성을 위한 프로젝트 데이터 불러오는 함수
   let uuid = useSelector((state:RootState) => {
     return state.user.uuid;
   })
 
-  console.log("selector useSelector test : ", uuid);
+  //projectUuid : 현재 보고 있는 프로젝트의 uuid 가져옴
+  const projectUuid = useSelector((state: RootState)=>{
+    return state.project.uuid; 
+  })
+
+
+  //console.log("selector useSelector test : ", uuid);
+  //console.log("Projectuuid useSelector test : ", projectUuid);
+
+
+  const [currentProject, setCurrentProject] = useState('');
+  useEffect(() => {
+    (async () => {
+      await axios.get<findProjectResponse>('api/v1/projects/' + projectUuid)
+      .then((response) => {
+        console.log("현재 위치한 프로젝트 불러옴");
+        console.log("현위치 프로젝트 : ", response.data.data.name)
+        setCurrentProject(response.data.data.name);
+        console.log("저장상태 : ", currentProject)
+      })
+    })();
+  })
+  
 
   const [projects, setProjects] = useState<Project[]>([]);
   
@@ -205,7 +235,7 @@ export default function BasicSelect() {
     <DropdownContainer>
       <ContainerDiv onClick={onToggle}>
         <LabelDiv>
-          <TextDiv>Tino Project</TextDiv>
+          <TextDiv>{currentProject}</TextDiv>
         </LabelDiv>
       </ContainerDiv>
       <div>

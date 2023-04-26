@@ -8,7 +8,22 @@ import Modal from '@mui/material/Modal';
 import {PropsWithChildren} from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from './Redux/Store'; 
+import { RootState } from './Redux/Store';
+import { setProjectUuid } from './Redux/ProjectSlice';  
+
+interface projectResponse{
+  status: number;
+  code: string;
+  message: string;
+  data: projectInfo;
+}
+
+interface projectInfo{
+  name: string;
+  uuid: string; 
+};
+
+
 
 interface ModalDefaultType{
     onClickToggleModal: () => void;
@@ -22,6 +37,7 @@ export default function DDProjectModal({
         const handleClose = () => setOpen(false);
         const [project, setProject] = useState(''); 
         const navigate = useNavigate();
+        const dispatch = useDispatch();
 
         const createProject = () => {
           if(project === '') {
@@ -34,6 +50,11 @@ export default function DDProjectModal({
           .then((response) => {
             console.log('프로젝트 생성 성공')
             console.log(response)
+
+            const uuidData = response.data.data.uuid
+            console.log("발급된 프로젝트 uuid : ", uuidData)
+            const projectdisp = dispatch(setProjectUuid(uuidData));
+            console.log("dispatch : ", projectdisp);
             navigate('/Project');
           })
           .catch((error)=> {
