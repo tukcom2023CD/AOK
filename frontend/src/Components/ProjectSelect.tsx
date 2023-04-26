@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useEffect, useState, useRef, useCallback } from "react";
+import { useNavigate } from 'react-router-dom';
 import styled, {css} from "styled-components";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import DDProjectModal from '../Components/DDProjectModal';
@@ -185,6 +186,7 @@ export default function BasicSelect() {
 
   //리스트 구성을 위한 프로젝트 데이터 불러오는 함수
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   let uuid = useSelector((state:RootState) => {
     return state.user.uuid;
   })
@@ -219,13 +221,13 @@ export default function BasicSelect() {
     (async () => {
       await axios.get<ProjectResponse>('/api/v1/users/'+ uuid +'/projects')
       .then((response)=> {
-        console.log("프로젝트 정보 불러오기 성공");
-        console.log("가져온 데이터", response.data.data.projects);
+        //console.log("프로젝트 정보 불러오기 성공");
+        //console.log("가져온 데이터", response.data.data.projects);
         setProjects(response.data.data.projects);
-        console.log("저장상태", projects);
+        //console.log("저장상태", projects);
       })
       .catch((error)=>{
-        console.log("프로젝트 정보 불러오기 실패");
+        //console.log("프로젝트 정보 불러오기 실패");
         console.log(error);
       })
     })();
@@ -246,9 +248,14 @@ export default function BasicSelect() {
             <SearchInput/>
             <Ul>
               
-              {projects.map(project=> {return(
-                <Li key={project.uuid} onClick={() => (dispatch(setProjectUuid(project.uuid)))}>
-                  <LinkWrapper>{project.name}</LinkWrapper>
+              {projects.map(project=> {
+                const clickEvent = () => {
+                  dispatch(setProjectUuid(project.uuid));
+                  navigate('/Project');
+                }
+                return(
+                <Li key={project.uuid}>
+                  <LinkWrapper onClick={() => (clickEvent())}>{project.name}</LinkWrapper>
                 </Li>
               );
                 
