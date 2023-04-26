@@ -215,7 +215,9 @@ export default function BasicSelect() {
             <Ul>
               
               {projects.map(project=> {return(
-                <Li key={project.uuid}>{project.name}</Li>
+                <Li key={project.uuid}>
+                  <LinkWrapper>{project.name}</LinkWrapper>
+                </Li>
               );
                 
               })}

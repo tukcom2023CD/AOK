@@ -2,7 +2,7 @@ import React from "react";
 import {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUuid } from "./Redux/UserSlice";
-import {RootState} from './Redux/Store'; 
+import { RootState } from './Redux/Store'; 
 import styled from "styled-components";
 import axios from 'axios';
 import MenuListComposition from './Dropmenu';

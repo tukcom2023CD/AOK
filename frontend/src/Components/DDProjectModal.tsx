@@ -7,7 +7,8 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import {PropsWithChildren} from "react";
 import styled from "styled-components";
-
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from './Redux/Store'; 
 
 interface ModalDefaultType{
     onClickToggleModal: () => void;
