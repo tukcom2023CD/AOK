@@ -1,9 +1,11 @@
 package crepe.backend.domain.branch.domain.entity;
 
+import crepe.backend.domain.feedback.domain.entity.Feedback;
 import crepe.backend.domain.log.domain.entity.Log;
 import crepe.backend.domain.project.domain.entity.Project;
 import crepe.backend.global.domain.BaseEntity;
 import lombok.*;
+import org.hibernate.annotations.SQLDelete;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -16,6 +18,7 @@ import static javax.persistence.FetchType.LAZY;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@SQLDelete(sql = "UPDATE branch SET is_active = false WHERE id=?")
 @Table(name = "branch")
 public class Branch extends BaseEntity {
     @Id
@@ -41,7 +44,11 @@ public class Branch extends BaseEntity {
         this.name = name;
         super.isActive = true;
         this.uuid = UUID.randomUUID();
+    }
 
+    public void updateBranch(String name)
+    {
+        this.name = name;
     }
 
 

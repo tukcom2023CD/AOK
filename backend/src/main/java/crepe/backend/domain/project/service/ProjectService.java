@@ -9,6 +9,7 @@ import crepe.backend.domain.project.domain.entity.Project;
 import crepe.backend.domain.project.domain.repository.ProjectRepository;
 import crepe.backend.domain.project.dto.ProjectCreateRequest;
 import crepe.backend.domain.project.dto.ProjectInfo;
+import crepe.backend.domain.project.exception.EventDuplicationUserException;
 import crepe.backend.domain.project.exception.NotFoundProjectEntityException;
 import crepe.backend.domain.user.domain.entity.User;
 import crepe.backend.domain.user.domain.repository.UserRepository;
@@ -39,12 +40,24 @@ public class ProjectService {
         Project savedProject = projectRepository.save(newProject);
 
         saveUserProject(foundUser, savedProject, true);
-        saveBranch(savedProject, "main");
+        //saveBranch(savedProject, "main");
 
         return mapProjectEntityToProjectInfoResponse(savedProject);
     }
 
     public void createUserProject(Long userId, Long projectId) {
+
+        Project project = getProjectById(projectId);
+        List<UserProject> userProjects = getUserProject(project);
+
+        for(int i = 0; i < userProjects.size(); i ++)
+        {
+            if(userProjects.get(i).getUser().getId() == userId)
+            {
+                throw new EventDuplicationUserException();
+            }
+        }
+
         saveUserProject(getUserById(userId), getProjectById(projectId), false);
     }
 
@@ -119,7 +132,7 @@ public class ProjectService {
         return userRepository.findUserByIdAndIsActiveTrue(userId).orElseThrow(NotFoundUserEntityException::new);
     }
 
-    private Project getProjectById(Long projectId) {
+    public Project getProjectById(Long projectId) {
         return projectRepository.findProjectByIdAndIsActiveTrue(projectId).orElseThrow(NotFoundProjectEntityException::new);
     }
 
@@ -134,4 +147,8 @@ public class ProjectService {
         return projectRepository.findProjectByUuidAndIsActiveTrue(uuid).orElseThrow(NotFoundProjectEntityException::new);
     }
 
+    private List<UserProject> getUserProject(Project project)
+    {
+        return userProjectRepository.findAllByProjectAndIsActiveTrue(project);
+    }
 }

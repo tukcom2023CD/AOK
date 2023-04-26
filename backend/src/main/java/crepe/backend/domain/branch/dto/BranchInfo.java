@@ -10,6 +10,7 @@ import java.util.UUID;
 @NoArgsConstructor
 public class BranchInfo {
     private String name;
+
     private UUID uuid;
 
     @Builder

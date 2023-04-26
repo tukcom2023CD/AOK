@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import styled, {css} from "styled-components";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
+import DDProjectModal from '../Components/DDProjectModal';
+import { useSelector } from 'react-redux';
+import { RootState } from './Redux/Store';
 
 const ContainerDiv = styled.div`
     width: 16vw;
@@ -116,6 +118,7 @@ const SearchInput = styled.input `
   outline: none;
 `;
 
+
 const ProjectCreateBtn = styled.button `
   width: 300px;
   height: 50px;
@@ -137,10 +140,24 @@ const ProjectCreateBtn = styled.button `
 `;
 
 export default function BasicSelect() {
-    const [isOpen, setisOpen] = useState<boolean>(false);
-    const onToggle = () => {
+  //드롭다운 박스 열고 닫기 관련 함수
+  const [isOpen, setisOpen] = useState<boolean>(false);
+  const onToggle = () => {
       setisOpen(!isOpen);
-    }
+  }
+
+  //modal 열고 닫기 관련 함수
+  const [open, setOpen] = React.useState(false);
+
+  const onClickToggleModal = useCallback(() => {
+      setOpen(!open);
+  }, [setOpen]);
+
+  let uuid = useSelector((state:RootState) => {
+    return state.user.uuid
+  })
+
+  
 
     return (
     <DropdownContainer>
@@ -169,7 +186,8 @@ export default function BasicSelect() {
             
 
             </Ul>
-            <ProjectCreateBtn>create</ProjectCreateBtn>
+            
+            <DDProjectModal onClickToggleModal = {onClickToggleModal}>create</DDProjectModal>
           </Menu>
         }
       </div>

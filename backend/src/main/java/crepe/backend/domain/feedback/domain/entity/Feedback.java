@@ -1,9 +1,11 @@
 package crepe.backend.domain.feedback.domain.entity;
 
+import crepe.backend.domain.branch.domain.entity.Branch;
 import crepe.backend.domain.log.domain.entity.Log;
 import crepe.backend.domain.user.domain.entity.User;
 import crepe.backend.global.domain.BaseEntity;
 import lombok.*;
+import org.hibernate.annotations.SQLDelete;
 
 import javax.persistence.*;
 import java.util.UUID;
@@ -14,6 +16,7 @@ import static javax.persistence.FetchType.LAZY;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@SQLDelete(sql = "UPDATE feedback SET is_active = false WHERE id=?")
 @Table(name = "feedback")
 public class Feedback extends BaseEntity {
     @Id

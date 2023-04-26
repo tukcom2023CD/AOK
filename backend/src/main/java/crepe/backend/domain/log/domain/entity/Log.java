@@ -38,7 +38,6 @@ public class Log extends BaseEntity {
 
     @Column(name = "uuid", columnDefinition = "BINARY(16)", nullable = false, unique = true)
     private UUID uuid;
-
     @Column(name = "message", nullable = false)
     private String message;
 
