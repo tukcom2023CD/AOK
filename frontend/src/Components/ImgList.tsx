@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios'; 
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
@@ -36,6 +37,7 @@ interface ProjectsData{
 
 export default function ImgList() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   
   let uuid = useSelector((state:RootState) => {
     return state.user.uuid;
@@ -64,20 +66,25 @@ export default function ImgList() {
     return (
     <ImageList sx={{ width: 1300, margin: 2, flexWrap: 'wrap', maxWidth: '800'}} cols={4} rowHeight={300}>
       {/* <ImageList sx={{ width: 1300, height: 670, margin: 2, flexWrap: 'wrap', maxWidth: '800'}} cols={4} rowHeight={300}> */}
-        {projects.map((project) => {return(
-        <Box sx={{...commonStyles, borderRadius:3, border:'transparent', boxShadow: 4}}>
-            <ImageListItem key={project.uuid}>
-            <img
-            src={`img/tino.png/?w=164&h=164&fit=crop&auto=format`}
-            srcSet={`img/tino.png/?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-            alt={project.name}
-            loading="lazy"
-            
-            />
-            <Box sx={{display:'flex', justifyContent:'center', fontWeight:'bold', fontSize:'20px', marginBottom:0.1}}>{project.name}</Box>
-            <Box sx={{display:'flex', justifyContent:'center', fontSize:'13px', color:'darkgray'}}>23.01.03 08:01:22</Box>
-        </ImageListItem>
-        </Box>
+        {projects.map((project) => {
+          const clickEvent = () => {
+            dispatch(setProjectUuid(project.uuid));
+            navigate('/project'); 
+          }
+          return(
+          <Box sx={{...commonStyles, borderRadius:3, border:'transparent', boxShadow: 4}} onClick={() => (clickEvent())}>
+              <ImageListItem key={project.uuid}>
+              <img
+              src={`img/tino.png/?w=164&h=164&fit=crop&auto=format`}
+              srcSet={`img/tino.png/?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+              alt={project.name}
+              loading="lazy"
+              
+              />
+              <Box sx={{display:'flex', justifyContent:'center', fontWeight:'bold', fontSize:'20px', marginBottom:0.1}}>{project.name}</Box>
+              <Box sx={{display:'flex', justifyContent:'center', fontSize:'13px', color:'darkgray'}}>23.01.03 08:01:22</Box>
+          </ImageListItem>
+          </Box>
         )})}
     </ImageList>
     );
