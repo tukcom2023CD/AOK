@@ -3,10 +3,11 @@ import { useEffect, useState, useRef, useCallback } from "react";
 import styled, {css} from "styled-components";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import DDProjectModal from '../Components/DDProjectModal';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setProjectUuid } from './Redux/ProjectSlice';
 import { RootState } from './Redux/Store';
 import axios from 'axios';
-import { constants } from 'buffer';
+
 
 
 const ContainerDiv = styled.div`
@@ -94,7 +95,7 @@ const Li = styled.li`
   }
 `;
 
-const LinkWrapper = styled.a`
+const LinkWrapper = styled.div`
   font-size: 16px;
   text-decoration: none;
   color: black;
@@ -183,6 +184,7 @@ export default function BasicSelect() {
   }, [setOpen]);
 
   //리스트 구성을 위한 프로젝트 데이터 불러오는 함수
+  const dispatch = useDispatch();
   let uuid = useSelector((state:RootState) => {
     return state.user.uuid;
   })
@@ -245,7 +247,7 @@ export default function BasicSelect() {
             <Ul>
               
               {projects.map(project=> {return(
-                <Li key={project.uuid}>
+                <Li key={project.uuid} onClick={() => (dispatch(setProjectUuid(project.uuid)))}>
                   <LinkWrapper>{project.name}</LinkWrapper>
                 </Li>
               );
