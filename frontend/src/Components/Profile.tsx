@@ -89,10 +89,10 @@ export default function MainProfile(){
     const dispatch = useDispatch();
     const createTestData = () => {
         axios.post('/api/v1/users',{
-            email: 'test01@naver.com',
+            email: 'test02@naver.com',
             password: '1111',
             photo: '1111',
-            nickname: 'test01'
+            nickname: 'test02'
         })
         .then((response) => {
             console.log("성공적으로 생성완료")
@@ -114,21 +114,25 @@ export default function MainProfile(){
     }
     
 
-    
+    let uuid = useSelector((state:RootState) => {
+        return state.user.uuid
+    })
+
+    console.log("uuid check : ", uuid)
 
     useEffect(()=>{
         (async () => {
-            await axios.get<userResponse>('/api/v1/users/'+Uuid)
+            await axios.get<userResponse>('/api/v1/users/'+ uuid)
             .then((response)=>
                 {setNickname(response.data.data.nickname)
                 console.log("닉네임 불러오기 성공")
-                })
+                }) 
             .catch((error)=>{
                 console.log("닉네임 불러오기 실패")
                 console.log(error)
             })
         })();
-    },[Uuid]);
+    },[uuid]);
 
     return(
         <ProfileDiv >

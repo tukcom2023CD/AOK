@@ -5,6 +5,8 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import DDProjectModal from '../Components/DDProjectModal';
 import { useSelector } from 'react-redux';
 import { RootState } from './Redux/Store';
+import axios from 'axios';
+
 
 const ContainerDiv = styled.div`
     width: 16vw;
@@ -139,6 +141,25 @@ const ProjectCreateBtn = styled.button `
   }
 `;
 
+interface ProjectResponse{
+  status: number;
+  code: string;
+  message: string;
+  data: ProjectsData;
+}
+
+interface Project{
+  name: string;
+  uuid: string;
+}
+
+interface ProjectsData{
+  projects: Project[] 
+}
+
+
+
+
 export default function BasicSelect() {
   //드롭다운 박스 열고 닫기 관련 함수
   const [isOpen, setisOpen] = useState<boolean>(false);
@@ -153,10 +174,31 @@ export default function BasicSelect() {
       setOpen(!open);
   }, [setOpen]);
 
+  //프로젝트 데이터 불러오는 함수
   let uuid = useSelector((state:RootState) => {
-    return state.user.uuid
+    return state.user.uuid;
   })
 
+  console.log("selector useSelector test : ", uuid);
+
+  const [projects, setProjects] = useState<Project[]>([]);
+  
+  useEffect(() => {
+    (async () => {
+      await axios.get<ProjectResponse>('/api/v1/users/'+ uuid +'/projects')
+      .then((response)=> {
+        console.log("프로젝트 정보 불러오기 성공");
+        console.log("가져온 데이터", response.data.data.projects);
+        setProjects(response.data.data.projects);
+        console.log("저장상태", projects);
+      })
+      .catch((error)=>{
+        console.log("프로젝트 정보 불러오기 실패");
+        console.log(error);
+      })
+    })();
+    
+  }, []);
   
 
     return (
@@ -171,20 +213,14 @@ export default function BasicSelect() {
           <Menu>
             <SearchInput/>
             <Ul>
-              <Li>
-                <LinkWrapper href="sunggong">Tino Project</LinkWrapper>
-              </Li>
-              <Li>
-                <LinkWrapper href="sunggong">TUK Project</LinkWrapper>
-              </Li>
-              <Li>
-                <LinkWrapper href="sunggong">Test Project 1</LinkWrapper>
-              </Li>
-              <Li>
-                <LinkWrapper href="sunggong">Test Project 2</LinkWrapper>
-              </Li>
-            
-
+              
+              {projects.map(project=> {return(
+                <Li key={project.uuid}>{project.name}</Li>
+              );
+                
+              })}
+              
+              
             </Ul>
             
             <DDProjectModal onClickToggleModal = {onClickToggleModal}>create</DDProjectModal>

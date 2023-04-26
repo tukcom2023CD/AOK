@@ -29,12 +29,11 @@ export default function DDProjectModal({
           axios.post('/api/v1/projects', {
             name: project,
             userId: 1
-            //실험결과 userId는 유저 데이터들 만들어진 순서 id를 의미하는 것으로 보임
           })
           .then((response) => {
             console.log('프로젝트 생성 성공')
             console.log(response)
-            //navigate('/Project');
+            navigate('/Project');
           })
           .catch((error)=> {
             console.log('createProject 실패')
