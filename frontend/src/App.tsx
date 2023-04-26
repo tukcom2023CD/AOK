@@ -5,7 +5,7 @@ import Project from './Pages/Project';
 import LogHistory from './Pages/LogHistory';
 import Upload from './Pages/Upload';
 import Login from './Pages/Login';
-
+import Merge from './Pages/Merge';
 
 
 function App() {
@@ -21,6 +21,7 @@ function App() {
           <Route path='/project' element={<Project />} />
           <Route path='/log_history' element={<LogHistory />} />
           <Route path='/upload' element={<Upload />} />
+          <Route path='/merge' element={<Merge  />} />
         </Routes>
       </Router>
     </div>

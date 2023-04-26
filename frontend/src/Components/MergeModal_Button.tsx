@@ -1,10 +1,10 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import {PropsWithChildren} from "react";
 import styled from "styled-components";
 import MergeIcon from '@mui/icons-material/Merge';
+import { Typography } from '@mui/material';
 
 interface ModalDefaultType{
     onClickToggleModal: () => void;
@@ -18,11 +18,7 @@ export default function MergeModal({
         const handleClose = () => setOpen(false);
     return (
     <div>
-        <Box display={"flex"} justifyContent={"center"} alignItems={"center"}
-        onClick={handleOpen}>
-          <MergeIcon sx={{mr:"5px", fontSize:"20px"}}/>
-          <Typography>merge</Typography>
-        </Box>
+        <ApplyBtn onClick={handleOpen}>apply</ApplyBtn> 
         <Modal
         open={open}
         onClose={handleClose}
@@ -188,3 +184,17 @@ const style = {
     max-width: 600px;
     max-height: 350px;
   `;
+
+  const ApplyBtn = styled.button `
+  width: 250px;
+  height: 75px;
+  background-color: #FF9198;
+  color: white;
+  font-size: 18pt;
+  font-weight: bold;
+  border-radius: 20px;
+  &:hover{
+    background-color: #d7777e;
+    transition: 0.5s;
+  }
+`;
