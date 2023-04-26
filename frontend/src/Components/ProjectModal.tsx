@@ -1,9 +1,25 @@
 import * as React from 'react';
+import { useState } from 'react'; 
+import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import {PropsWithChildren} from "react";
 import styled from "styled-components";
+import { useDispatch, useSelector } from 'react-redux';
+import { setBranchUuid } from './Redux/BranchSlice';
+import axios from 'axios';
+
+interface BranchResponse {
+  status: number;
+  code: string;
+  message: string;
+  data: BranchInfo; 
+}
+
+interface BranchInfo {
+  uuid: string;
+}
 
 interface ModalDefaultType{
     onClickToggleModal: () => void;
@@ -15,6 +31,38 @@ export default function BranchModal({
         const [open, setOpen] = React.useState(false);
         const handleOpen = () => setOpen(true);
         const handleClose = () => setOpen(false);
+        const navigate = useNavigate();
+        const dispatch = useDispatch();
+        const [branch, setBranch] = useState(''); 
+
+        const createBranch = () => {
+          if(branch === '') {
+            alert('만들 브랜치의 이름을 입력해주세요.');
+          }else{
+            axios.post('/api/v1/branches', {
+              name: branch,
+              projectId: 1
+            })
+            .then((response) => {
+              console.log('브랜치 생성 성공')
+              console.log(response)
+  
+              const uuidData = response.data.data.uuid
+              console.log("발급된 브랜치 uuid : ", uuidData)
+              dispatch(setBranchUuid(uuidData));
+              console.log("dispatch : ", branch);
+              navigate('/Project');
+              window.location.reload();
+            })
+            .catch((error)=> {
+              console.log('createBranch 실패')
+              console.log(error)
+              alert("오류로 인해 브랜치 생성에 실패했습니다.")
+            })
+          }
+          
+        }
+
     return (
     <div>
         <Btn onClick={handleOpen}>create</Btn> 
@@ -34,10 +82,10 @@ export default function BranchModal({
             <Typography id="modal-modal-title" sx={{fontWeight: 'bold'}} variant="h6" component="h2" align="left" marginLeft={'125px'}>
               name
             </Typography>
-            <InputStyle/>
+            <InputStyle type="text" value={branch} onChange={(event)=>setBranch(event.target.value)}/>
           </InputBox>
           <BtnBox>
-            <CreateBtn> create </CreateBtn>
+            <CreateBtn onClick={createBranch}> create </CreateBtn>
           </BtnBox>
         </Box>
       </Modal>

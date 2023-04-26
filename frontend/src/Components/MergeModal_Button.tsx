@@ -18,7 +18,7 @@ export default function MergeModal({
         const handleClose = () => setOpen(false);
     return (
     <div>
-        <ApplyBtn onClick={handleOpen}>apply</ApplyBtn> 
+        <ApplyBtn onClick={handleOpen}>merge</ApplyBtn> 
         <Modal
         open={open}
         onClose={handleClose}

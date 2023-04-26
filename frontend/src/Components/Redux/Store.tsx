@@ -1,5 +1,7 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import userReducer from './UserSlice';
+import ProjectReducer from './ProjectSlice'; 
+import BranchReducer from './BranchSlice'
 import {persistReducer} from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 //localStorage에 저장
@@ -7,11 +9,13 @@ import storage from 'redux-persist/lib/storage';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['user']
+  whitelist: ['user', 'project', 'branch']
 };
 
 const rootReducer = combineReducers({
-  user: userReducer
+  user: userReducer,
+  project: ProjectReducer,
+  branch: BranchReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

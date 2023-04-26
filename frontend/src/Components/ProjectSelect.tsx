@@ -1,10 +1,15 @@
 import * as React from 'react';
 import { useEffect, useState, useRef, useCallback } from "react";
+import { useNavigate } from 'react-router-dom';
 import styled, {css} from "styled-components";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import DDProjectModal from '../Components/DDProjectModal';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setProjectUuid } from './Redux/ProjectSlice';
 import { RootState } from './Redux/Store';
+import axios from 'axios';
+
+
 
 const ContainerDiv = styled.div`
     width: 16vw;
@@ -91,7 +96,7 @@ const Li = styled.li`
   }
 `;
 
-const LinkWrapper = styled.a`
+const LinkWrapper = styled.div`
   font-size: 16px;
   text-decoration: none;
   color: black;
@@ -139,6 +144,32 @@ const ProjectCreateBtn = styled.button `
   }
 `;
 
+interface ProjectResponse{
+  status: number;
+  code: string;
+  message: string;
+  data: ProjectsData;
+}
+
+interface findProjectResponse{
+  status: number;
+  code: string;
+  message: string;
+  data: Project;
+}
+
+
+interface Project{
+  name: string;
+  uuid: string;
+}
+
+interface ProjectsData{
+  projects: Project[] 
+}
+
+
+
 export default function BasicSelect() {
   //드롭다운 박스 열고 닫기 관련 함수
   const [isOpen, setisOpen] = useState<boolean>(false);
@@ -153,17 +184,62 @@ export default function BasicSelect() {
       setOpen(!open);
   }, [setOpen]);
 
+  //리스트 구성을 위한 프로젝트 데이터 불러오는 함수
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   let uuid = useSelector((state:RootState) => {
-    return state.user.uuid
+    return state.user.uuid;
   })
 
+  //projectUuid : 현재 보고 있는 프로젝트의 uuid 가져옴
+  const projectUuid = useSelector((state: RootState)=>{
+    return state.project.uuid; 
+  })
+
+
+  //console.log("selector useSelector test : ", uuid);
+  //console.log("Projectuuid useSelector test : ", projectUuid);
+
+
+  const [currentProject, setCurrentProject] = useState('');
+  useEffect(() => {
+    (async () => {
+      await axios.get<findProjectResponse>('api/v1/projects/' + projectUuid)
+      .then((response) => {
+        console.log("현재 위치한 프로젝트 불러옴");
+        console.log("현위치 프로젝트 : ", response.data.data.name)
+        setCurrentProject(response.data.data.name);
+        console.log("저장상태 : ", currentProject)
+      })
+    })();
+  })
+  
+
+  const [projects, setProjects] = useState<Project[]>([]);
+  
+  useEffect(() => {
+    (async () => {
+      await axios.get<ProjectResponse>('/api/v1/users/'+ uuid +'/projects')
+      .then((response)=> {
+        //console.log("프로젝트 정보 불러오기 성공");
+        //console.log("가져온 데이터", response.data.data.projects);
+        setProjects(response.data.data.projects);
+        //console.log("저장상태", projects);
+      })
+      .catch((error)=>{
+        //console.log("프로젝트 정보 불러오기 실패");
+        console.log(error);
+      })
+    })();
+    
+  }, []);
   
 
     return (
     <DropdownContainer>
       <ContainerDiv onClick={onToggle}>
         <LabelDiv>
-          <TextDiv>Tino Project</TextDiv>
+          <TextDiv>{currentProject}</TextDiv>
         </LabelDiv>
       </ContainerDiv>
       <div>
@@ -171,20 +247,22 @@ export default function BasicSelect() {
           <Menu>
             <SearchInput/>
             <Ul>
-              <Li>
-                <LinkWrapper href="sunggong">Tino Project</LinkWrapper>
-              </Li>
-              <Li>
-                <LinkWrapper href="sunggong">TUK Project</LinkWrapper>
-              </Li>
-              <Li>
-                <LinkWrapper href="sunggong">Test Project 1</LinkWrapper>
-              </Li>
-              <Li>
-                <LinkWrapper href="sunggong">Test Project 2</LinkWrapper>
-              </Li>
-            
-
+              
+              {projects.map(project=> {
+                const clickEvent = () => {
+                  dispatch(setProjectUuid(project.uuid));
+                  navigate('/Project');
+                  window.location.reload();
+                }
+                return(
+                <Li key={project.uuid}>
+                  <LinkWrapper onClick={() => (clickEvent())}>{project.name}</LinkWrapper>
+                </Li>
+              );
+                
+              })}
+              
+              
             </Ul>
             
             <DDProjectModal onClickToggleModal = {onClickToggleModal}>create</DDProjectModal>
