@@ -2,10 +2,10 @@ package crepe.backend.domain.log.domain.entity;
 
 import crepe.backend.domain.branch.domain.entity.Branch;
 import crepe.backend.domain.feedback.domain.entity.Feedback;
-import crepe.backend.domain.layer.domain.entity.Layer;
 import crepe.backend.domain.user.domain.entity.User;
 import crepe.backend.global.domain.BaseEntity;
 import lombok.*;
+import org.hibernate.annotations.SQLDelete;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -19,6 +19,7 @@ import static javax.persistence.FetchType.LAZY;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "log")
+@SQLDelete(sql = "UPDATE log SET is_active = false WHERE id=?")
 public class Log extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,8 +38,7 @@ public class Log extends BaseEntity {
 
     @Column(name = "uuid", columnDefinition = "BINARY(16)", nullable = false, unique = true)
     private UUID uuid;
-
-    @Column(name = "message", length = 200, nullable = false)
+    @Column(name = "message", nullable = false)
     private String message;
 
     @OneToMany(mappedBy = "log")

@@ -23,6 +23,11 @@ public enum ResultCode {
     DELETE_PROJECT_SUCCESS(200,"P006", "프로젝트 삭제 성공"),
     CREATE_USERPROJECT_SUCCESS(200, "P007", "프로젝트에 유저 추가 성공"),
 
+    // log
+    CREATE_LOG_SUCCESS(200,"L001", "로그 생성 성공"),
+    READ_ONE_LOG_SUCCESS(200,"L002", "단일 로그 조회 성공"),
+    DELETE_LOG_SUCCESS(200,"L003", "로그 삭제 성공"),
+
     // branch
     CREATE_BRANCH_SUCCESS(200, "B001", "브랜치 생성 성공"),
     READ_BRANCH_LOG_SUCCESS(200, "B002", "특정 브랜치 로그 정보 조회 성공"),

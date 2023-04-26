@@ -34,7 +34,7 @@ public class Feedback extends BaseEntity {
     @Column(name = "uuid", columnDefinition = "BINARY(16)", nullable = false, unique = true)
     private UUID uuid;
 
-    @Column(name = "content", length = 200, nullable = false)
+    @Column(name = "message", length = 200, nullable = false)
     private String message;
 
     @Builder

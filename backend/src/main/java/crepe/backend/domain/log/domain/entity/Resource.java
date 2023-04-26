@@ -1,10 +1,12 @@
-package crepe.backend.domain.layer.domain.entity;
+package crepe.backend.domain.log.domain.entity;
 
-import crepe.backend.domain.log.domain.entity.Log;
+import crepe.backend.domain.user.domain.entity.User;
 import crepe.backend.global.domain.BaseEntity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import static javax.persistence.FetchType.LAZY;
@@ -13,15 +15,12 @@ import static javax.persistence.FetchType.LAZY;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "layer")
-public class Layer extends BaseEntity {
+@Table(name = "resource")
+public class Resource extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "log_id", nullable = false)
-    private Log log;
     @Column(name = "uuid", columnDefinition = "BINARY(16)", nullable = false, unique = true)
     private UUID uuid;
 
@@ -31,9 +30,16 @@ public class Layer extends BaseEntity {
     @Column(name = "link", length = 200, nullable = false)
     private String link;
 
+    @OneToMany(mappedBy = "resource")
+    private List<Layer> layers = new ArrayList<>();
+
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
     @Builder
-    public Layer(Log log, String name, String link) {
-        this.log = log;
+    public Resource(User user, String name, String link) {
+        this.user = user;
         this.name = name;
         this.link = link;
         super.isActive = true;

@@ -1,14 +1,16 @@
 package crepe.backend.domain.user.service;
 
 import crepe.backend.domain.project.domain.entity.Project;
+import crepe.backend.domain.project.domain.repository.ProjectRepository;
 import crepe.backend.domain.project.dto.ProjectInfo;
 import crepe.backend.domain.project.dto.ProjectInfoList;
+import crepe.backend.domain.project.exception.NotFoundProjectEntityException;
 import crepe.backend.domain.user.domain.entity.User;
-import crepe.backend.domain.userProject.domain.entity.UserProject;
+import crepe.backend.domain.project.domain.entity.UserProject;
 import crepe.backend.domain.user.dto.UserCreate;
 import crepe.backend.domain.user.dto.UserCreateInfo;
 import crepe.backend.domain.user.dto.UserInfo;
-import crepe.backend.domain.userProject.domain.repository.UserProjectRepository;
+import crepe.backend.domain.project.domain.repository.UserProjectRepository;
 import crepe.backend.domain.user.domain.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -25,6 +27,7 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final UserProjectRepository userProjectRepository;
+    private final ProjectRepository projectRepository;
 
     // 테스트를 위한 유저 추가와 관련된 코드
     public UserCreateInfo userCreate(UserCreate usercreate) {
@@ -109,17 +112,17 @@ public class UserService {
     // 유저가 속해있는 프로젝트 ID를 얻기 위한 함수
     private List<Project> getProjectList(User user)
     {
-        Page<UserProject> userProjects =  userProjectRepository.findAllByUserAndIsActiveTrue(user, PageRequest.of(0, 8));
+        List<UserProject> userProjects = userProjectRepository.findAllByUserAndIsActiveTrue(user);
+        List<Project> projects = new ArrayList<>();
 
-        List<Project> projects = new ArrayList<>(); // 프로젝트 ID를 얻기 위한 리스트 객체 생성
-
-        for(int i = 0; i < userProjects.getSize(); i ++)
-        {
-            projects.add(userProjects.getContent().get(i).getProject());
+        for (UserProject userProject: userProjects) {
+            projects.add(userProject.getProject());
         }
-
         return projects;
     }
+
+
+
 
     public User findUserById(Long id)
     {
