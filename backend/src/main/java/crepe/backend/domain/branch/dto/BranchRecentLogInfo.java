@@ -8,14 +8,12 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
-public class BranchInfo {
-    private Long id;
-    private String name;
+public class BranchRecentLogInfo {
 
+    private UUID uuid;
 
     @Builder
-    public BranchInfo(Long id, String name) {
-        this.id = id;
-        this.name = name;
+    public BranchRecentLogInfo(UUID uuid) {
+        this.uuid = uuid;
     }
 }

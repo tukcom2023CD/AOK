@@ -10,14 +10,14 @@ import java.util.UUID;
 @NoArgsConstructor
 public class ResourceInfo {
 
-    private String Name;
-    private String Link;
-    private UUID Uuid;
+    private String name;
+    private String link;
+    private UUID uuid;
 
     @Builder
     public ResourceInfo(String fileName, String fileLink, UUID fileUuid) {
-        this.Name = fileName;
-        this.Link = fileLink;
-        this.Uuid = fileUuid;
+        this.name = fileName;
+        this.link = fileLink;
+        this.uuid = fileUuid;
     }
 }
