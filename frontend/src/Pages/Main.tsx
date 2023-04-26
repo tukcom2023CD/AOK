@@ -8,14 +8,11 @@ import { Typography} from '@mui/material';
 import ImgList from '../Components/ImgList';
 import BasicList from '../Components/List';
 import Profile from '../Components/Profile';
-import SelectBar from '../Components/SelectBar';
 import UpsideGray from '../Components/UpsideGray';
 import MainModal from '../Components/MainModal';
 import ProjectSelect from '../Components/ProjectSelect';
+import NonSelectBar from '../Components/nonSelectBar';
 
-export const button = styled.button`
-    transform: 'translate(Y)(2)'
-`
 
 export default function Main() {
 
@@ -38,7 +35,7 @@ export default function Main() {
                         </Box>
                     </Box>
                     <Box width={'83vw'} >
-                        <SelectBar />
+                        <NonSelectBar/>
                     </Box>
                 </Box>
 
