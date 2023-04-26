@@ -1,9 +1,13 @@
 import * as React from 'react';
+import {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import {PropsWithChildren} from "react";
 import styled from "styled-components";
+
 
 interface ModalDefaultType{
     onClickToggleModal: () => void;
@@ -12,36 +16,61 @@ export default function DDProjectModal({
         onClickToggleModal,
         children,
     }: PropsWithChildren<ModalDefaultType>) {
-        const [open, setOpen] = React.useState(false);
+        const [open, setOpen] = useState(false);
         const handleOpen = () => setOpen(true);
         const handleClose = () => setOpen(false);
-    return (
-    <div>
-        <Btn onClick={handleOpen}>create</Btn> 
-        <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-        >
-        <Box sx={style}>
-            <TitleDiv>
-            <Typography id="modal-modal-title" sx={{fontWeight: 'bold'}} variant="h3" component="h3">
-              New Project
-            </Typography>
-            </TitleDiv>
-            <InputBox>
-            <Typography id="modal-modal-title" sx={{fontWeight: 'bold'}} variant="h6" component="h2" align="left" marginLeft={'125px'}>
-              name
-            </Typography>
-            <InputStyle/>
-          </InputBox>
-          <BtnBox>
-            <CreateBtn> create </CreateBtn>
-          </BtnBox>
-        </Box>
-      </Modal>
-    </div>
+        const [project, setProject] = useState(''); 
+        const navigate = useNavigate();
+
+        const createProject = () => {
+          if(project === '') {
+            alert('만들 프로젝트의 이름을 입력해주세요.');
+          }
+          axios.post('/api/v1/projects', {
+            name: project,
+            userId: 1
+            //실험결과 userId는 유저 데이터들 만들어진 순서 id를 의미하는 것으로 보임
+          })
+          .then((response) => {
+            console.log('프로젝트 생성 성공')
+            console.log(response)
+            //navigate('/Project');
+          })
+          .catch((error)=> {
+            console.log('createProject 실패')
+            console.log(error)
+            alert("오류로 인해 프로젝트 생성에 실패했습니다.")
+          })
+        } 
+
+
+        return (
+        <div>
+            <Btn onClick={handleOpen}>create</Btn> 
+            <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+            >
+            <Box sx={style}>
+                <TitleDiv>
+                <Typography id="modal-modal-title" sx={{fontWeight: 'bold'}} variant="h3" component="h3">
+                  New Project
+                </Typography>
+                </TitleDiv>
+                <InputBox>
+                <Typography id="modal-modal-title" sx={{fontWeight: 'bold'}} variant="h6" component="h2" align="left" marginLeft={'125px'}>
+                  name
+                </Typography>
+                <InputStyle type="text" value={project} onChange={(event)=>setProject(event.target.value)}/>
+              </InputBox>
+              <BtnBox>
+                <CreateBtn onClick={createProject}> create </CreateBtn>
+              </BtnBox>
+            </Box>
+          </Modal>
+        </div>
     );
 }
 

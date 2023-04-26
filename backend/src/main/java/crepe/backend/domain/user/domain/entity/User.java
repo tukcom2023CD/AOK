@@ -58,4 +58,12 @@ public class User extends BaseEntity {
         super.isActive = true;
         this.uuid = UUID.randomUUID();
     }
+
+    public void updateUser(String email, String password, String nickname, String photo)
+    {
+        this.email = email;
+        this.password = password;
+        this.nickname = nickname;
+        this.photo = photo;
+    }
 }
