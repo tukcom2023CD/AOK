@@ -12,6 +12,7 @@ import crepe.backend.domain.log.dto.LogInfoList;
 import crepe.backend.domain.project.domain.entity.Project;
 import crepe.backend.domain.project.service.ProjectService;
 import crepe.backend.domain.branch.exception.NotFoundBranchEntityException;
+import crepe.backend.domain.user.domain.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -86,6 +87,7 @@ public class BranchService {
 
         return new LogInfoList(logInfos);
     }
+
     private Branch findBranchByUuid(UUID uuid) { // 쿼리를 이용해서 UUID를 가지고 브랜치를 찾는 모듈
         return branchRepository.findBranchByUuidAndIsActiveTrue(uuid).orElseThrow(NotFoundBranchEntityException::new);
     }

@@ -40,7 +40,6 @@ public class ProjectService {
         Project savedProject = projectRepository.save(newProject);
 
         saveUserProject(foundUser, savedProject, true);
-        saveBranch(savedProject, "main");
 
         return mapProjectEntityToProjectInfoResponse(savedProject);
     }
@@ -67,13 +66,6 @@ public class ProjectService {
                 .user(user)
                 .project(project)
                 .isAdmin(isAdmin)
-                .build());
-    }
-
-    private void saveBranch(Project project,String name) {
-        branchRepository.save(Branch.builder()
-                .project(project)
-                .name(name)
                 .build());
     }
 
