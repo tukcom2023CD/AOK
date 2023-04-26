@@ -265,7 +265,7 @@ const Merge = () => {
                           >
                             <li className='list-new'>
                             <MergeModal onClickToggleModal = {onClickToggleModal}></MergeModal>
-                            <div className="nameDiv"><span>dino.file</span></div>
+                            <div className="nameDiv"><span>003.png</span></div>
                             <button className={styles.button} ><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /><span className="material-icons">highlight_off</span></button>
                             </li>
                             <li className='list-same_order'>

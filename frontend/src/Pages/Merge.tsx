@@ -9,7 +9,7 @@ import BasicList from '../Components/List';
 import Profile from '../Components/Profile';
 import SelectBar from '../Components/SelectBar';
 import UpsideGray from '../Components/UpsideGray';
-import MergeComponent from '../Components/Merge/Merge';
+import MergeComponent from '../Components/Merge/MergeComp';
 import ProjectSelect from '../Components/ProjectSelect';
 import MergeModal from '../Components/MergeModal_Button';
 //import MergeModal from '../Components/MergeIconModal';
