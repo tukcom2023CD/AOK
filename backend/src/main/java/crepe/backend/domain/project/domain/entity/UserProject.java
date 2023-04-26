@@ -1,4 +1,4 @@
-package crepe.backend.domain.userProject.domain.entity;
+package crepe.backend.domain.project.domain.entity;
 
 import crepe.backend.domain.project.domain.entity.Project;
 import crepe.backend.domain.user.domain.entity.User;

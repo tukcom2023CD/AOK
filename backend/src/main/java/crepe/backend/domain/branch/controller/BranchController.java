@@ -3,6 +3,7 @@ package crepe.backend.domain.branch.controller;
 import crepe.backend.domain.branch.dto.BranchCreate;
 import crepe.backend.domain.branch.dto.BranchCreateInfo;
 import crepe.backend.domain.branch.dto.BranchInfo;
+import crepe.backend.domain.branch.dto.BranchLogInfoList;
 import crepe.backend.domain.branch.service.BranchService;
 import crepe.backend.domain.log.dto.LogInfoList;
 import crepe.backend.global.response.ResultResponse;
@@ -41,8 +42,8 @@ public class BranchController {
     @GetMapping("/{uuid}/logs")
     public ResponseEntity<ResultResponse> findLogByUuid(@PathVariable UUID uuid)
     {
-        LogInfoList logInfos = branchService.findLogInfoByUuid(uuid);
-        return ResponseEntity.ok(ResultResponse.of(READ_BRANCH_LOG_SUCCESS, logInfos));
+        BranchLogInfoList branchLogInfoList = branchService.findLogInfoByUuid(uuid);
+        return ResponseEntity.ok(ResultResponse.of(READ_BRANCH_LOG_SUCCESS, branchLogInfoList));
     }
 
     @PatchMapping("/{uuid}")

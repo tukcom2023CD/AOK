@@ -16,8 +16,8 @@ import crepe.backend.domain.user.domain.repository.UserRepository;
 import crepe.backend.domain.user.dto.UserInfo;
 import crepe.backend.domain.user.dto.UserInfoList;
 import crepe.backend.domain.user.exception.NotFoundUserEntityException;
-import crepe.backend.domain.userProject.domain.entity.UserProject;
-import crepe.backend.domain.userProject.domain.repository.UserProjectRepository;
+import crepe.backend.domain.project.domain.entity.UserProject;
+import crepe.backend.domain.project.domain.repository.UserProjectRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -40,7 +40,7 @@ public class ProjectService {
         Project savedProject = projectRepository.save(newProject);
 
         saveUserProject(foundUser, savedProject, true);
-        saveBranch(savedProject, "main");
+        //saveBranch(savedProject, "main");
 
         return mapProjectEntityToProjectInfoResponse(savedProject);
     }

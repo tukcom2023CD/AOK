@@ -14,7 +14,8 @@ import java.util.UUID;
 public interface BranchRepository extends JpaRepository<Branch, Long> {
     List<Branch> findAllByProjectAndIsActiveTrue(Project projectByUuid);
 
+    Optional<Branch> findBranchByIdAndIsActiveTrue(Long branchId);
+
     Optional<Branch> findBranchByUuidAndIsActiveTrue(UUID uuid);
 
-    Optional<Branch> findBranchByIdAndIsActiveTrue(Long id);
 }

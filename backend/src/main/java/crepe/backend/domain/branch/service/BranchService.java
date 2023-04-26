@@ -2,13 +2,10 @@ package crepe.backend.domain.branch.service;
 
 import crepe.backend.domain.branch.domain.entity.Branch;
 import crepe.backend.domain.branch.domain.repository.BranchRepository;
-import crepe.backend.domain.branch.dto.BranchCreate;
-import crepe.backend.domain.branch.dto.BranchCreateInfo;
-import crepe.backend.domain.branch.dto.BranchInfo;
+import crepe.backend.domain.branch.dto.*;
 import crepe.backend.domain.log.domain.entity.Log;
 import crepe.backend.domain.log.domain.repository.LogRepository;
-import crepe.backend.domain.log.dto.LogInfo;
-import crepe.backend.domain.log.dto.LogInfoList;
+
 import crepe.backend.domain.project.domain.entity.Project;
 import crepe.backend.domain.project.service.ProjectService;
 import crepe.backend.domain.branch.exception.NotFoundBranchEntityException;
@@ -45,7 +42,7 @@ public class BranchService {
         return mapBranchEntityToBranchInfo(findBranch, recentLog);
     }
 
-    public LogInfoList findLogInfoByUuid(UUID uuid) { // 해당 브랜치의 모든 로그 정보를 찾는 모듈
+    public BranchLogInfoList findLogInfoByUuid(UUID uuid) { // 해당 브랜치의 모든 로그 정보를 찾는 모듈
         Branch findBranch = findBranchByUuid(uuid);
         List<Log> logs = getLogList(findBranch);
         return getLogInfoList(logs);
@@ -72,19 +69,19 @@ public class BranchService {
                 .build();
     }
 
-    private LogInfoList getLogInfoList(List<Log> logs) // LogInfo들을 LogInfoList로 변환하는 모듈
+    private BranchLogInfoList getLogInfoList(List<Log> logs) // LogInfo들을 LogInfoList로 변환하는 모듈
     {
-        List<LogInfo> logInfos = new ArrayList<>();
+        List<BranchLogInfo> logInfos = new ArrayList<>();
 
         for(int i = 0; i < logs.size(); i ++)
         {
-            logInfos.add(LogInfo.builder()
+            logInfos.add(BranchLogInfo.builder()
                     .uuid(logs.get(i).getUuid())
                     .message(logs.get(i).getMessage())
                     .build());
         }
 
-        return new LogInfoList(logInfos);
+        return new BranchLogInfoList(logInfos);
     }
     private Branch findBranchByUuid(UUID uuid) { // 쿼리를 이용해서 UUID를 가지고 브랜치를 찾는 모듈
         return branchRepository.findBranchByUuidAndIsActiveTrue(uuid).orElseThrow(NotFoundBranchEntityException::new);
@@ -96,15 +93,9 @@ public class BranchService {
     }
 
     private List<Log> getLogList(Branch branch) { // 쿼리를 이용해서 BranchId로 해당 브랜치에 있는 로그들을 가져오는 모듈
-        Page<Log> logs = logRepository.findAllLogByBranchAndIsActiveTrue(branch, PageRequest.of(0, 10));
+        List<Log> logs = logRepository.findAllLogByBranchAndIsActiveTrue(branch);
 
-        List<Log> logList = new ArrayList<>();
-        for(int i = 0; i < logs.getSize(); i ++)
-        {
-            logList.add(logs.getContent().get(i));
-        }
-
-        return logList;
+        return logs;
     }
 
     private Log findRecentLog(List<Log> logs) // 최신 로그 ID를 가져올 때 사용하는 모듈
