@@ -37,9 +37,7 @@ public class BranchService {
 
     public BranchInfo findBranchInfoByUuId(UUID uuid) { // 특정 브랜치의 정보를 찾을 때 사용하는 모듈
         Branch findBranch = findBranchByUuid(uuid);
-        List<Log> isActiveLogs = getLogList(findBranch);
-        Log recentLog = findRecentLog(isActiveLogs);
-        return mapBranchEntityToBranchInfo(findBranch, recentLog);
+        return mapBranchEntityToBranchInfo(findBranch);
     }
 
     public BranchLogInfoList findLogInfoByUuid(UUID uuid) { // 해당 브랜치의 모든 로그 정보를 찾는 모듈
@@ -61,11 +59,11 @@ public class BranchService {
                 .build();
     }
 
-    private BranchInfo mapBranchEntityToBranchInfo(Branch branch, Log log) // Branch 타입을 BranchInfo 타입으로 변환하는 모듈
+    private BranchInfo mapBranchEntityToBranchInfo(Branch branch) // Branch 타입을 BranchInfo 타입으로 변환하는 모듈
     {
         return BranchInfo.builder()
                 .name(branch.getName())
-                .uuid(log.getUuid())
+                .id(branch.getId())
                 .build();
     }
 
@@ -98,21 +96,6 @@ public class BranchService {
         return logs;
     }
 
-    private Log findRecentLog(List<Log> logs) // 최신 로그 ID를 가져올 때 사용하는 모듈
-    {
-        Log recentLog = logs.get(0);
-
-        for(int i = 1; i < logs.size(); i ++)
-        {
-            if(recentLog.getId() > logs.get(i).getId())
-            {
-                recentLog = logs.get(i);
-            }
-        }
-
-        return recentLog;
-    }
-
     public void updateBranchInfo(UUID uuid, Map<String, String> branch)
     {
         Branch oBranch = findBranchByUuid(uuid);
@@ -124,5 +107,15 @@ public class BranchService {
     public void deleteBranch(UUID uuid) {
         Branch branch = findBranchByUuid(uuid);
         branchRepository.deleteById(branch.getId());
+    }
+    private Log getRecentLogByBranch(Branch branch) {
+        return logRepository.findAllByBranchAndIsActiveTrueOrderByCreatedAtDesc(branch).get(0);
+    }
+    public BranchRecentLogInfo findRecentLogInfoByUuid(UUID uuid) {
+        Branch branch = findBranchByUuid(uuid);
+        Log log = getRecentLogByBranch(branch);
+        return BranchRecentLogInfo.builder()
+                .uuid(log.getUuid())
+                .build();
     }
 }

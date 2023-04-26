@@ -11,22 +11,22 @@ import java.util.UUID;
 @Getter
 @NoArgsConstructor
 public class LogInfo {
-    private UUID UserUuid;
-    private String Message;
+    private UUID userUuid;
+    private String message;
     private LocalDateTime createdAt;
     private List<ResourceInfo> resourceInfos;
     private List<LogFeedbackInfo> feedbackInfos;
 
 
     @Builder
-    public LogInfo(UUID logUserUuid,
-                   String logMessage,
+    public LogInfo(UUID userUuid,
+                   String message,
                    LocalDateTime createdAt,
                    List<ResourceInfo> resourceInfos,
                    List<LogFeedbackInfo> feedbackInfos) {
 
-        this.UserUuid = logUserUuid;
-        this.Message = logMessage;
+        this.userUuid = userUuid;
+        this.message = message;
         this.createdAt = createdAt;
         this.resourceInfos = resourceInfos;
         this.feedbackInfos = feedbackInfos;

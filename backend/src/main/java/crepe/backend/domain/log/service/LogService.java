@@ -72,8 +72,8 @@ public class LogService {
         List<Feedback> feedbacks = feedbackRepository.findAllByLogAndIsActiveTrueOrderByCreatedAtDesc(log);
 
         return LogInfo.builder()
-                .logUserUuid(log.getUuid())
-                .logMessage(log.getMessage())
+                .userUuid(log.getUuid())
+                .message(log.getMessage())
                 .createdAt(log.getCreatedAt())
                 .resourceInfos(getResourceInfoList(resources))
                 .feedbackInfos(getLogFeedbackInfoList(feedbacks))

@@ -4,7 +4,8 @@ package crepe.backend.domain.project.service;
 import crepe.backend.domain.branch.domain.entity.Branch;
 import crepe.backend.domain.branch.domain.repository.BranchRepository;
 import crepe.backend.domain.branch.dto.BranchInfo;
-import crepe.backend.domain.branch.dto.BranchInfoList;
+import crepe.backend.domain.project.dto.ProjectBranchInfoList;
+import crepe.backend.domain.project.dto.ProjectBranchInfo;
 import crepe.backend.domain.project.domain.entity.Project;
 import crepe.backend.domain.project.domain.repository.ProjectRepository;
 import crepe.backend.domain.project.dto.ProjectCreateRequest;
@@ -82,9 +83,9 @@ public class ProjectService {
         return mapProjectEntityToProjectInfoResponse(foundProject);
     }
 
-    public BranchInfoList findAllBranchInfoByUuid(UUID uuid) {
+    public ProjectBranchInfoList findAllBranchInfoByUuid(UUID uuid) {
         List<Branch> branches = branchRepository.findAllByProjectAndIsActiveTrue(findProjectByUuid(uuid));
-        return getBranchInfoList(branches);
+        return getProjectBranchInfoList(branches);
     }
 
     public UserInfoList findAllUserInfoByUuid(UUID uuid) {
@@ -113,15 +114,15 @@ public class ProjectService {
         }
         return new UserInfoList(userInfos);
     }
-    private BranchInfoList getBranchInfoList(List<Branch> branches) {
-        List<BranchInfo> branchInfos = new ArrayList<>();
+    private ProjectBranchInfoList getProjectBranchInfoList(List<Branch> branches) {
+        List<ProjectBranchInfo> projectBranchInfos = new ArrayList<>();
         for(int i = 0; i < branches.size(); i++) {
-            branchInfos.add(BranchInfo.builder()
+            projectBranchInfos.add(ProjectBranchInfo.builder()
                     .name(branches.get(i).getName())
                     .uuid(branches.get(i).getUuid())
                     .build());
         }
-        return new BranchInfoList(branchInfos);
+        return new ProjectBranchInfoList(projectBranchInfos);
     }
     private Project convertProjectFromRequest(ProjectCreateRequest projectCreateRequest) {
         return Project.builder()
