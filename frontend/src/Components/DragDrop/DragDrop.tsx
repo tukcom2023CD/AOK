@@ -268,16 +268,6 @@ const DragDrop = () => {
                             <div className="nameDiv"><span>dino.file</span></div>
                             <button className={styles.button} ><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /><span className="material-icons">highlight_off</span></button>
                             </li>
-                            <li className='list-edit'>
-                            <Button ></Button>
-                            <div className="nameDiv"><span>dino.file</span></div>
-                            <button className={styles.button}><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /><span className="material-icons">highlight_off</span></button>
-                            </li>
-                            <li className='list-same_order'>
-                            <Button ></Button>
-                            <div className="nameDiv"><span>dino.file</span></div>
-                            <button className={styles.button}><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /><span className="material-icons">highlight_off</span></button>
-                            </li>
                             <li className='list-same_order'>
                             <Button ></Button>
                             <div className="nameDiv"><span>dino.file</span></div>
