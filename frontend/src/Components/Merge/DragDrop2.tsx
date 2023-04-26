@@ -6,12 +6,14 @@ import React, {
   useEffect
 } from "react";
 import LottieUpload from "../LottieUpload";
-import "./DragDrop2.scss";
+import "./Merge.scss";
 import styled from 'styled-components';
-import styles from './DragDrop.module.css';
+import styles from './Merge.module.css';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
 
 const DragDrop_Modal = () => {
   const [selectedValue, setSelectedValue] = React.useState('a');
@@ -185,15 +187,16 @@ const DragDrop_Modal = () => {
 
         
         <div className="flexDiv">
+      <FormControl>
       <RadioGroup
         row
         aria-labelledby="demo-radio-buttons-group-label"
         defaultValue="female"
         name="radio-buttons-group"
-        sx={{display: 'felx', flexDirection:'row'}}
+        sx={{display: 'flex', flexDirection:'row'}}
       >
           <div className="inlineblockDiv">
-            <div className="PreviewTextdiv">
+            <div className="PreviewTextModaldiv">
             main
             </div>
             <div className="imagePreview2"> 
@@ -213,13 +216,12 @@ const DragDrop_Modal = () => {
                   );
                 })}
             </div>
-            <Radio
-            />
-            {/* <FormControlLabel value="main" control={<Radio />} label="" /> */}
+            
+            <FormControlLabel value="main" control={<Radio />} label="" />
           </div>
 
           <div className="inlineblockDiv">
-            <div className="PreviewTextdiv">
+            <div className="PreviewTextModaldiv">
             branch
             </div>
             <div className="imagePreview2"> 
@@ -239,11 +241,10 @@ const DragDrop_Modal = () => {
                   );
                 })}
             </div>
-            <Radio 
-            />
-            {/* <FormControlLabel value="branch" control={<Radio />} label="" /> */}
+            <FormControlLabel value="branch" control={<Radio />} label="" />
           </div>
           </RadioGroup>
+          </FormControl>
         </div>          
       </div>
       

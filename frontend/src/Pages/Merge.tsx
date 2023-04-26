@@ -9,7 +9,7 @@ import BasicList from '../Components/List';
 import Profile from '../Components/Profile';
 import SelectBar from '../Components/SelectBar';
 import UpsideGray from '../Components/UpsideGray';
-import DragDrop from '../Components/DragDrop/DragDrop';
+import MergeComponent from '../Components/Merge/Merge';
 import ProjectSelect from '../Components/ProjectSelect';
 import MergeModal from '../Components/MergeModal_Button';
 //import MergeModal from '../Components/MergeIconModal';
@@ -51,7 +51,7 @@ export default function Merge() {
                     <Box display={'flex'} flexDirection={'column'} overflow={'auto'} marginX={'auto'} marginY={'10px'}>
                       <div>
                         <Backgrdiv>
-                          <DragDrop/>
+                          <MergeComponent/>
                           <Commentdiv/>
                           <Btndiv>
                             <MergeModal onClickToggleModal = {onClickToggleModal}></MergeModal>

@@ -7,7 +7,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 import {PropsWithChildren} from "react";
 import styled from "styled-components";
 import BasicModal from "./Modalcom";
-import DragDrop from './DragDrop/DragDrop2';
+import DragDrop from './Merge/DragDrop2';
 import ErrorIcon from '@mui/icons-material/Error';
 
 interface ModalDefaultType{
