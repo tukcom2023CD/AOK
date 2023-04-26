@@ -252,6 +252,7 @@ export default function BasicSelect() {
                 const clickEvent = () => {
                   dispatch(setProjectUuid(project.uuid));
                   navigate('/Project');
+                  window.location.reload();
                 }
                 return(
                 <Li key={project.uuid}>

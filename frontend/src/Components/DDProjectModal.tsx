@@ -42,26 +42,28 @@ export default function DDProjectModal({
         const createProject = () => {
           if(project === '') {
             alert('만들 프로젝트의 이름을 입력해주세요.');
+          }else{
+            axios.post('/api/v1/projects', {
+              name: project,
+              userId: 1
+            })
+            .then((response) => {
+              console.log('프로젝트 생성 성공')
+              console.log(response)
+  
+              const uuidData = response.data.data.uuid
+              console.log("발급된 프로젝트 uuid : ", uuidData)
+              const projectdisp = dispatch(setProjectUuid(uuidData));
+              console.log("dispatch : ", projectdisp);
+              navigate('/Project');
+              window.location.reload();
+            })
+            .catch((error)=> {
+              console.log('createProject 실패')
+              console.log(error)
+              alert("오류로 인해 프로젝트 생성에 실패했습니다.")
+            })
           }
-          axios.post('/api/v1/projects', {
-            name: project,
-            userId: 1
-          })
-          .then((response) => {
-            console.log('프로젝트 생성 성공')
-            console.log(response)
-
-            const uuidData = response.data.data.uuid
-            console.log("발급된 프로젝트 uuid : ", uuidData)
-            const projectdisp = dispatch(setProjectUuid(uuidData));
-            console.log("dispatch : ", projectdisp);
-            navigate('/Project');
-          })
-          .catch((error)=> {
-            console.log('createProject 실패')
-            console.log(error)
-            alert("오류로 인해 프로젝트 생성에 실패했습니다.")
-          })
         } 
 
 

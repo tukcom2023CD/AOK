@@ -38,26 +38,29 @@ export default function BranchModal({
         const createBranch = () => {
           if(branch === '') {
             alert('만들 브랜치의 이름을 입력해주세요.');
+          }else{
+            axios.post('/api/v1/branches', {
+              name: branch,
+              projectId: 1
+            })
+            .then((response) => {
+              console.log('브랜치 생성 성공')
+              console.log(response)
+  
+              const uuidData = response.data.data.uuid
+              console.log("발급된 브랜치 uuid : ", uuidData)
+              dispatch(setBranchUuid(uuidData));
+              console.log("dispatch : ", branch);
+              navigate('/Project');
+              window.location.reload();
+            })
+            .catch((error)=> {
+              console.log('createBranch 실패')
+              console.log(error)
+              alert("오류로 인해 브랜치 생성에 실패했습니다.")
+            })
           }
-          axios.post('/api/v1/branches', {
-            name: branch,
-            projectId: 1
-          })
-          .then((response) => {
-            console.log('브랜치 생성 성공')
-            console.log(response)
-
-            const uuidData = response.data.data.uuid
-            console.log("발급된 브랜치 uuid : ", uuidData)
-            dispatch(setBranchUuid(uuidData));
-            console.log("dispatch : ", branch);
-            navigate('/Project');
-          })
-          .catch((error)=> {
-            console.log('createBranch 실패')
-            console.log(error)
-            alert("오류로 인해 브랜치 생성에 실패했습니다.")
-          })
+          
         }
 
     return (

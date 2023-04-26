@@ -25,7 +25,7 @@ interface BranchResponse{
 
 
 interface BranchesData{
-    branchInfos: Branch[]
+    projectBranchInfos: Branch[]
 }
 
 interface Branch{
@@ -54,8 +54,8 @@ export default function BasicList() {
             await axios.get<BranchResponse>('/api/v1/projects/'+ projectUuid +'/branches')
             .then((response)=> {
                 console.log("브랜치 정보 불러오기 성공");
-                console.log("가져온 데이터", response.data.data.branchInfos);
-                setBranchData(response.data.data.branchInfos);
+                console.log("가져온 데이터", response.data.data.projectBranchInfos);
+                setBranchData(response.data.data.projectBranchInfos);
                 
             })
             .catch((error)=>{
@@ -80,6 +80,7 @@ export default function BasicList() {
                 const clickEvent = () => {
                     dispatch(setBranchUuid(branch.uuid));
                     navigate('/Project');
+                    window.location.reload();
                 }
                 return(
                     <ListItem disablePadding>
