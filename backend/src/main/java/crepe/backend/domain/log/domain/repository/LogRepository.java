@@ -20,4 +20,5 @@ public interface LogRepository extends JpaRepository<Log, Long> {
     List<Log> findAllLogByBranchAndIsActiveTrue(Branch branchById);
     Optional<Log> findLogByIdAndIsActiveTrue(Long id);
 
+    List<Log> findAllByBranchAndIsActiveTrueOrderByCreatedAtDesc(Branch branch);
 }
