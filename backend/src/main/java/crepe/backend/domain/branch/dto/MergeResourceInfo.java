@@ -10,17 +10,15 @@ public class MergeResourceInfo {
 
     private String name;
     private String link;
-    private int sequence;
     private boolean isDuplicated;
 
     private boolean isNew;
 
     @Builder
-    public MergeResourceInfo(String name, String link, int sequence, boolean isDuplicated, boolean isNew) {
+    public MergeResourceInfo(String name, String link, boolean isDuplicated, boolean isNew) {
         this.name = name;
         this.link = link;
-        this.sequence = sequence;
         this.isDuplicated = isDuplicated;
-        this.isNew = isNew; //메인브랜치에 추가된 파일인가
+        this.isNew = isNew; //새로 추가된-변경된 파일인가
     }
 }
