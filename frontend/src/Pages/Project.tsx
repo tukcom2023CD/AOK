@@ -156,6 +156,7 @@ export default function Project() {
     const [LogMessage, setLogMessage] = useState('');
     const [Resources, setResources] = useState<ResourcesData[]>([]);
     
+    
     useEffect(() => {
         (async () => {
             await axios.get<LogResponse>('/api/v1/logs/'+ RecentLog)
