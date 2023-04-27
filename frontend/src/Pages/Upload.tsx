@@ -90,13 +90,7 @@ function Upload() {
                     {/* 우측 */}
                     <Box display={'flex'} flexDirection={'column'} overflow={'auto'} marginX={'auto'} marginY={'10px'}>
                       <div>
-                        <Backgrdiv>
-                          <DragDrop/>
-                          <Commentdiv/>
-                          <Btndiv>
-                            <ApplyBtn>apply</ApplyBtn>
-                          </Btndiv>
-                        </Backgrdiv>
+                        <DragDrop/>
                       </div>
                     </Box>
                 </Box> 

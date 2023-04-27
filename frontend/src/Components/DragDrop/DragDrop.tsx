@@ -24,6 +24,47 @@ const dragtest = styled.div`
   //margin-bottom: 50px;
 `;
 
+
+const Backgrdiv = styled.div`
+  display: inline-block;
+  width: 100%;
+  background-color: white;
+  text-align: center;
+`; 
+
+
+const Commentdiv = styled.input`
+  width: 1000px;
+  height: 85px;
+  border-radius: 10px;
+  background-color: #FFF4F4;
+  border: 3px solid #FFDEDE;
+  font-size: 20pt;
+  font-weight: bold;
+  padding: 1.5rem;
+  //box-shadow: 2px 4px 8px;
+`;
+
+const Btndiv = styled.div`
+  margin-top: 5rem;
+  margin-bottom: 10rem;
+`;
+
+const ApplyBtn = styled.button `
+  width: 250px;
+  height: 75px;
+  background-color: #FF9198;
+  color: white;
+  font-size: 18pt;
+  font-weight: bold;
+  border-radius: 20px;
+  &:hover{
+    background-color: #d7777e;
+    transition: 0.5s;
+  }
+`;
+
+
 type IFileTypes = {
   id: number; //파일들의 고유값 id
   object: File;
@@ -199,6 +240,7 @@ const DragDrop = () => {
   console.log("업로드 파일 목록",files)
 
   return (
+    <Backgrdiv>
     <div className="inlineblockDiv">
       <div className="DragDrop">
 
@@ -317,6 +359,11 @@ const DragDrop = () => {
       </div>
       
     </div>
+    <Commentdiv/>
+    <Btndiv>
+      <ApplyBtn>apply</ApplyBtn>
+    </Btndiv>
+    </Backgrdiv>
   );
 };
 
