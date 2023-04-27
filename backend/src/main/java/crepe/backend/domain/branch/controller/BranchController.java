@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -48,6 +49,15 @@ public class BranchController {
     {
         BranchRecentLogInfo branchRecentLogInfo = branchService.findRecentLogInfoByUuid(uuid);
         return ResponseEntity.ok(ResultResponse.of(READ_BRANCH_RECENT_LOG_SUCCESS, branchRecentLogInfo));
+    }
+
+    @GetMapping("/{uuid}/merge")
+    public ResponseEntity<ResultResponse> getMergeResourceListByUuid(@PathVariable UUID uuid)
+    {
+        List<MergeResourceInfo> mergeResourceInfos = branchService.getMergeResources(uuid);
+        MergeResourceInfoList mergeResourceInfoList = new MergeResourceInfoList();
+        mergeResourceInfoList.addAllMergeResourceInfo(mergeResourceInfos);
+        return ResponseEntity.ok(ResultResponse.of(READ_BRANCH_MERGE_LIST, mergeResourceInfoList));
     }
 
 
