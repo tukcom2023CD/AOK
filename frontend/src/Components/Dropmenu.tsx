@@ -21,6 +21,11 @@ export default function MenuListComposition() {
     window.location.reload();
   }
 
+  function Logout(){
+    movePage('/Login');
+    window.location.reload();
+  }
+
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
 
@@ -111,7 +116,7 @@ export default function MenuListComposition() {
                         </MenuItem>
                       <MenuItem onClick={handleClose}>Notification</MenuItem>
                       <MenuItem onClick={handleClose}>Settings</MenuItem>
-                      <MenuItem onClick={handleClose}>Logout</MenuItem>
+                      <MenuItem onClick={Logout}>Logout</MenuItem>
                     </MenuList>
                   </ClickAwayListener>
                 </Paper>

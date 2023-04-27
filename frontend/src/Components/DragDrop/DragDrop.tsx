@@ -5,11 +5,13 @@ import React, {
   useState,
   useEffect
 } from "react";
+import { useNavigate } from "react-router-dom";
 import LottieUpload from "../LottieUpload";
 import "./DragDrop.scss";
 import styled from 'styled-components';
 import styles from './DragDrop.module.css';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
+import axios from 'axios'; 
 
 
 
@@ -69,7 +71,7 @@ type IFileTypes = {
   id: number; //파일들의 고유값 id
   object: File;
   URL: string;
-  filename: string; 
+  name: string; 
 }
 
 type IFileList = {
@@ -83,13 +85,38 @@ const DragDrop = () => {
   const dragRef = useRef<HTMLLabelElement | null>(null);
   const selectFile = useRef(null);
   const fileId = useRef<number>(0);
-  
+  const [msg, setMsg] = useState('');
+
   var reversed_index;
   
+  const createLog = () => {
+    if(files.length ===0 && msg === ''){
 
-  const [fileList, setfileList] = useState<IFileList>({
-    imageFiles: files,
-  });
+    }
+    else if(files.length === 0){
+      alert('이미지 파일을 업로드 해주세요.')
+    }
+    else if(msg === ''){
+      alert('업로드 메시지를 꼭 적어주세요.');
+    } else {
+      axios.post('/api/v1/logs', {
+        files: objects,
+        userId: 1,
+        branchId: 1,
+        message: msg
+      })
+
+    }
+  }
+
+  const fileList: IFileList = {
+    imageFiles: files
+  }
+
+  const objects: File[] = fileList.imageFiles.map((file) => file.object);
+  console.log("오브젝트 추출 :", objects); 
+
+  
 
   const onChangeFiles = useCallback(
     (e: ChangeEvent<HTMLInputElement> | any): void => {
@@ -117,7 +144,7 @@ const DragDrop = () => {
             id: fileId.current++, //fileId의 값을 1씩 늘려주며 각 파일의 고유값으로 사용
             object: file, //object 안에 선택했던 파일들의 정보 담김
             URL: URL.createObjectURL(file), 
-            filename: file.name
+            name: file.name
           }
         ];
 
@@ -359,9 +386,9 @@ const DragDrop = () => {
       </div>
       
     </div>
-    <Commentdiv/>
+    <Commentdiv type="text" value={msg} onChange={(event)=>setMsg(event.target.value)}/>
     <Btndiv>
-      <ApplyBtn>apply</ApplyBtn>
+      <ApplyBtn onClick={createLog}>apply</ApplyBtn>
     </Btndiv>
     </Backgrdiv>
   );
