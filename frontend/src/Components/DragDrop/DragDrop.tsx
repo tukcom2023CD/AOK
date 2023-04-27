@@ -28,6 +28,7 @@ type IFileTypes = {
   id: number; //파일들의 고유값 id
   object: File;
   URL: string;
+  filename: string; 
 }
 
 type IFileList = {
@@ -74,7 +75,8 @@ const DragDrop = () => {
           {
             id: fileId.current++, //fileId의 값을 1씩 늘려주며 각 파일의 고유값으로 사용
             object: file, //object 안에 선택했던 파일들의 정보 담김
-            URL: URL.createObjectURL(file),
+            URL: URL.createObjectURL(file), 
+            filename: file.name
           }
         ];
 
@@ -179,19 +181,22 @@ const DragDrop = () => {
       let lists = [...files];
       let index;
 
+      console.log(lists)
+
       if(source.index !== destination.index){
         let selectItem = lists[result.source.index];
         lists.splice(result.source.index, 1);
         lists.splice(destination.index, 0, selectItem);
         setFiles(lists);
+        console.log(lists)
       }
 
     };
 
-
+  
 
   /*------------- 리스트 드래그 앤 드랍 관련 함수 ------------*/
-
+  console.log("업로드 파일 목록",files)
 
   return (
     <div className="inlineblockDiv">
