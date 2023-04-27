@@ -2,10 +2,8 @@ package crepe.backend.domain.log.controller;
 
 import crepe.backend.domain.log.domain.entity.Log;
 import crepe.backend.domain.log.domain.entity.Resource;
-import crepe.backend.domain.log.domain.repository.ResourceRepository;
 import crepe.backend.domain.log.dto.LogCreateRequest;
 import crepe.backend.domain.log.dto.LogUuidInfo;
-import crepe.backend.domain.log.service.LayerService;
 import crepe.backend.domain.log.service.LogService;
 import crepe.backend.domain.log.service.ResourceService;
 import crepe.backend.global.exception.BusinessException;
@@ -30,7 +28,6 @@ public class LogController {
 
     private final LogService logService;
     private final ResourceService resourceService;
-    private final LayerService layerService;
 
     private final S3Service s3Service;
 
@@ -46,7 +43,6 @@ public class LogController {
         Log log = logService.createLog(request);
         LogUuidInfo logUuidInfo = logService.createLogUuidInfo(log);
         logService.createLayer(log, resources);
-        // layerService.createLayer(log, resources);
 
         return ResponseEntity.ok(ResultResponse.of(ResultCode.CREATE_LOG_SUCCESS, logUuidInfo));
     }
