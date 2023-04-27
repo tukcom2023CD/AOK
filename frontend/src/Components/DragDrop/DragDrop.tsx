@@ -78,10 +78,23 @@ type IFileList = {
   imageFiles: IFileTypes[];
 }
 
+interface logResponse{
+  status: number;
+  code: string;
+  message: string;
+  data: logInfo;
+}
+
+
+interface logInfo{
+  uuid: string;
+  createdAt: string;
+}
+
 
 const DragDrop = () => {
   const [isDragging, setIsDragging] = useState<boolean>(false);
-  const [files, setFiles] = useState<IFileTypes[]>([]);
+  const [fileobjects, setFiles] = useState<IFileTypes[]>([]);
   const dragRef = useRef<HTMLLabelElement | null>(null);
   const selectFile = useRef(null);
   const fileId = useRef<number>(0);
@@ -89,39 +102,74 @@ const DragDrop = () => {
 
   var reversed_index;
   
-  const createLog = () => {
-    if(files.length ===0 && msg === ''){
+
+  const fileList: IFileList = {
+    imageFiles: fileobjects
+  }
+
+
+  const createLog = async() => {
+    if(fileobjects.length ===0 && msg === ''){
 
     }
-    else if(files.length === 0){
+    else if(fileobjects.length === 0){
       alert('이미지 파일을 업로드 해주세요.')
     }
     else if(msg === ''){
       alert('업로드 메시지를 꼭 적어주세요.');
     } else {
-      axios.post('/api/v1/logs', {
-        files: objects,
-        userId: 1,
-        branchId: 1,
-        message: msg
-      })
+      const formData = new FormData();
+      const files: File[] = fileList.imageFiles.map((file) => file.object);
+      console.log("오브젝트 추출 :", files);
+
+      Array.from(files).forEach((el) => {
+        formData.append("files", el); 
+      });
+        formData.append("userId", '1');
+        formData.append("branchId", '1'); 
+        formData.append("message", msg);
+
+      // FormData의 key 확인
+      // @ts-ignore
+      for (const key of formData.keys()) {
+        console.log("키값: ", key);
+      }
+      // FormData의 value 확인
+      // @ts-ignore
+      for (const value of formData.values()) {
+        console.log("밸류값: ", value);
+      }
+      console.log(formData);
+
+
+
+      await axios.post('/api/v1/logs', {
+        data: formData,
+      }, {
+        headers: {
+          "Content-Type" : "multipart/form-data",
+        },
+        transformRequest: [
+          function () {
+            return formData;
+          }
+        ],
+      }).then((response) => {
+        console.log("로그 생성 성공")
+        console.log(response.data.data.uuid)
+
+      }).catch((error) => {
+        console.log("로그 생성 실패")
+        console.log(error);
+    })
 
     }
   }
 
-  const fileList: IFileList = {
-    imageFiles: files
-  }
-
-  const objects: File[] = fileList.imageFiles.map((file) => file.object);
-  console.log("오브젝트 추출 :", objects); 
-
-  
-
   const onChangeFiles = useCallback(
     (e: ChangeEvent<HTMLInputElement> | any): void => {
       let selectFiles: File[] = [];
-      let tempFiles: IFileTypes[] = files;
+      let tempFiles: IFileTypes[] = fileobjects;
       //temp 변수를 통해 선택한 파일을 담음
       if (e.type === "drop") {
         //드래그 앤 드롭 했을 때
@@ -153,7 +201,7 @@ const DragDrop = () => {
 
       setFiles(tempFiles);
     },
-    [files]
+    [fileobjects]
   );
 
   //files state 배열의 상태 업데이트, 배열 길이는 파일 선택한 만큼 증가
@@ -169,16 +217,16 @@ const DragDrop = () => {
   const handleFilterFile = useCallback(
     (id: number): void => {
       //매개 변수로 받은 id와 일치 여부를 확인해 필터링 함
-      setFiles(files.filter((file: IFileTypes) => file.id !== id));
+      setFiles(fileobjects.filter((file: IFileTypes) => file.id !== id));
     },
-    [files]
+    [fileobjects]
   );
   
   const handleDeleteFile = useCallback(
     (id: number): void => {
-      setFiles(files.filter((file: IFileTypes) => file.id === id));
+      setFiles(fileobjects.filter((file: IFileTypes) => file.id === id));
     },
-    [files]
+    [fileobjects]
   );
   
 
@@ -246,7 +294,7 @@ const DragDrop = () => {
       }
 
       const { source, destination } = result;
-      let lists = [...files];
+      let lists = [...fileobjects];
       let index;
 
       console.log(lists)
@@ -264,7 +312,7 @@ const DragDrop = () => {
   
 
   /*------------- 리스트 드래그 앤 드랍 관련 함수 ------------*/
-  console.log("업로드 파일 목록",files)
+  console.log("업로드 파일 목록",fileobjects)
 
   return (
     <Backgrdiv>
@@ -278,14 +326,14 @@ const DragDrop = () => {
             preview
             </div>
             <div className="imagePreview"> 
-                {files.length > 0 && files.map((file: IFileTypes, index: number)=> {
+                {fileobjects.length > 0 && fileobjects.map((file: IFileTypes, index: number)=> {
                   const {
                     id,
                     object: {name},
                     URL
                   } = file;
                   
-                  reversed_index = files.length - 1 - index;
+                  reversed_index = fileobjects.length - 1 - index;
 
                   return (
                     <div className="imagePreviewDiv" key = {index} style={(reversed_index===0) ? {} :  {position: 'absolute', zIndex: reversed_index}}>
@@ -341,8 +389,8 @@ const DragDrop = () => {
                   {...provided.droppableProps}
                   >
                   <div className="DragDrop-Files">
-                  {files.length > 0 &&
-                    files.map((file: IFileTypes, index: number) => {
+                  {fileobjects.length > 0 &&
+                    fileobjects.map((file: IFileTypes, index: number) => {
                       const {
                         id,
                         object: { name },
