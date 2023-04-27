@@ -138,7 +138,7 @@ export default function Project() {
     
     useEffect(() => {
         (async () => {
-            await axios.get<RecentLogResponse>('api/v1/branches/' + branchUuid + '/logs/recent')
+            await axios.get<RecentLogResponse>('/api/v1/branches/' + branchUuid + '/logs/recent')
             .then((response) => {
             console.log("최근 로그 uuid 불러옴");
             console.log("최근 로그 uuid : ", response.data.data.uuid)
@@ -155,9 +155,10 @@ export default function Project() {
     
     const [LogMessage, setLogMessage] = useState('');
     const [Resources, setResources] = useState<ResourcesData[]>([]);
+    
     useEffect(() => {
         (async () => {
-            await axios.get<LogResponse>('api/v1/logs/'+ RecentLog)
+            await axios.get<LogResponse>('/api/v1/logs/'+ RecentLog)
             .then((response) => {
             console.log("최근 로그 불러옴");
             console.log("최근 로그 : ", response.data);
@@ -166,7 +167,7 @@ export default function Project() {
             console.log(response.data.data.resourceInfos);
             setResources(response.data.data.resourceInfos);
             console.log(Resources);
-            const links = response.data.data.resourceInfos.map((resource: any) => resource.link);
+            // const links = response.data.data.resourceInfos.map((resource: any) => resource.link);
             
             // console.log("메시지 ", response.data.data.message);
             // setLogMessage(response.data.data.message);

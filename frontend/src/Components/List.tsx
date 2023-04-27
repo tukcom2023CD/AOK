@@ -80,7 +80,6 @@ export default function BasicList() {
                 const clickEvent = () => {
                     dispatch(setBranchUuid(branch.uuid));
                     navigate('/Project');
-                    window.location.reload();
                 }
                 return(
                     <ListItem disablePadding>

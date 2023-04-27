@@ -99,6 +99,7 @@ const DragDrop = () => {
   const selectFile = useRef(null);
   const fileId = useRef<number>(0);
   const [msg, setMsg] = useState('');
+  const navigate = useNavigate();
 
   var reversed_index;
   
@@ -157,6 +158,7 @@ const DragDrop = () => {
       }).then((response) => {
         console.log("로그 생성 성공")
         console.log(response.data.data.uuid)
+        navigate("/project")
 
       }).catch((error) => {
         console.log("로그 생성 실패")
