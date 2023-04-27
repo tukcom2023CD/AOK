@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from "react";
+import { useEffect,useState } from "react";
 import Box from '@mui/material/Box';
 import { ThemeProvider,createTheme } from '@mui/material/styles';
 import UpsideGray from '../Components/UpsideGray';
@@ -16,6 +16,11 @@ import TextField2 from '../Components/TextField2';
 import TitleList from '../Components/Title/TitleList';
 import ProjectSelect from '../Components/ProjectSelect';
 import IosShareSharpIcon from '@mui/icons-material/IosShareSharp';
+import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../Components/Redux/Store';
+import '../Components/Logscss.scss';
+
 
 interface props{
     backgroundcolor?: string;
@@ -27,6 +32,33 @@ const style = {
     bgcolor: 'background.paper',
 };
 
+const LogDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+`;
+
+const LogPreviewDiv = styled.div`
+    width: 500px;
+    height: 500px;
+    border: 1px solid black;
+    display: table;
+    align-items: center;
+    position: relative;
+`;
+
+const LogImageDiv = styled.div`
+    display: table-cell;
+    position: absolute;
+    top: 50%;
+    left: 50%,
+    translate(-50%, -50%);
+`;
+
+const ImageDiv = styled.image`
+    max-width: 400px;
+    max-height: 500px;
+`;
 
 const ProfilePic = styled.div<props>`
     width: 2rem;
@@ -36,10 +68,58 @@ const ProfilePic = styled.div<props>`
     background-color: ${(props) => props.backgroundcolor};
 `;
 
+interface RecentLogResponse{
+    status: number;
+    code: string;
+    message: string;
+    data: RecentLogInfo; 
+}
+
+interface RecentLogInfo{
+    uuid: string;
+}
+
+interface LogResponse{
+    status: number;
+    code : string;
+    message: string;
+    data: LogInfo;
+}
+
+interface LogInfo{
+    createdAt: string;
+    resourceInfos: ResourcesData[];
+    feedbackInfos: FeedbacksData[];
+    message: string;
+    userUuid: string;
+}
+
+interface ResourcesData {
+    resources: Resource[]
+}
+
+
+interface Resource{
+    name: string;
+    uuid: string;
+    link: string;
+}
+
+interface FeedbacksData{
+    feedbacks: Feedback[]
+}
+
+interface Feedback{
+    message: string;
+    uuid: string;
+    userUuid: string;
+}
+
 
 
 export default function Project() {
     const [text, setText] = useState("Hello, World!");
+
 
     const handleButtonClick = () => {
         setText("Button Clicked");
@@ -48,6 +128,57 @@ export default function Project() {
     const handleCommentSubmit = (name: string, comment: string) => {
         console.log(`Submitted comment: ${name} - ${comment}`);
         };
+
+
+    let branchUuid = useSelector((state:RootState) => {
+        return state.branch.uuid; 
+    })
+
+    const [RecentLog, setRecentLog] = useState('');
+    
+    useEffect(() => {
+        (async () => {
+            await axios.get<RecentLogResponse>('api/v1/branches/' + branchUuid + '/logs/recent')
+            .then((response) => {
+            console.log("최근 로그 uuid 불러옴");
+            console.log("최근 로그 uuid : ", response.data.data.uuid)
+            setRecentLog(response.data.data.uuid);
+            console.log("uuid 저장상태 : ", RecentLog);
+            })
+            .catch((error)=>{
+                console.log('최근 로그 uuid 불러오기 실패');
+                console.log('error')
+            })
+        })();
+    })
+
+    
+    const [LogMessage, setLogMessage] = useState('');
+    const [Resources, setResources] = useState<ResourcesData[]>([]);
+    useEffect(() => {
+        (async () => {
+            await axios.get<LogResponse>('api/v1/logs/'+ RecentLog)
+            .then((response) => {
+            console.log("최근 로그 불러옴");
+            console.log("최근 로그 : ", response.data);
+            
+            
+            console.log(response.data.data.resourceInfos);
+            setResources(response.data.data.resourceInfos);
+            console.log(Resources);
+            const links = response.data.data.resourceInfos.map((resource: any) => resource.link);
+            
+            // console.log("메시지 ", response.data.data.message);
+            // setLogMessage(response.data.data.message);
+            })
+
+            .catch((error)=>{
+                console.log('최근 로그 불러오기 실패');
+                console.log(error)
+            })
+        })();
+    }, [])
+
     return (
             <Box sx={{ flexGrow: 1, flexShrink:1 }} display={'flex'} flexDirection={'column'} position={'fixed'}>
                  <Box width={'100vw'}  display={'flex'} > {/*상단바 */}
@@ -78,7 +209,18 @@ export default function Project() {
     
                     </Box>
                         <Box display={'flex'} marginX={'auto'} marginTop={'50px'}>
-                            <img src="img/tino.png" alt="tino" width={'400px'} height={'400px'}/>
+                            {/* <img src="img/tino.png" alt="tino" width={'400px'} height={'400px'}/> */}
+                            <div className='loginlineblockdDiv'>
+                            <div className='logimagePreview'>
+                                {Resources.map((resource: any)=>{
+                                    return(
+                                        <div className='logimagePreviewDiv'>
+                                                <img src={resource.link} alt={resource.name} className={'logimageDiv'}></img>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                            </div>
                         </Box>
                         
 

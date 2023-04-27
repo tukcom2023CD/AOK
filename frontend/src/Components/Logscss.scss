@@ -1,0 +1,26 @@
+.logimagePreview{
+  width: 500px;
+  height: 500px;
+  display: table;
+  align-items: center;
+  position: relative;
+}
+
+.logimagePreviewDiv{
+  display: table-cell;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.logimageDiv{
+  max-width: 400px;
+  max-height: 500px;
+}
+
+.loginlineblockDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

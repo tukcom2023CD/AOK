@@ -222,7 +222,7 @@ export default function BasicSelect() {
       await axios.get<ProjectResponse>('/api/v1/users/'+ uuid +'/projects')
       .then((response)=> {
         //console.log("프로젝트 정보 불러오기 성공");
-        //console.log("가져온 데이터", response.data.data.projects);
+        console.log("가져온 데이터", response.data.data.projects);
         setProjects(response.data.data.projects);
         //console.log("저장상태", projects);
       })
