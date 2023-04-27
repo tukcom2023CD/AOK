@@ -50,6 +50,15 @@ public class BranchController {
         return ResponseEntity.ok(ResultResponse.of(READ_BRANCH_RECENT_LOG_SUCCESS, branchRecentLogInfo));
     }
 
+    @GetMapping("/{uuid}/merge")
+    public ResponseEntity<ResultResponse> getMergeResourceListByUuid(@PathVariable UUID uuid)
+    {
+        //MergeResourceInfoList mergeResourceInfoList = branchService.getMergeResourceList(uuid);
+        branchService.getMergeResourceList(uuid);
+        //return ResponseEntity.ok(ResultResponse.of(READ_BRANCH_MERGE_LIST, mergeResourceInfoList));
+        return ResponseEntity.ok(ResultResponse.of(READ_BRANCH_MERGE_LIST, ""));
+    }
+
 
     @PatchMapping("/{uuid}")
     public ResponseEntity<ResultResponse> updateBranch(@PathVariable UUID uuid, @RequestBody Map<String,String> request)

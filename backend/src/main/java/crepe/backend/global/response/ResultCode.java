@@ -36,6 +36,7 @@ public enum ResultCode {
     DELETE_BRANCH_SUCCESS(200,"B005", "브랜치 삭제 성공"),
     READ_BRANCH_RECENT_LOG_SUCCESS(200, "B006", "특정 브랜치 최신 로그 정보 조회 성공"),
 
+    READ_BRANCH_MERGE_LIST(200, "B007", "브랜치 머지 리스트 조회 성공"),
 
 
     // feedback

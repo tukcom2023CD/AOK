@@ -3,10 +3,15 @@ package crepe.backend.domain.branch.service;
 import crepe.backend.domain.branch.domain.entity.Branch;
 import crepe.backend.domain.branch.domain.repository.BranchRepository;
 import crepe.backend.domain.branch.dto.*;
+import crepe.backend.domain.log.domain.entity.Layer;
 import crepe.backend.domain.log.domain.entity.Log;
+import crepe.backend.domain.log.domain.entity.Resource;
+import crepe.backend.domain.log.domain.repository.LayerRepository;
 import crepe.backend.domain.log.domain.repository.LogRepository;
 
+import crepe.backend.domain.log.domain.repository.ResourceRepository;
 import crepe.backend.domain.project.domain.entity.Project;
+import crepe.backend.domain.project.exception.NotFoundResourceEntity;
 import crepe.backend.domain.project.service.ProjectService;
 import crepe.backend.domain.branch.exception.NotFoundBranchEntityException;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +31,9 @@ public class BranchService {
     private final BranchRepository branchRepository;
     private final ProjectService projectService;
     private final LogRepository logRepository;
+    private final LayerRepository layerRepository;
+    private final ResourceRepository resourceRepository;
+
 
     public BranchCreateInfo branchCreate(BranchCreate createRequest) { // 브랜치를 생성하는 모듈
         Project findProject = projectService.getProjectById(createRequest.getProjectId());
@@ -111,6 +119,11 @@ public class BranchService {
     private Log getRecentLogByBranch(Branch branch) {
         return logRepository.findAllByBranchAndIsActiveTrueOrderByCreatedAtDesc(branch).get(0);
     }
+
+    private Branch getBranchByUuid(UUID uuid) {
+        return branchRepository.findBranchByUuidAndIsActiveTrue(uuid).orElseThrow(NotFoundBranchEntityException::new);
+    }
+
     public BranchRecentLogInfo findRecentLogInfoByUuid(UUID uuid) {
         Branch branch = findBranchByUuid(uuid);
         Log log = getRecentLogByBranch(branch);
@@ -118,4 +131,93 @@ public class BranchService {
                 .uuid(log.getUuid())
                 .build();
     }
+
+    //public MergeResourceInfoList getMergeResourceList(UUID uuid) {
+    public void getMergeResourceList(UUID uuid) {
+
+        Branch branch = getBranchByUuid(uuid);
+        //메인브랜치는 삭제 될 일 없으니 0번 받아옴
+        Branch mainBranch = branch.getProject().getBranches().get(0);
+
+
+        // isActive 상태의 가장 최신 로그
+        Log log = getRecentLogByBranch(branch);
+        Log mainLog = getRecentLogByBranch(mainBranch);
+
+        // 정렬된 모든 레이어 받아옴
+        List<Layer> layers = layerRepository.findAllByLogAndIsActiveTrueOrderBySequence(log);
+        List<Layer> mainLayers = layerRepository.findAllByLogAndIsActiveTrueOrderBySequence(mainLog);
+
+        List<Resource> resources = getResourcesByLayer(layers);
+        List<Resource> mainResources = getResourcesByLayer(mainLayers);
+
+        getMergeResourceList(resources, mainResources);
+
+
+    }
+
+    //리소스 리스트 반환
+    private List<Resource> getResourcesByLayer(List<Layer> layers) {
+        List<Resource> resources = new ArrayList<>();
+        for(Layer layer: layers) {
+            if (layer.getResource().isActive() == true) {
+                resources.add(layer.getResource());
+            }
+            //resources.add(getResourceById(layer.getResource().getId()));
+        }
+        return resources;
+    }
+
+    //리소스 아이디로 리소스 찾기
+    private Resource getResourceById(Long id) {
+        return resourceRepository.findResourceByIdAndIsActiveTrue(id).orElseThrow(NotFoundResourceEntity::new);
+    }
+
+    private List<Resource> getMergeResourceList(List<Resource> resources, List<Resource> mainResources) {
+        List<MergeResourceInfo> mergeResourceInfos = new ArrayList<>();
+        int sequence = 0;
+        int index = 0;
+        boolean isDone = false; //계산 됐는감
+        // 두 리소스 모두 비면 종료
+
+        for (Resource mainResource: mainResources) {
+            for (Resource resource: resources) {
+                //만약 메인리소스와 리소스에 같은 파일이 있다면
+                if (mainResource.getName().equals(resource.getName())) {
+                    mergeResourceInfos.add(mapMergeResourceInfo(resource.getName(),
+                            resource.getLink(),
+                            layerRepository.findByResourceAndIsActiveTrue(resource).getSequence(),
+                            true,
+                            true));
+                    isDone = true;
+                }
+            }
+            if(isDone == false) {
+                mergeResourceInfos.add(mapMergeResourceInfo(mainResource.getName(),
+                        mainResource.getLink(),
+                        layerRepository.findByResourceAndIsActiveTrue(mainResource).getSequence(),
+                        false,
+                        false));
+                isDone = true;
+            }
+        } //리소스에 있고 메인에 없는거 넣어주는 코드 작성해야함
+
+
+
+    }
+
+    private MergeResourceInfo mapMergeResourceInfo(String name,
+                                                   String link,
+                                                   int sequence,
+                                                   boolean isDuplicated,
+                                                   boolean isNew) {
+        return MergeResourceInfo.builder()
+                .name(name)
+                .link(link)
+                .sequence(sequence)
+                .isDuplicated(isDuplicated)
+                .isNew(isNew)
+                .build();
+    }
+
 }
