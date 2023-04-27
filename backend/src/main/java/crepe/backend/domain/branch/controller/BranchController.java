@@ -55,7 +55,9 @@ public class BranchController {
     public ResponseEntity<ResultResponse> getMergeResourceListByUuid(@PathVariable UUID uuid)
     {
         List<MergeResourceInfo> mergeResourceInfos = branchService.getMergeResources(uuid);
-        return ResponseEntity.ok(ResultResponse.of(READ_BRANCH_MERGE_LIST, mergeResourceInfos));
+        MergeResourceInfoList mergeResourceInfoList = new MergeResourceInfoList();
+        mergeResourceInfoList.addAllMergeResourceInfo(mergeResourceInfos);
+        return ResponseEntity.ok(ResultResponse.of(READ_BRANCH_MERGE_LIST, mergeResourceInfoList));
     }
 
 
