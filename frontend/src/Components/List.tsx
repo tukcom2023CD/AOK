@@ -75,7 +75,6 @@ export default function BasicList() {
         <Divider />
         <nav aria-label="folders">
         <List>
-            
             {branchData.map(branch => {
                 const clickEvent = () => {
                     dispatch(setBranchUuid(branch.uuid));
@@ -84,15 +83,13 @@ export default function BasicList() {
                 }
                 return(
                     <ListItem disablePadding>
-                    <ListItemButton onClick={()=>(clickEvent())}>
+                    <ListItemButton  onClick={()=>(clickEvent())}>
                         <ListItemText primary={branch.name} />
                     </ListItemButton>
                     </ListItem>
                 );
                 
                 })}
-
-
         </List>
         </nav>
     </Box>

@@ -77,9 +77,6 @@ export default function Main() {
                             <Box width={'20%'} display={'flex'} justifyContent={'center'}>
                         
                                     <MainModal  onClickToggleModal = {onClickToggleModal}></MainModal>
-                            
-                                {/* <CreateBtn onClick={ onClickToggleModal}>create</CreateBtn> */}
-
                             </Box>
                             
                         </Box>
@@ -109,7 +106,7 @@ export const theme = createTheme({
 const CreateBtn = styled.button `
     width: 100px;
     height: 30px;
-    background-color: #FF9198;
+    background-color: #F5ADB3;
     color: white;
     font-size: 15px;
     font-weight: bold;
@@ -119,5 +116,5 @@ const CreateBtn = styled.button `
         transition: 0.5s;
     }
 `;
-
+// #ff9198
 

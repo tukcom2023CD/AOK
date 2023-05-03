@@ -111,7 +111,7 @@ const style = {
   width: 16vw;
   height: 2.3vw;
   margin-top: 10px;
-  background-color: white;
+  background-color: #F7B5A5;
   font-size: 16px;
   font-weight: bold;
   &:hover{
