@@ -71,7 +71,7 @@ export default function BasicList() {
     
     return (
     <div>
-    <Box sx={{ width: '16vw', bgcolor: 'background.paper'}}>
+    <Box sx={{ width: '16vw', bgcolor: '#2F3F52'}}>    {/* 잉여공간 컬러 채움 */}
         <Divider />
         <nav aria-label="folders">
         <List>
