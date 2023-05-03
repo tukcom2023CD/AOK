@@ -13,6 +13,26 @@ import MainModal from '../Components/MainModal';
 import ProjectSelect from '../Components/ProjectSelect';
 import NonSelectBar from '../Components/nonSelectBar';
 
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Container from '@mui/material/Container';
+import background_dark from '../Images/background_dark.png';
+import Bg_page from '../Images/bg_page.png';
+
+
+    const BackgroundPage = styled.div`
+    width: 100vw;
+    height: 100vh;
+    background-image: url(${Bg_page});
+    background-position: center;
+    background-repeat: no-repeat;
+    `
+
 
 export default function Main() {
 
@@ -39,15 +59,16 @@ export default function Main() {
                     </Box>
                 </Box>
 
-                <Box  width={'100vw'} display={'flex'} height={'100vh'}>
+                <Box  width={'100vw'} display={'flex'} height={'100vh'}sx={{bgcolor: '#2F3F52'}}>
                     {/* 좌측 */}
-                    <Box width={'16vw'} display={'flex'} flexDirection={'column'} sx={{bgcolor: '#F3F3F3'}}>
+                    <Box width={'16vw'} display={'flex'} flexDirection={'column'} sx={{bgcolor: '#2F3F52'}}>
                         <BasicList />
                         <Box width={'16vw'}position={'fixed'} sx={{left:0, bottom:0, marginBottom: "10px"}}>    
                         <Profile />
                         </Box>
                     </Box>
                     {/* 우측 */}
+                    <BackgroundPage>
                     <Box display={'flex'} flexDirection={'column'} marginX={'auto'} marginY={'50px'} overflow={'auto'} height={"100vh"}>
                         
                         <Box display={'flex'} justifyContent={'center'} alignItems={'center'}>
@@ -66,7 +87,8 @@ export default function Main() {
                         <Box display={'flex'} justifyContent={'center'} marginBottom={'10rem'}>
                             <ImgList/>
                         </Box>
-                    </Box>
+                        
+                    </Box></BackgroundPage>
                 </Box> 
             </Box>
         </ThemeProvider>
