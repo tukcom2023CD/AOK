@@ -73,7 +73,7 @@ export default function Main() {
                         
                         <Box display={'flex'} justifyContent={'center'} alignItems={'center'}>
                         <Box display={'flex'} justifyContent={'center'}  width={'20%'}></Box>
-                            <Box display={'flex'} justifyContent={'center'}  width={'60%'}><Typography variant='h4' fontWeight={'bold'} >Projects</Typography></Box> 
+                            <Box display={'flex'} justifyContent={'center'}  width={'60%'}><Typography variant='h4' fontWeight={'bold'} color={'white'}>Projects</Typography></Box> 
                             <Box width={'20%'} display={'flex'} justifyContent={'center'}>
                         
                                     <MainModal  onClickToggleModal = {onClickToggleModal}></MainModal>

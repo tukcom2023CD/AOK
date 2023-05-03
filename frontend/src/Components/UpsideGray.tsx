@@ -28,7 +28,7 @@ const ImageDiv = styled.div`
 const TitleDiv = styled.div`
     font-size: 20pt;
     font-weight: bold;
-    color: #534D4D;
+    color: white;
     margin-left: 15px;
     margin-bottom: 5px;
 `;
