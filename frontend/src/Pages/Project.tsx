@@ -144,26 +144,11 @@ export default function Project() {
             console.log("최근 로그 uuid : ", response.data.data.uuid)
             setRecentLog(response.data.data.uuid);
             console.log("uuid 저장상태 : ", RecentLog);
-            })
-            .catch((error)=>{
-                console.log('최근 로그 uuid 불러오기 실패');
-                console.log('error')
-            })
-        })();
-    })
-
-    
-    const [LogMessage, setLogMessage] = useState('');
-    const [Resources, setResources] = useState<ResourcesData[]>([]);
-    
-    
-    useEffect(() => {
-        (async () => {
-            await axios.get<LogResponse>('/api/v1/logs/'+ RecentLog)
+            
+            axios.get<LogResponse>('/api/v1/logs/'+ RecentLog)
             .then((response) => {
             console.log("최근 로그 불러옴");
             console.log("최근 로그 : ", response.data);
-            
             
             console.log(response.data.data.resourceInfos);
             setResources(response.data.data.resourceInfos);
@@ -178,8 +163,43 @@ export default function Project() {
                 console.log('최근 로그 불러오기 실패');
                 console.log(error)
             })
+            
+            })
+            .catch((error)=>{
+                console.log('최근 로그 uuid 불러오기 실패');
+                console.log('error')
+            })
         })();
-    }, [])
+    })
+
+    
+    const [LogMessage, setLogMessage] = useState('');
+    const [Resources, setResources] = useState<ResourcesData[]>([]);
+    
+    
+    // useEffect(() => {
+    //     (async () => {
+    //         await axios.get<LogResponse>('/api/v1/logs/'+ RecentLog)
+    //         .then((response) => {
+    //         console.log("최근 로그 불러옴");
+    //         console.log("최근 로그 : ", response.data);
+            
+            
+    //         console.log(response.data.data.resourceInfos);
+    //         setResources(response.data.data.resourceInfos);
+    //         console.log(Resources);
+    //         // const links = response.data.data.resourceInfos.map((resource: any) => resource.link);
+            
+    //         // console.log("메시지 ", response.data.data.message);
+    //         // setLogMessage(response.data.data.message);
+    //         })
+
+    //         .catch((error)=>{
+    //             console.log('최근 로그 불러오기 실패');
+    //             console.log(error)
+    //         })
+    //     })();
+    // }, [])
 
     return (
             <Box sx={{ flexGrow: 1, flexShrink:1 }} display={'flex'} flexDirection={'column'} position={'fixed'}>
