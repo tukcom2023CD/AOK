@@ -170,7 +170,9 @@ export default function Project() {
                 console.log('error')
             })
         })();
-    })
+    }, [RecentLog]);
+    //[RecentLog] 설정으로 딱 한번만 useEffect 호출해서 최근 로그 불러옴
+    //새로고침해도 로그 내용이 사라지지 않는다
 
     
     const [LogMessage, setLogMessage] = useState('');
