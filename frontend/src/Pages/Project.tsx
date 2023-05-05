@@ -150,11 +150,15 @@ export default function Project() {
             console.log("최근 로그 불러옴");
             console.log("최근 로그 : ", response.data);
             
+            //로그의 이미지 데이터들 저장
             console.log(response.data.data.resourceInfos);
             setResources(response.data.data.resourceInfos);
             console.log(Resources);
-            // const links = response.data.data.resourceInfos.map((resource: any) => resource.link);
             
+            //로그 생성 시간 정보 저장
+            console.log(response.data.data.createdAt);
+            setCreateTime(response.data.data.createdAt);
+
             // console.log("메시지 ", response.data.data.message);
             // setLogMessage(response.data.data.message);
             })
@@ -177,31 +181,9 @@ export default function Project() {
     
     const [LogMessage, setLogMessage] = useState('');
     const [Resources, setResources] = useState<ResourcesData[]>([]);
+    const [CreateTime, setCreateTime] = useState('');
+    const [Nickname, setNickname] = useState('');
     
-    
-    // useEffect(() => {
-    //     (async () => {
-    //         await axios.get<LogResponse>('/api/v1/logs/'+ RecentLog)
-    //         .then((response) => {
-    //         console.log("최근 로그 불러옴");
-    //         console.log("최근 로그 : ", response.data);
-            
-            
-    //         console.log(response.data.data.resourceInfos);
-    //         setResources(response.data.data.resourceInfos);
-    //         console.log(Resources);
-    //         // const links = response.data.data.resourceInfos.map((resource: any) => resource.link);
-            
-    //         // console.log("메시지 ", response.data.data.message);
-    //         // setLogMessage(response.data.data.message);
-    //         })
-
-    //         .catch((error)=>{
-    //             console.log('최근 로그 불러오기 실패');
-    //             console.log(error)
-    //         })
-    //     })();
-    // }, [])
 
     return (
             <Box sx={{ flexGrow: 1, flexShrink:1 }} display={'flex'} flexDirection={'column'} position={'fixed'}>
@@ -257,7 +239,7 @@ export default function Project() {
                             <Typography sx={{color: "#838383", fontSize: '15px'}}>@Ellie</Typography>
                         </Box>
                         <Box display={'flex'} justifyContent={'center'}>
-                            <Typography sx={{color: "#838383", fontSize: '15px'}}>23.08.01:22</Typography>
+                            <Typography sx={{color: "#838383", fontSize: '15px'}}>{CreateTime}</Typography>
                         </Box>
 
                         <Box display={'flex'} justifyContent={'center'} marginRight={'200px'} marginTop ={'20px'}>
