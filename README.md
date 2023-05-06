@@ -16,4 +16,3 @@ Crepe : 원격 저장소를 활용한 그래픽 레이어 관리 플랫폼
 | 김유림   |   backend, frontend, devOps   |      |
 | 김태양     |    backend, devOps    |      |
 | 나은서     |    frontend    |      |
-| 김주연     |    frontend    |      |
