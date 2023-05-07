@@ -9,7 +9,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import kakao_login_medium_wide from '../Images/kakao_login_medium_wide.png';
+// import kakao_login_medium_wide from '../Images/kakao_login_medium_wide.png';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
@@ -21,7 +21,7 @@ interface Props {
 const ImageButton = styled.div`
   width: 330px;
   height: 40px;
-  background-image: url(${kakao_login_medium_wide});
+  background-image: url(${"img/kakao_login_medium_wide.png"});
   background-position: center;
   background-repeat: no-repeat;
 `;

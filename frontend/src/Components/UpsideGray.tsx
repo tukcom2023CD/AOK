@@ -1,5 +1,4 @@
 import * as React from 'react';
-import crepeimg from '../Images/crepeimg.png';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
@@ -19,7 +18,7 @@ const LogoDiv = styled.div`
 const ImageDiv = styled.div`
     width: 45px;
     height: 45px;
-    background-image: url(${crepeimg});
+    background-image: url(${"img/crepeimg.png"});
     background-position: center;
     background-size: 45px;
     background-repeat: no-repeat;

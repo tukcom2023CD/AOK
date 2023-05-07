@@ -13,13 +13,13 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import SignIn from '../Components/Logincom2';
 import styled from 'styled-components';
 import background_dark from '../Images/background_dark.png';
-import Together from '../Images/TeamWork.png';
+
 
 
     const Background2 = styled.div`
     width: 70vw;
     height: 100vh;
-    background-image: url(${Together});
+    background-image: url(${"img/TeamWork.png"});
     background-position: center;
     background-repeat: no-repeat;
     `

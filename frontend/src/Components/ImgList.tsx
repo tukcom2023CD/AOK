@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setUuid } from './Redux/UserSlice';
 import { setProjectUuid } from './Redux/ProjectSlice';
 import { RootState } from './Redux/Store';
-import crepeimg from '../Images/crepeimg.png'; 
+
 
 const commonStyles = {
     border: 1,
@@ -76,8 +76,8 @@ export default function ImgList() {
           <Box sx={{...commonStyles, borderRadius:3, border:'transparent', boxShadow: 4}} onClick={() => (clickEvent())}>
               <ImageListItem key={project.uuid}>
               <img
-              src={`${crepeimg}/?w=164&h=164&fit=crop&auto=format`}
-              srcSet={`${crepeimg}/?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+              src={`${"img/crepeimg.png"}/?w=164&h=164&fit=crop&auto=format`}
+              srcSet={`${"img/crepeimg.png"}/?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
               alt={project.name}
               loading="lazy"
               
