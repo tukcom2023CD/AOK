@@ -158,7 +158,9 @@ export default function Project() {
             //로그 생성 시간 정보 저장
             console.log(response.data.data.createdAt);
             setCreateTime(response.data.data.createdAt);
-
+            
+            //로그 정보의 유저 uuid 저장
+            console.log('로그 유저 uuid : ',response.data.data.userUuid);
             // console.log("메시지 ", response.data.data.message);
             // setLogMessage(response.data.data.message);
             })

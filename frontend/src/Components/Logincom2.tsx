@@ -9,8 +9,6 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import kakao_login_large_wide from '../Images/kakao_login_large_wide.png';
-import kakao_login_large_narrow from '../Images/kakao_login_large_narrow.png';
 import kakao_login_medium_wide from '../Images/kakao_login_medium_wide.png';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
