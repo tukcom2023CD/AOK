@@ -11,9 +11,8 @@ Crepe : 원격 저장소를 활용한 그래픽 레이어 관리 플랫폼
 [Jira Roadmap](https://sdylockon.atlassian.net/jira/software/projects/CREP/boards/2/roadmap)
 
 ## Members
-| Name | Email | 
-| :----: | :----: | 
-| 김유림   |   email   | 
-| 김주연     |    email    | 
-| 김태양     |    email    | 
-| 나은서     |    email    | 
+| Name | Position | contribution |
+| :----: | :----: | :----: | 
+| 김유림   |   backend, frontend, devOps   |      |
+| 김태양     |    backend, devOps    |      |
+| 나은서     |    frontend    |      |
