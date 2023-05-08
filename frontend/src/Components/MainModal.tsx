@@ -66,7 +66,7 @@ const style = {
   const Btn = styled.button`
   width: 100px;
   height: 30px;
-  background-color: #FF9198;
+  background-color: #F7B5A5;
   border: none;
   border-radius: 10px;
   font-size: 15px;
@@ -82,7 +82,7 @@ const style = {
   const CreateBtn = styled.button`
     width: 830px;
     height: 75px;
-    background-color: #FF9198;
+    background-color: #F7B5A5;
     border: none;
     border-radius: 10px;
     font-size: 20pt;

@@ -13,6 +13,26 @@ import MainModal from '../Components/MainModal';
 import ProjectSelect from '../Components/ProjectSelect';
 import NonSelectBar from '../Components/nonSelectBar';
 
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Container from '@mui/material/Container';
+import background_dark from '../Images/background_dark.png';
+import Bg_page from '../Images/bg_page.png';
+
+
+    const BackgroundPage = styled.div`
+    width: 100vw;
+    height: 100vh;
+    background-image: url(${Bg_page});
+    background-position: center;
+    background-repeat: no-repeat;
+    `
+
 
 export default function Main() {
 
@@ -30,7 +50,7 @@ export default function Main() {
                         <Box width={'16vw'} >
                             <UpsideGray />
                         </Box>
-                        <Box sx={{width:"16vw", height:"42px", alignText:'center', bgcolor:"#D9D9D9", alignContent:'center'}} >
+                        <Box sx={{width:"16vw", height:"42px", alignText:'center', bgcolor:"#4F6680", alignContent:'center'}} >
                             <ProjectSelect/>
                         </Box>
                     </Box>
@@ -39,26 +59,24 @@ export default function Main() {
                     </Box>
                 </Box>
 
-                <Box  width={'100vw'} display={'flex'} height={'100vh'}>
+                <Box  width={'100vw'} display={'flex'} height={'100vh'}sx={{bgcolor: '#2F3F52'}}>
                     {/* 좌측 */}
-                    <Box width={'16vw'} display={'flex'} flexDirection={'column'} sx={{bgcolor: '#F3F3F3'}}>
+                    <Box width={'16vw'} display={'flex'} flexDirection={'column'} sx={{bgcolor: '#2F3F52'}}>
                         <BasicList />
                         <Box width={'16vw'}position={'fixed'} sx={{left:0, bottom:0, marginBottom: "10px"}}>    
                         <Profile />
                         </Box>
                     </Box>
                     {/* 우측 */}
+                    <BackgroundPage>
                     <Box display={'flex'} flexDirection={'column'} marginX={'auto'} marginY={'50px'} overflow={'auto'} height={"100vh"}>
                         
                         <Box display={'flex'} justifyContent={'center'} alignItems={'center'}>
                         <Box display={'flex'} justifyContent={'center'}  width={'20%'}></Box>
-                            <Box display={'flex'} justifyContent={'center'}  width={'60%'}><Typography variant='h4' fontWeight={'bold'} >Projects</Typography></Box> 
+                            <Box display={'flex'} justifyContent={'center'}  width={'60%'}><Typography variant='h4' fontWeight={'bold'} color={'white'}>Projects</Typography></Box> 
                             <Box width={'20%'} display={'flex'} justifyContent={'center'}>
                         
                                     <MainModal  onClickToggleModal = {onClickToggleModal}></MainModal>
-                            
-                                {/* <CreateBtn onClick={ onClickToggleModal}>create</CreateBtn> */}
-
                             </Box>
                             
                         </Box>
@@ -66,7 +84,8 @@ export default function Main() {
                         <Box display={'flex'} justifyContent={'center'} marginBottom={'10rem'}>
                             <ImgList/>
                         </Box>
-                    </Box>
+                        
+                    </Box></BackgroundPage>
                 </Box> 
             </Box>
         </ThemeProvider>
@@ -87,7 +106,7 @@ export const theme = createTheme({
 const CreateBtn = styled.button `
     width: 100px;
     height: 30px;
-    background-color: #FF9198;
+    background-color: #F5ADB3;
     color: white;
     font-size: 15px;
     font-weight: bold;
@@ -97,5 +116,5 @@ const CreateBtn = styled.button `
         transition: 0.5s;
     }
 `;
-
+// #ff9198
 

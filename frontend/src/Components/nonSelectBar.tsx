@@ -38,7 +38,7 @@ export default function nonSelectBar() {
     return (
         <Box sx={{position: 'fixed'}}>
         <ThemeProvider theme={theme}>
-        <Box bgcolor={"secondary.light"} display={'flex'} width={"100vw"} height={'108px'}>
+        <Box bgcolor={"#4F6680"} display={'flex'} width={"100vw"} height={'108px'}>
             <Box marginLeft={'20px'} marginY={"auto"} alignItems={'center'}>
                 
             </Box>

@@ -111,14 +111,16 @@ const style = {
   width: 16vw;
   height: 2.3vw;
   margin-top: 10px;
-  background-color: white;
+  background-color: #F7B5A5;
+  color: white;
   font-size: 16px;
   font-weight: bold;
   &:hover{
-    background-color: #ececec;
+    background-color: #FF9198;
     transition: 0.5s;
   }
 `;
+//background-color: #ececec;
 
   
   const CreateBtn = styled.button`

@@ -14,7 +14,7 @@ import axios from 'axios';
 const ContainerDiv = styled.div`
     width: 16vw;
     display: flex;
-    background-color: #D9D9D9;
+    background-color: #4F6680;
 
 `;
 

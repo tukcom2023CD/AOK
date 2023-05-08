@@ -7,7 +7,7 @@ const BackgrDiv = styled.div`
     display: flex;
     width: 100%;
     height: 65px;
-    background-color: #F1F1F1;
+    background-color: #8292A5;
 `;
 
 const LogoDiv = styled.div`
@@ -28,7 +28,7 @@ const ImageDiv = styled.div`
 const TitleDiv = styled.div`
     font-size: 20pt;
     font-weight: bold;
-    color: #534D4D;
+    color: white;
     margin-left: 15px;
     margin-bottom: 5px;
 `;
